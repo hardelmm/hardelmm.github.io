@@ -13,7 +13,7 @@
       <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/jenkins&#43;shell/</guid>
-      <description>1.获取目录下所有文件名 # ! / bin/ bash #采集—个函数 readDir() { local dir=$1 #获取传入的目录路径 local files #循环指定目录下的所有文件 files=$(ls &amp;quot;$dir &amp;quot;) for file in $files ; do local path=&amp;quot;$dir /$file&amp;quot; #指的是当</description>
+      <description>1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &amp;#34;$dir &amp;#34;) 7 for file in $files ; do 8 local path=&amp;#34;$dir</description>
     </item>
     
     <item>
@@ -22,7 +22,7 @@
       <pubDate>Thu, 27 Jan 2022 20:22:36 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
-      <description>一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&amp;quot;rb&amp;quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&amp;quot;w&amp;quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&amp;quot;configOne&amp;quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =</description>
+      <description>一.读取配置文件 1import codecs 2import configparser 3configPath = &amp;#39;&amp;#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&amp;#34;rb&amp;#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&amp;#34;w&amp;#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&amp;#39;UTF-8-sig&amp;#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&amp;#34;configOne&amp;#34;,name) 24 return</description>
     </item>
     
     <item>

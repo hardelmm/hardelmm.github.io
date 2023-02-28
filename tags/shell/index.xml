@@ -13,7 +13,7 @@
       <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/jenkins&#43;shell/</guid>
-      <description>1.获取目录下所有文件名 # ! / bin/ bash #采集—个函数 readDir() { local dir=$1 #获取传入的目录路径 local files #循环指定目录下的所有文件 files=$(ls &amp;quot;$dir &amp;quot;) for file in $files ; do local path=&amp;quot;$dir /$file&amp;quot; #指的是当</description>
+      <description>1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &amp;#34;$dir &amp;#34;) 7 for file in $files ; do 8 local path=&amp;#34;$dir</description>
     </item>
     
     <item>

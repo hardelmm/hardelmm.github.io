@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Python数据库基础操作">
 <meta itemprop="description" content="一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。"><meta itemprop="datePublished" content="2021-04-29T21:52:23+08:00" />
 <meta itemprop="dateModified" content="2021-04-29T21:52:23+08:00" />
-<meta itemprop="wordCount" content="936">
+<meta itemprop="wordCount" content="1051">
 <meta itemprop="keywords" content="python,数据库,mysql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python数据库基础操作"/>
 <meta name="twitter:description" content="一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。"/>
@@ -135,13 +135,6 @@
           
           
             <a class="menu-item-link" href="https://hardelmm.github.io/categories/">分类</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
           
         
       </li>
@@ -274,17 +267,6 @@
 
       </li>
     
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
-          
-
-        
-
-      </li>
-    
 
     
     
@@ -319,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 936 字 -
-        预计阅读 2 分钟
+        约 1051 字 -
+        预计阅读 3 分钟
       </span>
 
     
@@ -339,202 +321,197 @@
 
         
         <div class="post-content">
-          <h1 id="一python连接mysql数据库">一.python连接mysql数据库</h1>
-<h2 id="1使用mysqlclient连接">1.使用mysqlclient连接</h2>
+          <h2 id="一python连接mysql数据库">一.python连接mysql数据库</h2>
+<h3 id="1使用mysqlclient连接">1.使用mysqlclient连接</h3>
 <p>mysqlclient包是用于MySQL的最流行的Python包之一。它包含MySQLdb模块，一个提供Python数据库API的MySQL接口。</p>
-<pre><code>import os
-import MySQLdb
-
-connection = MySQLdb.connect(
-    host = os.getenv(&quot;HOST&quot;)
-    user = os.getenv(&quot;USERNAME&quot;)
-    password = os.getenv(&quot;PASSWORD&quot;)
-    db = os.getenv(&quot;DATABASE&quot;)
-    ssl_mode = &quot;VERIFY_IDENTITY&quot;
-    ssl = {
-        'ca' : os.genenv(&quot;SSL_CERT&quot;)
-    }
-)
-#创建游标
-cursor = connectin.cursor()
-cursor.excute(&quot;select @@version&quot;)
-version = cursor.fetchone()
-
-if version:
-    print('conne')
-else:
-    print('Not connect.')
-    
-cursor.close()
-connection.close()
-</code></pre>
-<h2 id="2使用mysql-connector连接">2.使用mysql connector连接</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">os</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">MySQLdb</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>connection <span style="color:#000;font-weight:bold">=</span> MySQLdb<span style="color:#000;font-weight:bold">.</span>connect(
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span>    host <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;HOST&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>    user <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;USERNAME&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>    password <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;PASSWORD&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>    db <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;DATABASE&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>    ssl_mode <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;VERIFY_IDENTITY&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>    ssl <span style="color:#000;font-weight:bold">=</span> {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>        <span style="color:#d14">&#39;ca&#39;</span> : os<span style="color:#000;font-weight:bold">.</span>genenv(<span style="color:#d14">&#34;SSL_CERT&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span><span style="color:#998;font-style:italic">#创建游标</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span>cursor <span style="color:#000;font-weight:bold">=</span> connectin<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-16">16</a></span><span>cursor<span style="color:#000;font-weight:bold">.</span>excute(<span style="color:#d14">&#34;select @@version&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-17">17</a></span><span>version <span style="color:#000;font-weight:bold">=</span> cursor<span style="color:#000;font-weight:bold">.</span>fetchone()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-18">18</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-19">19</a></span><span><span style="color:#000;font-weight:bold">if</span> version:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-20">20</a></span><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;conne&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-21">21</a></span><span><span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-22">22</a></span><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Not connect.&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-23">23</a></span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-24">24</a></span><span>cursor<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-25">25</a></span><span>connection<span style="color:#000;font-weight:bold">.</span>close()
+</span></span></code></pre></div><h3 id="2使用mysql-connector连接">2.使用mysql connector连接</h3>
 <p>mysql connector不支持旧的服务器认证方法，意味着在4.1之前的mysql版本不能工作。</p>
-<pre><code>import os
-from dotenv import load_dotenv
-from mysql.connector import Error
-import mysql.connector
-
-load_dotenv()
-
-connection = mysql.connector.connect(
-host=os.getenv(&quot;HOST&quot;),
-database=os.getenv(&quot;DATABASE&quot;),
-user=os.getenv(&quot;USERNAME&quot;),
-password=os.getenv(&quot;PASSWORD&quot;),
-ssl_ca=os.getenv(&quot;SSL_CERT&quot;)
-)
-
-try:
-    if connection.is_connected():
-        cursor = connection.cursor()
-    cursor.execute(&quot;select @@version &quot;)
-    version = cursor.fetchone()
-    if version:
-        print('Running version: ', version)
-    else:
-        print('Not connected.')
-except Error as e:
-    print(&quot;Error while connecting to MySQL&quot;, e)
-finally:
-    connection.close()
-</code></pre>
-<h2 id="3使用pymysql连接">3.使用pymysql连接</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1"> 1</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">os</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2"> 2</a></span><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">dotenv</span> <span style="color:#000;font-weight:bold">import</span> load_dotenv
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3"> 3</a></span><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">mysql.connector</span> <span style="color:#000;font-weight:bold">import</span> Error
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4"> 4</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">mysql.connector</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5"> 5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6"> 6</a></span><span>load_dotenv()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7"> 7</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-8"> 8</a></span><span>connection <span style="color:#000;font-weight:bold">=</span> mysql<span style="color:#000;font-weight:bold">.</span>connector<span style="color:#000;font-weight:bold">.</span>connect(
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-9"> 9</a></span><span>host<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;HOST&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-10">10</a></span><span>database<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;DATABASE&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-11">11</a></span><span>user<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;USERNAME&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-12">12</a></span><span>password<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;PASSWORD&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-13">13</a></span><span>ssl_ca<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;SSL_CERT&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-14">14</a></span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-15">15</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-16">16</a></span><span><span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-17">17</a></span><span>    <span style="color:#000;font-weight:bold">if</span> connection<span style="color:#000;font-weight:bold">.</span>is_connected():
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-18">18</a></span><span>        cursor <span style="color:#000;font-weight:bold">=</span> connection<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-19">19</a></span><span>    cursor<span style="color:#000;font-weight:bold">.</span>execute(<span style="color:#d14">&#34;select @@version &#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-20">20</a></span><span>    version <span style="color:#000;font-weight:bold">=</span> cursor<span style="color:#000;font-weight:bold">.</span>fetchone()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-21">21</a></span><span>    <span style="color:#000;font-weight:bold">if</span> version:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-22">22</a></span><span>        <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Running version: &#39;</span>, version)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-23">23</a></span><span>    <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-24">24</a></span><span>        <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Not connected.&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-25">25</a></span><span><span style="color:#000;font-weight:bold">except</span> Error <span style="color:#000;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-26">26</a></span><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;Error while connecting to MySQL&#34;</span>, e)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-27">27</a></span><span><span style="color:#000;font-weight:bold">finally</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-28">28</a></span><span>    connection<span style="color:#000;font-weight:bold">.</span>close()
+</span></span></code></pre></div><h3 id="3使用pymysql连接">3.使用pymysql连接</h3>
 <p>PyMySQL包是另一个连接器，可以用它来连接Python和MySQL。如果追求速度，这是一个很好的选择，因为它比mysql-connector-python快。</p>
-<pre><code>from dotenv import load_dotenv
-import pymysql
-import os
-
-load_dotenv()
-
-connection = pymysql.connect(
-    host=os.getenv(&quot;HOST&quot;),
-    database=os.getenv(&quot;DATABASE&quot;),
-    user=os.getenv(&quot;USERNAME&quot;),
-    password=os.getenv(&quot;PASSWORD&quot;),
-    ssl_ca=os.getenv(&quot;SSL_CERT&quot;)
-)
-cursor = connection.cursor()
-cursor.execute(&quot;select @@version &quot;)
-version = cursor.fetchone()
-if version:
-    print('Running version: ', version)
-else:
-    print('Not connected.')
-connection.close()
-</code></pre>
-<h2 id="4使用aiomysql连接">4.使用aiomysql连接</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1"> 1</a></span><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">dotenv</span> <span style="color:#000;font-weight:bold">import</span> load_dotenv
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">pymysql</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3"> 3</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">os</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4"> 4</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5"> 5</a></span><span>load_dotenv()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6"> 6</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7"> 7</a></span><span>connection <span style="color:#000;font-weight:bold">=</span> pymysql<span style="color:#000;font-weight:bold">.</span>connect(
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8"> 8</a></span><span>    host<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;HOST&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-9"> 9</a></span><span>    database<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;DATABASE&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-10">10</a></span><span>    user<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;USERNAME&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-11">11</a></span><span>    password<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;PASSWORD&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-12">12</a></span><span>    ssl_ca<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;SSL_CERT&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-13">13</a></span><span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-14">14</a></span><span>cursor <span style="color:#000;font-weight:bold">=</span> connection<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-15">15</a></span><span>cursor<span style="color:#000;font-weight:bold">.</span>execute(<span style="color:#d14">&#34;select @@version &#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-16">16</a></span><span>version <span style="color:#000;font-weight:bold">=</span> cursor<span style="color:#000;font-weight:bold">.</span>fetchone()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-17">17</a></span><span><span style="color:#000;font-weight:bold">if</span> version:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-18">18</a></span><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Running version: &#39;</span>, version)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-19">19</a></span><span><span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-20">20</a></span><span>    <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Not connected.&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-21">21</a></span><span>connection<span style="color:#000;font-weight:bold">.</span>close()
+</span></span></code></pre></div><h3 id="4使用aiomysql连接">4.使用aiomysql连接</h3>
 <p>aiomysql库用于从asyncio框架访问MySQL数据库。除了是异步的特性之外，连接代码与PyMySQL相似。注意，使用aiomysql需要Python 3.7以上版本和PyMySQL。</p>
-<pre><code>import os
-import asyncio
-import aiomysql
-import ssl
-
-from dotenv import load_dotenv
-load_dotenv()
-
-ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-ctx.load_verify_locations(cafile=os.getenv(&quot;SSL_CERT&quot;))
-
-loop = asyncio.get_event_loop()
-
-async def connect_db():
-   connection = await aiomysql.connect(
-       host=os.getenv(&quot;HOST&quot;),
-       port=3306,
-       user=os.getenv(&quot;USERNAME&quot;),
-       password=os.getenv(&quot;PASSWORD&quot;),
-       db=os.getenv(&quot;DATABASE&quot;),
-       loop=loop,
-       ssl=ctx
-   )
-   cursor = await connection.cursor()
-   await cursor.execute(&quot;select @@version&quot;)
-   version = await cursor.fetchall()
-   print('Running version: ', version)
-   await cursor.close()
-   connection.close()
-loop.run_until_complete(connect_db())
-</code></pre>
-<h1 id="二执行批量执行sql">二.执行/批量执行sql</h1>
-<pre><code>mycursor = connection.cursor()
-mycursor.excute(&quot;sql语句&quot;) #执行sql
-sql = &quot;&quot;
-val = []
-mycursor.excutemany(sql,val) #批量执行sql
-connection.commit() #对数据库由修改操作要commit
-</code></pre>
-<h1 id="三查询数据">三.查询数据</h1>
-<pre><code>mycursor = connection.cursor()
-mycursor.excute(&quot;select 语句&quot;)
-result = mycursor.fetchone() #获取当前维度第一条数据
-result = mycursor.fetchall()#获取当前维度所有数据
-result = mycursor.fetchmany(n)#获取当前维度的n条数据
-#cursor属性 rownumber  标识游标当前位置 所以要定义属性：cursor.rownumber=0
-</code></pre>
-<h1 id="四自定义工具包封装">四.自定义工具包封装</h1>
-<pre><code>import mysql.connector
-
-class DB_Opera:
-    connection = None
-    '''
-    def __int__(self,x,y,z):
-        if self.connection is None:
-            self.connection = mysql.connector.connect(host=x,user=y,password=z)
-            print(&quot;DB connect successfully...&quot;)
-            return self.connection
-        else:
-            print(&quot;DB has been connected...&quot;)
-    '''
-
-    @classmethod
-    def get_conn(cls,config_db):
-        if cls.connection is None:
-            cls.connection =  mysql.connector.connect(host=config_db[0],user=config_db[1],password=config_db[2])
-            print(&quot;DB connect successfully...&quot;)
-            return cls.connection
-        else:
-            print(&quot;DB has been connected...&quot;)
-
-
-    @classmethod
-    def close_conn(cls):
-        if cls.connection:
-            cls.connection.close()
-            cls.connection = None
-            print(&quot;DB disconnected successfully...&quot;)
-        else:
-            print(&quot;DB has been disconnected...&quot;)
-
-    @classmethod
-    def query_sql(cls,sql):
-        res = None
-        cursor = None
-        try:
-            cursor = cls.connection.cursor()
-            cursor.execute(sql)
-            res = cursor.fetchall()
-            return res
-        except Exception as e:
-            print(&quot;DB query excep :&quot; + str(e))
-        finally:
-            cursor.close()
-
-    @classmethod
-    def exec_sql(cls,sql):
-        cursor = None
-        try:
-            cursor = cls.connection.cursor()
-            cursor.execute(sql)
-            cls.connection.commit()
-            print(&quot;DB execute sql successfully...&quot;)
-        except Exception as e:
-            print(str(e))
-            cls.connection.rollback()
-        finally:
-            cursor.close()
-</code></pre>
-
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1"> 1</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">os</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3"> 3</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">asyncio</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4"> 4</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">aiomysql</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-5"> 5</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">ssl</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-6"> 6</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-7"> 7</a></span><span><span style="color:#000;font-weight:bold">from</span> <span style="color:#555">dotenv</span> <span style="color:#000;font-weight:bold">import</span> load_dotenv
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-8"> 8</a></span><span>load_dotenv()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-10">10</a></span><span>ctx <span style="color:#000;font-weight:bold">=</span> ssl<span style="color:#000;font-weight:bold">.</span>SSLContext(ssl<span style="color:#000;font-weight:bold">.</span>PROTOCOL_TLS_CLIENT)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-11">11</a></span><span>ctx<span style="color:#000;font-weight:bold">.</span>load_verify_locations(cafile<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;SSL_CERT&#34;</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-12">12</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-13">13</a></span><span>loop <span style="color:#000;font-weight:bold">=</span> asyncio<span style="color:#000;font-weight:bold">.</span>get_event_loop()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-14">14</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-15">15</a></span><span><span style="color:#000;font-weight:bold">async</span> <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">connect_db</span>():
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-16">16</a></span><span>   connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">await</span> aiomysql<span style="color:#000;font-weight:bold">.</span>connect(
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-17">17</a></span><span>       host<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;HOST&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-18">18</a></span><span>       port<span style="color:#000;font-weight:bold">=</span><span style="color:#099">3306</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-19">19</a></span><span>       user<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;USERNAME&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-20">20</a></span><span>       password<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;PASSWORD&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-21">21</a></span><span>       db<span style="color:#000;font-weight:bold">=</span>os<span style="color:#000;font-weight:bold">.</span>getenv(<span style="color:#d14">&#34;DATABASE&#34;</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-22">22</a></span><span>       loop<span style="color:#000;font-weight:bold">=</span>loop,
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-23">23</a></span><span>       ssl<span style="color:#000;font-weight:bold">=</span>ctx
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-24">24</a></span><span>   )
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-25">25</a></span><span>   cursor <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">await</span> connection<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-26">26</a></span><span>   <span style="color:#000;font-weight:bold">await</span> cursor<span style="color:#000;font-weight:bold">.</span>execute(<span style="color:#d14">&#34;select @@version&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-27">27</a></span><span>   version <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">await</span> cursor<span style="color:#000;font-weight:bold">.</span>fetchall()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-28">28</a></span><span>   <span style="color:#0086b3">print</span>(<span style="color:#d14">&#39;Running version: &#39;</span>, version)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-29">29</a></span><span>   <span style="color:#000;font-weight:bold">await</span> cursor<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-30">30</a></span><span>   connection<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-31">31</a></span><span>loop<span style="color:#000;font-weight:bold">.</span>run_until_complete(connect_db())
+</span></span></code></pre></div><h2 id="二执行批量执行sql">二.执行/批量执行sql</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>mycursor = connection.cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span>mycursor.excute(&#34;sql语句&#34;) #执行sql
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span>sql = &#34;&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a></span><span>val = []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-5">5</a></span><span>mycursor.excutemany(sql,val) #批量执行sql
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-6">6</a></span><span>connection.commit() #对数据库由修改操作要commit
+</span></span></code></pre></div><h2 id="三查询数据">三.查询数据</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>mycursor = connection.cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>mycursor.excute(&#34;select 语句&#34;)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span>result = mycursor.fetchone() #获取当前维度第一条数据
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-4">4</a></span><span>result = mycursor.fetchall()#获取当前维度所有数据
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-5">5</a></span><span>result = mycursor.fetchmany(n)#获取当前维度的n条数据
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-6">6</a></span><span>#cursor属性 rownumber  标识游标当前位置 所以要定义属性：cursor.rownumber=0
+</span></span></code></pre></div><h2 id="四自定义工具包封装">四.自定义工具包封装</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1"> 1</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">mysql.connector</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3"> 3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4"> 4</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">DB_Opera</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-5"> 5</a></span><span>    connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-6"> 6</a></span><span>    <span style="color:#d14">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-7"> 7</a></span><span><span style="color:#d14">    def __int__(self,x,y,z):
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-8"> 8</a></span><span><span style="color:#d14">        if self.connection is None:
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-9"> 9</a></span><span><span style="color:#d14">            self.connection = mysql.connector.connect(host=x,user=y,password=z)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-10">10</a></span><span><span style="color:#d14">            print(&#34;DB connect successfully...&#34;)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-11">11</a></span><span><span style="color:#d14">            return self.connection
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-12">12</a></span><span><span style="color:#d14">        else:
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-13">13</a></span><span><span style="color:#d14">            print(&#34;DB has been connected...&#34;)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-14">14</a></span><span><span style="color:#d14">    &#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-15">15</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-16">16</a></span><span>    <span style="color:#3c5d5d;font-weight:bold">@classmethod</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-17">17</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_conn</span>(<span style="color:#999">cls</span>,config_db):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-18">18</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection <span style="color:#000;font-weight:bold">is</span> <span style="color:#000;font-weight:bold">None</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-19">19</a></span><span>            <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection <span style="color:#000;font-weight:bold">=</span>  mysql<span style="color:#000;font-weight:bold">.</span>connector<span style="color:#000;font-weight:bold">.</span>connect(host<span style="color:#000;font-weight:bold">=</span>config_db[<span style="color:#099">0</span>],user<span style="color:#000;font-weight:bold">=</span>config_db[<span style="color:#099">1</span>],password<span style="color:#000;font-weight:bold">=</span>config_db[<span style="color:#099">2</span>])
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-20">20</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB connect successfully...&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-21">21</a></span><span>            <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-22">22</a></span><span>        <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-23">23</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB has been connected...&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-24">24</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-25">25</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-26">26</a></span><span>    <span style="color:#3c5d5d;font-weight:bold">@classmethod</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-27">27</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">close_conn</span>(<span style="color:#999">cls</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-28">28</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-29">29</a></span><span>            <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-30">30</a></span><span>            <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-31">31</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB disconnected successfully...&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-32">32</a></span><span>        <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-33"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-33">33</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB has been disconnected...&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-34"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-34">34</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-35"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-35">35</a></span><span>    <span style="color:#3c5d5d;font-weight:bold">@classmethod</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-36"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-36">36</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">query_sql</span>(<span style="color:#999">cls</span>,sql):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-37"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-37">37</a></span><span>        res <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-38"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-38">38</a></span><span>        cursor <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-39"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-39">39</a></span><span>        <span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-40"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-40">40</a></span><span>            cursor <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-41"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-41">41</a></span><span>            cursor<span style="color:#000;font-weight:bold">.</span>execute(sql)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-42"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-42">42</a></span><span>            res <span style="color:#000;font-weight:bold">=</span> cursor<span style="color:#000;font-weight:bold">.</span>fetchall()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-43"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-43">43</a></span><span>            <span style="color:#000;font-weight:bold">return</span> res
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-44"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-44">44</a></span><span>        <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span> <span style="color:#000;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-45"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-45">45</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB query excep :&#34;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(e))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-46"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-46">46</a></span><span>        <span style="color:#000;font-weight:bold">finally</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-47"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-47">47</a></span><span>            cursor<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-48"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-48">48</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-49"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-49">49</a></span><span>    <span style="color:#3c5d5d;font-weight:bold">@classmethod</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-50"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-50">50</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">exec_sql</span>(<span style="color:#999">cls</span>,sql):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-51"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-51">51</a></span><span>        cursor <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-52"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-52">52</a></span><span>        <span style="color:#000;font-weight:bold">try</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-53"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-53">53</a></span><span>            cursor <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection<span style="color:#000;font-weight:bold">.</span>cursor()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-54"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-54">54</a></span><span>            cursor<span style="color:#000;font-weight:bold">.</span>execute(sql)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-55"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-55">55</a></span><span>            <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection<span style="color:#000;font-weight:bold">.</span>commit()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-56"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-56">56</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;DB execute sql successfully...&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-57"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-57">57</a></span><span>        <span style="color:#000;font-weight:bold">except</span> <span style="color:#900;font-weight:bold">Exception</span> <span style="color:#000;font-weight:bold">as</span> e:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-58"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-58">58</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#0086b3">str</span>(e))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-59"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-59">59</a></span><span>            <span style="color:#999">cls</span><span style="color:#000;font-weight:bold">.</span>connection<span style="color:#000;font-weight:bold">.</span>rollback()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-60"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-60">60</a></span><span>        <span style="color:#000;font-weight:bold">finally</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-61"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-61">61</a></span><span>            cursor<span style="color:#000;font-weight:bold">.</span>close()
+</span></span></code></pre></div>
         </div>
 
         
@@ -593,7 +570,7 @@ class DB_Opera:
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/unittest%E5%92%8Cpytest/">
+              <a class="prev" href="/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/">
                 
                 <i class="iconfont">
                   <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -603,7 +580,7 @@ class DB_Opera:
 </svg>
 
                 </i>
-                <span class="prev-text nav-default">Unittest和pytest</span>
+                <span class="prev-text nav-default">ffmpeg转码</span>
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
@@ -671,10 +648,17 @@ class DB_Opera:
     <div class="toc-content custom-scrollbar">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#1使用mysqlclient连接">1.使用mysqlclient连接</a></li>
-    <li><a href="#2使用mysql-connector连接">2.使用mysql connector连接</a></li>
-    <li><a href="#3使用pymysql连接">3.使用pymysql连接</a></li>
-    <li><a href="#4使用aiomysql连接">4.使用aiomysql连接</a></li>
+    <li><a href="#一python连接mysql数据库">一.python连接mysql数据库</a>
+      <ul>
+        <li><a href="#1使用mysqlclient连接">1.使用mysqlclient连接</a></li>
+        <li><a href="#2使用mysql-connector连接">2.使用mysql connector连接</a></li>
+        <li><a href="#3使用pymysql连接">3.使用pymysql连接</a></li>
+        <li><a href="#4使用aiomysql连接">4.使用aiomysql连接</a></li>
+      </ul>
+    </li>
+    <li><a href="#二执行批量执行sql">二.执行/批量执行sql</a></li>
+    <li><a href="#三查询数据">三.查询数据</a></li>
+    <li><a href="#四自定义工具包封装">四.自定义工具包封装</a></li>
   </ul>
 </nav>
     </div>

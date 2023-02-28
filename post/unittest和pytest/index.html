@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Unittest和pytest">
 <meta itemprop="description" content="一、用例编写规则 1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,"><meta itemprop="datePublished" content="2022-01-06T21:56:13+08:00" />
 <meta itemprop="dateModified" content="2022-01-06T21:56:13+08:00" />
-<meta itemprop="wordCount" content="1540">
+<meta itemprop="wordCount" content="1501">
 <meta itemprop="keywords" content="python,接口测试,自动化测试,测试工具," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Unittest和pytest"/>
 <meta name="twitter:description" content="一、用例编写规则 1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,"/>
@@ -135,13 +135,6 @@
           
           
             <a class="menu-item-link" href="https://hardelmm.github.io/categories/">分类</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
           
         
       </li>
@@ -274,17 +267,6 @@
 
       </li>
     
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
-          
-
-        
-
-      </li>
-    
 
     
     
@@ -319,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1540 字 -
-        预计阅读 4 分钟
+        约 1501 字 -
+        预计阅读 3 分钟
       </span>
 
     
@@ -339,47 +321,63 @@
 
         
         <div class="post-content">
-          <p>一、用例编写规则
-1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,让测试更加明确、方便、可控。使用unittest编写用例,必须遵守以下规则:
-（1）测试文件必须先import unittest
-（2）测试类必须继承unittest.TestCase
-（3）测试方法必须以“test_”开头
-（4）测试类必须要有unittest.main()方法
-2.pytest是python的第三方测试框架,是基于unittest的扩展框架,比unittest更简洁,更高效。使用pytest编写用例,必须遵守以下规则:
-（1）测试文件名必须以“test_”开头或者&quot;<em>test&quot;结尾(如:test_ab.py)
-（2）测试方法必须以“test</em>”开头。
-（3）测试类命名以&quot;Test&quot;开头。
-总结: pytest可以执行unittest风格的测试用例,无须修改unittest用例的任何代码,有较好的兼容性。 pytest插件丰富,比如flask插件,可用于用例出错重跑;还有xdist插件,可用于设备并行执行。</p>
-<p>二、用例前置和后置
-1.unittest提供了setUp/tearDown，每个用例运行前、结束后运行一次。setUpClass和tearDownClass，用例执行前、结束后，只运行一次。
-2.pytest提供了模块级、函数级、类级、方法级的setup/teardown，比unittest的setUp/tearDown更灵活。
-模块级（setup_module/teardown_module）开始于模块始末，全局的
-函数级（setup_function/teardown_function）只对函数用例生效（不在类中）
-类级（setup_class/teardown_class）只在类中前后运行一次(在类中)
-方法级（setup_method/teardown_method）开始于方法始末（在类中）
-类里面的（setup/teardown）运行在调用方法的前后
-3.pytest还可以在函数前加@pytest.fixture()装饰器，在测试用例中装在fixture函数。fixture的使用范围可以是function,module,class,session。
-fixture相对于setup和teardown来说有以下几点优势：
-命名方式灵活，不局限于setup和teardown这几个命名
+          <h5 id="一用例编写规则">一、用例编写规则</h5>
+<p>1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,让测试更加明确、方便、可控。使用unittest编写用例,必须遵守以下规则:</p>
+<ul>
+<li>测试文件必须先import unittest</li>
+<li>测试类必须继承unittest.TestCase</li>
+<li>测试方法必须以“test_”开头</li>
+<li>测试类必须要有unittest.main()方法</li>
+</ul>
+<p>2.pytest是python的第三方测试框架,是基于unittest的扩展框架,比unittest更简洁,更高效。使用pytest编写用例,必须遵守以下规则:</p>
+<ul>
+<li>测试文件名必须以“test_”开头或者&quot;_test&quot;结尾(如:test_ab.py)</li>
+<li>测试方法必须以“test_”开头。</li>
+<li>测试类命名以&quot;Test&quot;开头。</li>
+</ul>
+<p>总结: pytest可以执行unittest风格的测试用例,无须修改unittest用例的任何代码,有较好的兼容性。 pytest插件丰富,比如flask插件,可用于用例出错重跑;还有xdist插件,可用于设备并行执行。</p>
+<h5 id="二用例前置和后置">二、用例前置和后置</h5>
+<p>1.unittest提供了setUp/tearDown，每个用例运行前、结束后运行一次。setUpClass和tearDownClass，用例执行前、结束后，只运行一次。</p>
+<p>2.pytest提供了模块级、函数级、类级、方法级的setup/teardown，比unittest的setUp/tearDown更灵活。</p>
+<ul>
+<li>模块级（setup_module/teardown_module）开始于模块始末，全局的</li>
+<li>函数级（setup_function/teardown_function）只对函数用例生效（不在类中）</li>
+<li>类级（setup_class/teardown_class）只在类中前后运行一次(在类中)</li>
+<li>方法级（setup_method/teardown_method）开始于方法始末（在类中）</li>
+<li>类里面的（setup/teardown）运行在调用方法的前后</li>
+</ul>
+<p>3.pytest还可以在函数前加@pytest.fixture()装饰器，在测试用例中装在fixture函数。fixture的使用范围可以是function,module,class,session。</p>
+<p>fixture相对于setup和teardown来说有以下几点优势：</p>
+<p>命名方式灵活，不局限于setup和teardown这几个命名
 conftest.py 配置里可以实现数据共享，不需要import就能自动找到一些配置，可供多个py文件调用。
 scope=&ldquo;module&rdquo; 可以实现多个.py跨文件共享前置
 scope=&ldquo;session&rdquo; 以实现多个.py跨文件使用一个session来完成多个用例
-用yield来唤醒teardown的执行
-三、断言
-1.unittest提供了assertEqual、assertIn、assertTrue、assertFalse。
-2.pytest直接使用assert 表达式。
-四、报告
-1.unittest使用HTMLTestRunnerNew库。
-2.pytest有pytest-HTML、allure插件。
-五、失败重跑
-1.unittest无此功能。
-2.pytest支持用例执行失败重跑，pytest-rerunfailures插件。
-六、参数化
-1.unittest需依赖ddt库，
-2.pytest直接使用@pytest.mark.parametrize装饰器。
-七、用例分类执行
-1.unittest默认执行全部用例，也可以通过加载testsuit，执行部分用例。
-2.pytest可以通过@pytest.mark来标记类和方法，pytest.main加入参数(&quot;-m&quot;)可以只运行标记的类和方法。</p>
+用yield来唤醒teardown的执行</p>
+<h5 id="三断言">三、断言</h5>
+<ul>
+<li>unittest提供了assertEqual、assertIn、assertTrue、assertFalse。</li>
+<li>pytest直接使用assert 表达式。</li>
+</ul>
+<h5 id="四报告">四、报告</h5>
+<ul>
+<li>unittest使用HTMLTestRunnerNew库。</li>
+<li>pytest有pytest-HTML、allure插件。</li>
+</ul>
+<h5 id="五失败重跑">五、失败重跑</h5>
+<ul>
+<li>unittest无此功能。</li>
+<li>pytest支持用例执行失败重跑，pytest-rerunfailures插件。</li>
+</ul>
+<h5 id="六参数化">六、参数化</h5>
+<ul>
+<li>unittest需依赖ddt库，</li>
+<li>pytest直接使用@pytest.mark.parametrize装饰器。</li>
+</ul>
+<h5 id="七用例分类执行">七、用例分类执行</h5>
+<ul>
+<li>unittest默认执行全部用例，也可以通过加载testsuit，执行部分用例。</li>
+<li>pytest可以通过@pytest.mark来标记类和方法，pytest.main加入参数(&quot;-m&quot;)可以只运行标记的类和方法。</li>
+</ul>
 
         </div>
 
@@ -454,8 +452,8 @@ scope=&ldquo;session&rdquo; 以实现多个.py跨文件使用一个session来完
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
-              <a class="next" href="/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">
-                <span class="next-text nav-default">Python数据库基础操作</span>
+              <a class="next" href="/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/">
+                <span class="next-text nav-default">ffmpeg转码</span>
                 <span class="prev-text nav-mobile">下一篇</span>
                 
                 <i class="iconfont">
@@ -513,7 +511,20 @@ scope=&ldquo;session&rdquo; 以实现多个.py跨文件使用一个session来完
     </div>
 
     
-    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
 
 
   </div>

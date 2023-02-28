@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Postman&#43;js">
 <meta itemprop="description" content="一.postman适用场景 postman相比其他接口测试工具轻，但也因此功能较为局限，比如很难做流程控制，断言方式只能通过脚本实现 二.pos"><meta itemprop="datePublished" content="2019-06-28T20:03:21+08:00" />
 <meta itemprop="dateModified" content="2019-06-28T20:03:21+08:00" />
-<meta itemprop="wordCount" content="511">
+<meta itemprop="wordCount" content="552">
 <meta itemprop="keywords" content="接口测试,自动化测试,测试工具," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Postman&#43;js"/>
 <meta name="twitter:description" content="一.postman适用场景 postman相比其他接口测试工具轻，但也因此功能较为局限，比如很难做流程控制，断言方式只能通过脚本实现 二.pos"/>
@@ -135,13 +135,6 @@
           
           
             <a class="menu-item-link" href="https://hardelmm.github.io/categories/">分类</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
           
         
       </li>
@@ -274,17 +267,6 @@
 
       </li>
     
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
-          
-
-        
-
-      </li>
-    
 
     
     
@@ -319,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 511 字 -
+        约 552 字 -
         预计阅读 2 分钟
       </span>
 
@@ -342,65 +324,60 @@
           <h2 id="一postman适用场景">一.postman适用场景</h2>
 <p>postman相比其他接口测试工具轻，但也因此功能较为局限，比如很难做流程控制，断言方式只能通过脚本实现</p>
 <h2 id="二postman常用内置方法">二.postman常用内置方法</h2>
-<pre><code>pm.globals.set() #或postman.setglobalsVariable()以下等同
-pm.globals.unset()
-pm.globals.get()
-pm.environment.set()
-pm.environment.unset()
-pm.environment.get()
-pm.collectionVariables.set()
-pm.collectionVariables.unset()
-pm.collectionVariables.get()
-
-pm.sendRequest(&quot;https://url/get&quot;, function (err, response) {
-    console.log(response.json());
-});
-
-#判断状态码
-tests[&quot;Status code is 200&quot;] = responseCode.code === 200; #老写法
-pm.test(&quot;Status code is 200&quot;, function () {
-    pm.response.to.have.status(200);
-}); #新写法
-
-#判断响应时间
-tests[&quot;Response time is less than &quot; + timeTest + &quot;ms&quot;] = responseTime &lt; timeTest; #老写法
-pm.test(&quot;Response time is less than &quot;+ timeTest + &quot;ms&quot;, function () {
-    pm.expect(pm.response.responseTime).to.be.below(timeTest);
-}); #新写法
-
-#判断响应头信息
-tests[&quot;Content-Type is not Null&quot;] = pm.response.to.have.header(&quot;Content-Type&quot;) !== null; 老写法
-pm.test(&quot;Content-Type is not Null &quot;, function () {
-    pm.response.to.have.header(&quot;Content-Type&quot;);
-}); #新写法
-
-#判断包含字符串
-pm.test(&quot;字符串包含在返回值中”，function () {
-    pm.expect(pm.response.text()).to.include(“字符串”);
-});
-</code></pre>
-<h2 id="三js">三.JS</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span>pm.globals.set() #或postman.setglobalsVariable()以下等同
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span>pm.globals.unset()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>pm.globals.get()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>pm.environment.set()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span>pm.environment.unset()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>pm.environment.get()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>pm.collectionVariables.set()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>pm.collectionVariables.unset()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>pm.collectionVariables.get()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>pm.sendRequest(&#34;https://url/get&#34;, function (err, response) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>    console.log(response.json());
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>});
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span>#判断状态码
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-16">16</a></span><span>tests[&#34;Status code is 200&#34;] = responseCode.code === 200; #老写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-17">17</a></span><span>pm.test(&#34;Status code is 200&#34;, function () {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-18">18</a></span><span>    pm.response.to.have.status(200);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-19">19</a></span><span>}); #新写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-20">20</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-21">21</a></span><span>#判断响应时间
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-22">22</a></span><span>tests[&#34;Response time is less than &#34; + timeTest + &#34;ms&#34;] = responseTime &lt; timeTest; #老写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-23">23</a></span><span>pm.test(&#34;Response time is less than &#34;+ timeTest + &#34;ms&#34;, function () {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-24">24</a></span><span>    pm.expect(pm.response.responseTime).to.be.below(timeTest);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-25">25</a></span><span>}); #新写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-26">26</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-27">27</a></span><span>#判断响应头信息
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-28">28</a></span><span>tests[&#34;Content-Type is not Null&#34;] = pm.response.to.have.header(&#34;Content-Type&#34;) !== null; 老写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-29">29</a></span><span>pm.test(&#34;Content-Type is not Null &#34;, function () {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-30">30</a></span><span>    pm.response.to.have.header(&#34;Content-Type&#34;);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-31">31</a></span><span>}); #新写法
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-32">32</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-33"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-33">33</a></span><span>#判断包含字符串
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-34"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-34">34</a></span><span>pm.test(&#34;字符串包含在返回值中”，function () {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-35"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-35">35</a></span><span>    pm.expect(pm.response.text()).to.include(“字符串”);
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-36"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-36">36</a></span><span>});
+</span></span></code></pre></div><h2 id="三js">三.JS</h2>
 <p>在postman中使用js，主要用来构建请求数据和解析返回数据</p>
-<pre><code>示例：
-
-#获取最大长度限制内随机字符串
-function randomString(len) {
-    len = len || 32;
-    var $chars = 'ABCDEFGHJKMNPQRSTWXYZ中文汉字简体汉字1234567890Ad繁体汉字__汉字_中文汉字简体汉字__';
-    var maxPos = $chars.length;
-    pwd = '';
-    for (i = 0; i &lt; len; i++) {
-        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
-　  }
-　  return pwd;
-}
-
-#js对象序列化为json
-JSON.stringify()
-#json字符串转为js对象
-JSON.parse()
-</code></pre>
-
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1"> 1</a></span><span><span style="color:#998;font-style:italic">//获取最大长度限制内随机字符串
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2"> 2</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">function</span> randomString(len) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3"> 3</a></span><span>    len <span style="color:#000;font-weight:bold">=</span> len <span style="color:#000;font-weight:bold">||</span> <span style="color:#099">32</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4"> 4</a></span><span>    <span style="color:#000;font-weight:bold">var</span> $chars <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;ABCDEFGHJKMNPQRSTWXYZ中文汉字简体汉字1234567890Ad繁体汉字__汉字_中文汉字简体汉字__&#39;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5"> 5</a></span><span>    <span style="color:#000;font-weight:bold">var</span> maxPos <span style="color:#000;font-weight:bold">=</span> $chars.length;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6"> 6</a></span><span>    pwd <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">for</span> (i <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>; i <span style="color:#000;font-weight:bold">&lt;</span> len; i<span style="color:#000;font-weight:bold">++</span>) {
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-8"> 8</a></span><span>        pwd <span style="color:#000;font-weight:bold">+=</span> $chars.charAt(<span style="color:#0086b3">Math</span>.floor(<span style="color:#0086b3">Math</span>.random() <span style="color:#000;font-weight:bold">*</span> maxPos));
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-9"> 9</a></span><span>    }
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-10">10</a></span><span>    <span style="color:#000;font-weight:bold">return</span> pwd;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-11">11</a></span><span>}
+</span></span></code></pre></div><p>asdsa</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>JSON.stringify()    <span style="color:#998;font-style:italic">//js对象序列化为jsons
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span><span style="color:#998;font-style:italic"></span>JSON.parse()    <span style="color:#998;font-style:italic">//json字符串转为js对象
+</span></span></span></code></pre></div>
         </div>
 
         

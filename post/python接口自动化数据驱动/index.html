@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="hardelm" />
-  <meta name="description" content="一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&amp;quot;rb&amp;quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&amp;quot;w&amp;quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&amp;quot;configOne&amp;quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =" />
+  <meta name="description" content="一.读取配置文件 1import codecs 2import configparser 3configPath = &amp;#39;&amp;#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&amp;#34;rb&amp;#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&amp;#34;w&amp;#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&amp;#39;UTF-8-sig&amp;#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&amp;#34;configOne&amp;#34;,name) 24 return" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -68,18 +68,18 @@
 
 
 <meta property="og:title" content="Python接口自动化(数据驱动)" />
-<meta property="og:description" content="一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&quot;rb&quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&quot;w&quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&quot;configOne&quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =" />
+<meta property="og:description" content="一.读取配置文件 1import codecs 2import configparser 3configPath = &#39;&#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&#34;rb&#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&#34;w&#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&#34;configOne&#34;,name) 24 return" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2022-01-27T20:22:36+08:00" />
 <meta property="article:modified_time" content="2022-01-27T20:22:36+08:00" />
 <meta itemprop="name" content="Python接口自动化(数据驱动)">
-<meta itemprop="description" content="一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&quot;rb&quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&quot;w&quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&quot;configOne&quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] ="><meta itemprop="datePublished" content="2022-01-27T20:22:36+08:00" />
+<meta itemprop="description" content="一.读取配置文件 1import codecs 2import configparser 3configPath = &#39;&#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&#34;rb&#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&#34;w&#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&#34;configOne&#34;,name) 24 return"><meta itemprop="datePublished" content="2022-01-27T20:22:36+08:00" />
 <meta itemprop="dateModified" content="2022-01-27T20:22:36+08:00" />
-<meta itemprop="wordCount" content="1556">
+<meta itemprop="wordCount" content="1836">
 <meta itemprop="keywords" content="python,接口测试,自动化测试,jenkins,持续集成," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python接口自动化(数据驱动)"/>
-<meta name="twitter:description" content="一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&quot;rb&quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&quot;w&quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&quot;configOne&quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] ="/>
+<meta name="twitter:description" content="一.读取配置文件 1import codecs 2import configparser 3configPath = &#39;&#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&#34;rb&#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&#34;w&#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&#34;configOne&#34;,name) 24 return"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -135,13 +135,6 @@
           
           
             <a class="menu-item-link" href="https://hardelmm.github.io/categories/">分类</a>
-          
-        
-      </li><li class="mobile-menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
           
         
       </li>
@@ -274,17 +267,6 @@
 
       </li>
     
-        <li class="menu-item">
-        
-          
-          
-            <a class="menu-item-link" href="https://hardelmm.github.io/about/">关于</a>
-          
-
-        
-
-      </li>
-    
 
     
     
@@ -319,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1556 字 -
+        约 1836 字 -
         预计阅读 4 分钟
       </span>
 
@@ -340,282 +322,270 @@
         
         <div class="post-content">
           <h2 id="一读取配置文件">一.读取配置文件</h2>
-<pre><code>import codecs
-import configparser
-configPath = ''
-
-class ReadConfig:
-    def __int__(self):
-        fd = open(configPath,&quot;rb&quot;)
-        data = fd.read()
-
-        #remove BOM
-
-        if data[:3] == codecs.BOM_UTF8:
-            data = data[3:]
-            file = codecs.open(configPath,&quot;w&quot;)
-            file.write(data)
-            file.close()
-        fd.close()
-
-        self.cf = configparser.ConfigParser()
-        self.cf.read(configPath,encoding='UTF-8-sig')
-
-    def get_configOne(self,name):
-        value = self.cf.get(&quot;configOne&quot;,name)
-        return value
-
-    #......
-
-    def get_all(self,*args):
-        confs = {}
-        for sec in args:
-            options = self.cf.options(sec)
-            for i in options:
-                confs[i] = self.cf.get(sec,i)
-        return  confs
-</code></pre>
-<h2 id="二读取测试用例">二.读取测试用例</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">codecs</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">configparser</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>configPath <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ReadConfig</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __int__(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>        fd <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">open</span>(configPath,<span style="color:#d14">&#34;rb&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>        data <span style="color:#000;font-weight:bold">=</span> fd<span style="color:#000;font-weight:bold">.</span>read()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>        <span style="color:#998;font-style:italic">#remove BOM</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>        <span style="color:#000;font-weight:bold">if</span> data[:<span style="color:#099">3</span>] <span style="color:#000;font-weight:bold">==</span> codecs<span style="color:#000;font-weight:bold">.</span>BOM_UTF8:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>            data <span style="color:#000;font-weight:bold">=</span> data[<span style="color:#099">3</span>:]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>            file <span style="color:#000;font-weight:bold">=</span> codecs<span style="color:#000;font-weight:bold">.</span>open(configPath,<span style="color:#d14">&#34;w&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span>            file<span style="color:#000;font-weight:bold">.</span>write(data)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-16">16</a></span><span>            file<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-17">17</a></span><span>        fd<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-18">18</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-19">19</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>cf <span style="color:#000;font-weight:bold">=</span> configparser<span style="color:#000;font-weight:bold">.</span>ConfigParser()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-20">20</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>cf<span style="color:#000;font-weight:bold">.</span>read(configPath,encoding<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;UTF-8-sig&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-21">21</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-22">22</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_configOne</span>(<span style="color:#999">self</span>,name):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-23">23</a></span><span>        value <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>cf<span style="color:#000;font-weight:bold">.</span>get(<span style="color:#d14">&#34;configOne&#34;</span>,name)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-24">24</a></span><span>        <span style="color:#000;font-weight:bold">return</span> value
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-25">25</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-26">26</a></span><span>    <span style="color:#998;font-style:italic">#......</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-27">27</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-28">28</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_all</span>(<span style="color:#999">self</span>,<span style="color:#000;font-weight:bold">*</span>args):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-29">29</a></span><span>        confs <span style="color:#000;font-weight:bold">=</span> {}
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-30">30</a></span><span>        <span style="color:#000;font-weight:bold">for</span> sec <span style="color:#000;font-weight:bold">in</span> args:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-31">31</a></span><span>            options <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>cf<span style="color:#000;font-weight:bold">.</span>options(sec)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-32">32</a></span><span>            <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> options:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-33"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-33">33</a></span><span>                confs[i] <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>cf<span style="color:#000;font-weight:bold">.</span>get(sec,i)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-34"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-34">34</a></span><span>        <span style="color:#000;font-weight:bold">return</span>  confs
+</span></span></code></pre></div><h2 id="二读取测试用例">二.读取测试用例</h2>
 <h3 id="1通过excel管理测试用例">1.通过excel管理测试用例</h3>
-<pre><code>class readXld:
-    def __init__(self,input_path):
-        self.input_path = input_path
-        
-    def readFile(self):
-        list_tmp = []
-        case_data = xlrd.open_workbook(self.input_path)
-        table = case_data.sheets()[1]
-        clo1 = table.col_values(0, start_rowx=1, end_rowx=None)#语料
-        clo2 = table.col_values(1, start_rowx=1, end_rowx=None)#预期结果
-        for i in range(len(clo1)):
-            if clo1[i]:
-                list_tmp.append(clo1[i].strip() + '||' + clo2[i].strip())
-        return list_tmp
-
-    def readFileMuti(self):
-        list_case = []
-        list_tmp = []
-        case_data = xlrd.open_workbook(self.input_path)
-        sheet_names = case_data.sheet_names()
-        for i in range(len(sheet_names)):
-            table = case_data.sheet_by_name(sheet_names[i])
-            clo1 = table.col_values(0, start_rowx=1, end_rowx=None)  # 语料
-            clo2 = table.col_values(1, start_rowx=1, end_rowx=None)  # 预期结果
-            for i in range(len(clo1)):
-                if clo1[i]:
-                    list_tmp.append(clo1[i].strip() + '||' + clo2[i].strip())
-            list_case.append(list_tmp)
-        return list_case,sheet_names
-</code></pre>
-<h3 id="2通过文本文档管理测试用例">2.通过文本文档管理测试用例</h3>
-<pre><code>class readTxt:
-    def __init__(self,input_path):
-        self.input_path = input_path
-    def readFile(self):
-        with open(self.input_path,'rb') as f:
-            data = f.read()
-            list_tmp = data.decode().split('\n')#按行分割或用splitlines()
-            f.close()
-        print(str(list_tmp))
-        return list_tmp
-</code></pre>
-<h2 id="三测试数据预处理">三.测试数据预处理</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1"> 1</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">readXld</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2"> 2</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>,input_path):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3"> 3</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>input_path <span style="color:#000;font-weight:bold">=</span> input_path
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4"> 4</a></span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5"> 5</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">readFile</span>(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6"> 6</a></span><span>        list_tmp <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7"> 7</a></span><span>        case_data <span style="color:#000;font-weight:bold">=</span> xlrd<span style="color:#000;font-weight:bold">.</span>open_workbook(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>input_path)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-8"> 8</a></span><span>        table <span style="color:#000;font-weight:bold">=</span> case_data<span style="color:#000;font-weight:bold">.</span>sheets()[<span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-9"> 9</a></span><span>        clo1 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">0</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)<span style="color:#998;font-style:italic">#语料</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-10">10</a></span><span>        clo2 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">1</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)<span style="color:#998;font-style:italic">#预期结果</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-11">11</a></span><span>        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(clo1)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-12">12</a></span><span>            <span style="color:#000;font-weight:bold">if</span> clo1[i]:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-13">13</a></span><span>                list_tmp<span style="color:#000;font-weight:bold">.</span>append(clo1[i]<span style="color:#000;font-weight:bold">.</span>strip() <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;||&#39;</span> <span style="color:#000;font-weight:bold">+</span> clo2[i]<span style="color:#000;font-weight:bold">.</span>strip())
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-14">14</a></span><span>        <span style="color:#000;font-weight:bold">return</span> list_tmp
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-15">15</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-16">16</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">readFileMuti</span>(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-17">17</a></span><span>        list_case <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-18">18</a></span><span>        list_tmp <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-19">19</a></span><span>        case_data <span style="color:#000;font-weight:bold">=</span> xlrd<span style="color:#000;font-weight:bold">.</span>open_workbook(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>input_path)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-20">20</a></span><span>        sheet_names <span style="color:#000;font-weight:bold">=</span> case_data<span style="color:#000;font-weight:bold">.</span>sheet_names()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-21">21</a></span><span>        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(sheet_names)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-22">22</a></span><span>            table <span style="color:#000;font-weight:bold">=</span> case_data<span style="color:#000;font-weight:bold">.</span>sheet_by_name(sheet_names[i])
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-23">23</a></span><span>            clo1 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">0</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)  <span style="color:#998;font-style:italic"># 语料</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-24">24</a></span><span>            clo2 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">1</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)  <span style="color:#998;font-style:italic"># 预期结果</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-25">25</a></span><span>            <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(clo1)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-26">26</a></span><span>                <span style="color:#000;font-weight:bold">if</span> clo1[i]:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-27">27</a></span><span>                    list_tmp<span style="color:#000;font-weight:bold">.</span>append(clo1[i]<span style="color:#000;font-weight:bold">.</span>strip() <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;||&#39;</span> <span style="color:#000;font-weight:bold">+</span> clo2[i]<span style="color:#000;font-weight:bold">.</span>strip())
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-28">28</a></span><span>            list_case<span style="color:#000;font-weight:bold">.</span>append(list_tmp)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-29">29</a></span><span>        <span style="color:#000;font-weight:bold">return</span> list_case,sheet_names
+</span></span></code></pre></div><h3 id="2通过文本文档管理测试用例">2.通过文本文档管理测试用例</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1"> 1</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">readTxt</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2"> 2</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>,input_path):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3"> 3</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>input_path <span style="color:#000;font-weight:bold">=</span> input_path
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4"> 4</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">readFile</span>(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5"> 5</a></span><span>        <span style="color:#000;font-weight:bold">with</span> <span style="color:#0086b3">open</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>input_path,<span style="color:#d14">&#39;rb&#39;</span>) <span style="color:#000;font-weight:bold">as</span> f:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6"> 6</a></span><span>            data <span style="color:#000;font-weight:bold">=</span> f<span style="color:#000;font-weight:bold">.</span>read()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7"> 7</a></span><span>            list_tmp <span style="color:#000;font-weight:bold">=</span> data<span style="color:#000;font-weight:bold">.</span>decode()<span style="color:#000;font-weight:bold">.</span>split(<span style="color:#d14">&#39;</span><span style="color:#d14">\n</span><span style="color:#d14">&#39;</span>)<span style="color:#998;font-style:italic">#按行分割或用splitlines()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8"> 8</a></span><span>            <span style="color:#998;font-style:italic"># f.close()</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-9"> 9</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#0086b3">str</span>(list_tmp))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-10">10</a></span><span>        <span style="color:#000;font-weight:bold">return</span> list_tmp
+</span></span></code></pre></div><h2 id="三测试数据预处理">三.测试数据预处理</h2>
 <h3 id="1常用处理方法">1.常用处理方法</h3>
-<pre><code>linecache.getlines(case) #按行读取测试用例，输出list
-str.strip() #去除头尾字符（默认空格或换行符）
-jsonpath.jsonpath() #json数据解析,类似xpath
-json.load() #json字符串转为json对象
-json.dump() #json对象反序列化为json字符串
-</code></pre>
-<h3 id="2多进程方式下处理测试用例">2.多进程方式下处理测试用例</h3>
-<pre><code>class caseAvg:
-    def __init__(self):
-        self.all_num = 0
-        self.thread_num = localReadConfig.get_thread_config(&quot;thread_num&quot;)
-        self.case = localReadConfig.get_case_path('asr_case_path')
-
-    def case_avg(self):#多进行并发执行平均分配用例数目
-        list_tmp = []
-        case_path = self.case + 'audio_text.xls'#test.xlsx
-        case_data = xlrd.open_workbook(case_path)
-        table = case_data.sheets()[0]
-        clo1 = table.col_values(0, start_rowx=1, end_rowx=None)
-        clo2 = table.col_values(1, start_rowx=1, end_rowx=None)
-        for x in range(len(clo1)):
-            if clo2[x]:#过滤语料为空的数据
-                list_tmp.append(clo1[x].strip() + '||' + clo2[x].strip())
-
-        self.line_num_list = len(list_tmp)
-
-        last_case_list = os.listdir(&quot;./case_avg/&quot;)
-        for fileName in last_case_list:
-            os.remove(&quot;./case_avg/&quot; + fileName)
-
-        if self.line_num_list &lt; int(self.thread_num):
-            print(&quot;并发数大于用例总数,程序退出&quot;)
-            exit()
-
-
-        # 根据并发数分配每个进程的用例数
-        case_avg_path = './case_avg/'
-        if not os.path.exists(case_avg_path):
-            os.mkdir(case_avg_path)
-        avg_tmp_list = os.listdir(&quot;./case_avg/&quot;)
-        for i in range(len(avg_tmp_list)):
-            os.remove(case_avg_path + avg_tmp_list[i])
-        if self.line_num_list % int(self.thread_num) == 0:
-            avg_num = self.line_num_list / int(self.thread_num)
-            remainder = 0
-        else:
-            avg_num = self.line_num_list // int(self.thread_num)
-            remainder = self.line_num_list % int(self.thread_num)
-
-        case_list = []
-
-        for i in range(int(self.thread_num)):
-            if remainder == 0:
-                case_list.append(int(avg_num))
-            else:
-                if i &lt; remainder:
-                    case_list.append(int(avg_num) + 1)
-                else:
-                    case_list.append(int(avg_num))
-        # 将每个进程的用例数,写入文件
-        min = 0
-        for i in range(len(case_list)):
-            if i == 0:
-                avg_list = list_tmp[0:case_list[i]]
-            else:
-                min += case_list[i - 1]
-                max = min + case_list[i]
-                avg_list = list_tmp[min:max]
-            avg_file = open(case_avg_path + str(i), 'w+')
-            for xx in range(len(avg_list)):
-                if xx == len(avg_list) - 1:
-                    avg_file.write(str(avg_list[xx]))
-                else:
-                    avg_file.write(str(avg_list[xx]) + '\n')
-            avg_file.close()
-        log_tmp.info(len(list_tmp))
-        return len(list_tmp)
-</code></pre>
-<h2 id="四断言以及校验">四.断言以及校验</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>    linecache.getlines(case) #按行读取测试用例，输出list
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>    str.strip() #去除头尾字符（默认空格或换行符）
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span>    jsonpath.jsonpath() #json数据解析,类似xpath
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a></span><span>    json.load() #json字符串转为json对象
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-5">5</a></span><span>    json.dump() #json对象反序列化为json字符串
+</span></span></code></pre></div><h3 id="2多进程方式下处理测试用例">2.多进程方式下处理测试用例</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1"> 1</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">caseAvg</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2"> 2</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3"> 3</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>all_num <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4"> 4</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num <span style="color:#000;font-weight:bold">=</span> localReadConfig<span style="color:#000;font-weight:bold">.</span>get_thread_config(<span style="color:#d14">&#34;thread_num&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-5"> 5</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>case <span style="color:#000;font-weight:bold">=</span> localReadConfig<span style="color:#000;font-weight:bold">.</span>get_case_path(<span style="color:#d14">&#39;asr_case_path&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-6"> 6</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">case_avg</span>(<span style="color:#999">self</span>):<span style="color:#998;font-style:italic">#多进行并发执行平均分配用例数目</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-8"> 8</a></span><span>        list_tmp <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-9"> 9</a></span><span>        case_path <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>case <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;audio_text.xls&#39;</span><span style="color:#998;font-style:italic">#test.xlsx</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-10">10</a></span><span>        case_data <span style="color:#000;font-weight:bold">=</span> xlrd<span style="color:#000;font-weight:bold">.</span>open_workbook(case_path)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-11">11</a></span><span>        table <span style="color:#000;font-weight:bold">=</span> case_data<span style="color:#000;font-weight:bold">.</span>sheets()[<span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-12">12</a></span><span>        clo1 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">0</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-13">13</a></span><span>        clo2 <span style="color:#000;font-weight:bold">=</span> table<span style="color:#000;font-weight:bold">.</span>col_values(<span style="color:#099">1</span>, start_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>, end_rowx<span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">None</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-14">14</a></span><span>        <span style="color:#000;font-weight:bold">for</span> x <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(clo1)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-15">15</a></span><span>            <span style="color:#000;font-weight:bold">if</span> clo2[x]:<span style="color:#998;font-style:italic">#过滤语料为空的数据</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-16">16</a></span><span>                list_tmp<span style="color:#000;font-weight:bold">.</span>append(clo1[x]<span style="color:#000;font-weight:bold">.</span>strip() <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;||&#39;</span> <span style="color:#000;font-weight:bold">+</span> clo2[x]<span style="color:#000;font-weight:bold">.</span>strip())
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-17">17</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-18">18</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">len</span>(list_tmp)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-19">19</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-20">20</a></span><span>        last_case_list <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>listdir(<span style="color:#d14">&#34;./case_avg/&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-21">21</a></span><span>        <span style="color:#000;font-weight:bold">for</span> fileName <span style="color:#000;font-weight:bold">in</span> last_case_list:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-22">22</a></span><span>            os<span style="color:#000;font-weight:bold">.</span>remove(<span style="color:#d14">&#34;./case_avg/&#34;</span> <span style="color:#000;font-weight:bold">+</span> fileName)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-23">23</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-24">24</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">&lt;</span> <span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-25">25</a></span><span>            <span style="color:#0086b3">print</span>(<span style="color:#d14">&#34;并发数大于用例总数,程序退出&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-26">26</a></span><span>            exit()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-27">27</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-28">28</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-29">29</a></span><span>        <span style="color:#998;font-style:italic"># 根据并发数分配每个进程的用例数</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-30">30</a></span><span>        case_avg_path <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;./case_avg/&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-31">31</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">not</span> os<span style="color:#000;font-weight:bold">.</span>path<span style="color:#000;font-weight:bold">.</span>exists(case_avg_path):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-32">32</a></span><span>            os<span style="color:#000;font-weight:bold">.</span>mkdir(case_avg_path)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-33"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-33">33</a></span><span>        avg_tmp_list <span style="color:#000;font-weight:bold">=</span> os<span style="color:#000;font-weight:bold">.</span>listdir(<span style="color:#d14">&#34;./case_avg/&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-34"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-34">34</a></span><span>        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(avg_tmp_list)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-35"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-35">35</a></span><span>            os<span style="color:#000;font-weight:bold">.</span>remove(case_avg_path <span style="color:#000;font-weight:bold">+</span> avg_tmp_list[i])
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-36"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-36">36</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">%</span> <span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num) <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-37"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-37">37</a></span><span>            avg_num <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">/</span> <span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-38"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-38">38</a></span><span>            remainder <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-39"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-39">39</a></span><span>        <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-40"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-40">40</a></span><span>            avg_num <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">//</span> <span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-41"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-41">41</a></span><span>            remainder <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>line_num_list <span style="color:#000;font-weight:bold">%</span> <span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-42"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-42">42</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-43"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-43">43</a></span><span>        case_list <span style="color:#000;font-weight:bold">=</span> []
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-44"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-44">44</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-45"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-45">45</a></span><span>        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">int</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>thread_num)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-46"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-46">46</a></span><span>            <span style="color:#000;font-weight:bold">if</span> remainder <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-47"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-47">47</a></span><span>                case_list<span style="color:#000;font-weight:bold">.</span>append(<span style="color:#0086b3">int</span>(avg_num))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-48"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-48">48</a></span><span>            <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-49"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-49">49</a></span><span>                <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">&lt;</span> remainder:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-50"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-50">50</a></span><span>                    case_list<span style="color:#000;font-weight:bold">.</span>append(<span style="color:#0086b3">int</span>(avg_num) <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-51"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-51">51</a></span><span>                <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-52"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-52">52</a></span><span>                    case_list<span style="color:#000;font-weight:bold">.</span>append(<span style="color:#0086b3">int</span>(avg_num))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-53"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-53">53</a></span><span>        <span style="color:#998;font-style:italic"># 将每个进程的用例数,写入文件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-54"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-54">54</a></span><span>        <span style="color:#0086b3">min</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">0</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-55"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-55">55</a></span><span>        <span style="color:#000;font-weight:bold">for</span> i <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(case_list)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-56"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-56">56</a></span><span>            <span style="color:#000;font-weight:bold">if</span> i <span style="color:#000;font-weight:bold">==</span> <span style="color:#099">0</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-57"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-57">57</a></span><span>                avg_list <span style="color:#000;font-weight:bold">=</span> list_tmp[<span style="color:#099">0</span>:case_list[i]]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-58"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-58">58</a></span><span>            <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-59"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-59">59</a></span><span>                <span style="color:#0086b3">min</span> <span style="color:#000;font-weight:bold">+=</span> case_list[i <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-60"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-60">60</a></span><span>                <span style="color:#0086b3">max</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">min</span> <span style="color:#000;font-weight:bold">+</span> case_list[i]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-61"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-61">61</a></span><span>                avg_list <span style="color:#000;font-weight:bold">=</span> list_tmp[<span style="color:#0086b3">min</span>:<span style="color:#0086b3">max</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-62"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-62">62</a></span><span>            avg_file <span style="color:#000;font-weight:bold">=</span> <span style="color:#0086b3">open</span>(case_avg_path <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(i), <span style="color:#d14">&#39;w+&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-63"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-63">63</a></span><span>            <span style="color:#000;font-weight:bold">for</span> xx <span style="color:#000;font-weight:bold">in</span> <span style="color:#0086b3">range</span>(<span style="color:#0086b3">len</span>(avg_list)):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-64"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-64">64</a></span><span>                <span style="color:#000;font-weight:bold">if</span> xx <span style="color:#000;font-weight:bold">==</span> <span style="color:#0086b3">len</span>(avg_list) <span style="color:#000;font-weight:bold">-</span> <span style="color:#099">1</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-65"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-65">65</a></span><span>                    avg_file<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#0086b3">str</span>(avg_list[xx]))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-66"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-66">66</a></span><span>                <span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-67"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-67">67</a></span><span>                    avg_file<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#0086b3">str</span>(avg_list[xx]) <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;</span><span style="color:#d14">\n</span><span style="color:#d14">&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-68"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-68">68</a></span><span>            avg_file<span style="color:#000;font-weight:bold">.</span>close()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-69"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-69">69</a></span><span>        log_tmp<span style="color:#000;font-weight:bold">.</span>info(<span style="color:#0086b3">len</span>(list_tmp))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-70"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-70">70</a></span><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#0086b3">len</span>(list_tmp)
+</span></span></code></pre></div><h2 id="四断言以及校验">四.断言以及校验</h2>
 <h3 id="1常用处理方法-1">1.常用处理方法</h3>
-<pre><code>1).手动编写脚本，解析返回数据，进行检查点校验，校验结果整理汇总(大数据汇总量)
-2).借助assert进行断言(小数据量下展示用)
-    assert str(res.get('status')) == str(args['expectdata']['status']),&quot;接口返回status值不等于预期&quot;
-    assert str(res.get('data').get('service')) == str(args['expectdata']['service']), &quot;接口返回service值不等于预期&quot;
-</code></pre>
-<h3 id="2数据库校验">2.数据库校验</h3>
-<pre><code>1)解析返回数据
+<p>1).手动编写脚本，解析返回数据，进行检查点校验，校验结果整理汇总(大数据汇总量)
+2).借助assert进行断言(小数据量下展示用)</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>    assert str(res.get(&#39;status&#39;)) == str(args[&#39;expectdata&#39;][&#39;status&#39;]),&#34;接口返回status值不等于预期&#34;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>    assert str(res.get(&#39;data&#39;).get(&#39;service&#39;)) == str(args[&#39;expectdata&#39;][&#39;service&#39;]), &#34;接口返回service值不等于预期&#34;
+</span></span></code></pre></div><h3 id="2数据库校验">2.数据库校验</h3>
+<p>1)解析返回数据
 2)调用数据库，查询对应数据
-3)数据校验
-</code></pre>
+3)数据校验</p>
 <h2 id="五存储测试结果">五.存储测试结果</h2>
 <h3 id="1通过excel管理测试结果">1.通过excel管理测试结果</h3>
-<pre><code>class ResultProcess:
-    def __init__(self):
-        self.run_time = time.strftime('%Y-%m-%d.%H.%M.%S', time.localtime(time.time()))
-        self.open_excel = xlwt.Workbook(encoding='utf-8', style_compression=0)
-        self.result_filename = 'NLU_result_' + str(self.run_time) + '.xls'
-
-    def CreateS(self,SheetName):
-        self.open_sheet = self.open_excel.add_sheet(SheetName)
-        self.open_sheet.write(0, 0, u'测试语料')
-        self.open_sheet.write(0, 1, u'期望结果')
-        self.open_sheet.write(0, 2, u'实际res')
-        self.open_sheet.write(0, 3, u'校验结果')
-        self.open_sheet.write(0, 4, u'结果')
-
-    def SaveResult(self,x,ret_list):
-        #print(&quot;保存结果中...&quot;)
-        case_text = ret_list[0]
-        expectedRes = ret_list[1]
-        res_tmp = ret_list[2]
-        res_chk = ret_list[3]
-        result = ret_list[4]
-
-        run_time = self.run_time
-        open_excel = self.open_excel
-        open_sheet = self.open_sheet
-
-        open_sheet.write(x + 1, 0, case_text)
-        open_sheet.write(x + 1, 1, expectedRes)
-        open_sheet.write(x + 1, 2, res_tmp)
-        open_sheet.write(x + 1, 3, res_chk)
-        open_sheet.write(x + 1, 4, result)
-        self.open_excel.save('./result/' + self.result_filename)
-
-        #print(&quot;结果保存完成&quot;)
-    def get_result_filename(self):
-
-        return self.result_filename
-</code></pre>
-<h3 id="2通过数据库管理测试结果">2.通过数据库管理测试结果</h3>
-<pre><code>class ResultProcess:
-    connection = None
-    def __int__(self,x,y,z):
-        self.time = datetime.datetime.now()
-        self.result_tablename = 'NLU_result_' + str(self.run_time)
-        self.dbc = dbProcess()
-        self.dbc.get_conn(self.db_host,self.db_user,self.db_password)
-            
-    def CreateResultTb(self, versionNo):
-        result_tablename = 'NLU_result_' + versionNo + '_' + str(self.time)
-        print(result_tablename)
-        exec_sql = &quot;create table &quot; + result_tablename + &quot;... &quot;
-        #print(exec_sql)
-        self.dbc.exec_sql(&quot;use database&quot;)
-        self.dbc.exec_sql(exec_sql)
-        return result_tablename
-        
-    def SaveDb(self, x, result_tablename, ret_list):
-        # print(&quot;保存结果中...&quot;)
-        case_text = ret_list[0]
-        expectedRes = ret_list[1]
-        res_tmp = ret_list[2]
-        res_chk = ret_list[3]
-        result = ret_list[4]
-        sql = &quot;insert into &quot; + result_tablename + &quot; (...) values (%s, %s, %s, %s, %s, %s, %s)&quot;
-        val = [(...)]
-        print(sql)
-        print(val)
-        self.dbc.exec_sqlmany(sql, val)
-</code></pre>
-<h2 id="六持续集成">六.持续集成</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1"> 1</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ResultProcess</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2"> 2</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __init__(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3"> 3</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>run_time <span style="color:#000;font-weight:bold">=</span> time<span style="color:#000;font-weight:bold">.</span>strftime(<span style="color:#d14">&#39;%Y-%m-</span><span style="color:#d14">%d</span><span style="color:#d14">.%H.%M.%S&#39;</span>, time<span style="color:#000;font-weight:bold">.</span>localtime(time<span style="color:#000;font-weight:bold">.</span>time()))
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4"> 4</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_excel <span style="color:#000;font-weight:bold">=</span> xlwt<span style="color:#000;font-weight:bold">.</span>Workbook(encoding<span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#39;utf-8&#39;</span>, style_compression<span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-5"> 5</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>result_filename <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;NLU_result_&#39;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>run_time) <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;.xls&#39;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-6"> 6</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">CreateS</span>(<span style="color:#999">self</span>,SheetName):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-8"> 8</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_excel<span style="color:#000;font-weight:bold">.</span>add_sheet(SheetName)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-9"> 9</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#099">0</span>, <span style="color:#099">0</span>, <span style="color:#d14">u</span><span style="color:#d14">&#39;测试语料&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-10">10</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#099">0</span>, <span style="color:#099">1</span>, <span style="color:#d14">u</span><span style="color:#d14">&#39;期望结果&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-11">11</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#099">0</span>, <span style="color:#099">2</span>, <span style="color:#d14">u</span><span style="color:#d14">&#39;实际res&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-12">12</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#099">0</span>, <span style="color:#099">3</span>, <span style="color:#d14">u</span><span style="color:#d14">&#39;校验结果&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-13">13</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet<span style="color:#000;font-weight:bold">.</span>write(<span style="color:#099">0</span>, <span style="color:#099">4</span>, <span style="color:#d14">u</span><span style="color:#d14">&#39;结果&#39;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-14">14</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-15">15</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">SaveResult</span>(<span style="color:#999">self</span>,x,ret_list):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-16">16</a></span><span>        <span style="color:#998;font-style:italic">#print(&#34;保存结果中...&#34;)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-17">17</a></span><span>        case_text <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-18">18</a></span><span>        expectedRes <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-19">19</a></span><span>        res_tmp <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">2</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-20">20</a></span><span>        res_chk <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">3</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-21">21</a></span><span>        result <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">4</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-22">22</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-23">23</a></span><span>        run_time <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>run_time
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-24">24</a></span><span>        open_excel <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_excel
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-25">25</a></span><span>        open_sheet <span style="color:#000;font-weight:bold">=</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_sheet
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-26">26</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-27">27</a></span><span>        open_sheet<span style="color:#000;font-weight:bold">.</span>write(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#099">0</span>, case_text)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-28">28</a></span><span>        open_sheet<span style="color:#000;font-weight:bold">.</span>write(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#099">1</span>, expectedRes)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-29">29</a></span><span>        open_sheet<span style="color:#000;font-weight:bold">.</span>write(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#099">2</span>, res_tmp)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-30">30</a></span><span>        open_sheet<span style="color:#000;font-weight:bold">.</span>write(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#099">3</span>, res_chk)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-31">31</a></span><span>        open_sheet<span style="color:#000;font-weight:bold">.</span>write(x <span style="color:#000;font-weight:bold">+</span> <span style="color:#099">1</span>, <span style="color:#099">4</span>, result)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-32">32</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>open_excel<span style="color:#000;font-weight:bold">.</span>save(<span style="color:#d14">&#39;./result/&#39;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>result_filename)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-33"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-33">33</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-34"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-34">34</a></span><span>        <span style="color:#998;font-style:italic">#print(&#34;结果保存完成&#34;)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-35"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-35">35</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">get_result_filename</span>(<span style="color:#999">self</span>):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-36"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-36">36</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-37"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-37">37</a></span><span>        <span style="color:#000;font-weight:bold">return</span> <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>result_filename
+</span></span></code></pre></div><h3 id="2通过数据库管理测试结果">2.通过数据库管理测试结果</h3>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1"> 1</a></span><span><span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">ResultProcess</span>:
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-2"> 2</a></span><span>    connection <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">None</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-3"> 3</a></span><span>    <span style="color:#000;font-weight:bold">def</span> __int__(<span style="color:#999">self</span>,x,y,z):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-4"> 4</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>time <span style="color:#000;font-weight:bold">=</span> datetime<span style="color:#000;font-weight:bold">.</span>datetime<span style="color:#000;font-weight:bold">.</span>now()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-5"> 5</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>result_tablename <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;NLU_result_&#39;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>run_time)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-6"> 6</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>dbc <span style="color:#000;font-weight:bold">=</span> dbProcess()
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-7"> 7</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>dbc<span style="color:#000;font-weight:bold">.</span>get_conn(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>db_host,<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>db_user,<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>db_password)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-8"> 8</a></span><span>            
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-9"> 9</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">CreateResultTb</span>(<span style="color:#999">self</span>, versionNo):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-10">10</a></span><span>        result_tablename <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;NLU_result_&#39;</span> <span style="color:#000;font-weight:bold">+</span> versionNo <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#39;_&#39;</span> <span style="color:#000;font-weight:bold">+</span> <span style="color:#0086b3">str</span>(<span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>time)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-11">11</a></span><span>        <span style="color:#0086b3">print</span>(result_tablename)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-12">12</a></span><span>        exec_sql <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;create table &#34;</span> <span style="color:#000;font-weight:bold">+</span> result_tablename <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34;... &#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-13">13</a></span><span>        <span style="color:#998;font-style:italic">#print(exec_sql)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-14">14</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>dbc<span style="color:#000;font-weight:bold">.</span>exec_sql(<span style="color:#d14">&#34;use database&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-15">15</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>dbc<span style="color:#000;font-weight:bold">.</span>exec_sql(exec_sql)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-16">16</a></span><span>        <span style="color:#000;font-weight:bold">return</span> result_tablename
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-17">17</a></span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-18">18</a></span><span>    <span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">SaveDb</span>(<span style="color:#999">self</span>, x, result_tablename, ret_list):
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-19">19</a></span><span>        <span style="color:#998;font-style:italic"># print(&#34;保存结果中...&#34;)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-20">20</a></span><span>        case_text <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">0</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-21">21</a></span><span>        expectedRes <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-22">22</a></span><span>        res_tmp <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">2</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-23">23</a></span><span>        res_chk <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">3</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-24">24</a></span><span>        result <span style="color:#000;font-weight:bold">=</span> ret_list[<span style="color:#099">4</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-25">25</a></span><span>        sql <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;insert into &#34;</span> <span style="color:#000;font-weight:bold">+</span> result_tablename <span style="color:#000;font-weight:bold">+</span> <span style="color:#d14">&#34; (...) values (</span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">, </span><span style="color:#d14">%s</span><span style="color:#d14">)&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-26">26</a></span><span>        val <span style="color:#000;font-weight:bold">=</span> [(<span style="color:#000;font-weight:bold">...</span>)]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-27">27</a></span><span>        <span style="color:#0086b3">print</span>(sql)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-28">28</a></span><span>        <span style="color:#0086b3">print</span>(val)
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-29">29</a></span><span>        <span style="color:#999">self</span><span style="color:#000;font-weight:bold">.</span>dbc<span style="color:#000;font-weight:bold">.</span>exec_sqlmany(sql, val)
+</span></span></code></pre></div><h2 id="六持续集成">六.持续集成</h2>
 <p>部署配置jenkins实现自动化测试持续集成</p>
 <p>1.获取目录下所有文件名</p>
-<pre><code># ! / bin/ bash
-#采集—个函数
-readDir() {
-    local dir=$1    #获取传入的目录路径
-    local files     #循环指定目录下的所有文件
-    files=$(ls &quot;$dir &quot;)
-    for file in $files ; do
-        local path=&quot;$dir /$file&quot;    #指的是当前遍历文件的完整路径
-        if [ -d &quot;$path&quot; ] ; then    #判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径
-            readDir &quot;$path&quot;
-        else
-            echo &quot;$path&quot;
-        fi
-    done
-}
-</code></pre>
-<p>2.修改配置参数</p>
-<pre><code>sed -i &quot;s?^url=*?url=$url?g&quot; config.ini
-</code></pre>
-<p>3.选项参数联动</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1"> 1</a></span><span><span style="color:#998;font-style:italic"># ! / bin/ bash</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-2"> 2</a></span><span><span style="color:#998;font-style:italic">#采集—个函数</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-3"> 3</a></span><span>readDir<span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-4"> 4</a></span><span>    <span style="color:#0086b3">local</span> <span style="color:#008080">dir</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$1</span>    <span style="color:#998;font-style:italic">#获取传入的目录路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-5"> 5</a></span><span>    <span style="color:#0086b3">local</span> files     <span style="color:#998;font-style:italic">#循环指定目录下的所有文件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-6"> 6</a></span><span>    <span style="color:#008080">files</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>ls <span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> &#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">for</span> file in <span style="color:#008080">$files</span> ; <span style="color:#000;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-8"> 8</a></span><span>        <span style="color:#0086b3">local</span> <span style="color:#008080">path</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> /</span><span style="color:#008080">$file</span><span style="color:#d14">&#34;</span>    <span style="color:#998;font-style:italic">#指的是当前遍历文件的完整路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-9"> 9</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -d <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">]</span> ; <span style="color:#000;font-weight:bold">then</span>    <span style="color:#998;font-style:italic">#判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-10">10</a></span><span>            readDir <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-11">11</a></span><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-12">12</a></span><span>            <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-13">13</a></span><span>        <span style="color:#000;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-14">14</a></span><span>    <span style="color:#000;font-weight:bold">done</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-15">15</a></span><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>2.修改配置参数</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-9-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-9-1">1</a></span><span>    sed -i &#34;s?^url=*?url=$url?g&#34; config.ini
+</span></span></code></pre></div><p>3.选项参数联动</p>
 <p>借助Active Choices Plug-in插件，以下举例Active Choices Parameter和Active Choices Reactive Parameter模块</p>
-<pre><code>示例： 
-if(branch.equals(&quot;master&quot;)){	#branch为与之关联的选项名称
-    return[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;]
-}else if(branch.equals(&quot;master1&quot;)){
-    return[&quot;test1&quot;]
-}else if(branch.equals(&quot;master2&quot;)){
-    return[&quot;test2&quot;]
-}
-</code></pre>
-<h2 id="补充">补充：</h2>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-1">1</a></span><span>    if(branch.equals(&#34;master&#34;)){	#branch为与之关联的选项名称
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-2">2</a></span><span>        return[&#34;a&#34;,&#34;b&#34;,&#34;c&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-3">3</a></span><span>    }else if(branch.equals(&#34;master1&#34;)){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-4">4</a></span><span>        return[&#34;test1&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-5">5</a></span><span>    }else if(branch.equals(&#34;master2&#34;)){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-6">6</a></span><span>        return[&#34;test2&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-7">7</a></span><span>    }
+</span></span></code></pre></div><h2 id="补充">补充：</h2>
 <pre><code>allure插件
 </code></pre>
 
