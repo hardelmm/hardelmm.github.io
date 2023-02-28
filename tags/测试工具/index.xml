@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试工具 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+    <description>Recent content in 测试工具 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 16 Jan 2022 21:46:59 +0800</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jmeter&#43;beanshell</title>
+      <link>https://hardelmm.github.io/post/jmeter&#43;beanshell/</link>
+      <pubDate>Sun, 16 Jan 2022 21:46:59 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jmeter&#43;beanshell/</guid>
+      <description>一.jmeter接口测试适用场景 jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。 通过扩</description>
+    </item>
+    
+    <item>
+      <title>Unittest和pytest</title>
+      <link>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</link>
+      <pubDate>Thu, 06 Jan 2022 21:56:13 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</guid>
+      <description>一、用例编写规则 1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,</description>
+    </item>
+    
+    <item>
+      <title>Swagger</title>
+      <link>https://hardelmm.github.io/post/swagger/</link>
+      <pubDate>Tue, 15 May 2018 14:30:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/swagger/</guid>
+      <description>背景 无 适用范围 总结</description>
+    </item>
+    
+    <item>
+      <title>几个常用性能测试工具</title>
+      <link>https://hardelmm.github.io/post/%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 11 Aug 2017 09:45:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <description>实践出真知，好不好，只有用用才知道。 几个常用性能测试工具 Web Bench Web Bench是一个简单的web或者web代理服务的基准测试工具。（它）使用for</description>
+    </item>
+    
+  </channel>
+</rss>

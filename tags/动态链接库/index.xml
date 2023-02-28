@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>动态链接库 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/</link>
+    <description>Recent content in 动态链接库 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sun, 19 Nov 2017 13:00:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JNA方式调用dll动态库</title>
+      <link>https://hardelmm.github.io/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/</link>
+      <pubDate>Sun, 19 Nov 2017 13:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/</guid>
+      <description>背景 之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 J</description>
+    </item>
+    
+  </channel>
+</rss>

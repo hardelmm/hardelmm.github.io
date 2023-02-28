@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>线程 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E7%BA%BF%E7%A8%8B/</link>
+    <description>Recent content in 线程 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 28 Nov 2017 17:00:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E7%BA%BF%E7%A8%8B/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>对进程和线程的认识和简要总结</title>
+      <link>https://hardelmm.github.io/post/%E5%AF%B9%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%AE%A4%E8%AF%86%E5%92%8C%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Tue, 28 Nov 2017 17:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%AF%B9%E8%BF%9B%E7%A8%8B%E5%92%8C%E7%BA%BF%E7%A8%8B%E7%9A%84%E8%AE%A4%E8%AF%86%E5%92%8C%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 略 进程 什么是进程 1、进程是系统管理和分配资源的基本单位，是一个动态概念 2、每个进程都有自己的地址空间，进程地址空间的大小和处理器的位数有</description>
+    </item>
+    
+  </channel>
+</rss>

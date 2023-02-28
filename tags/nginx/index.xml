@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nginx on HardElm</title>
+    <link>https://hardelmm.github.io/tags/nginx/</link>
+    <description>Recent content in nginx on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 19 Sep 2017 16:32:50 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>nginx配置http和https代理</title>
+      <link>https://hardelmm.github.io/post/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E4%BB%A3%E7%90%86/</link>
+      <pubDate>Tue, 19 Sep 2017 16:32:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/nginx%E9%85%8D%E7%BD%AEhttp%E5%92%8Chttps%E4%BB%A3%E7%90%86/</guid>
+      <description>背景 近期直播类产品更新，出于安全考虑，播放地址由http转换为https。测试环境部署过程中出现一些小波折，特此记录。 nginx安装部署 下载</description>
+    </item>
+    
+  </channel>
+</rss>

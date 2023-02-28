@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>性能测试 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 性能测试 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 11 Jul 2022 16:18:38 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>st-load安装与使用</title>
+      <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+      <description>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负</description>
+    </item>
+    
+    <item>
+      <title>Jmeter&#43;beanshell</title>
+      <link>https://hardelmm.github.io/post/jmeter&#43;beanshell/</link>
+      <pubDate>Sun, 16 Jan 2022 21:46:59 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jmeter&#43;beanshell/</guid>
+      <description>一.jmeter接口测试适用场景 jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。 通过扩</description>
+    </item>
+    
+    <item>
+      <title>ab下载与上传压测</title>
+      <link>https://hardelmm.github.io/post/ab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B/</link>
+      <pubDate>Wed, 18 Oct 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ab%E4%B8%8B%E8%BD%BD%E4%B8%8E%E4%B8%8A%E4%BC%A0%E5%8E%8B%E6%B5%8B/</guid>
+      <description>背景 略 简要命令 下载 ab -n 10000 -c 100 &amp;ldquo;文件地址&amp;rdquo; 上传 ab -n 10000 -c 100 -T &amp;lsquo;multipart/form-data; boundary=w-QORJuFrcHc6Rwz-RLnKvbtgOIOn0m8mM2DQ&amp;rsquo; -p ./abpost.txt &amp;ldquo;上传接口地址&amp;rdquo; 上传压测操作</description>
+    </item>
+    
+    <item>
+      <title>Iperf的简单使用</title>
+      <link>https://hardelmm.github.io/post/iperf%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 23 Aug 2017 12:40:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/iperf%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>背景 略 简要命令 下载安装 配置好yum源，直接安装iperf 使用 1、UDP 模式 服务器端 iperf -u -s 客户端 iperf -c 服务端IP -u -P 1 -i 1 -p 5001 -f M -b 45M -t 20 -T 10 在</description>
+    </item>
+    
+    <item>
+      <title>几个常用性能测试工具</title>
+      <link>https://hardelmm.github.io/post/%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</link>
+      <pubDate>Fri, 11 Aug 2017 09:45:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</guid>
+      <description>实践出真知，好不好，只有用用才知道。 几个常用性能测试工具 Web Bench Web Bench是一个简单的web或者web代理服务的基准测试工具。（它）使用for</description>
+    </item>
+    
+    <item>
+      <title>Linux下expect脚本语言的简单使用</title>
+      <link>https://hardelmm.github.io/post/expect%E4%BA%A4%E4%BA%92%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 24 Jul 2017 13:40:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/expect%E4%BA%A4%E4%BA%92%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
+      <description>背景 最近在做直播服务器性能测试，因单台推流服务器性能限制，需多台机器同时推流，而且要监控直播平台各个底层服务器的性能，手动推流并开启监控繁琐</description>
+    </item>
+    
+    <item>
+      <title>Nmon使用总结</title>
+      <link>https://hardelmm.github.io/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 12 Jul 2017 09:14:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <description>一、安装： 1、下载nmon，wget http://sourceforge.net/projects/nmon/files/nmon_linux_14i.tar.gz 2、拷贝到服务器上，scp nmon_linux_14i.tar.gz root@10.171.112.220:/home 3、解压 4、根据服务器操作系统，执行相关命令 二、使用方法： 监控系统性能参</description>
+    </item>
+    
+  </channel>
+</rss>

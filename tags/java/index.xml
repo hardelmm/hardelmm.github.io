@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>java on HardElm</title>
+    <link>https://hardelmm.github.io/tags/java/</link>
+    <description>Recent content in java on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Mar 2022 09:37:30 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于ffmpeg进行转码工具的编写（未完成）</title>
+      <link>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</link>
+      <pubDate>Sat, 12 Mar 2022 09:37:30 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</guid>
+      <description>参考了一些资料，学习过程中尝试写一个转码工具，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool; import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import java.io.File; import java.io.IOException; import java.util.ArrayList; import java.util.Calendar; import java.util.List; import javax.swing.DefaultComboBoxModel; import javax.swing.JButton; import javax.swing.JComboBox; import</description>
+    </item>
+    
+    <item>
+      <title>Java JDBC编程步骤</title>
+      <link>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Thu, 08 Mar 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</guid>
+      <description>背景 无 JDBC编程步骤 Load the Driver new一个实例 1、Class.forName() 2、Class.forName().newInstance() 3</description>
+    </item>
+    
+    <item>
+      <title>Java中Map遍历的几种方式</title>
+      <link>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 29 Jan 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid>
+      <description>背景 最近在搞接口自动化，尚在摸索，特有此文记录一些琐碎所得。 Map遍历的几种方式 方法一、在for-each循环中使用entries来遍历 Map&amp;lt;Integer, Integer&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>JNA方式调用dll动态库</title>
+      <link>https://hardelmm.github.io/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/</link>
+      <pubDate>Sun, 19 Nov 2017 13:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/</guid>
+      <description>背景 之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 J</description>
+    </item>
+    
+    <item>
+      <title>Selenium初学总结</title>
+      <link>https://hardelmm.github.io/post/selenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 12 Jul 2017 09:22:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/selenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 工作中研究过一段时间自动化，因为一些原因暂时搁置了，以后会再捡起来，特记录一些selenium基本知识，供以后复习使用。 Selenium</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nmon on HardElm</title>
+    <link>https://hardelmm.github.io/tags/nmon/</link>
+    <description>Recent content in Nmon on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Jul 2017 09:14:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/nmon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nmon使用总结</title>
+      <link>https://hardelmm.github.io/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Wed, 12 Jul 2017 09:14:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</guid>
+      <description>一、安装： 1、下载nmon，wget http://sourceforge.net/projects/nmon/files/nmon_linux_14i.tar.gz 2、拷贝到服务器上，scp nmon_linux_14i.tar.gz root@10.171.112.220:/home 3、解压 4、根据服务器操作系统，执行相关命令 二、使用方法： 监控系统性能参</description>
+    </item>
+    
+  </channel>
+</rss>

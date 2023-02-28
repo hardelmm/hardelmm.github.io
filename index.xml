@@ -6,9 +6,1844 @@
     <description>Recent content on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Tue, 28 Feb 2023 00:02:37 +0800</lastBuildDate>
     
         <atom:link href="https://hardelmm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>数据库性能调优要点</title>
+      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/</link>
+      <pubDate>Tue, 28 Feb 2023 00:02:37 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>st-load安装与使用</title>
+      <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+      
+        <description>&lt;p&gt;项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。&lt;/p&gt;
+&lt;h1 id=&#34;什么是st-load&#34;&gt;什么是st-load&lt;/h1&gt;
+&lt;p&gt;服务器负载测试工具(st-load)：
+st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。
+&lt;a href=&#34;http://www.udpwork.com/item/13384.html&#34; title=&#34;state-threads&#34;&gt;state-threads&lt;/a&gt;用来模拟超级并发，并简化异步socket的逻辑为同步socket，&lt;a href=&#34;https://github.com/nodejs/http-parser&#34; title=&#34;http-parser&#34;&gt;http-parser&lt;/a&gt;解析http协议部分。
+这两个库设计都很巧妙，参考大牛开的项目：https://github.com/ossrs/srs-bench
+state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。
+http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
+举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。&lt;/li&gt;
+&lt;li&gt;支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。&lt;/li&gt;
+&lt;li&gt;支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。&lt;/li&gt;
+&lt;li&gt;支持RTMP流播放测试，一个进程支持5k并发。&lt;/li&gt;
+&lt;li&gt;支持RTMP流推流测试，一个进程支持500个并发&lt;/li&gt;
+&lt;li&gt;RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：
+HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。
+所有程序都在Linux下运行，模拟客户端运行。
+其他工具参考srs-librtmp&lt;/p&gt;
+&lt;h1 id=&#34;安装配置&#34;&gt;安装配置&lt;/h1&gt;
+&lt;p&gt;安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
+[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编译&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@cdvcloud srs-bench-master]# ./configure
+[root@cdvcloud srs-bench-master]# make
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看生成的文件和目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[root@cdvcloud objs]# ls
+http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;使用方法&#34;&gt;使用方法&lt;/h1&gt;
+&lt;p&gt;模拟RTMP播放用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模拟HLS直播用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模拟HSL点播用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模拟RTMP推流用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模拟RTMP多路推流用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;example:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;start a client
+	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
+start 1000 clients
+	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
+start 10000 clients
+	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
+start 100000 clients
+	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考：
+&lt;a href=&#34;http://blog.csdn.net/win_lin/article/details/11835011&#34;&gt;http://blog.csdn.net/win_lin/article/details/11835011&lt;/a&gt;
+&lt;a href=&#34;http://blog.csdn.net/xiaojun111111/article/details/52102454&#34;&gt;http://blog.csdn.net/xiaojun111111/article/details/52102454&lt;/a&gt;
+&lt;a href=&#34;http://blog.csdn.net/heiyeshuwu/article/details/52316738&#34;&gt;http://blog.csdn.net/heiyeshuwu/article/details/52316738&lt;/a&gt;
+&lt;a href=&#34;https://github.com/ossrs/srs-bench&#34;&gt;https://github.com/ossrs/srs-bench&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>基于ffmpeg进行转码工具的编写（未完成）</title>
+      <link>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</link>
+      <pubDate>Sat, 12 Mar 2022 09:37:30 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</guid>
+      
+        <description>&lt;p&gt;参考了一些资料，学习过程中尝试写一个转码工具，特此记录一些代码，留作参考。&lt;/p&gt;
+&lt;p&gt;一、GUI：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package cn.com.huangyl.tool;
+
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+public class FFmpegGUI {
+	private JFrame frame = new JFrame(&amp;quot;FFmpegGUI&amp;quot;);
+	private JTabbedPane tabbedPane = new JTabbedPane();
+	
+	private JPanel panel1 = new JPanel(new BorderLayout());
+	private JPanel panelx = new JPanel(new BorderLayout());
+	private JPanel panely = new JPanel(new BorderLayout());
+	private JPanel panel2 = new JPanel(new BorderLayout());
+	private JPanel panel3 = new JPanel(new GridLayout(2, 1));
+	private JPanel panel4 = new JPanel(new BorderLayout());
+	private JPanel panel5 = new JPanel(new BorderLayout());
+	private JPanel panel6 = new JPanel(new BorderLayout());
+	private JPanel panel7 = new JPanel(new BorderLayout());
+	private JPanel panel8 = new JPanel(new BorderLayout());
+	private JPanel panel9 = new JPanel(new BorderLayout());
+	private JPanel panel10 = new JPanel(new BorderLayout());
+	private JPanel panel11 = new JPanel(new BorderLayout());
+	private JPanel panel12 = new JPanel(new GridLayout(6,1));
+	private JPanel panel13 = new JPanel(new GridLayout(6,1));
+	private JPanel panel14 = new JPanel(new BorderLayout());
+	private JPanel panel15 = new JPanel(new BorderLayout());
+	private JPanel panel16 = new JPanel(new BorderLayout());
+	private JPanel panel17 = new JPanel(new BorderLayout());
+	private JPanel panel18 = new JPanel(new GridLayout(1,2));
+	private JPanel panel19 = new JPanel(new BorderLayout());
+	private JPanel panel20 = new JPanel(new BorderLayout());
+	
+	private JButton Select = new JButton(&amp;quot;选择&amp;quot;);
+	private JButton StartTranscode = new JButton(&amp;quot;开始&amp;quot;);
+	private JButton Reset = new JButton(&amp;quot;重置&amp;quot;);
+	//private JTextField display = new JTextField(&amp;quot;请点击查询按钮&amp;quot;);
+	private JTextField FilePath = new JTextField(&amp;quot;请选择文件路径&amp;quot;);
+	private JTextField VideoBitrate = new JTextField();
+	private JTextField resolution = new JTextField();
+	private JTextField AudioBitrate = new JTextField();
+	private JTextField AudioSampleRate = new JTextField();
+	private JTextField CreateFileName = new JTextField();
+	private JTextField CreateFileFormat = new JTextField();
+
+	private JLabel label1 = new JLabel(&amp;quot;请选择文件&amp;quot;);
+	private JLabel label2 = new JLabel(&amp;quot;模板转码&amp;quot;);
+	private JLabel label3 = new JLabel(&amp;quot;请选择模板：&amp;quot;);
+	private JLabel label4 = new JLabel(&amp;quot;自由转码&amp;quot;);
+	private JLabel label5 = new JLabel(&amp;quot;视频码率：&amp;quot;);
+	private JLabel label6 = new JLabel(&amp;quot;分辨率：&amp;quot;);
+	private JLabel label7 = new JLabel(&amp;quot;音频码率：&amp;quot;);
+	private JLabel label8 = new JLabel(&amp;quot;音频采样率：&amp;quot;);
+	private JLabel label9 = new JLabel(&amp;quot;请选择转码方式：&amp;quot;);
+	private JLabel label10 = new JLabel(&amp;quot;留做进度条：&amp;quot;);
+	private JLabel label11 = new JLabel(&amp;quot;生成文件名称：&amp;quot;);
+	private JLabel label12 = new JLabel(&amp;quot;生成文件格式：&amp;quot;);
+	
+	private JComboBox Template = new JComboBox();
+	private JComboBox TranscodeWay = new JComboBox();
+	
+	private JTextArea Log = new JTextArea(&amp;quot;&amp;quot;);
+	private JScrollPane scrollPane1 = new JScrollPane();
+	private JFileChooser stf = new JFileChooser(new File(&amp;quot;d://&amp;quot;));
+	
+	FFmpegGUI(){
+		
+		frame.setLayout(null);
+		frame.setBounds(400, 200, 700, 420);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(3);
+		tabbedPane.addTab(&amp;quot;ffmpeg&amp;quot;, this.panel1);
+		tabbedPane.addTab(&amp;quot;ffplay&amp;quot;, this.panelx);
+		tabbedPane.addTab(&amp;quot;ffprobe&amp;quot;, this.panely);
+		tabbedPane.setBounds(10, 10, 660, 360);
+		frame.add(this.tabbedPane);
+	
+		panel1.add(&amp;quot;West&amp;quot;,panel2);
+		panel1.add(&amp;quot;Center&amp;quot;,panel19);
+		panel19.add(&amp;quot;Center&amp;quot;,Log);
+		panel19.add(&amp;quot;South&amp;quot;,label10);
+		
+		panel2.add(&amp;quot;North&amp;quot;,panel3);
+		panel2.add(&amp;quot;Center&amp;quot;,panel8);
+		
+		panel3.add(panel4);
+		panel3.add(panel5);
+		
+		panel4.add(&amp;quot;North&amp;quot;,label1);
+		panel4.add(&amp;quot;South&amp;quot;,panel6);
+		panel5.add(&amp;quot;North&amp;quot;,label2);
+		panel5.add(&amp;quot;South&amp;quot;,panel7);
+		
+		panel6.add(&amp;quot;Center&amp;quot;,FilePath);
+		panel6.add(&amp;quot;East&amp;quot;,Select);
+		Template.setModel(new DefaultComboBoxModel(new String[] { &amp;quot;1080p_1920x1080_2000&amp;quot;, &amp;quot;SHD_1280x720_1200&amp;quot;, &amp;quot;HD_960x540_800&amp;quot;, &amp;quot;SD_640x360_500&amp;quot;, &amp;quot;LD_360x240_300&amp;quot;,&amp;quot;...&amp;quot; }));
+		Template.setEditable(false);
+		panel7.add(&amp;quot;Center&amp;quot;,Template);
+		panel7.add(&amp;quot;West&amp;quot;,label3);
+		
+		panel8.add(&amp;quot;North&amp;quot;,label4);
+		panel8.add(&amp;quot;Center&amp;quot;,panel9);
+		
+		panel9.add(&amp;quot;North&amp;quot;,panel10);
+		panel9.add(&amp;quot;Center&amp;quot;,panel11);
+		
+		panel10.add(&amp;quot;West&amp;quot;,panel12);
+		panel10.add(&amp;quot;Center&amp;quot;,panel13);
+		
+		panel12.add(label5);
+		panel12.add(label6);
+		panel12.add(label7);
+		panel12.add(label8);
+		panel12.add(label11);
+		panel12.add(label12);
+		
+		panel13.add(VideoBitrate);
+		panel13.add(resolution);
+		panel13.add(AudioBitrate);
+		panel13.add(AudioSampleRate);
+		panel13.add(CreateFileName);
+		panel13.add(CreateFileFormat);
+			
+		panel11.add(&amp;quot;North&amp;quot;,panel14);
+		panel11.add(&amp;quot;Center&amp;quot;,panel15);
+		
+		TranscodeWay.setModel(new DefaultComboBoxModel(new String[] { &amp;quot;模板转码&amp;quot;, &amp;quot;自由转码&amp;quot; }));
+		TranscodeWay.setEditable(false);
+		panel14.add(&amp;quot;West&amp;quot;,label9);
+		panel14.add(&amp;quot;Center&amp;quot;,TranscodeWay);
+		
+		panel15.add(&amp;quot;Center&amp;quot;,panel16);
+		panel15.add(&amp;quot;South&amp;quot;,panel17);
+		
+		panel17.add(&amp;quot;East&amp;quot;,panel18);
+		
+		panel18.add(Reset);
+		panel18.add(StartTranscode);
+
+		//文件选择
+		this.Select.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent event){
+				FFmpegGUI.this.stf.setFileSelectionMode(0);
+				int state = FFmpegGUI.this.stf.showOpenDialog(null);
+				if(state == 1){
+					return;
+					}
+				File f = FFmpegGUI.this.stf.getSelectedFile();
+				FFmpegGUI.this.FilePath.setText(f.getAbsolutePath());
+				}
+			});
+		this.StartTranscode.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent event) {
+			String transcodeway = FFmpegGUI.this.TranscodeWay.getSelectedItem().toString();
+			if (&amp;quot;模板转码&amp;quot;.equals(transcodeway)) {
+				String sourcefile = FFmpegGUI.this.FilePath.getText();
+				String Template = FFmpegGUI.this.TranscodeWay.getSelectedItem().toString();
+				FFmpegGUI.this.Log.setText(sourcefile);
+				Transcode t = new Transcode();
+			}
+			if (&amp;quot;自由转码&amp;quot;.equals(transcodeway)){
+				String sourcefile = FFmpegGUI.this.FilePath.getText();
+				String VideoBitrate = FFmpegGUI.this.VideoBitrate.getText();
+				String resolution = FFmpegGUI.this.resolution.getText();
+				String AudioBitrate = FFmpegGUI.this.AudioBitrate.getText();
+				String AudioSampleRate = FFmpegGUI.this.AudioSampleRate.getText();
+				String CreateFileName = FFmpegGUI.this.CreateFileName.getText();
+				String CreateFileFormat = FFmpegGUI.this.CreateFileFormat.getText();
+				Transcode t = new Transcode();
+				try {
+					t.processTranscodefree(sourcefile,VideoBitrate,resolution,AudioBitrate,AudioSampleRate,CreateFileName,CreateFileFormat);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			}
+		});
+		}
+	
+	public static void main(String args[]){
+		new FFmpegGUI();
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;二、Transcode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;package cn.com.huangyl.tool;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.List;
+
+public class Transcode {
+	/*
+	private static int checkContentType(){
+		String type = sourcefile.substring(PATH.lastIndexOf(&amp;quot;.&amp;quot;) + 1, sourcefile.length())  
+				.toLowerCase();  
+		//ffmpeg能解析的格式:(asx，asf，mpg，wmv，3gp，mp4，mov，avi，flv等)
+		if (type.equals(&amp;quot;avi&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;mpg&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;wmv&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;3gp&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;mov&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;mp4&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;asf&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;asx&amp;quot;)) {
+			return 0;
+		} else if (type.equals(&amp;quot;flv&amp;quot;)) {
+			return 0;
+		}
+		//对ffmpeg无法解析的文件格式(wmv9，rm，rmvb等),可以先用别的工具（mencoder）转换为avi(ffmpeg能解析的)格式.
+		else if (type.equals(&amp;quot;wmv9&amp;quot;)) {  
+			return 1;  
+		} else if (type.equals(&amp;quot;rm&amp;quot;)) {  
+			return 1;
+		} else if (type.equals(&amp;quot;rmvb&amp;quot;)) {  
+			return 1;  
+		}  
+		return 9;  
+	}
+	
+	// 对ffmpeg无法解析的文件格式(wmv9，rm，rmvb等), 可以先用别的工具（mencoder）转换为avi(ffmpeg能解析的)格式.  
+	private static String processAVI(int type) {  
+		List&amp;lt;String&amp;gt; commend = new ArrayList&amp;lt;String&amp;gt;();  
+		commend.add(&amp;quot;c:\\ffmpeg\\mencoder&amp;quot;);  
+		commend.add(sourcefile);  
+		commend.add(&amp;quot;-oac&amp;quot;);  
+		commend.add(&amp;quot;lavc&amp;quot;);  
+		commend.add(&amp;quot;-lavcopts&amp;quot;);  
+		commend.add(&amp;quot;acodec=mp3:abitrate=64&amp;quot;);  
+		commend.add(&amp;quot;-ovc&amp;quot;);  
+		commend.add(&amp;quot;xvid&amp;quot;);  
+		commend.add(&amp;quot;-xvidencopts&amp;quot;);  
+		commend.add(&amp;quot;bitrate=600&amp;quot;);  
+		commend.add(&amp;quot;-of&amp;quot;);  
+		commend.add(&amp;quot;avi&amp;quot;);  
+		commend.add(&amp;quot;-o&amp;quot;);  
+		commend.add(&amp;quot;c:\\ffmpeg\\output\\a.avi&amp;quot;);  
+		try {  
+			ProcessBuilder builder = new ProcessBuilder();  
+			builder.command(commend);  
+			builder.start();  
+			return &amp;quot;c:\\ffmpeg\\output\\a.avi&amp;quot;;  
+		} catch (Exception e) {  
+			e.printStackTrace();  
+			return null;  
+		}  
+	}
+
+	public void processTranscodetemp(String Template,String sourcefile) throws Exception {
+		String type = sourcefile.substring(sourcefile.lastIndexOf(&amp;quot;.&amp;quot;) + 1, sourcefile.length())  
+				.toLowerCase();
+		String F1080p_1920x1080_2000 = &amp;quot;ffmpeg -i &amp;quot;+sourcefile+&amp;quot;-vcodec h264 -b:v 2000k -r 25 -s 1920x1080 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &amp;quot;+ type +&amp;quot; -y &amp;quot;+ &amp;quot;1080P_2M.&amp;quot;+type;
+		String SHD_1280x720_1200 = &amp;quot;ffmpeg -i &amp;quot;+sourcefile+&amp;quot;-vcodec h264 -b:v 1200k -r 25 -s 1280x720 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &amp;quot;+ type +&amp;quot; -y &amp;quot;+ &amp;quot;720P_1200.&amp;quot;+type;
+		String HD_960x540_800 = &amp;quot;ffmpeg -i &amp;quot;+sourcefile+&amp;quot;-vcodec h264 -b:v 800k -r 25 -s 960x540 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &amp;quot;+ type +&amp;quot; -y &amp;quot;+ &amp;quot;540P_800.&amp;quot;+type;
+		String SD_640x360_500 = &amp;quot;ffmpeg -i &amp;quot;+sourcefile+&amp;quot;-vcodec h264 -b:v 500k -r 25 -s 640x360 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &amp;quot;+ type +&amp;quot; -y &amp;quot;+ &amp;quot;360P_500.&amp;quot;+type;
+		String LD_360x240_300 = &amp;quot;ffmpeg -i &amp;quot;+sourcefile+&amp;quot;-vcodec h264 -b:v 300k -r 25 -s 360x240 -pix_fmt yuv420p -g 33 -acodec aac -b:a 128k -ar 44100 -ac 2 -strict -2 -f &amp;quot;+ type +&amp;quot; -y &amp;quot;+ &amp;quot;240P_500.&amp;quot;+type;
+		if (!checkfile(sourcefile)) {
+			System.out.println(sourcefile + &amp;quot; is not file&amp;quot;);
+		}
+	try{
+			Runtime rt = Runtime.getRuntime();
+			Process proc;
+			proc = rt.exec(F1080p_1920x1080_2000);
+			// 取得命令结果的输出流
+			InputStream fis = proc.getInputStream();
+			// 用一个读输出流类去读  
+			InputStreamReader isr = new InputStreamReader(fis);
+			// 用缓冲器读行  
+			BufferedReader br = new BufferedReader(isr); 
+			String line = null; 
+			// 直到读完为止  
+			while ((line = br.readLine()) != null) {
+				System.out.println(line);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+				}
+		}  
+*/
+	public boolean processTranscodefree(String sourcefile,String VideoBitrate,String resolution,String AudioBitrate,String AudioSampleRate,String CreateFileName,String CreateFileFormat) throws Exception{  
+		File diretory = new File(&amp;quot;&amp;quot;);
+		String currPath = diretory.getAbsolutePath();
+		String outputPath = currPath + &amp;quot;\\output\\&amp;quot;;  
+		String ffmpegPath = currPath + &amp;quot;\\FFmpeg\\bin\\&amp;quot;;  
+		if (!checkfile(sourcefile)) {
+			System.out.println(sourcefile + &amp;quot; is not file&amp;quot;);  
+		}
+		// 文件命名  
+		//Calendar c = Calendar.getInstance(); 
+		List&amp;lt;String&amp;gt; commend = new ArrayList&amp;lt;String&amp;gt;();
+		commend.add(ffmpegPath+&amp;quot;ffmpeg.exe&amp;quot;); 
+		//commend.add(&amp;quot;F:\\java\\TranscodeGUI\\ffmpeg.exe&amp;quot;); 
+		commend.add(&amp;quot;-i&amp;quot;);
+		commend.add(sourcefile);
+		commend.add(&amp;quot;-ab&amp;quot;);
+		commend.add(&amp;quot;-vcodec&amp;quot;);
+		commend.add(&amp;quot;h264&amp;quot;);
+		//commend.add(&amp;quot;&amp;quot;);
+		commend.add(&amp;quot;-b:v&amp;quot;);
+		commend.add(VideoBitrate);
+		commend.add(&amp;quot;-r&amp;quot;);
+		commend.add(&amp;quot;25&amp;quot;);
+		commend.add(&amp;quot;-s&amp;quot;);
+		commend.add(&amp;quot;resolution&amp;quot;);
+		commend.add(&amp;quot;-pix_fmt&amp;quot;);
+		commend.add(&amp;quot;yuv420p&amp;quot;);
+		commend.add(&amp;quot;-g&amp;quot;);
+		commend.add(&amp;quot;33&amp;quot;);
+		commend.add(&amp;quot;-acodec&amp;quot;);
+		commend.add(&amp;quot;aac&amp;quot;);
+		commend.add(&amp;quot;-b:a&amp;quot;);
+		commend.add(AudioBitrate);
+		commend.add(&amp;quot;-ac&amp;quot;);
+		commend.add(&amp;quot;2&amp;quot;);
+		commend.add(&amp;quot;-strict&amp;quot;);
+		commend.add(&amp;quot;-2&amp;quot;);
+		commend.add(&amp;quot;-f&amp;quot;);
+		commend.add(CreateFileFormat);
+		commend.add(&amp;quot;-y&amp;quot;);
+		commend.add(outputPath+CreateFileName+&amp;quot;.&amp;quot;+CreateFileFormat);
+		try {
+			ProcessBuilder builder = new ProcessBuilder();  
+			builder.command(commend);  
+			Process proc = builder.start();
+			InputStream stderr = proc.getErrorStream();
+			InputStreamReader isr = new InputStreamReader(stderr);
+			BufferedReader br = new BufferedReader(isr);
+			String line = null;
+			while ( (line = br.readLine()) != null)
+				System.out.println(line);
+
+			int exitVal = proc.waitFor();
+			System.out.println(&amp;quot;Process exitValue: &amp;quot; + exitVal);
+		} catch (Throwable t) {
+			t.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+/*
+		try {  
+			Runtime rt = Runtime.getRuntime();
+			ProcessBuilder builder = new ProcessBuilder(commend);  
+			builder.command(commend);  
+			builder.start();
+			
+			System.out.println(&amp;quot;开始转码，请等待······&amp;quot;);
+
+		} catch (Exception e) {  
+			e.printStackTrace();
+			System.out.println(&amp;quot;转码异常，请查看日志！&amp;quot;);
+		}
+		*/
+		
+//检查文件是否存在
+	private static boolean checkfile(String path) {  
+		File file = new File(path);  
+		if (!file.isFile()) {  
+			return false;  
+		}  
+		return true;  
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Jenkins&#43;shell</title>
+      <link>https://hardelmm.github.io/post/jenkins&#43;shell/</link>
+      <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jenkins&#43;shell/</guid>
+      
+        <description>&lt;p&gt;1.获取目录下所有文件名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ! / bin/ bash
+#采集—个函数
+readDir() {
+    local dir=$1    #获取传入的目录路径
+    local files     #循环指定目录下的所有文件
+    files=$(ls &amp;quot;$dir &amp;quot;)
+    for file in $files ; do
+        local path=&amp;quot;$dir /$file&amp;quot;    #指的是当前遍历文件的完整路径
+        if [ -d &amp;quot;$path&amp;quot; ] ; then    #判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径
+            readDir &amp;quot;$path&amp;quot;
+        else
+            echo &amp;quot;$path&amp;quot;
+        fi
+    done
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.修改配置参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed -i &amp;quot;s?^url=*?url=$url?g&amp;quot; config.ini
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Python接口自动化(数据驱动)</title>
+      <link>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
+      <pubDate>Thu, 27 Jan 2022 20:22:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
+      
+        <description>&lt;h2 id=&#34;一读取配置文件&#34;&gt;一.读取配置文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import codecs
+import configparser
+configPath = &#39;&#39;
+
+class ReadConfig:
+    def __int__(self):
+        fd = open(configPath,&amp;quot;rb&amp;quot;)
+        data = fd.read()
+
+        #remove BOM
+
+        if data[:3] == codecs.BOM_UTF8:
+            data = data[3:]
+            file = codecs.open(configPath,&amp;quot;w&amp;quot;)
+            file.write(data)
+            file.close()
+        fd.close()
+
+        self.cf = configparser.ConfigParser()
+        self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;)
+
+    def get_configOne(self,name):
+        value = self.cf.get(&amp;quot;configOne&amp;quot;,name)
+        return value
+
+    #......
+
+    def get_all(self,*args):
+        confs = {}
+        for sec in args:
+            options = self.cf.options(sec)
+            for i in options:
+                confs[i] = self.cf.get(sec,i)
+        return  confs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;二读取测试用例&#34;&gt;二.读取测试用例&lt;/h2&gt;
+&lt;h3 id=&#34;1通过excel管理测试用例&#34;&gt;1.通过excel管理测试用例&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;class readXld:
+    def __init__(self,input_path):
+        self.input_path = input_path
+        
+    def readFile(self):
+        list_tmp = []
+        case_data = xlrd.open_workbook(self.input_path)
+        table = case_data.sheets()[1]
+        clo1 = table.col_values(0, start_rowx=1, end_rowx=None)#语料
+        clo2 = table.col_values(1, start_rowx=1, end_rowx=None)#预期结果
+        for i in range(len(clo1)):
+            if clo1[i]:
+                list_tmp.append(clo1[i].strip() + &#39;||&#39; + clo2[i].strip())
+        return list_tmp
+
+    def readFileMuti(self):
+        list_case = []
+        list_tmp = []
+        case_data = xlrd.open_workbook(self.input_path)
+        sheet_names = case_data.sheet_names()
+        for i in range(len(sheet_names)):
+            table = case_data.sheet_by_name(sheet_names[i])
+            clo1 = table.col_values(0, start_rowx=1, end_rowx=None)  # 语料
+            clo2 = table.col_values(1, start_rowx=1, end_rowx=None)  # 预期结果
+            for i in range(len(clo1)):
+                if clo1[i]:
+                    list_tmp.append(clo1[i].strip() + &#39;||&#39; + clo2[i].strip())
+            list_case.append(list_tmp)
+        return list_case,sheet_names
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2通过文本文档管理测试用例&#34;&gt;2.通过文本文档管理测试用例&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;class readTxt:
+    def __init__(self,input_path):
+        self.input_path = input_path
+    def readFile(self):
+        with open(self.input_path,&#39;rb&#39;) as f:
+            data = f.read()
+            list_tmp = data.decode().split(&#39;\n&#39;)#按行分割或用splitlines()
+            f.close()
+        print(str(list_tmp))
+        return list_tmp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;三测试数据预处理&#34;&gt;三.测试数据预处理&lt;/h2&gt;
+&lt;h3 id=&#34;1常用处理方法&#34;&gt;1.常用处理方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;linecache.getlines(case) #按行读取测试用例，输出list
+str.strip() #去除头尾字符（默认空格或换行符）
+jsonpath.jsonpath() #json数据解析,类似xpath
+json.load() #json字符串转为json对象
+json.dump() #json对象反序列化为json字符串
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2多进程方式下处理测试用例&#34;&gt;2.多进程方式下处理测试用例&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;class caseAvg:
+    def __init__(self):
+        self.all_num = 0
+        self.thread_num = localReadConfig.get_thread_config(&amp;quot;thread_num&amp;quot;)
+        self.case = localReadConfig.get_case_path(&#39;asr_case_path&#39;)
+
+    def case_avg(self):#多进行并发执行平均分配用例数目
+        list_tmp = []
+        case_path = self.case + &#39;audio_text.xls&#39;#test.xlsx
+        case_data = xlrd.open_workbook(case_path)
+        table = case_data.sheets()[0]
+        clo1 = table.col_values(0, start_rowx=1, end_rowx=None)
+        clo2 = table.col_values(1, start_rowx=1, end_rowx=None)
+        for x in range(len(clo1)):
+            if clo2[x]:#过滤语料为空的数据
+                list_tmp.append(clo1[x].strip() + &#39;||&#39; + clo2[x].strip())
+
+        self.line_num_list = len(list_tmp)
+
+        last_case_list = os.listdir(&amp;quot;./case_avg/&amp;quot;)
+        for fileName in last_case_list:
+            os.remove(&amp;quot;./case_avg/&amp;quot; + fileName)
+
+        if self.line_num_list &amp;lt; int(self.thread_num):
+            print(&amp;quot;并发数大于用例总数,程序退出&amp;quot;)
+            exit()
+
+
+        # 根据并发数分配每个进程的用例数
+        case_avg_path = &#39;./case_avg/&#39;
+        if not os.path.exists(case_avg_path):
+            os.mkdir(case_avg_path)
+        avg_tmp_list = os.listdir(&amp;quot;./case_avg/&amp;quot;)
+        for i in range(len(avg_tmp_list)):
+            os.remove(case_avg_path + avg_tmp_list[i])
+        if self.line_num_list % int(self.thread_num) == 0:
+            avg_num = self.line_num_list / int(self.thread_num)
+            remainder = 0
+        else:
+            avg_num = self.line_num_list // int(self.thread_num)
+            remainder = self.line_num_list % int(self.thread_num)
+
+        case_list = []
+
+        for i in range(int(self.thread_num)):
+            if remainder == 0:
+                case_list.append(int(avg_num))
+            else:
+                if i &amp;lt; remainder:
+                    case_list.append(int(avg_num) + 1)
+                else:
+                    case_list.append(int(avg_num))
+        # 将每个进程的用例数,写入文件
+        min = 0
+        for i in range(len(case_list)):
+            if i == 0:
+                avg_list = list_tmp[0:case_list[i]]
+            else:
+                min += case_list[i - 1]
+                max = min + case_list[i]
+                avg_list = list_tmp[min:max]
+            avg_file = open(case_avg_path + str(i), &#39;w+&#39;)
+            for xx in range(len(avg_list)):
+                if xx == len(avg_list) - 1:
+                    avg_file.write(str(avg_list[xx]))
+                else:
+                    avg_file.write(str(avg_list[xx]) + &#39;\n&#39;)
+            avg_file.close()
+        log_tmp.info(len(list_tmp))
+        return len(list_tmp)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;四断言以及校验&#34;&gt;四.断言以及校验&lt;/h2&gt;
+&lt;h3 id=&#34;1常用处理方法-1&#34;&gt;1.常用处理方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1).手动编写脚本，解析返回数据，进行检查点校验，校验结果整理汇总(大数据汇总量)
+2).借助assert进行断言(小数据量下展示用)
+    assert str(res.get(&#39;status&#39;)) == str(args[&#39;expectdata&#39;][&#39;status&#39;]),&amp;quot;接口返回status值不等于预期&amp;quot;
+    assert str(res.get(&#39;data&#39;).get(&#39;service&#39;)) == str(args[&#39;expectdata&#39;][&#39;service&#39;]), &amp;quot;接口返回service值不等于预期&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2数据库校验&#34;&gt;2.数据库校验&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1)解析返回数据
+2)调用数据库，查询对应数据
+3)数据校验
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;五存储测试结果&#34;&gt;五.存储测试结果&lt;/h2&gt;
+&lt;h3 id=&#34;1通过excel管理测试结果&#34;&gt;1.通过excel管理测试结果&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;class ResultProcess:
+    def __init__(self):
+        self.run_time = time.strftime(&#39;%Y-%m-%d.%H.%M.%S&#39;, time.localtime(time.time()))
+        self.open_excel = xlwt.Workbook(encoding=&#39;utf-8&#39;, style_compression=0)
+        self.result_filename = &#39;NLU_result_&#39; + str(self.run_time) + &#39;.xls&#39;
+
+    def CreateS(self,SheetName):
+        self.open_sheet = self.open_excel.add_sheet(SheetName)
+        self.open_sheet.write(0, 0, u&#39;测试语料&#39;)
+        self.open_sheet.write(0, 1, u&#39;期望结果&#39;)
+        self.open_sheet.write(0, 2, u&#39;实际res&#39;)
+        self.open_sheet.write(0, 3, u&#39;校验结果&#39;)
+        self.open_sheet.write(0, 4, u&#39;结果&#39;)
+
+    def SaveResult(self,x,ret_list):
+        #print(&amp;quot;保存结果中...&amp;quot;)
+        case_text = ret_list[0]
+        expectedRes = ret_list[1]
+        res_tmp = ret_list[2]
+        res_chk = ret_list[3]
+        result = ret_list[4]
+
+        run_time = self.run_time
+        open_excel = self.open_excel
+        open_sheet = self.open_sheet
+
+        open_sheet.write(x + 1, 0, case_text)
+        open_sheet.write(x + 1, 1, expectedRes)
+        open_sheet.write(x + 1, 2, res_tmp)
+        open_sheet.write(x + 1, 3, res_chk)
+        open_sheet.write(x + 1, 4, result)
+        self.open_excel.save(&#39;./result/&#39; + self.result_filename)
+
+        #print(&amp;quot;结果保存完成&amp;quot;)
+    def get_result_filename(self):
+
+        return self.result_filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2通过数据库管理测试结果&#34;&gt;2.通过数据库管理测试结果&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;class ResultProcess:
+    connection = None
+    def __int__(self,x,y,z):
+        self.time = datetime.datetime.now()
+        self.result_tablename = &#39;NLU_result_&#39; + str(self.run_time)
+        self.dbc = dbProcess()
+        self.dbc.get_conn(self.db_host,self.db_user,self.db_password)
+            
+    def CreateResultTb(self, versionNo):
+        result_tablename = &#39;NLU_result_&#39; + versionNo + &#39;_&#39; + str(self.time)
+        print(result_tablename)
+        exec_sql = &amp;quot;create table &amp;quot; + result_tablename + &amp;quot;... &amp;quot;
+        #print(exec_sql)
+        self.dbc.exec_sql(&amp;quot;use database&amp;quot;)
+        self.dbc.exec_sql(exec_sql)
+        return result_tablename
+        
+    def SaveDb(self, x, result_tablename, ret_list):
+        # print(&amp;quot;保存结果中...&amp;quot;)
+        case_text = ret_list[0]
+        expectedRes = ret_list[1]
+        res_tmp = ret_list[2]
+        res_chk = ret_list[3]
+        result = ret_list[4]
+        sql = &amp;quot;insert into &amp;quot; + result_tablename + &amp;quot; (...) values (%s, %s, %s, %s, %s, %s, %s)&amp;quot;
+        val = [(...)]
+        print(sql)
+        print(val)
+        self.dbc.exec_sqlmany(sql, val)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;六持续集成&#34;&gt;六.持续集成&lt;/h2&gt;
+&lt;p&gt;部署配置jenkins实现自动化测试持续集成&lt;/p&gt;
+&lt;p&gt;1.获取目录下所有文件名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ! / bin/ bash
+#采集—个函数
+readDir() {
+    local dir=$1    #获取传入的目录路径
+    local files     #循环指定目录下的所有文件
+    files=$(ls &amp;quot;$dir &amp;quot;)
+    for file in $files ; do
+        local path=&amp;quot;$dir /$file&amp;quot;    #指的是当前遍历文件的完整路径
+        if [ -d &amp;quot;$path&amp;quot; ] ; then    #判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径
+            readDir &amp;quot;$path&amp;quot;
+        else
+            echo &amp;quot;$path&amp;quot;
+        fi
+    done
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.修改配置参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed -i &amp;quot;s?^url=*?url=$url?g&amp;quot; config.ini
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.选项参数联动&lt;/p&gt;
+&lt;p&gt;借助Active Choices Plug-in插件，以下举例Active Choices Parameter和Active Choices Reactive Parameter模块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例： 
+if(branch.equals(&amp;quot;master&amp;quot;)){	#branch为与之关联的选项名称
+    return[&amp;quot;a&amp;quot;,&amp;quot;b&amp;quot;,&amp;quot;c&amp;quot;]
+}else if(branch.equals(&amp;quot;master1&amp;quot;)){
+    return[&amp;quot;test1&amp;quot;]
+}else if(branch.equals(&amp;quot;master2&amp;quot;)){
+    return[&amp;quot;test2&amp;quot;]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;补充&#34;&gt;补充：&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;allure插件
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Jmeter&#43;beanshell</title>
+      <link>https://hardelmm.github.io/post/jmeter&#43;beanshell/</link>
+      <pubDate>Sun, 16 Jan 2022 21:46:59 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jmeter&#43;beanshell/</guid>
+      
+        <description>&lt;h2 id=&#34;一jmeter接口测试适用场景&#34;&gt;一.jmeter接口测试适用场景&lt;/h2&gt;
+&lt;p&gt;jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。
+通过扩展第三方库后，功能更为全面。&lt;/p&gt;
+&lt;h2 id=&#34;二jmeter基础组件介绍&#34;&gt;二.jmeter基础组件介绍&lt;/h2&gt;
+&lt;p&gt;1.TestPlan：可添加全局用户变量（不方便禁用和启用，一般单独添加【用户定义的变量】配置元件），例：地址，端口，token信息等，另可配置管理依赖的第三方库。&lt;/p&gt;
+&lt;p&gt;2.线程组：压力测试以及负载测试中，可配置线程数，爬坡时间，循环次数，以满足性能需求场景。配置调度器可固定压测时长。&lt;/p&gt;
+&lt;p&gt;3.常用逻辑控制器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;简单控制器：无特殊功能，仅分类放置其他组件
+随机控制器：实现内部组件随机执行
+循环控制器：可配置控制器内部业务流程循环次数
+if控制器：配置判断条件实现通过判断选择是否执行内部事务
+while控制器：通过配置判断条件，实现跳出控制器或循环执行控制器内部逻辑
+runtime控制器：通过配置runtime参数，控制控制器内部业务执行时间（0为跳过）
+foreach控制器：遍历用户定义的变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;4.常用取样器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http请求：配置http请求参数，消息体数据可结合beanshell预处理器进行使用
+jdbc请求：配置数据库操作请求参数，可结合用户定义变量集参数化操作
+ftp请求：
+junit请求：基于Java单元测试
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5.常用配置元件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http信息头管理器：配置存储http请求头信息
+http cookie管理器：配置存储cookie信息
+cvs数据文件：配置参数化的测试数据
+jdbc connection configuration：配置数据库连接参数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6.常用前/后置处理器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;beanshell preprocessor
+jsr223 preprocessor：基于groovy
+jdbc preprocessor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;7.常用断言&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;响应断言：可选择响应文本、响应代码、响应消息、文档（文本）等信息配置断言规则
+json断言
+beanshell断言
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;8.常用监听器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;断言结果
+查看结果树:查看接口返回详细信息
+聚合报告：全部事务统计表
+汇总报告：
+
+补充plugins manager常用插件：
+    PerfMon Metrics Collector #性能监视指标收集器，以折线图形式展示
+    Response Times Over Time #随时间变化的响应时间，以折线图形式展示
+    Transactions per Second #每秒综合事务数，以折线图形式展示
+    Active Threads Over Time #随着时间变化的活跃线程数
+    Response Codes per Second 响应代码与测试时间关系图
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;三beanshell&#34;&gt;三.beanshell&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;beanshell是轻量级的纯java脚本，能够动态执行标准java语法和一些扩展脚本语法，类似于js和perl
+
+beanshell预处理器：构建请求参数，常用类库org.json,java.util，java.io等
+beanshell后处理器：解析返回参数并做处理
+beanshell断言
+beanshell定时器
+
+补充beanshell内置变量：
+    SampleResult
+    ResponseCode
+    ResponseMessage
+    IsSuccess
+    Label
+    FileName
+    ctx #
+    vars    #用于存取局部变量
+    props   #用于存取全局静态变量
+    log
+    
+#前置处理器示例
+import org.json.*;
+import java.util.HashMap;
+import java.util.Map;
+
+String hotelId = vars.get(&amp;quot;hotelId&amp;quot;);
+String language = vars.get(&amp;quot;language&amp;quot;);
+String [] types = {&amp;quot;FACILITY_ANSWER&amp;quot;,&amp;quot;SERVICE_ANSWER&amp;quot;};
+int i = (int)(Math.random()*types.length);
+log.info(String.valueOf(i));
+String type = types[i].toString();
+Map data = new HashMap();
+data.put(&amp;quot;hotelId&amp;quot;,hotelId);
+data.put(&amp;quot;language&amp;quot;,language);
+data.put(&amp;quot;type&amp;quot;,type);
+JSONObject getAnswerVO = new JSONObject(data);
+log.info(JSONObject.valueToString(getAnswerVO));
+vars.put(&amp;quot;getAnswerVO&amp;quot;, JSONObject.valueToString(getAnswerVO));
+
+#后置处理器示例
+import org.json.*;
+import java.util.HashMap;
+import java.util.Map;
+
+String response_data = prev.getResponseDataAsString();
+JSONObject response_obj = new JSONObject(response_data);
+JSONArray AnswerVOsArray = response_obj.getJSONArray(&amp;quot;data&amp;quot;);
+int i = (int)(Math.random()*AnswerVOsArray.length());
+
+String AnswerVO = AnswerVOsArray.get(i).toString();
+vars.put(&amp;quot;AnswerVO&amp;quot;, AnswerVO);&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Unittest和pytest</title>
+      <link>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</link>
+      <pubDate>Thu, 06 Jan 2022 21:56:13 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</guid>
+      
+        <description>&lt;p&gt;一、用例编写规则
+1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,让测试更加明确、方便、可控。使用unittest编写用例,必须遵守以下规则:
+（1）测试文件必须先import unittest
+（2）测试类必须继承unittest.TestCase
+（3）测试方法必须以“test_”开头
+（4）测试类必须要有unittest.main()方法
+2.pytest是python的第三方测试框架,是基于unittest的扩展框架,比unittest更简洁,更高效。使用pytest编写用例,必须遵守以下规则:
+（1）测试文件名必须以“test_”开头或者&amp;quot;&lt;em&gt;test&amp;quot;结尾(如:test_ab.py)
+（2）测试方法必须以“test&lt;/em&gt;”开头。
+（3）测试类命名以&amp;quot;Test&amp;quot;开头。
+总结: pytest可以执行unittest风格的测试用例,无须修改unittest用例的任何代码,有较好的兼容性。 pytest插件丰富,比如flask插件,可用于用例出错重跑;还有xdist插件,可用于设备并行执行。&lt;/p&gt;
+&lt;p&gt;二、用例前置和后置
+1.unittest提供了setUp/tearDown，每个用例运行前、结束后运行一次。setUpClass和tearDownClass，用例执行前、结束后，只运行一次。
+2.pytest提供了模块级、函数级、类级、方法级的setup/teardown，比unittest的setUp/tearDown更灵活。
+模块级（setup_module/teardown_module）开始于模块始末，全局的
+函数级（setup_function/teardown_function）只对函数用例生效（不在类中）
+类级（setup_class/teardown_class）只在类中前后运行一次(在类中)
+方法级（setup_method/teardown_method）开始于方法始末（在类中）
+类里面的（setup/teardown）运行在调用方法的前后
+3.pytest还可以在函数前加@pytest.fixture()装饰器，在测试用例中装在fixture函数。fixture的使用范围可以是function,module,class,session。
+fixture相对于setup和teardown来说有以下几点优势：
+命名方式灵活，不局限于setup和teardown这几个命名
+conftest.py 配置里可以实现数据共享，不需要import就能自动找到一些配置，可供多个py文件调用。
+scope=&amp;ldquo;module&amp;rdquo; 可以实现多个.py跨文件共享前置
+scope=&amp;ldquo;session&amp;rdquo; 以实现多个.py跨文件使用一个session来完成多个用例
+用yield来唤醒teardown的执行
+三、断言
+1.unittest提供了assertEqual、assertIn、assertTrue、assertFalse。
+2.pytest直接使用assert 表达式。
+四、报告
+1.unittest使用HTMLTestRunnerNew库。
+2.pytest有pytest-HTML、allure插件。
+五、失败重跑
+1.unittest无此功能。
+2.pytest支持用例执行失败重跑，pytest-rerunfailures插件。
+六、参数化
+1.unittest需依赖ddt库，
+2.pytest直接使用@pytest.mark.parametrize装饰器。
+七、用例分类执行
+1.unittest默认执行全部用例，也可以通过加载testsuit，执行部分用例。
+2.pytest可以通过@pytest.mark来标记类和方法，pytest.main加入参数(&amp;quot;-m&amp;quot;)可以只运行标记的类和方法。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Python数据库基础操作</title>
+      <link>https://hardelmm.github.io/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Thu, 29 Apr 2021 21:52:23 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      
+        <description>&lt;h1 id=&#34;一python连接mysql数据库&#34;&gt;一.python连接mysql数据库&lt;/h1&gt;
+&lt;h2 id=&#34;1使用mysqlclient连接&#34;&gt;1.使用mysqlclient连接&lt;/h2&gt;
+&lt;p&gt;mysqlclient包是用于MySQL的最流行的Python包之一。它包含MySQLdb模块，一个提供Python数据库API的MySQL接口。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+import MySQLdb
+
+connection = MySQLdb.connect(
+    host = os.getenv(&amp;quot;HOST&amp;quot;)
+    user = os.getenv(&amp;quot;USERNAME&amp;quot;)
+    password = os.getenv(&amp;quot;PASSWORD&amp;quot;)
+    db = os.getenv(&amp;quot;DATABASE&amp;quot;)
+    ssl_mode = &amp;quot;VERIFY_IDENTITY&amp;quot;
+    ssl = {
+        &#39;ca&#39; : os.genenv(&amp;quot;SSL_CERT&amp;quot;)
+    }
+)
+#创建游标
+cursor = connectin.cursor()
+cursor.excute(&amp;quot;select @@version&amp;quot;)
+version = cursor.fetchone()
+
+if version:
+    print(&#39;conne&#39;)
+else:
+    print(&#39;Not connect.&#39;)
+    
+cursor.close()
+connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;2使用mysql-connector连接&#34;&gt;2.使用mysql connector连接&lt;/h2&gt;
+&lt;p&gt;mysql connector不支持旧的服务器认证方法，意味着在4.1之前的mysql版本不能工作。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from dotenv import load_dotenv
+from mysql.connector import Error
+import mysql.connector
+
+load_dotenv()
+
+connection = mysql.connector.connect(
+host=os.getenv(&amp;quot;HOST&amp;quot;),
+database=os.getenv(&amp;quot;DATABASE&amp;quot;),
+user=os.getenv(&amp;quot;USERNAME&amp;quot;),
+password=os.getenv(&amp;quot;PASSWORD&amp;quot;),
+ssl_ca=os.getenv(&amp;quot;SSL_CERT&amp;quot;)
+)
+
+try:
+    if connection.is_connected():
+        cursor = connection.cursor()
+    cursor.execute(&amp;quot;select @@version &amp;quot;)
+    version = cursor.fetchone()
+    if version:
+        print(&#39;Running version: &#39;, version)
+    else:
+        print(&#39;Not connected.&#39;)
+except Error as e:
+    print(&amp;quot;Error while connecting to MySQL&amp;quot;, e)
+finally:
+    connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;3使用pymysql连接&#34;&gt;3.使用pymysql连接&lt;/h2&gt;
+&lt;p&gt;PyMySQL包是另一个连接器，可以用它来连接Python和MySQL。如果追求速度，这是一个很好的选择，因为它比mysql-connector-python快。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from dotenv import load_dotenv
+import pymysql
+import os
+
+load_dotenv()
+
+connection = pymysql.connect(
+    host=os.getenv(&amp;quot;HOST&amp;quot;),
+    database=os.getenv(&amp;quot;DATABASE&amp;quot;),
+    user=os.getenv(&amp;quot;USERNAME&amp;quot;),
+    password=os.getenv(&amp;quot;PASSWORD&amp;quot;),
+    ssl_ca=os.getenv(&amp;quot;SSL_CERT&amp;quot;)
+)
+cursor = connection.cursor()
+cursor.execute(&amp;quot;select @@version &amp;quot;)
+version = cursor.fetchone()
+if version:
+    print(&#39;Running version: &#39;, version)
+else:
+    print(&#39;Not connected.&#39;)
+connection.close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4使用aiomysql连接&#34;&gt;4.使用aiomysql连接&lt;/h2&gt;
+&lt;p&gt;aiomysql库用于从asyncio框架访问MySQL数据库。除了是异步的特性之外，连接代码与PyMySQL相似。注意，使用aiomysql需要Python 3.7以上版本和PyMySQL。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+import asyncio
+import aiomysql
+import ssl
+
+from dotenv import load_dotenv
+load_dotenv()
+
+ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
+ctx.load_verify_locations(cafile=os.getenv(&amp;quot;SSL_CERT&amp;quot;))
+
+loop = asyncio.get_event_loop()
+
+async def connect_db():
+   connection = await aiomysql.connect(
+       host=os.getenv(&amp;quot;HOST&amp;quot;),
+       port=3306,
+       user=os.getenv(&amp;quot;USERNAME&amp;quot;),
+       password=os.getenv(&amp;quot;PASSWORD&amp;quot;),
+       db=os.getenv(&amp;quot;DATABASE&amp;quot;),
+       loop=loop,
+       ssl=ctx
+   )
+   cursor = await connection.cursor()
+   await cursor.execute(&amp;quot;select @@version&amp;quot;)
+   version = await cursor.fetchall()
+   print(&#39;Running version: &#39;, version)
+   await cursor.close()
+   connection.close()
+loop.run_until_complete(connect_db())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;二执行批量执行sql&#34;&gt;二.执行/批量执行sql&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;mycursor = connection.cursor()
+mycursor.excute(&amp;quot;sql语句&amp;quot;) #执行sql
+sql = &amp;quot;&amp;quot;
+val = []
+mycursor.excutemany(sql,val) #批量执行sql
+connection.commit() #对数据库由修改操作要commit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;三查询数据&#34;&gt;三.查询数据&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;mycursor = connection.cursor()
+mycursor.excute(&amp;quot;select 语句&amp;quot;)
+result = mycursor.fetchone() #获取当前维度第一条数据
+result = mycursor.fetchall()#获取当前维度所有数据
+result = mycursor.fetchmany(n)#获取当前维度的n条数据
+#cursor属性 rownumber  标识游标当前位置 所以要定义属性：cursor.rownumber=0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;四自定义工具包封装&#34;&gt;四.自定义工具包封装&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;import mysql.connector
+
+class DB_Opera:
+    connection = None
+    &#39;&#39;&#39;
+    def __int__(self,x,y,z):
+        if self.connection is None:
+            self.connection = mysql.connector.connect(host=x,user=y,password=z)
+            print(&amp;quot;DB connect successfully...&amp;quot;)
+            return self.connection
+        else:
+            print(&amp;quot;DB has been connected...&amp;quot;)
+    &#39;&#39;&#39;
+
+    @classmethod
+    def get_conn(cls,config_db):
+        if cls.connection is None:
+            cls.connection =  mysql.connector.connect(host=config_db[0],user=config_db[1],password=config_db[2])
+            print(&amp;quot;DB connect successfully...&amp;quot;)
+            return cls.connection
+        else:
+            print(&amp;quot;DB has been connected...&amp;quot;)
+
+
+    @classmethod
+    def close_conn(cls):
+        if cls.connection:
+            cls.connection.close()
+            cls.connection = None
+            print(&amp;quot;DB disconnected successfully...&amp;quot;)
+        else:
+            print(&amp;quot;DB has been disconnected...&amp;quot;)
+
+    @classmethod
+    def query_sql(cls,sql):
+        res = None
+        cursor = None
+        try:
+            cursor = cls.connection.cursor()
+            cursor.execute(sql)
+            res = cursor.fetchall()
+            return res
+        except Exception as e:
+            print(&amp;quot;DB query excep :&amp;quot; + str(e))
+        finally:
+            cursor.close()
+
+    @classmethod
+    def exec_sql(cls,sql):
+        cursor = None
+        try:
+            cursor = cls.connection.cursor()
+            cursor.execute(sql)
+            cls.connection.commit()
+            print(&amp;quot;DB execute sql successfully...&amp;quot;)
+        except Exception as e:
+            print(str(e))
+            cls.connection.rollback()
+        finally:
+            cursor.close()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Python文本基础操作</title>
+      <link>https://hardelmm.github.io/post/python%E6%96%87%E6%9C%AC%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 27 Apr 2021 22:16:57 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%96%87%E6%9C%AC%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>Python发送邮件</title>
+      <link>https://hardelmm.github.io/post/python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <pubDate>Tue, 27 Apr 2021 22:15:39 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      
+        <description>&lt;pre&gt;&lt;code&gt;# -*- coding: utf-8 -*-
+# @Time    : 2020/5/20 13:53
+# @Author  : huangyl
+# @FileName: sendEmail.py
+# @Software: PyCharm
+# @Blog    ：https://hardelm.com
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.header import Header
+from email.utils import formataddr
+from readConfig import ReadConfig
+
+
+class SendEmail():
+    def __init__(self,sender_name,sender_pass):
+        localReadConfig = ReadConfig()
+        url = localReadConfig.get_url(&#39;url&#39;)
+        self.ip = url.split(&#39;/&#39;)[2].split(&#39;:&#39;)[0]
+        case_path = localReadConfig.get_path(&#39;case_path&#39;)
+        self.case = case_path.split(&#39;/&#39;)[-1].split(&#39;.&#39;)[0]
+        self.result_path = localReadConfig.get_path(&#39;result_path&#39;)
+        self.sender_name = sender_name
+        self.sender_pass = sender_pass
+
+    def sendMail(self,receiver_name,result_name):
+
+        try:
+            result_file = self.result_path + result_name
+            # 创建一个带附件的实例
+            message = MIMEMultipart()
+            message[&#39;From&#39;] = formataddr([&amp;quot;Jenkins&amp;quot;, self.sender_name])
+            message[&#39;To&#39;] = receiver_name
+            subject = &#39;Jenkins测试邮件&#39;
+            message[&#39;Subject&#39;] = subject
+
+            # 邮件正文内容
+            message.attach(MIMEText(self.ip + &#39;服务器&#39; + self.case + &#39;模块测试结果,详见附件！&#39;, &#39;plain&#39;, &#39;utf-8&#39;))
+
+            msg_xlsx = MIMEText(open(result_file, &#39;rb&#39;).read(), &#39;base64&#39;, &#39;utf-8&#39;)
+            msg_xlsx.add_header(&#39;Content-Disposition&#39;, &#39;attachment&#39;, filename=result_name)
+
+            message.attach(msg_xlsx)
+
+            server = smtplib.SMTP_SSL(&amp;quot;smtp.exmail.qq.com&amp;quot;, 465)
+            server.login(self.sender_name, self.sender_pass)
+            server.sendmail(self.sender_name, receiver_name.split(&#39;,&#39;), message.as_string())
+
+            server.quit()
+            ret = &#39;测试结果发送成功！&#39;
+        except Exception as f:
+            ret = &#39;测试结果发送失败&#39;
+            print(f)
+        return ret
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Python Excel基础操作</title>
+      <link>https://hardelmm.github.io/post/python-excel%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 27 Apr 2021 22:07:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python-excel%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      
+        <description>&lt;p&gt;1.新建excel&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open_excel = xlwt.Workbook(encoding=&#39;utf-8&#39;, style_compression=0) #style_compression参数设置是否压缩
+open_sheet = open_excel.add_sheet(SheetName)
+open_excel.save(result_filename)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2.写入/修改数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open_sheet.write(x,y,content)
+open_excel.save(result_filename)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.单元格样式修改&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Postman&#43;js</title>
+      <link>https://hardelmm.github.io/post/postman&#43;js/</link>
+      <pubDate>Fri, 28 Jun 2019 20:03:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/postman&#43;js/</guid>
+      
+        <description>&lt;h2 id=&#34;一postman适用场景&#34;&gt;一.postman适用场景&lt;/h2&gt;
+&lt;p&gt;postman相比其他接口测试工具轻，但也因此功能较为局限，比如很难做流程控制，断言方式只能通过脚本实现&lt;/p&gt;
+&lt;h2 id=&#34;二postman常用内置方法&#34;&gt;二.postman常用内置方法&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;pm.globals.set() #或postman.setglobalsVariable()以下等同
+pm.globals.unset()
+pm.globals.get()
+pm.environment.set()
+pm.environment.unset()
+pm.environment.get()
+pm.collectionVariables.set()
+pm.collectionVariables.unset()
+pm.collectionVariables.get()
+
+pm.sendRequest(&amp;quot;https://url/get&amp;quot;, function (err, response) {
+    console.log(response.json());
+});
+
+#判断状态码
+tests[&amp;quot;Status code is 200&amp;quot;] = responseCode.code === 200; #老写法
+pm.test(&amp;quot;Status code is 200&amp;quot;, function () {
+    pm.response.to.have.status(200);
+}); #新写法
+
+#判断响应时间
+tests[&amp;quot;Response time is less than &amp;quot; + timeTest + &amp;quot;ms&amp;quot;] = responseTime &amp;lt; timeTest; #老写法
+pm.test(&amp;quot;Response time is less than &amp;quot;+ timeTest + &amp;quot;ms&amp;quot;, function () {
+    pm.expect(pm.response.responseTime).to.be.below(timeTest);
+}); #新写法
+
+#判断响应头信息
+tests[&amp;quot;Content-Type is not Null&amp;quot;] = pm.response.to.have.header(&amp;quot;Content-Type&amp;quot;) !== null; 老写法
+pm.test(&amp;quot;Content-Type is not Null &amp;quot;, function () {
+    pm.response.to.have.header(&amp;quot;Content-Type&amp;quot;);
+}); #新写法
+
+#判断包含字符串
+pm.test(&amp;quot;字符串包含在返回值中”，function () {
+    pm.expect(pm.response.text()).to.include(“字符串”);
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;三js&#34;&gt;三.JS&lt;/h2&gt;
+&lt;p&gt;在postman中使用js，主要用来构建请求数据和解析返回数据&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;示例：
+
+#获取最大长度限制内随机字符串
+function randomString(len) {
+    len = len || 32;
+    var $chars = &#39;ABCDEFGHJKMNPQRSTWXYZ中文汉字简体汉字1234567890Ad繁体汉字__汉字_中文汉字简体汉字__&#39;;
+    var maxPos = $chars.length;
+    pwd = &#39;&#39;;
+    for (i = 0; i &amp;lt; len; i++) {
+        pwd += $chars.charAt(Math.floor(Math.random() * maxPos));
+　  }
+　  return pwd;
+}
+
+#js对象序列化为json
+JSON.stringify()
+#json字符串转为js对象
+JSON.parse()
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>HTTP协议基础</title>
+      <link>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 28 Jun 2019 00:03:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
+      <title>ansible学习总结</title>
+      <link>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 26 Jul 2018 12:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;之前一直想去学习下，因为各种原因暂时搁置了。最近公司在开发Saas产品，刚好用到ansible等内容，特此针对性了解学习下&lt;/p&gt;
+&lt;h1 id=&#34;ansible是啥&#34;&gt;ansible是啥&lt;/h1&gt;
+&lt;p&gt;一、ansible是一个部署工具，最直接的作用是批量部署应用服务，减少重复性的工作；同时避免人的问题，造成的指令理解不准确、执行不严格的问题&lt;/p&gt;
+&lt;p&gt;二、通过脚本实现模块化和标准化&lt;/p&gt;
+&lt;h1 id=&#34;ansible怎么装&#34;&gt;ansible怎么装&lt;/h1&gt;
+&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
+&lt;p&gt;1、确保管理节点（windows系统不能做控制主机）上安装了Python2.6或Python2.7&lt;/p&gt;
+&lt;p&gt;2、确保目标节点上安装了Python2.4或以上版本，如果版本低于Python2.5，需要额外安装一个模块（python-simplejson），可以通过yum、wget、pip进行安装，也可以通过ansible进行安装，因为即便未安装该模块，也可以使用ansible的“raw”模块和script模块，通过ansible的“raw”模块安装&lt;/p&gt;
+&lt;p&gt;3、管理节点使用ssh和目标节点通信，确保管理节点和目标节点都已安装且启动ssh服务&lt;/p&gt;
+&lt;p&gt;4、管理节点和目标节点默认使用ssh的客户端套件sftp进行文件传输，如果sftp不可用，可在ansible.cfg配置文件中配置成scp的方式&lt;/p&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;p&gt;我们只需要在管理节点安装ansible（获取ansible：&lt;a href=&#34;https://github.com/ansible/ansible&#34; title=&#34;ansible的GitHub地址&#34;&gt;https://github.com/ansible/ansible&lt;/a&gt;）&lt;/p&gt;
+&lt;p&gt;我们可以通过多种方式安装ansible，我在这只总结了两种：&lt;/p&gt;
+&lt;h3 id=&#34;从源码安装&#34;&gt;从源码安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone git://github.com/ansible/ansible.git --recursive
+$ cd ./ansible
+$ source ./hacking/env-setup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果没有安装pip, 先安装对应于Python版本的pip:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo easy_install pip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;以下的Python模块也需要安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo pip install paramiko PyYAML Jinja2 httplib2 six
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一旦运行env-setup脚本,就意味着Ansible从源码中运行起来了.默认的inventory文件是 /etc/ansible/hosts.inventory&lt;/p&gt;
+&lt;h3 id=&#34;通过yum方式安装&#34;&gt;通过yum方式安装&lt;/h3&gt;
+&lt;p&gt;1、通过Yum安装RPMs适用于 EPEL 6, 7, 以及仍在支持中的Fedora发行版.&lt;/p&gt;
+&lt;p&gt;2、托管节点的操作系统版本可以是更早的版本(如 EL5), 但必须安装 Python 2.4 或更高版本的Python.&lt;/p&gt;
+&lt;p&gt;3、Fedora 用户可直接安装Ansible, 但RHEL或CentOS用户,需要 配置 &lt;a href=&#34;https://fedoraproject.org/wiki/EPEL&#34; title=&#34;配置EPEL源&#34;&gt;EPEL源&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum install ansible
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;ansible怎么用&#34;&gt;ansible怎么用&lt;/h1&gt;
+&lt;p&gt;类似于数据和脚本分离的方式，主要的配置文件有ansible.cfg和hosts&lt;/p&gt;
+&lt;h2 id=&#34;inventory配置&#34;&gt;Inventory配置&lt;/h2&gt;
+&lt;p&gt;以下只对默认创建新的inventory文件配置进行总结举例，本文不对动态Inventory总结举例，我们可以根据实际需求自定义组变量或者主机变量，创建新的inventory文件&lt;/p&gt;
+&lt;h3 id=&#34;inventory配置举例&#34;&gt;Inventory配置举例&lt;/h3&gt;
+&lt;p&gt;1、ansible可以同时操作属于一个组的多台主机&lt;/p&gt;
+&lt;p&gt;2、组和主机的关系可以通过Inventory文件来配置，默认的文件路径为/etc/ansible/hosts&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例1：
+
+# Ex 1: A collection of hosts belonging to the &#39;webservers&#39; group
+[webservers]
+alpha.example.org
+beta.example.org
+192.168.1.100
+192.168.1.110
+
+# Ex 2: A collection of database servers in the &#39;dbservers&#39; group
+
+[dbservers]
+ 
+db01.intranet.mydomain.net
+db02.intranet.mydomain.net
+10.25.1.56
+10.25.1.57
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3、一个系统可以属于不同的组,比如一台服务器可以同时属于 webserver组 和 dbserver组&lt;/p&gt;
+&lt;p&gt;4、主机的SSH端口不是标准的22端口,可在主机名之后加上端口号,用冒号分隔.SSH 配置文件中列出的端口号不会在 paramiko 连接中使用,但会在 openssh 连接中使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例2：
+
+badwolf.example.com:5309
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5、静态IP地址，或者是通过隧道连接的地址,如果希望设置一些别名,但不是在系统的 host 文件中设置,那么可以设置如下:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例3：
+
+jumper ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;6、选择主机的连接类型和连接用户名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;例4：
+
+[targets]
+
+localhost              ansible_connection=local
+other1.example.com     ansible_connection=ssh        ansible_ssh_user=mpdehaan
+other2.example.com     ansible_connection=ssh        ansible_ssh_user=mdehaan
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;inventory常用参数说明&#34;&gt;Inventory常用参数说明&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ansible_ssh_host
+  将要连接的远程主机名.如果与想要设定的主机的别名不同的话,可通过此变量设置.
+
+ansible_ssh_port
+  ssh端口号.如果不是默认的端口号,可通过此变量设置.
+
+ansible_ssh_user
+  默认的 ssh 用户名
+
+ansible_ssh_pass
+  ssh 密码(这种方式并不安全,建议使用 --ask-pass 或 SSH 密钥)
+
+ansible_sudo_pass
+  sudo 密码(这种方式并不安全,建议使用 --ask-sudo-pass)
+
+ansible_sudo_exe (new in version 1.8)
+  sudo 命令路径(适用于1.8及以上版本)
+
+ansible_connection
+  与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible 1.2 以前默认使用 paramiko.1.2 以后默认使用 &#39;smart&#39;,&#39;smart&#39; 方式会根据是否支持 ControlPersist, 来判断&#39;ssh&#39; 方式是否可行.
+
+ansible_ssh_private_key_file
+  ssh 使用的私钥文件.适用于有多个密钥,而使用者不想使用 SSH 代理的情况.
+
+ansible_shell_type
+  目标系统的shell类型.默认情况下,命令的执行使用 &#39;sh&#39; 语法,可设置为 &#39;csh&#39; 或 &#39;fish&#39;.
+
+ansible_python_interpreter
+  目标主机的 python 路径.适用于的情况: 
+
+  系统中有多个 Python, 或者命令路径不是&amp;quot;/usr/bin/python&amp;quot;,比如  \*BSD, 或者 /usr/bin/python
+
+  不是 2.X 版本的 Python.我们不使用 &amp;quot;/usr/bin/env&amp;quot; 机制,因为这要求远程用户的路径设置正确,且要求 &amp;quot;python&amp;quot; 可执行程序名不可为 python以外的名字(实际有可能名为python26).
+
+  与 ansible_python_interpreter 的工作方式相同,可设定如 ruby 或 perl 的路径....
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;列举一个主机文件的例子：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;some_host         ansible_ssh_port=2222     ansible_ssh_user=manager
+aws_host          ansible_ssh_private_key_file=/home/example/.ssh/aws.pem
+freebsd_host      ansible_python_interpreter=/usr/local/bin/python
+ruby_module_host  ansible_ruby_interpreter=/usr/bin/ruby.1.9.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ansiblecfg&#34;&gt;ansible.cfg &lt;/h2&gt;
+&lt;h3 id=&#34;通用默认段&#34;&gt;通用默认段&lt;/h3&gt;
+&lt;p&gt;1、action_plugins：“行为”是 ansible中的一段代码,用来激活一些事件,例如执行一个模块,一个模版,等等&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;action_plugins = ~/.ansible/plugins/action_plugins/:/usr/share/ansible_plugins/action_plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;2、ansible_managed：Ansible-managed 是一个字符串.可以插入到Ansible配置模版系统生成的文件中.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ ansible_managed }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3、ask_pass：这个可以控制Ansible 剧本playbook 是否会自动默认弹出弹出密码，默认为no，与之类似的有ask_sudo_pass&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ask_pass=True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;未完待续&lt;/p&gt;
+&lt;p&gt;附：&lt;/p&gt;
+&lt;p&gt;参考资料：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://getansible.com/begin/an_zhuang_ansile&#34;&gt;https://getansible.com/begin/an_zhuang_ansile&lt;/a&gt;
+&lt;a href=&#34;https://showme.codes/2017-06-12/ansible-introduce/&#34;&gt;https://showme.codes/2017-06-12/ansible-introduce/&lt;/a&gt;
+&lt;a href=&#34;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&#34;&gt;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>领域模型中的几种实体类类型</title>
+      <link>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Thu, 05 Jul 2018 18:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;无&lt;/p&gt;
+&lt;h1 id=&#34;实体类&#34;&gt;实体类&lt;/h1&gt;
+&lt;p&gt;在面向对象概念基础之上，实体类的主要职责是用来存储和管理系统内部的信息，同时实体类可以有各种行为，但这些行为必须和它代表的实体对象密切相关。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/AgTHOEb.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;所以，实体类有两方面内容：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1、存储数据
+2、执行数据本身相关的操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;最简单的实体类是POJO类，包含属性以及属性对应的get和set方法，还有用于输出自身数据的toString方法。&lt;/p&gt;
+&lt;h1 id=&#34;领域模型中的实体类&#34;&gt;领域模型中的实体类&lt;/h1&gt;
+&lt;p&gt;领域模型中的实体类分为四种类型：VO、DTO、DO、PO，各种实体类用于不同业务层次间的交互，并会在层次内实现实体类之间的转化。&lt;/p&gt;
+&lt;p&gt;在业务框架模型的认知基础之上，各层之间实体传递如下所示：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://i.imgur.com/9b7pIg1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;po&#34;&gt;PO&lt;/h2&gt;
+&lt;p&gt;首先要知道ORM的概念，ORM即Object Relational Mapping（对象关系映射），也常叫做O/R Mapping。ORM用对象来表示关系数据，是将对象与关系型数据库绑定的一种模型。&lt;/p&gt;
+&lt;p&gt;PO即PersistentObject，称为持久化对象，它和关系型数据库的数据结构有一一对应的映射关系，通常数据表中的字段对应着PO的属性&lt;/p&gt;
+&lt;h2 id=&#34;dto&#34;&gt;DTO&lt;/h2&gt;
+&lt;p&gt;DTO（Data Transfer Object）：数据传输对象，这个概念来源于J2EE的设计模式，原来的目的是为了EJB的分布式应用提供粗粒度的数据实体，以减少分布式调用的次数，从而提高分布式调用的性能和降低网络负载，但在这里，我泛指用于展示层与服务层之间的数据传输对象。&lt;/p&gt;
+&lt;h2 id=&#34;do&#34;&gt;DO&lt;/h2&gt;
+&lt;p&gt;DO（Domain Object）：领域对象，就是从现实世界中抽象出来的有形或无形的业务实体。&lt;/p&gt;
+&lt;h2 id=&#34;vo&#34;&gt;VO&lt;/h2&gt;
+&lt;p&gt;VO（View Object）：视图对象，用于展示层，它的作用是把某个指定页面（或组件）的所有数据封装起来。&lt;/p&gt;
+&lt;h1 id=&#34;项目中的实体类&#34;&gt;项目中的实体类&lt;/h1&gt;
+&lt;p&gt;项目中常见的实体类有VO，DO和DTO，命名规则也常是以相应字符串结尾，如&lt;em&gt;VO.Java。但是DTO不总是遵循这个规则，而通常与他的用途有关，如写成&lt;/em&gt;Query.java，表示存储了一个查询条件。&lt;/p&gt;
+&lt;p&gt;项目中实体类出现的业务层次也没有这么严格，例如我们可以在视图层就组装一个DO，也可以将一个VO从持久层传出来，所以与业务分层相关联的划分方法显得有些冗余。&lt;/p&gt;
+&lt;p&gt;从项目代码中抽象出的理解是：VO对应于页面上需要显示的数据，DO对应于数据库中存储的数据，DTO对应于除二者之外需要进行传递的数据。&lt;/p&gt;
+&lt;h1 id=&#34;参考资料&#34;&gt;参考资料&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/paincupid/article/details/49924299&#34;&gt;https://blog.csdn.net/paincupid/article/details/49924299&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html&#34;&gt;https://www.cnblogs.com/yxnchinahlj/archive/2012/02/24/2366110.html&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>SSM框架原理、作用以及使用方法</title>
+      <link>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 06 Jun 2018 15:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;无&lt;/p&gt;
+&lt;h1 id=&#34;ssm简介&#34;&gt;SSM简介&lt;/h1&gt;
+&lt;h2 id=&#34;作用&#34;&gt;作用&lt;/h2&gt;
+&lt;p&gt;SSM框架是spring MVC ，spring和mybatis框架的整合，是标准的MVC模式，将整个系统划分为表现层，controller层，service层，DAO层四层&lt;/p&gt;
+&lt;p&gt;使用spring MVC负责请求的转发和视图管理&lt;/p&gt;
+&lt;p&gt;spring实现业务对象管理，mybatis作为数据对象的持久化引擎&lt;/p&gt;
+&lt;h2 id=&#34;原理&#34;&gt;原理&lt;/h2&gt;
+&lt;h3 id=&#34;springmvc&#34;&gt;SpringMVC&lt;/h3&gt;
+&lt;p&gt;1.Spring MVC拥有控制器，作用跟Struts类似，接收外部请求，解析参数传给服务层
+2.Spring MVC控制层，想当于Struts的作用&lt;/p&gt;
+&lt;p&gt;流程：&lt;/p&gt;
+&lt;p&gt;1.客户端发送请求到DispacherServlet（分发器）&lt;/p&gt;
+&lt;p&gt;2.由DispacherServlet控制器查询HanderMapping，找到处理请求的Controller&lt;/p&gt;
+&lt;p&gt;3.Controller调用业务逻辑处理后，返回ModelAndView&lt;/p&gt;
+&lt;p&gt;4.DispacherSerclet查询视图解析器，找到ModelAndView指定的视图&lt;/p&gt;
+&lt;p&gt;5.视图负责将结果显示到客户端&lt;/p&gt;
+&lt;h3 id=&#34;spring&#34;&gt;Spring&lt;/h3&gt;
+&lt;p&gt;我们平时开发接触最多的估计就是IOC容器，它可以装载bean（也就是我们Java中的类，当然也包括service dao里面的），有了这个机制，我们就不用在每次使用这个类的时候为它初始化，很少看到关键字new。另外spring的aop，事务管理等等都是我们经常用到的。&lt;/p&gt;
+&lt;p&gt;1.Spring容器属于协调上下文，管理对象间的依赖，提供事务机制
+2.Spring控制反转和依赖注入  创建对象交由容器管理，达到了解耦的作用&lt;/p&gt;
+&lt;h3 id=&#34;mybatis&#34;&gt;Mybatis&lt;/h3&gt;
+&lt;p&gt;mybatis是对jdbc的封装，它让数据库底层操作变的透明。mybatis的操作都是围绕一个sqlSessionFactory实例展开的。mybatis通过配置文件关联到各实体类的Mapper文件，Mapper文件中配置了每个类对数据库所需进行的sql语句映射。在每次与数据库交互时，通过sqlSessionFactory拿到一个sqlSession，再执行sql命令。&lt;/p&gt;
+&lt;p&gt;1.mybatis属于orm持久层框架，将业务实体 与数据表联合 起来
+2.mybatis主要用来操作数据库（数据库的增删改查）&lt;/p&gt;
+&lt;h2 id=&#34;使用方法&#34;&gt;使用方法&lt;/h2&gt;
+&lt;p&gt;IOC:控制反转，是一种降低对象之间耦合关系的设计思想，面试的时候最好能说出来个例子，加深理解。例子：租房子，以前租房子需要一个房子一个房子找，费时费力，然后现在加入一个房屋中介，把你需要的房型告诉中介，就可以直接选到需要的房子，中介就相当于spring容器。&lt;/p&gt;
+&lt;p&gt;AOP:面向切面编程，是面向对象开发的一种补充，它允许开发人员在不改变原来模型的基础上动态的修改模型以满足新的需求，如：动态的增加日志、安全或异常处理等。AOP使业务逻辑各部分间的耦合度降低，提高程序可重用性，提高开发效率。&lt;/p&gt;
+&lt;h3 id=&#34;分层介绍&#34;&gt;分层介绍&lt;/h3&gt;
+&lt;h4 id=&#34;持久层dao层mapper&#34;&gt;持久层：DAO层（mapper）####&lt;/h4&gt;
+&lt;p&gt;DAO层主要是做数据持久层的工作，负责与数据库进行联络的一些任务都封装在此&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;设计流程：
+
+1.DAO层的设计首先是设计DAO的接口
+
+2.然后在Spring的配置文件中定义此接口的实现类
+
+3.然后就可在模块中调用此接口来进行数据业务的处理，而不用关心此接口的具体实现类是哪个类，显得结构非常清晰
+
+4.DAO层的数据源配置，以及有关数据库连接的参数都在Spring的配置文件中进行配置。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;业务层service层&#34;&gt;业务层：Service层&lt;/h4&gt;
+&lt;p&gt;Service层主要负责业务模块的逻辑应用设计。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;设计流程：
+
+1.首先设计接口，再设计其实现的类
+
+2.接着再在Spring的配置文件中配置其实现的关联。这样我们就可以在应用中调用Service接口来进行业务处理。
+
+3.Service层的业务实现，具体要调用到已定义的DAO层的接口，
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;封装Service层的业务逻辑有利于通用的业务逻辑的独立性和重复利用性，程序显得非常简洁。&lt;/p&gt;
+&lt;h4 id=&#34;表现层controller层handler层&#34;&gt;表现层：Controller层（Handler层）####&lt;/h4&gt;
+&lt;p&gt;Controller层负责具体的业务模块流程的控制，&lt;/p&gt;
+&lt;p&gt;在此层里面要调用Service层的接口来控制业务流程，&lt;/p&gt;
+&lt;p&gt;控制的配置也同样是在Spring的配置文件里面进行，针对具体的业务流程，会有不同的控制器，我们具体的设计过程中可以将流程进行抽象归纳，设计出可以重复利用的子单元流程模块，这样不仅使程序结构变得清晰，也大大减少了代码量。&lt;/p&gt;
+&lt;h4 id=&#34;view层&#34;&gt;View层&lt;/h4&gt;
+&lt;p&gt;View层 此层与控制层结合比较紧密，需要二者结合起来协同工发。View层主要负责前台jsp页面的表示.&lt;/p&gt;
+&lt;h3 id=&#34;各层联系&#34;&gt;各层联系&lt;/h3&gt;
+&lt;p&gt;DAO层，Service层这两个层次都可以单独开发，互相的耦合度很低，完全可以独立进行，这样的一种模式在开发大项目的过程中尤其有优势&lt;/p&gt;
+&lt;p&gt;Controller，View层因为耦合度比较高，因而要结合在一起开发，但是也可以看作一个整体独立于前两个层进行开发。这样，在层与层之前我们只需要知道接口的定义，调用接口即可完成所需要的逻辑单元应用，一切显得非常清晰简单。&lt;/p&gt;
+&lt;p&gt;Service逻辑层设计&lt;/p&gt;
+&lt;p&gt;Service层是建立在DAO层之上的，建立了DAO层后才可以建立Service层，而Service层又是在Controller层之下的，因而Service层应该既调用DAO层的接口，又要提供接口给Controller层的类来进行调用，它刚好处于一个中间层的位置。每个模型都有一个Service接口，每个接口分别封装各自的业务处理方法。&lt;/p&gt;
+&lt;h3 id=&#34;要完成一个功能&#34;&gt;要完成一个功能&lt;/h3&gt;
+&lt;p&gt;1.先写实体类entity，定义对象的属性，（可以参照数据库中表的字段来设置，数据库的设计应该在所有编码开始之前）。&lt;/p&gt;
+&lt;p&gt;2.写Mapper.xml（Mybatis），其中定义你的功能，对应要对数据库进行的那些操作，比如 insert、selectAll、selectByKey、delete、update等。&lt;/p&gt;
+&lt;p&gt;3.写Mapper.java，将Mapper.xml中的操作按照id映射成Java函数。&lt;/p&gt;
+&lt;p&gt;4.写Service.java，为控制层提供服务，接受控制层的参数，完成相应的功能，并返回给控制层。&lt;/p&gt;
+&lt;p&gt;5.写Controller.java，连接页面请求和服务层，获取页面请求的参数，通过自动装配，映射不同的URL到相应的处理函数，并获取参数，对参数进行处理，之后传给服务层。&lt;/p&gt;
+&lt;p&gt;6.写JSP页面调用，请求哪些参数，需要获取什么数据。&lt;/p&gt;
+&lt;p&gt;如下所示：&lt;/p&gt;
+&lt;p&gt;DataBase ===&amp;gt; Entity ===&amp;gt; Mapper.xml ===&amp;gt; Mapper.Java===&amp;gt; Service.java ===&amp;gt; Controller.java ===&amp;gt; Jsp.&lt;/p&gt;
+&lt;h1 id=&#34;参考资料&#34;&gt;参考资料&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&#34;https://cloud.tencent.com/developer/article/1048878&#34;&gt;https://cloud.tencent.com/developer/article/1048878&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://blog.csdn.net/Phoenix_tgd/article/details/79677098&#34;&gt;https://blog.csdn.net/Phoenix_tgd/article/details/79677098&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Swagger</title>
+      <link>https://hardelmm.github.io/post/swagger/</link>
+      <pubDate>Tue, 15 May 2018 14:30:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/swagger/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;无&lt;/p&gt;
+&lt;h1 id=&#34;适用范围&#34;&gt;适用范围&lt;/h1&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Xtrabackup使用</title>
+      <link>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 09 May 2018 15:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</guid>
+      
+        <description>&lt;h1 id=&#34;xtrabackup介绍&#34;&gt;Xtrabackup介绍&lt;/h1&gt;
+&lt;p&gt;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。&lt;/p&gt;
+&lt;p&gt;Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表。&lt;/p&gt;
+&lt;h1 id=&#34;xtrabackup安装&#34;&gt;Xtrabackup安装&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
+yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
+tar -zxvf percona-xtrabackup-2.1.5.tar.gz
+cd percona-xtrabackup-2.1.5
+./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56）
+
+生成二进制文件，拷贝到指定目录并配置系统环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;数据库全备及其恢复&#34;&gt;数据库全备及其恢复&lt;/h1&gt;
+&lt;h2 id=&#34;备份&#34;&gt;备份&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
+该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定--defaults-file，默认值为/etc/my.cnf。备份成功后将会在备份目录下创建一个时间戳目录，在该目录下存放备份文件。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;恢复&#34;&gt;恢复&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=*** --use-memory=4G --apply-log /backup/mysql/data/2013-10-29_09-05-25
+第1步是apply-log，为了加快速度，一般建议设置--use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪
+
+innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=***  --copy-back /backup/mysql/data/2013-10-29_09-05-25
+第2步是copy-back，即把备份文件拷贝至原数据目录下
+
+第3步检查数据目录的所有者和权限是否正确
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;数据库增量备份及其恢复&#34;&gt;数据库增量备份及其恢复&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;注意：innobackupex 增量备份仅针对InnoDB这类支持事务的引擎，对于MyISAM等引擎，则仍然是全备
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;备份-1&#34;&gt;备份&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;增量备份需要基于全备，先假设我们已经有了一个全备（/backup/mysql/data/2013-10-29_09-05-25），我们需要在该全备的基础上做增量备份
+
+innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** --incremental-basedir=/backup/mysql/data/2013-10-29_09-05-25 --incremental /backup/mysql/data
+其中--incremental-basedir指向全备目录，--incremental指向增量备份的目录
+上面语句执行成功之后，会在--incremental执行的目录下创建一个时间戳子目录（本例中为：/backup/mysql/data/2013-10-29_09-52-37），在该目录下存放着增量备份的所有文件
+在备份目录下，有一个文件xtrabackup_checkpoints记录着备份信息，其中增量备份的from_lsn是从上一次增量备份的to_lsn开始的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;恢复-1&#34;&gt;恢复&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;innobackupex --apply-log --redo-only BASE-DIR
+innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
+innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
+BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。
+
+注意：最后一步的增量备份并没有--redo-only选项！还有，可以使用--use_memory提高性能
+
+以上完成之后，最终数据在BASE-DIR（全备目录）下
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java JDBC编程步骤</title>
+      <link>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Thu, 08 Mar 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;无&lt;/p&gt;
+&lt;h1 id=&#34;jdbc编程步骤&#34;&gt;JDBC编程步骤&lt;/h1&gt;
+&lt;h2 id=&#34;load-the-driver&#34;&gt;Load the Driver&lt;/h2&gt;
+&lt;h3 id=&#34;new一个实例&#34;&gt;new一个实例&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1、Class.forName()
+2、Class.forName().newInstance()
+3、new DriverName();
+注意：实例化时自动向DriverManager注册，不需要显式调用DriverManager.registerDriver方法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;connect-to-the-database&#34;&gt;Connect to the Database&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;连接数据库：DriverManager.getConnection()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;execute-the-sql&#34;&gt;Execute the SQL&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;执行SQL语句：
+1、Connection.CreateStatement()
+2、Statement.executeQuery()
+3、Statament.executeUpdate()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;retrieve-the-result-data&#34;&gt;Retrieve the result data&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;遍历结果：
+	while(rs.next())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;show-the-result-data&#34;&gt;Show the result data&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;数据类型转换：将从数据库中获取的各种数据类型转换成Java中的类型(getXXX)方法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;close&#34;&gt;Close&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;1、close the resultset
+2、close the statement
+3、close the connection
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;各种数据库连接方式以及步骤大同小异。&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>Java中Map遍历的几种方式</title>
+      <link>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 29 Jan 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid>
+      
+        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
+&lt;p&gt;最近在搞接口自动化，尚在摸索，特有此文记录一些琐碎所得。&lt;/p&gt;
+&lt;h1 id=&#34;map遍历的几种方式&#34;&gt;Map遍历的几种方式&lt;/h1&gt;
+&lt;h2 id=&#34;方法一在for-each循环中使用entries来遍历&#34;&gt;方法一、在for-each循环中使用entries来遍历&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
+for (Map.Entry&amp;lt;Integer, Integer&amp;gt; entry : map.entrySet()) {
+	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
+}
+
+1、最常见的并且在大多数情况下也是最可取的遍历方式。在键值都需要时使用
+2、如果遍历的是一个空的map对象，for-each循环将抛出NullPointerException，因此在遍历前应该检查空引用。
+3、for-each循环在java 5中被引入，所以该方法只能应用于java 5或更高的版本中。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;方法二在for-each循环中遍历keys或values&#34;&gt;方法二、在for-each循环中遍历keys或values&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
+//遍历map中的键
+for (Integer key : map.keySet()) {
+	System.out.println(&amp;quot;Key = &amp;quot; + key);
+}
+//遍历map中的值
+for (Integer value : map.values()) {
+	System.out.println(&amp;quot;Value = &amp;quot; + value);
+}
+
+1、如果只需要map中的键或者值，可以通过keySet或values来实现遍历，而不是用方法一的entrySet。
+2、该方法比entrySet遍历在性能上稍好（快了10%），而且代码更加干净
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;方法三使用iterator遍历&#34;&gt;方法三、使用Iterator遍历&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;使用泛型：
+Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
+Iterator&amp;lt;Map.Entry&amp;lt;Integer, Integer&amp;gt;&amp;gt; entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+	Map.Entry&amp;lt;Integer, Integer&amp;gt; entry = entries.next();
+	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
+}
+
+不使用泛型：
+Map map = new HashMap();
+Iterator entries = map.entrySet().iterator();
+while (entries.hasNext()) {
+	Map.Entry entry = (Map.Entry) entries.next();
+	Integer key = (Integer)entry.getKey();
+	Integer value = (Integer)entry.getValue();
+	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
+}
+
+1、方法三是在老版本java中惟一遍历map的方式
+2、有别于方法一和方法二，在遍历时可以调用iterator.remove()来删除entries
+3、根据javadoc的说明，如果在for-each遍历中尝试使用此方法，结果是不可预测的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;方法四通过键找值遍历效率低&#34;&gt;方法四、通过键找值遍历（效率低）&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
+for (Integer key : map.keySet()) {
+	Integer value = map.get(key);
+	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
+}
+1、此方法效率最低
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
+&lt;p&gt;如果仅需要键(keys)或值(values)使用方法二。如果你使用的语言版本低于java 5，或是打算在遍历时删除entries，必须使用方法三。否则使用方法一(键值都要)。&lt;/p&gt;
+</description>
+      
+    </item>
     
   </channel>
 </rss>

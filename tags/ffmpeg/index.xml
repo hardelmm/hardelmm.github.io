@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ffmpeg on HardElm</title>
+    <link>https://hardelmm.github.io/tags/ffmpeg/</link>
+    <description>Recent content in ffmpeg on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 12 Mar 2022 09:37:30 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/ffmpeg/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于ffmpeg进行转码工具的编写（未完成）</title>
+      <link>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</link>
+      <pubDate>Sat, 12 Mar 2022 09:37:30 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</guid>
+      <description>参考了一些资料，学习过程中尝试写一个转码工具，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool; import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import java.io.File; import java.io.IOException; import java.util.ArrayList; import java.util.Calendar; import java.util.List; import javax.swing.DefaultComboBoxModel; import javax.swing.JButton; import javax.swing.JComboBox; import</description>
+    </item>
+    
+  </channel>
+</rss>

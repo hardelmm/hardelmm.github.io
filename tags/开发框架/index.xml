@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>开发框架 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/</link>
+    <description>Recent content in 开发框架 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 05 Jul 2018 18:30:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>领域模型中的几种实体类类型</title>
+      <link>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Thu, 05 Jul 2018 18:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</guid>
+      <description>背景 无 实体类 在面向对象概念基础之上，实体类的主要职责是用来存储和管理系统内部的信息，同时实体类可以有各种行为，但这些行为必须和它代表的实体对</description>
+    </item>
+    
+    <item>
+      <title>SSM框架原理、作用以及使用方法</title>
+      <link>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 06 Jun 2018 15:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <description>背景 无 SSM简介 作用 SSM框架是spring MVC ，spring和mybatis框架的整合，是标准的MVC模式，将整个系统划分为表现层，cont</description>
+    </item>
+    
+  </channel>
+</rss>

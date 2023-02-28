@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>容器 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E5%AE%B9%E5%99%A8/</link>
+    <description>Recent content in 容器 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 13 Nov 2017 15:30:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E5%AE%B9%E5%99%A8/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>docker kubernetes</title>
+      <link>https://hardelmm.github.io/post/docker-kubernetes/</link>
+      <pubDate>Mon, 13 Nov 2017 15:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/docker-kubernetes/</guid>
+      <description>docker简介 啥是docker 1.Docker是一个开源项目，基于Go语言实现，已加入Linux基金会，遵从Apache2.0协议，项目代</description>
+    </item>
+    
+  </channel>
+</rss>

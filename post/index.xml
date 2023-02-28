@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on HardElm</title>
+    <link>https://hardelmm.github.io/post/</link>
+    <description>Recent content in Posts on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Tue, 28 Feb 2023 00:02:37 +0800</lastBuildDate><atom:link href="https://hardelmm.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据库性能调优要点</title>
+      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/</link>
+      <pubDate>Tue, 28 Feb 2023 00:02:37 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>st-load安装与使用</title>
+      <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+      <description>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负</description>
+    </item>
+    
+    <item>
+      <title>基于ffmpeg进行转码工具的编写（未完成）</title>
+      <link>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</link>
+      <pubDate>Sat, 12 Mar 2022 09:37:30 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/</guid>
+      <description>参考了一些资料，学习过程中尝试写一个转码工具，特此记录一些代码，留作参考。 一、GUI： package cn.com.huangyl.tool; import java.awt.BorderLayout; import java.awt.GridLayout; import java.awt.event.ActionEvent; import java.awt.event.ActionListener; import java.io.File; import java.io.IOException; import java.util.ArrayList; import java.util.Calendar; import java.util.List; import javax.swing.DefaultComboBoxModel; import javax.swing.JButton; import javax.swing.JComboBox; import</description>
+    </item>
+    
+    <item>
+      <title>Jenkins&#43;shell</title>
+      <link>https://hardelmm.github.io/post/jenkins&#43;shell/</link>
+      <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jenkins&#43;shell/</guid>
+      <description>1.获取目录下所有文件名 # ! / bin/ bash #采集—个函数 readDir() { local dir=$1 #获取传入的目录路径 local files #循环指定目录下的所有文件 files=$(ls &amp;quot;$dir &amp;quot;) for file in $files ; do local path=&amp;quot;$dir /$file&amp;quot; #指的是当</description>
+    </item>
+    
+    <item>
+      <title>Python接口自动化(数据驱动)</title>
+      <link>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
+      <pubDate>Thu, 27 Jan 2022 20:22:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
+      <description>一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&amp;quot;rb&amp;quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&amp;quot;w&amp;quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&amp;quot;configOne&amp;quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =</description>
+    </item>
+    
+    <item>
+      <title>Jmeter&#43;beanshell</title>
+      <link>https://hardelmm.github.io/post/jmeter&#43;beanshell/</link>
+      <pubDate>Sun, 16 Jan 2022 21:46:59 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jmeter&#43;beanshell/</guid>
+      <description>一.jmeter接口测试适用场景 jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。 通过扩</description>
+    </item>
+    
+    <item>
+      <title>Unittest和pytest</title>
+      <link>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</link>
+      <pubDate>Thu, 06 Jan 2022 21:56:13 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/unittest%E5%92%8Cpytest/</guid>
+      <description>一、用例编写规则 1.unittest提供了test cases、test suites、test fixtures、test runner相关的类,</description>
+    </item>
+    
+    <item>
+      <title>Python数据库基础操作</title>
+      <link>https://hardelmm.github.io/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Thu, 29 Apr 2021 21:52:23 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description>一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。</description>
+    </item>
+    
+    <item>
+      <title>Python文本基础操作</title>
+      <link>https://hardelmm.github.io/post/python%E6%96%87%E6%9C%AC%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 27 Apr 2021 22:16:57 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%96%87%E6%9C%AC%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python发送邮件</title>
+      <link>https://hardelmm.github.io/post/python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</link>
+      <pubDate>Tue, 27 Apr 2021 22:15:39 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
+      <description># -*- coding: utf-8 -*- # @Time : 2020/5/20 13:53 # @Author : huangyl # @FileName: sendEmail.py # @Software: PyCharm # @Blog ：https://hardelm.com import smtplib from email.mime.text import MIMEText from email.mime.multipart import MIMEMultipart from email.header import Header from email.utils import formataddr from readConfig import ReadConfig class SendEmail(): def __init__(self,sender_name,sender_pass): localReadConfig =</description>
+    </item>
+    
+    <item>
+      <title>Python Excel基础操作</title>
+      <link>https://hardelmm.github.io/post/python-excel%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Tue, 27 Apr 2021 22:07:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python-excel%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
+      <description>1.新建excel open_excel = xlwt.Workbook(encoding=&#39;utf-8&#39;, style_compression=0) #style_compression参数设置是否压缩 open_sheet = open_excel.add_sheet(SheetName) open_excel.save(result_filename) 2.写入/修改数据 open_sheet.write(x,y,content) open_excel.save(result_filename) 3.单元格样式修改</description>
+    </item>
+    
+    <item>
+      <title>Postman&#43;js</title>
+      <link>https://hardelmm.github.io/post/postman&#43;js/</link>
+      <pubDate>Fri, 28 Jun 2019 20:03:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/postman&#43;js/</guid>
+      <description>一.postman适用场景 postman相比其他接口测试工具轻，但也因此功能较为局限，比如很难做流程控制，断言方式只能通过脚本实现 二.pos</description>
+    </item>
+    
+    <item>
+      <title>HTTP协议基础</title>
+      <link>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</link>
+      <pubDate>Fri, 28 Jun 2019 00:03:21 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ansible学习总结</title>
+      <link>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 26 Jul 2018 12:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 之前一直想去学习下，因为各种原因暂时搁置了。最近公司在开发Saas产品，刚好用到ansible等内容，特此针对性了解学习下 ansible</description>
+    </item>
+    
+    <item>
+      <title>领域模型中的几种实体类类型</title>
+      <link>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</link>
+      <pubDate>Thu, 05 Jul 2018 18:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</guid>
+      <description>背景 无 实体类 在面向对象概念基础之上，实体类的主要职责是用来存储和管理系统内部的信息，同时实体类可以有各种行为，但这些行为必须和它代表的实体对</description>
+    </item>
+    
+    <item>
+      <title>SSM框架原理、作用以及使用方法</title>
+      <link>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 06 Jun 2018 15:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
+      <description>背景 无 SSM简介 作用 SSM框架是spring MVC ，spring和mybatis框架的整合，是标准的MVC模式，将整个系统划分为表现层，cont</description>
+    </item>
+    
+    <item>
+      <title>Swagger</title>
+      <link>https://hardelmm.github.io/post/swagger/</link>
+      <pubDate>Tue, 15 May 2018 14:30:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/swagger/</guid>
+      <description>背景 无 适用范围 总结</description>
+    </item>
+    
+    <item>
+      <title>Xtrabackup使用</title>
+      <link>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 09 May 2018 15:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</guid>
+      <description>Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）</description>
+    </item>
+    
+    <item>
+      <title>Java JDBC编程步骤</title>
+      <link>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</link>
+      <pubDate>Thu, 08 Mar 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</guid>
+      <description>背景 无 JDBC编程步骤 Load the Driver new一个实例 1、Class.forName() 2、Class.forName().newInstance() 3</description>
+    </item>
+    
+    <item>
+      <title>Java中Map遍历的几种方式</title>
+      <link>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link>
+      <pubDate>Mon, 29 Jan 2018 15:35:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid>
+      <description>背景 最近在搞接口自动化，尚在摸索，特有此文记录一些琐碎所得。 Map遍历的几种方式 方法一、在for-each循环中使用entries来遍历 Map&amp;lt;Integer, Integer&amp;gt;</description>
+    </item>
+    
+  </channel>
+</rss>

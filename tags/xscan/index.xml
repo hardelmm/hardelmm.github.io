@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xscan on HardElm</title>
+    <link>https://hardelmm.github.io/tags/xscan/</link>
+    <description>Recent content in xscan on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 18 Oct 2017 12:00:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/xscan/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>xscan漏扫工具的使用</title>
+      <link>https://hardelmm.github.io/post/%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Wed, 18 Oct 2017 12:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%AE%89%E5%85%A8%E6%B5%8B%E8%AF%95%E4%B8%8Exscan%E6%BC%8F%E6%89%AB%E5%B7%A5%E5%85%B7%E7%9A%84%E4%BD%BF%E7%94%A8/</guid>
+      <description>背景 略 xscan有什么功能 采用多线程方式对指定IP地址段(或单机)进行安全漏洞检测，支持插件功能。扫描内容包括：远程服务类型、操作系统类型及</description>
+    </item>
+    
+  </channel>
+</rss>

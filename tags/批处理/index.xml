@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>批处理 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%89%B9%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 批处理 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Jul 2017 10:50:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%89%B9%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>批处理修改DNS</title>
+      <link>https://hardelmm.github.io/post/%E6%89%B9%E5%A4%84%E7%90%86%E4%BF%AE%E6%94%B9dns/</link>
+      <pubDate>Wed, 12 Jul 2017 10:50:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%89%B9%E5%A4%84%E7%90%86%E4%BF%AE%E6%94%B9dns/</guid>
+      <description>工作中经常要登录线上环境和内网测试环境，手动修改DNS甚是麻烦，特写下如下命令，顺带简单学习下批处理命令： @echo off cls echo 请选择DNS设置为内网（y</description>
+    </item>
+    
+  </channel>
+</rss>

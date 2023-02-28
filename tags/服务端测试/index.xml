@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务端测试 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95/</link>
+    <description>Recent content in 服务端测试 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 24 Nov 2017 19:30:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>服务端测试思路</title>
+      <link>https://hardelmm.github.io/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Fri, 24 Nov 2017 19:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/</guid>
+      <description>背景 针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试 我们公司有哪些服务端的应用： 1、web端的服务，ons</description>
+    </item>
+    
+  </channel>
+</rss>

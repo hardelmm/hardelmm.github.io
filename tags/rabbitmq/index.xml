@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RabbitMQ on HardElm</title>
+    <link>https://hardelmm.github.io/tags/rabbitmq/</link>
+    <description>Recent content in RabbitMQ on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 12 Jul 2017 09:22:50 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RabbitMQ学习总结</title>
+      <link>https://hardelmm.github.io/post/rabbitmq/</link>
+      <pubDate>Wed, 12 Jul 2017 09:22:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/rabbitmq/</guid>
+      <description>什么是RabbitMQ Message Queue（MQ），消息队列是一种应用程序对应用程序的通信方法。应用程序通过读写MQ的消息（针对应用程序的数据）来通</description>
+    </item>
+    
+  </channel>
+</rss>
