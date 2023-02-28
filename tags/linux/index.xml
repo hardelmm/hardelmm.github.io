@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Linux on HardElm</title>
+    <title>linux on HardElm</title>
     <link>https://hardelmm.github.io/tags/linux/</link>
-    <description>Recent content in Linux on HardElm</description>
+    <description>Recent content in linux on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 29 Nov 2017 00:30:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />

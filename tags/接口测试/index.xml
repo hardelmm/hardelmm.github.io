@@ -52,5 +52,23 @@
       <description></description>
     </item>
     
+    <item>
+      <title>接口自动化测试</title>
+      <link>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/</link>
+      <pubDate>Wed, 27 Dec 2017 15:37:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E5%AE%9E%E8%B7%B5/</guid>
+      <description>背景 公司新近开发了直播云接口服务，提供给华为云市场，我参与了接口的测试工作，深感手工测试效率的低下，使用Postman、SoapUI或者是J</description>
+    </item>
+    
+    <item>
+      <title>对HTTP协议认识的简要总结</title>
+      <link>https://hardelmm.github.io/post/%E5%AF%B9http%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%86%E7%9A%84%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 27 Nov 2017 12:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%AF%B9http%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%86%E7%9A%84%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结 http协议基础 http通过一个可靠的链接来交换信息，是一个</description>
+    </item>
+    
   </channel>
 </rss>

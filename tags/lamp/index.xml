@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>LAMP on HardElm</title>
+    <title>lamp on HardElm</title>
     <link>https://hardelmm.github.io/tags/lamp/</link>
-    <description>Recent content in LAMP on HardElm</description>
+    <description>Recent content in lamp on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 08 Nov 2017 16:00:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/lamp/index.xml" rel="self" type="application/rss+xml" />

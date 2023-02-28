@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>测试理论 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/</link>
+    <description>Recent content in 测试理论 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 24 Nov 2017 19:30:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E7%90%86%E8%AE%BA/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>服务端测试思路</title>
+      <link>https://hardelmm.github.io/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/</link>
+      <pubDate>Fri, 24 Nov 2017 19:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/</guid>
+      <description>背景 针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试 我们公司有哪些服务端的应用： 1、web端的服务，ons</description>
+    </item>
+    
+    <item>
+      <title>自动化测试的层级</title>
+      <link>https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%B1%82%E7%BA%A7/</link>
+      <pubDate>Mon, 16 Oct 2017 18:20:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%B1%82%E7%BA%A7/</guid>
+      <description>背景 接《自动化测试的适用范围》 会用工具就是自动化测试工程师吗 会使用自动化测试工具的测试人员不能够称之为完全的自动化测试人员，这类测试人员被称</description>
+    </item>
+    
+    <item>
+      <title>自动化测试的适用范围</title>
+      <link>https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4/</link>
+      <pubDate>Wed, 12 Jul 2017 09:30:50 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4/</guid>
+      <description>背景 无 适用范围 不适合自动化测试的情况 1、定制型项目（一次性的）。 为客户定制的项目，维护期由客户方承担的，甚至采用的开发语言、运行环境也是客户</description>
+    </item>
+    
+  </channel>
+</rss>

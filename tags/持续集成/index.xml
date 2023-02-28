@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>持续集成 on HardElm</title>
+    <link>https://hardelmm.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</link>
+    <description>Recent content in 持续集成 on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 27 Jan 2022 20:32:36 +0800</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jenkins&#43;shell</title>
+      <link>https://hardelmm.github.io/post/jenkins&#43;shell/</link>
+      <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jenkins&#43;shell/</guid>
+      <description>1.获取目录下所有文件名 # ! / bin/ bash #采集—个函数 readDir() { local dir=$1 #获取传入的目录路径 local files #循环指定目录下的所有文件 files=$(ls &amp;quot;$dir &amp;quot;) for file in $files ; do local path=&amp;quot;$dir /$file&amp;quot; #指的是当</description>
+    </item>
+    
+    <item>
+      <title>Python接口自动化(数据驱动)</title>
+      <link>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</link>
+      <pubDate>Thu, 27 Jan 2022 20:22:36 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/</guid>
+      <description>一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&amp;quot;rb&amp;quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&amp;quot;w&amp;quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&amp;quot;configOne&amp;quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =</description>
+    </item>
+    
+    <item>
+      <title>ansible学习总结</title>
+      <link>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Thu, 26 Jul 2018 12:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 之前一直想去学习下，因为各种原因暂时搁置了。最近公司在开发Saas产品，刚好用到ansible等内容，特此针对性了解学习下 ansible</description>
+    </item>
+    
+    <item>
+      <title>docker kubernetes</title>
+      <link>https://hardelmm.github.io/post/docker-kubernetes/</link>
+      <pubDate>Mon, 13 Nov 2017 15:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/docker-kubernetes/</guid>
+      <description>docker简介 啥是docker 1.Docker是一个开源项目，基于Go语言实现，已加入Linux基金会，遵从Apache2.0协议，项目代</description>
+    </item>
+    
+  </channel>
+</rss>
