@@ -35,6 +35,15 @@
     </item>
     
     <item>
+      <title>关于Jenkins持续构建的初步了解</title>
+      <link>https://hardelmm.github.io/post/jenkins/</link>
+      <pubDate>Sat, 25 Nov 2017 01:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jenkins/</guid>
+      <description>背景 略 什么是Jenkins 什么是Jenkins Jenkins是一个用Java编写的开源的持续集成工具，提供了软件开发的持续集成服务，可监控并</description>
+    </item>
+    
+    <item>
       <title>docker kubernetes</title>
       <link>https://hardelmm.github.io/post/docker-kubernetes/</link>
       <pubDate>Mon, 13 Nov 2017 15:30:00 +0000</pubDate>

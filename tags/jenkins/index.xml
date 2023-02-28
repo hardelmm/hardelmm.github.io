@@ -25,5 +25,14 @@
       <description>一.读取配置文件 import codecs import configparser configPath = &#39;&#39; class ReadConfig: def __int__(self): fd = open(configPath,&amp;quot;rb&amp;quot;) data = fd.read() #remove BOM if data[:3] == codecs.BOM_UTF8: data = data[3:] file = codecs.open(configPath,&amp;quot;w&amp;quot;) file.write(data) file.close() fd.close() self.cf = configparser.ConfigParser() self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) def get_configOne(self,name): value = self.cf.get(&amp;quot;configOne&amp;quot;,name) return value #...... def get_all(self,*args): confs = {} for sec in args: options = self.cf.options(sec) for i in options: confs[i] =</description>
     </item>
     
+    <item>
+      <title>关于Jenkins持续构建的初步了解</title>
+      <link>https://hardelmm.github.io/post/jenkins/</link>
+      <pubDate>Sat, 25 Nov 2017 01:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/jenkins/</guid>
+      <description>背景 略 什么是Jenkins 什么是Jenkins Jenkins是一个用Java编写的开源的持续集成工具，提供了软件开发的持续集成服务，可监控并</description>
+    </item>
+    
   </channel>
 </rss>
