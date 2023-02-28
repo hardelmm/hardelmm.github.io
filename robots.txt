@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://hardelmm.github.io/sitemap.xml
