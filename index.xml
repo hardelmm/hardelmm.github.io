@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>关于</title>
+      <link>https://hardelmm.github.io/about/</link>
+      <pubDate>Tue, 28 Feb 2023 15:12:50 +0800</pubDate>
+      
+      <guid>https://hardelmm.github.io/about/</guid>
+      
+        <description></description>
+      
+    </item>
+    
+    <item>
       <title>数据库性能调优要点</title>
       <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/</link>
       <pubDate>Tue, 28 Feb 2023 00:02:37 +0800</pubDate>
@@ -1770,77 +1781,6 @@ BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，I
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
 &lt;p&gt;各种数据库连接方式以及步骤大同小异。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java中Map遍历的几种方式</title>
-      <link>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Mon, 29 Jan 2018 15:35:50 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid>
-      
-        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
-&lt;p&gt;最近在搞接口自动化，尚在摸索，特有此文记录一些琐碎所得。&lt;/p&gt;
-&lt;h1 id=&#34;map遍历的几种方式&#34;&gt;Map遍历的几种方式&lt;/h1&gt;
-&lt;h2 id=&#34;方法一在for-each循环中使用entries来遍历&#34;&gt;方法一、在for-each循环中使用entries来遍历&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-for (Map.Entry&amp;lt;Integer, Integer&amp;gt; entry : map.entrySet()) {
-	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
-}
-
-1、最常见的并且在大多数情况下也是最可取的遍历方式。在键值都需要时使用
-2、如果遍历的是一个空的map对象，for-each循环将抛出NullPointerException，因此在遍历前应该检查空引用。
-3、for-each循环在java 5中被引入，所以该方法只能应用于java 5或更高的版本中。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法二在for-each循环中遍历keys或values&#34;&gt;方法二、在for-each循环中遍历keys或values&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-//遍历map中的键
-for (Integer key : map.keySet()) {
-	System.out.println(&amp;quot;Key = &amp;quot; + key);
-}
-//遍历map中的值
-for (Integer value : map.values()) {
-	System.out.println(&amp;quot;Value = &amp;quot; + value);
-}
-
-1、如果只需要map中的键或者值，可以通过keySet或values来实现遍历，而不是用方法一的entrySet。
-2、该方法比entrySet遍历在性能上稍好（快了10%），而且代码更加干净
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法三使用iterator遍历&#34;&gt;方法三、使用Iterator遍历&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;使用泛型：
-Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-Iterator&amp;lt;Map.Entry&amp;lt;Integer, Integer&amp;gt;&amp;gt; entries = map.entrySet().iterator();
-while (entries.hasNext()) {
-	Map.Entry&amp;lt;Integer, Integer&amp;gt; entry = entries.next();
-	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
-}
-
-不使用泛型：
-Map map = new HashMap();
-Iterator entries = map.entrySet().iterator();
-while (entries.hasNext()) {
-	Map.Entry entry = (Map.Entry) entries.next();
-	Integer key = (Integer)entry.getKey();
-	Integer value = (Integer)entry.getValue();
-	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
-}
-
-1、方法三是在老版本java中惟一遍历map的方式
-2、有别于方法一和方法二，在遍历时可以调用iterator.remove()来删除entries
-3、根据javadoc的说明，如果在for-each遍历中尝试使用此方法，结果是不可预测的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法四通过键找值遍历效率低&#34;&gt;方法四、通过键找值遍历（效率低）&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-for (Integer key : map.keySet()) {
-	Integer value = map.get(key);
-	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
-}
-1、此方法效率最低
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-&lt;p&gt;如果仅需要键(keys)或值(values)使用方法二。如果你使用的语言版本低于java 5，或是打算在遍历时删除entries，必须使用方法三。否则使用方法一(键值都要)。&lt;/p&gt;
 </description>
       
     </item>

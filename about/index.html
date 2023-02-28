@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          Xtrabackup使用 - HardElm
+          关于 - HardElm
         </title>
     
 
@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）" />
+  <meta name="description" content="" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/" />
+<link rel="canonical" href="https://hardelmm.github.io/about/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="Xtrabackup使用" />
-<meta property="og:description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）" />
+<meta property="og:title" content="关于" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2018-05-09T15:00:00+00:00" />
-<meta property="article:modified_time" content="2018-05-09T15:00:00+00:00" />
-<meta itemprop="name" content="Xtrabackup使用">
-<meta itemprop="description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）"><meta itemprop="datePublished" content="2018-05-09T15:00:00+00:00" />
-<meta itemprop="dateModified" content="2018-05-09T15:00:00+00:00" />
-<meta itemprop="wordCount" content="1180">
-<meta itemprop="keywords" content="xtrabackup,数据库," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Xtrabackup使用"/>
-<meta name="twitter:description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）"/>
+<meta property="og:url" content="https://hardelmm.github.io/about/" /><meta property="article:section" content="" />
+<meta property="article:published_time" content="2023-02-28T15:12:50+08:00" />
+<meta property="article:modified_time" content="2023-02-28T15:12:50+08:00" />
+<meta itemprop="name" content="关于">
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2023-02-28T15:12:50+08:00" />
+<meta itemprop="dateModified" content="2023-02-28T15:12:50+08:00" />
+<meta itemprop="wordCount" content="0">
+<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="关于"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -302,15 +302,15 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">Xtrabackup使用</h1>
+          <h1 class="post-title">关于</h1>
           
 
           <div class="post-meta">
 
 
   <div class="post-meta-time">
-    <time datetime="2018-05-09">
-      2018-05-09
+    <time datetime="2023-02-28">
+      2023-02-28
     </time>
   </div>
 
@@ -319,8 +319,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1180 字 -
-        预计阅读 3 分钟
+        约 0 字 -
+        预计阅读 0 分钟
       </span>
 
     
@@ -339,54 +339,7 @@
 
         
         <div class="post-content">
-          <h1 id="xtrabackup介绍">Xtrabackup介绍</h1>
-<p>Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。</p>
-<p>Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表。</p>
-<h1 id="xtrabackup安装">Xtrabackup安装</h1>
-<pre><code>wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
-yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
-tar -zxvf percona-xtrabackup-2.1.5.tar.gz
-cd percona-xtrabackup-2.1.5
-./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56）
-
-生成二进制文件，拷贝到指定目录并配置系统环境变量
-</code></pre>
-<h1 id="数据库全备及其恢复">数据库全备及其恢复</h1>
-<h2 id="备份">备份</h2>
-<pre><code>innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
-该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定--defaults-file，默认值为/etc/my.cnf。备份成功后将会在备份目录下创建一个时间戳目录，在该目录下存放备份文件。
-</code></pre>
-<h2 id="恢复">恢复</h2>
-<pre><code>innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=*** --use-memory=4G --apply-log /backup/mysql/data/2013-10-29_09-05-25
-第1步是apply-log，为了加快速度，一般建议设置--use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪
-
-innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=***  --copy-back /backup/mysql/data/2013-10-29_09-05-25
-第2步是copy-back，即把备份文件拷贝至原数据目录下
-
-第3步检查数据目录的所有者和权限是否正确
-</code></pre>
-<h1 id="数据库增量备份及其恢复">数据库增量备份及其恢复</h1>
-<pre><code>注意：innobackupex 增量备份仅针对InnoDB这类支持事务的引擎，对于MyISAM等引擎，则仍然是全备
-</code></pre>
-<h2 id="备份-1">备份</h2>
-<pre><code>增量备份需要基于全备，先假设我们已经有了一个全备（/backup/mysql/data/2013-10-29_09-05-25），我们需要在该全备的基础上做增量备份
-
-innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** --incremental-basedir=/backup/mysql/data/2013-10-29_09-05-25 --incremental /backup/mysql/data
-其中--incremental-basedir指向全备目录，--incremental指向增量备份的目录
-上面语句执行成功之后，会在--incremental执行的目录下创建一个时间戳子目录（本例中为：/backup/mysql/data/2013-10-29_09-52-37），在该目录下存放着增量备份的所有文件
-在备份目录下，有一个文件xtrabackup_checkpoints记录着备份信息，其中增量备份的from_lsn是从上一次增量备份的to_lsn开始的
-</code></pre>
-<h2 id="恢复-1">恢复</h2>
-<pre><code>innobackupex --apply-log --redo-only BASE-DIR
-innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
-innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
-BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。
-
-注意：最后一步的增量备份并没有--redo-only选项！还有，可以使用--use_memory提高性能
-
-以上完成之后，最终数据在BASE-DIR（全备目录）下
-</code></pre>
-
+          
         </div>
 
         
@@ -399,7 +352,7 @@ BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，I
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2018-05-09
+      2023-02-28
       
     </span>
   </p>
@@ -434,43 +387,13 @@ BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，I
 
 
         <footer class="post-footer">
-          <div class="post-tags">
-              <a href="https://hardelmm.github.io/tags/xtrabackup/">xtrabackup</a>
-                <a href="https://hardelmm.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
-                
-            </div>
+          
 
 
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/swagger/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">Swagger</span>
-                <span class="prev-text nav-mobile">上一篇</span>
-              </a>
             
-              <a class="next" href="/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/">
-                <span class="next-text nav-default">Java JDBC编程步骤</span>
-                <span class="prev-text nav-mobile">下一篇</span>
-                
-                <i class="iconfont">
-                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
-</svg>
-
-                </i>
-              </a>
           </nav>
         </footer>
       </article>
@@ -517,22 +440,7 @@ BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，I
     </div>
 
     
-    <nav class="toc" id="toc">
-    <div class="toc-title">文章目录</div>
-    <div class="toc-content custom-scrollbar">
-      <nav id="TableOfContents">
-  <ul>
-    <li><a href="#备份">备份</a></li>
-    <li><a href="#恢复">恢复</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#备份-1">备份</a></li>
-    <li><a href="#恢复-1">恢复</a></li>
-  </ul>
-</nav>
-    </div>
-  </nav>
+    
 
 
   </div>
