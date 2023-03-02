@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 select column1, column2 ... from table_name; #按列名查询数据 select * from table_name; #查询" />
+  <meta name="description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -68,18 +68,18 @@
 
 
 <meta property="og:title" content="Sql基础语法" />
-<meta property="og:description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 select column1, column2 ... from table_name; #按列名查询数据 select * from table_name; #查询" />
+<meta property="og:description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-03-18T20:27:41+08:00" />
 <meta property="article:modified_time" content="2017-03-18T20:27:41+08:00" />
 <meta itemprop="name" content="Sql基础语法">
-<meta itemprop="description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 select column1, column2 ... from table_name; #按列名查询数据 select * from table_name; #查询"><meta itemprop="datePublished" content="2017-03-18T20:27:41+08:00" />
+<meta itemprop="description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询"><meta itemprop="datePublished" content="2017-03-18T20:27:41+08:00" />
 <meta itemprop="dateModified" content="2017-03-18T20:27:41+08:00" />
-<meta itemprop="wordCount" content="1843">
+<meta itemprop="wordCount" content="1850">
 <meta itemprop="keywords" content="数据库,sql语句," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sql基础语法"/>
-<meta name="twitter:description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 select column1, column2 ... from table_name; #按列名查询数据 select * from table_name; #查询"/>
+<meta name="twitter:description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1843 字 -
+        约 1850 字 -
         预计阅读 4 分钟
       </span>
 
@@ -324,23 +324,20 @@
           <h2 id="一查询数据库">一.查询数据库</h2>
 <h3 id="1单表查询">1.单表查询</h3>
 <p>select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。</p>
-<pre><code>select column1, column2 ... from table_name; #按列名查询数据
-select * from table_name; #查询表内全部数据
-
-select * from table_name order by column1,column2.. desc/asc; #查询表内数据，按列降序/升序排列
-select distinct column1, column2 ...from table_name; #按列名查询去重后的数据
-
-select * from table_name where condition1 and/or condition2; #按条件查询表内数据
-select * from table_name where column_name1 &gt; num1 and/or column_name2 &lt; num2; #查询表中column_name1大于num1且(或)column_name2小于num的数据
-select * from table_name where column_name between num1 and num2; #查询列中介于num1和num2的值
-select * from table_name where column_name in (num1,num2,num3..); #查询列中等于num1,num2,num3的值
-select * from table_name where column_name like '%m_'; #查询以m在倒数第二位的所有内容(%表示多个字符，_下划线表示一个字符)
-
-逻辑运算的优先级：
-
-()  not and or
-</code></pre>
-<p>大多数数据库软件系统都允许使用编程函数在结果集中进行导航，比如：Move-To-First-Record、Get-Record-Content、Move-To-Next-Record 等等。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>column1,<span style="color:#bbb"> </span>column2<span style="color:#bbb"> </span>...<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#按列名查询数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询表内全部数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">order</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">by</span><span style="color:#bbb"> </span>column1,column2..<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">desc</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">asc</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询表内数据，按列降序/升序排列
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">distinct</span><span style="color:#bbb"> </span>column1,<span style="color:#bbb"> </span>column2<span style="color:#bbb"> </span>...<span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#按列名查询去重后的数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>condition1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">and</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">or</span><span style="color:#bbb"> </span>condition2;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#按条件查询表内数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>column_name1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&gt;</span><span style="color:#bbb"> </span>num1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">and</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">or</span><span style="color:#bbb"> </span>column_name2<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">&lt;</span><span style="color:#bbb"> </span>num2;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询表中column_name1大于num1且(或)column_name2小于num的数据
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>column_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">between</span><span style="color:#bbb"> </span>num1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">and</span><span style="color:#bbb"> </span>num2;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询列中介于num1和num2的值
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>column_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">in</span><span style="color:#bbb"> </span>(num1,num2,num3..);<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询列中等于num1,num2,num3的值
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>column_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">like</span><span style="color:#bbb"> </span><span style="color:#d14">&#39;%m_&#39;</span>;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#查询以m在倒数第二位的所有内容(%表示多个字符，_下划线表示一个字符)
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">#逻辑运算的优先级：()  not and or
+</span></span></span></code></pre></div><p>大多数数据库软件系统都允许使用编程函数在结果集中进行导航，比如：Move-To-First-Record、Get-Record-Content、Move-To-Next-Record 等等。</p>
 <h3 id="2多表联查">2.多表联查</h3>
 <p>1)通过select语句进行查询</p>
 <p>以表中相同的字段信息作为条件，进行两个表联查，但在实际开发中不建议这样使用，最好用主外键约束来实现。</p>

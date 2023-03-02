@@ -339,11 +339,8 @@ MQ是遵循<a href="http://rabbitmq.mr-ping.com/AMQP/AMQP_0-9-1_Model_Explained.
 <h2 id="安装部署">安装部署</h2>
 <h3 id="1安装erlang">1、安装erlang</h3>
 <p>1）下载erlang源码，解压，进入$erlang目录，安装依赖包：</p>
-<pre><code>yum install tk
-yum install tcl
-yum install unixODBC
-</code></pre>
-<p>2）编译erlang</p>
+<p><code>yum install tk yum install tcl yum install unixODBC</code>
+2）编译erlang</p>
 <pre><code>./configure –prefix=/usr/local/erlang
 ./make
 ./make install
