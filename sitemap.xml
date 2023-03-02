@@ -513,7 +513,7 @@
   </url>
   
   <url>
-    <loc>https://hardelmm.github.io/post/mysql%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2017-07-12T17:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -639,7 +639,14 @@
   </url>
   
   <url>
-    <loc>https://hardelmm.github.io/post/mysql%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://hardelmm.github.io/post/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2017-03-18T20:27:41+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hardelmm.github.io/tags/sql%E8%AF%AD%E5%8F%A5/</loc>
     <lastmod>2017-03-18T20:27:41+08:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>

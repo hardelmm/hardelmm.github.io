@@ -29,7 +29,7 @@
       
       <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
       
-        <description>&lt;p&gt;项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。&lt;/p&gt;
+        <description>&lt;p&gt;项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。&lt;/p&gt;
 &lt;h1 id=&#34;什么是st-load&#34;&gt;什么是st-load&lt;/h1&gt;
 &lt;p&gt;服务器负载测试工具(st-load)：&lt;/p&gt;
 &lt;p&gt;st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。

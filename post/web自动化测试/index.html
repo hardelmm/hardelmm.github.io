@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          web自动化测试 - HardElm
+          web自动化测试初体验 - HardElm
         </title>
     
 
@@ -67,18 +67,18 @@
 
 
 
-<meta property="og:title" content="web自动化测试" />
+<meta property="og:title" content="web自动化测试初体验" />
 <meta property="og:description" content="进行前需要了解的 测试框架 使用哪种测试框架要根据所测产品的类型来进行选择。 桌面程序的工具有：QTP、 AutoRunner等 web应用的工具有：" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/web%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-11-25T19:30:00+00:00" />
 <meta property="article:modified_time" content="2017-11-25T19:30:00+00:00" />
-<meta itemprop="name" content="web自动化测试">
+<meta itemprop="name" content="web自动化测试初体验">
 <meta itemprop="description" content="进行前需要了解的 测试框架 使用哪种测试框架要根据所测产品的类型来进行选择。 桌面程序的工具有：QTP、 AutoRunner等 web应用的工具有："><meta itemprop="datePublished" content="2017-11-25T19:30:00+00:00" />
 <meta itemprop="dateModified" content="2017-11-25T19:30:00+00:00" />
-<meta itemprop="wordCount" content="869">
+<meta itemprop="wordCount" content="853">
 <meta itemprop="keywords" content="自动化测试," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="web自动化测试"/>
+<meta name="twitter:title" content="web自动化测试初体验"/>
 <meta name="twitter:description" content="进行前需要了解的 测试框架 使用哪种测试框架要根据所测产品的类型来进行选择。 桌面程序的工具有：QTP、 AutoRunner等 web应用的工具有："/>
 
 <!--[if lte IE 9]>
@@ -284,7 +284,7 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">web自动化测试</h1>
+          <h1 class="post-title">web自动化测试初体验</h1>
           
 
           <div class="post-meta">
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 869 字 -
+        约 853 字 -
         预计阅读 2 分钟
       </span>
 
@@ -324,43 +324,52 @@
           <h1 id="进行前需要了解的">进行前需要了解的</h1>
 <h2 id="测试框架">测试框架</h2>
 <p>使用哪种测试框架要根据所测产品的类型来进行选择。</p>
-<pre><code>桌面程序的工具有：QTP、 AutoRunner等
-web应用的工具有：QTP、AutoRunner、selenium、Robot Framework、watir等
-</code></pre>
-<p>如果待测产品是C/S架构，可选QTP(也叫UFT)</p>
-<pre><code>主流的工具
-易用性好
-学习资料丰富
-</code></pre>
-<p>如果待测产品是B/S架构，推荐selenium</p>
-<pre><code>对B/S应用支持很好
-支持多语言开发(java、python、ruby、php、C#、JavaScript等)
-学习内容丰富，增加测试工程师的技术竞争力
-</code></pre>
+<ul>
+<li>桌面程序的工具有：QTP、 AutoRunner等</li>
+<li>web应用的工具有：QTP、AutoRunner、selenium、Robot Framework、watir等</li>
+</ul>
+<p>1.如果待测产品是C/S架构，可选QTP(也叫UFT)</p>
+<ul>
+<li>主流的工具</li>
+<li>易用性好</li>
+<li>学习资料丰富</li>
+</ul>
+<p>2.如果待测产品是B/S架构，推荐selenium</p>
+<ul>
+<li>对B/S应用支持很好</li>
+<li>支持多语言开发(java、python、ruby、php、C#、JavaScript等)</li>
+<li>学习内容丰富，增加测试工程师的技术竞争力</li>
+</ul>
 <h2 id="开发语言">开发语言</h2>
-<p>如果使用QTP，必须掌握VBS</p>
-<p>如果使用Selenium，可选语言丰富</p>
-<pre><code>从语言易学性来讲，首选python和ruby
-从语言应用广度来讲，首选java、C#和php等
-从语言相关测试技术成度来讲：ruby、python和java
-
-考虑整个技术团队主流用什么语言，然后选择相应的语言。
-</code></pre>
+<p>1.如果使用QTP，必须掌握VBS</p>
+<p>2.如果使用Selenium，可选语言丰富</p>
+<ul>
+<li>从语言易学性来讲，首选python和ruby</li>
+<li>从语言应用广度来讲，首选java、C#和php等</li>
+<li>从语言相关测试技术成度来讲：ruby、python和java</li>
+</ul>
+<p>实际使用时需要考虑整个技术团队主流用什么语言，然后选择相应的语言。</p>
 <h1 id="思路">思路</h1>
-<pre><code>1、自动化测试环境准备，本次采用Selenium+Eclipse+Java，详细安装配置过程略。
-2、在自动化测试框架基础上，编写通用方法，如：
-	1）登录、配置浏览器系列操作
-	2）页面元素准确性判断（可自己简单编写，亦可采用其他一些监控对比工具，如：基于diff的页面差异监控、基于DOM树的页面差异监控）
-	3）case测试结果输出等
-3、利用自动化测试框架，编写测试case，模拟用户输入、点击等操作；
-4、使用正则表达式对准备好的测试数据进行操作；
-5、测试执行过程自动输出测试结果至测试结果文档
-
-需要注意的问题：
-1、自动化测试的覆盖率，主要通过对需求点详细拆分，丰富测试数据来解决
-2、UI自动化测试执行过程易受执行环境影响
-3、记得还有，暂时想不起来了
-</code></pre>
+<ol>
+<li>自动化测试环境准备，本次采用Selenium+Eclipse+Java，详细安装配置过程略。</li>
+<li>在自动化测试框架基础上，编写通用方法，如：</li>
+</ol>
+<ul>
+<li>登录、配置浏览器系列操作</li>
+<li>页面元素准确性判断（可自己简单编写，亦可采用其他一些监控对比工具，如：基于diff的页面差异监控、基于DOM树的页面差异监控）</li>
+<li>case测试结果输出等</li>
+</ul>
+<ol start="3">
+<li>利用自动化测试框架，编写测试case，模拟用户输入、点击等操作；</li>
+<li>使用正则表达式对准备好的测试数据进行操作；</li>
+<li>测试执行过程自动输出测试结果至测试结果文档</li>
+</ol>
+<p>需要注意的问题：</p>
+<ul>
+<li>自动化测试的覆盖率，主要通过对需求点详细拆分，丰富测试数据来解决</li>
+<li>UI自动化测试执行过程易受执行环境影响</li>
+<li>待补充</li>
+</ul>
 <h1 id="总结">总结</h1>
 <p>目前的很多Web自动化测试框架都是通过操作Web中的控件，来模拟用户输入点击等操作，实现Web自动化测试。其实这些工具的原理大同小异，都是通过调用浏览器COM接口和HTML DOM对浏览器和Web测试对象进行操作。</p>
 <p>工具是死的，人是活的，怎么用，怎么丰富，都是需要自己亲自去尝试着做，才能真正了解。</p>

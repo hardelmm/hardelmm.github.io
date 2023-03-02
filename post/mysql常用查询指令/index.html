@@ -7,7 +7,9 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>归档 - HardElm</title>
+    <title>
+          mysql常用查询指令 - HardElm
+        </title>
     
 
 <meta name="renderer" content="webkit" />
@@ -27,7 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="Hugo theme jane example site." />
+  <meta name="description" content="简单的语句 1、查看数据库连接池最大连接数 show variables like &#39;%max_connections%&#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、查" />
+
   <meta name="keywords" content="Hugo, theme, jane" />
 
 
@@ -38,8 +41,8 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/" />
-<link href="/post/index.xml" rel="alternate" type="application/rss+xml" title="HardElm" />
+<link rel="canonical" href="https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/" />
+
 
 
 
@@ -64,14 +67,19 @@
 
 
 
-<meta property="og:title" content="Posts" />
-<meta property="og:description" content="Hugo theme jane example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hardelmm.github.io/post/" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="Hugo theme jane example site."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content="Hugo theme jane example site."/>
+<meta property="og:title" content="mysql常用查询指令" />
+<meta property="og:description" content="简单的语句 1、查看数据库连接池最大连接数 show variables like &#39;%max_connections%&#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、查" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-07-12T17:30:00+00:00" />
+<meta property="article:modified_time" content="2017-07-12T17:30:00+00:00" />
+<meta itemprop="name" content="mysql常用查询指令">
+<meta itemprop="description" content="简单的语句 1、查看数据库连接池最大连接数 show variables like &#39;%max_connections%&#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、查"><meta itemprop="datePublished" content="2017-07-12T17:30:00+00:00" />
+<meta itemprop="dateModified" content="2017-07-12T17:30:00+00:00" />
+<meta itemprop="wordCount" content="1071">
+<meta itemprop="keywords" content="mysql,数据库,性能测试," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="mysql常用查询指令"/>
+<meta name="twitter:description" content="简单的语句 1、查看数据库连接池最大连接数 show variables like &#39;%max_connections%&#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、查"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -226,7 +234,7 @@
 
       </li>
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -271,169 +279,213 @@
 
     <div id="mobile-panel">
       <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
         
-<section id="archive" class="archive">
-    
-      <div class="collection-title">
-        <h2 class="archive-year">2017</h2>
-      </div>
+        <header class="post-header">
+          <h1 class="post-title">mysql常用查询指令</h1>
+          
 
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/" class="archive-post-link">
-          mysql常用查询指令
-        </a>
+          <div class="post-meta">
+
+
+  <div class="post-meta-time">
+    <time datetime="2017-07-12">
+      2017-07-12
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 1071 字 -
+        预计阅读 3 分钟
       </span>
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+        </header>
+
+        
+        <div class="post-content">
+          <h2 id="简单的语句">简单的语句</h2>
+<p>1、查看数据库连接池最大连接数
+<code>show variables like '%max_connections%'; #实际MySQL服务器允许的最大连接数16384；</code></p>
+<p>2、设置数据库连接池最大连接数
+<code>set global max_connections=1000;</code></p>
+<p>3、查看process信息</p>
+<p>如果是root帐号，你能看到所有用户的当前连接。如果是其它普通帐号，只能看到自己占用的连接。
+<code>show processlist; #显示前100条</code>
+<code>show full processlist; #全部列出</code></p>
+<p>4、My.ini配置 虚拟内存</p>
+<p>5、查看数据库版本
+<code>select @@Version;</code></p>
+<p>6、查看表状态属性
+<code>show table status like '表名';</code></p>
+<p>7、更改表引擎属性
+<code>ALTER TABLE test_table1 ENGINE=MyISAM;</code></p>
+<p>8、查看数据库状态
+<code>show status;</code></p>
+<p>9、查看数据库状态参数相关命令：show status like &lsquo;%下面变量%&rsquo;;</p>
+<p><code>show status like '%Aborted_clients%';	由于客户没有正确关闭连接已经死掉，已经放弃的连接数量。 show status like '%Aborted_connects%';	尝试已经失败的MySQL服务器的连接的次数。 show status like '%Connections%';		试图连接MySQL服务器的次数。 show status like '%Created_tmp_tables%';当执行语句时，已经被创造了的隐含临时表的数量。 show status like '%Delayed_insert_threads%';正在使用的延迟插入处理器线程的数量。 show status like '%Delayed_writes%';	用INSERT DELAYED写入的行数。  show status like '%Delayed_errors%';	用INSERT DELAYED写入的发生某些错误(可能重复键值)的行数。 show status like '%Flush_commands%';	执行FLUSH命令的次数。 show status like '%Handler_delete%';	请求从一张表中删除行的次数。 show status like '%Handler_read_first%';请求读入表中第一行的次数。 show status like '%Handler_read_key%';	请求数字基于键读行。 show status like '%Handler_read_next%';	请求读入基于一个键的一行的次数。 show status like '%Handler_read_rnd%';	请求读入基于一个固定位置的一行的次数。 show status like '%Handler_update%';	请求更新表中一行的次数。 show status like '%Handler_write%';		请求向表中插入一行的次数。 show status like '%Key_blocks_used%';	用于关键字缓存的块的数量。 show status like '%Key_read_requests%';	请求从缓存读入一个键值的次数。 show status like '%Key_reads%';			从磁盘物理读入一个键值的次数。 show status like '%Key_write_requests%';请求将一个关键字块写入缓存次数。 show status like '%Key_writes%';		将一个键值块物理写入磁盘的次数。 show status like '%Max_used_connections%';同时使用的连接的最大数目。 show status like '%Not_flushed_key_blocks%';在键缓存中已经改变但是还没被清空到磁盘上的键块。 show status like '%Not_flushed_delayed_rows%';在INSERT DELAY队列中等待写入的行的数量。 show status like '%Open_tables%';		打开表的数量。 show status like '%Open_files%';		打开文件的数量。 show status like '%Open_streams%';		打开流的数量(主要用于日志记载） show status like '%Opened_tables%';		已经打开的表的数量。 show status like '%Questions%';			发往服务器的查询的数量。 show status like '%Slow_queries%';		要花超过long_query_time时间的查询数量。 show status like '%Threads_connected%';	当前打开的连接的数量。 show status like '%Threads_running%';	不在睡眠的线程数量。 show status like '%Uptime%';			服务器工作了多少秒。</code></p>
+
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">HardElm</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2017-07-12
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+
+        
+        
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
+    
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/pay/wechatpay.png">
+        <span>微信打赏</span>
+      </label>
+    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/pay/alipay.png">
+        <span>支付宝打赏</span>
+      </label>
+  </div>
+</div>
+
+
+        <footer class="post-footer">
+          <div class="post-tags">
+              <a href="https://hardelmm.github.io/tags/mysql/">mysql</a>
+                <a href="https://hardelmm.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+                <a href="https://hardelmm.github.io/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a>
+                
+            </div>
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/expect%E4%BA%A4%E4%BA%92%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Linux下expect脚本语言的简单使用</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/mongodb%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/">
+                <span class="next-text nav-default">针对mongoDB数据库性能测试的相关总结</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
+      
+      
+        
+      
+
+
+      
+      
+
+  
+
+  
+  
+
+  
+  
+    <div class="post">
+  <script src="https://utteranc.es/client.js"
+        repo= "hardelmm/hardelmm.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
+</div>
+
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
     </div>
-    
 
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/mongodb%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/" class="archive-post-link">
-          针对mongoDB数据库性能测试的相关总结
-        </a>
-      </span>
+    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#简单的语句">简单的语句</a></li>
+  </ul>
+</nav>
     </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/%E6%89%B9%E5%A4%84%E7%90%86%E4%BF%AE%E6%94%B9dns/" class="archive-post-link">
-          批处理修改DNS
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E9%80%82%E7%94%A8%E8%8C%83%E5%9B%B4/" class="archive-post-link">
-          自动化测试的适用范围
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/selenium%E5%88%9D%E5%AD%A6%E6%80%BB%E7%BB%93/" class="archive-post-link">
-          Selenium初学总结
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/rabbitmq/" class="archive-post-link">
-          RabbitMQ学习总结
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" class="archive-post-link">
-          Nmon使用总结
-        </a>
-      </span>
-    </div>
-    
-
-    <div class="archive-post">
-      <time datetime="2017-07-12" class="archive-post-time">
-        2017-07-12
-      </time>
-      <span class="archive-post-title">
-        <a href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0/" class="archive-post-link">
-          数据库性能的影响因素
-        </a>
-      </span>
-    </div></section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/post/">1</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/5/">5</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/post/page/6/">6</a>
-      </li>
-      
-      <li >
-        <a href="/post/page/7/">7</a>
-      </li>
-      
-    </ul>
   </nav>
 
-  
-  
 
-
-
-
-
+  </div>
 
       </main>
 

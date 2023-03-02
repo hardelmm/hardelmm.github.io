@@ -22,7 +22,7 @@
       <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
-      <description>项目需要，需对onsite直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负</description>
+      <description>项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具(</description>
     </item>
     
     <item>
@@ -68,6 +68,15 @@
       
       <guid>https://hardelmm.github.io/post/expect%E4%BA%A4%E4%BA%92%E8%AF%AD%E8%A8%80%E7%9A%84%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</guid>
       <description>背景 最近在做直播服务器性能测试，因单台推流服务器性能限制，需多台机器同时推流，而且要监控直播平台各个底层服务器的性能，手动推流并开启监控繁琐</description>
+    </item>
+    
+    <item>
+      <title>mysql常用查询指令</title>
+      <link>https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Wed, 12 Jul 2017 17:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/</guid>
+      <description>简单的语句 1、查看数据库连接池最大连接数 show variables like &#39;%max_connections%&#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 set global max_connections=1000; 3、查</description>
     </item>
     
     <item>
