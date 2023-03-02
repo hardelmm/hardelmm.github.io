@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          数据库模型的简单理解 - HardElm
+          常用性能测试工具 - HardElm
         </title>
     
 
@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程" />
+  <meta name="description" content="本文整理了一些常用测试工具，并选择性的做了简单介绍。 实践出真知，工具没有最好的，只有最合适的。 常用性能测试工具 Apache JMeter 什么是Jmeter Apache Jme" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" />
+<link rel="canonical" href="https://hardelmm.github.io/post/%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="数据库模型的简单理解" />
-<meta property="og:description" content="公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程" />
+<meta property="og:title" content="常用性能测试工具" />
+<meta property="og:description" content="本文整理了一些常用测试工具，并选择性的做了简单介绍。 实践出真知，工具没有最好的，只有最合适的。 常用性能测试工具 Apache JMeter 什么是Jmeter Apache Jme" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2018-07-12T09:08:00+00:00" />
-<meta property="article:modified_time" content="2018-07-12T09:08:00+00:00" />
-<meta itemprop="name" content="数据库模型的简单理解">
-<meta itemprop="description" content="公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程"><meta itemprop="datePublished" content="2018-07-12T09:08:00+00:00" />
-<meta itemprop="dateModified" content="2018-07-12T09:08:00+00:00" />
-<meta itemprop="wordCount" content="1651">
-<meta itemprop="keywords" content="数据库," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="数据库模型的简单理解"/>
-<meta name="twitter:description" content="公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程"/>
+<meta property="og:url" content="https://hardelmm.github.io/post/%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2017-08-11T09:45:38+00:00" />
+<meta property="article:modified_time" content="2017-08-11T09:45:38+00:00" />
+<meta itemprop="name" content="常用性能测试工具">
+<meta itemprop="description" content="本文整理了一些常用测试工具，并选择性的做了简单介绍。 实践出真知，工具没有最好的，只有最合适的。 常用性能测试工具 Apache JMeter 什么是Jmeter Apache Jme"><meta itemprop="datePublished" content="2017-08-11T09:45:38+00:00" />
+<meta itemprop="dateModified" content="2017-08-11T09:45:38+00:00" />
+<meta itemprop="wordCount" content="2364">
+<meta itemprop="keywords" content="性能测试,测试工具," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="常用性能测试工具"/>
+<meta name="twitter:description" content="本文整理了一些常用测试工具，并选择性的做了简单介绍。 实践出真知，工具没有最好的，只有最合适的。 常用性能测试工具 Apache JMeter 什么是Jmeter Apache Jme"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -284,15 +284,15 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">数据库模型的简单理解</h1>
+          <h1 class="post-title">常用性能测试工具</h1>
           
 
           <div class="post-meta">
 
 
   <div class="post-meta-time">
-    <time datetime="2018-07-12">
-      2018-07-12
+    <time datetime="2017-08-11">
+      2017-08-11
     </time>
   </div>
 
@@ -301,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1651 字 -
-        预计阅读 4 分钟
+        约 2364 字 -
+        预计阅读 5 分钟
       </span>
 
     
@@ -321,52 +321,65 @@
 
         
         <div class="post-content">
-          <p>公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西</p>
-<h2 id="数据模型概念">数据模型概念</h2>
-<ul>
-<li>访问数据库中的数据取决于数据库实现的数据模型。</li>
-<li>数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。</li>
-<li>数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。</li>
-</ul>
-<h2 id="常用数据库模型">常用数据库模型</h2>
-<h3 id="关系模型">关系模型</h3>
-<ul>
-<li>关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。</li>
-<li>对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。</li>
-<li>表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。</li>
-<li>SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。</li>
-<li>表中的记录可以被创建和删除，记录中的字段也可以单独更新。</li>
-<li>关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。</li>
-</ul>
-<h3 id="键值存储">键值存储</h3>
-<ul>
-<li>键值存储提供了基于键对值的访问方式。</li>
-<li>键值对可以被创建或删除，与键相关联的值可以被更新。</li>
-<li>键值存储一般不提供事务处理机制。</li>
-<li>对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&lt;&hellip;&gt;”。</li>
-<li>键值存储支持键上自有的隐式索引。</li>
-<li>键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。</li>
-<li>重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。</li>
-</ul>
-<h3 id="文档存储">文档存储</h3>
-<p>文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。
-事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。</p>
-<p>与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。</p>
-<p>与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。
-MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p>
-<h3 id="列式存储">列式存储</h3>
-<p>如果翻转数据，列式存储与关系存储将会非常相似。
-与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。</p>
-<p>Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。</p>
-<p>关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。
-列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。</p>
-<h3 id="图形数据库">图形数据库</h3>
-<ul>
-<li>图形数据库存储顶点和边的信息，有的支持添加注释。</li>
-<li>图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。</li>
-<li>图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。</li>
-<li>Neo4j是一个典型的图形数据库。</li>
-</ul>
+          <p>本文整理了一些常用测试工具，并选择性的做了简单介绍。
+实践出真知，工具没有最好的，只有最合适的。</p>
+<h2 id="常用性能测试工具">常用性能测试工具</h2>
+<h3 id="apache-jmeter">Apache JMeter</h3>
+<h3 id="什么是jmeter">什么是Jmeter</h3>
+<p>Apache Jmeter是一个专门为运行和服务器装载测试而设计的、100％的纯Java桌面运行程序。
+起初Jmeter是为Web/HTTP测试而设计的，但随着发展不断扩展以支持各种各样的测试模块。</p>
+<p>它和用于HTTP和SQL数据库（使用JDBC）的模块一起运送。
+它可以用来测试静止资料库或者活动资料库中的服务器的运行情况，
+可以用来模拟对服务器或者网络系统加以重负荷以测试它的抵抗力，
+或者用来分析不同负荷类型下的所有运行情况。
+它也提供了一个可替换的界面用来定制数据显示，测试同步及测试的创建和执行。</p>
+<h3 id="jmeter的工作原理">JMeter的工作原理</h3>
+<p>JMeter可以作为Web服务器与浏览器之间的代理网关，以便捕获浏览器的请求和Web服务器的响应，这样就很容易地生成性能测试脚本，有了性能测试脚本，JMeter就可以通过线程组来模拟真实用户对Web服务器的访问压力，这与LoadRunner的工作原理基本一致。
+<img src="http://i.imgur.com/M788KGo.png" alt=""></p>
+<p>JMeter的用户手册：http://jmeter.apache.org/usermanual/index.html</p>
+<p>推荐一本书籍：《零成本实现Web性能测试》</p>
+<p>JMeter的脚本录制工具：Badboy</p>
+<h3 id="loadrunner商业软件">LoadRunner（商业软件）</h3>
+<ol>
+<li>LoadRunner 是一种预测系统行为和性能的工业标准级负载测试工具。通过以模拟上千万用户实施并发负载及实时性能监测的方式来确认和查找问题。</li>
+<li>LoadRunner 能够对整个企业架构进行测试。 通过使用LoadRunner，能最大限度地缩短测试时间，优化性能和加速应用系统的发布周期。</li>
+<li>LoadRunner 是一种适用于各种体系架构的自动负载测试工具，它能预测系统行为并优化系统性能。</li>
+<li>LoadRunner 的测试对象是整个企业的系统，它通过模拟实际用户的操作行为和实行实时性能监测，来更快的查找和发现问题。此外，LoadRunner能支持广范的协议和技术，为特殊环境提供特殊的解决方案。</li>
+</ol>
+<h3 id="web-bench">Web Bench</h3>
+<p>Web Bench是一个简单的web或者web代理服务的基准测试工具。（它）使用fork()模拟多个客户端并且可以发起HTTP/0/9-HTTP/1.1的请求。这个基准测试不是非常符合实际情况，但是可以测试出你的HTTP服务是否可以处理多个客户同时访问而不会把你的机器弄挂掉。这个工具可以获得服务的两个指标：每分钟响应请求数量（pages/min）和每秒钟传输数据量（bytes/sec）。使用-f选项可以运行在主动模式下（不等待服务器响应直接发送下一个请求）。</p>
+<p>Web Bench使用方法参考：</p>
+<p><a href="http://www.ha97.com/4623.html">（总结）Web性能压力测试工具之WebBench详解</a></p>
+<h3 id="ab">ab</h3>
+<p>ab即Apache HTTP server benchmarking tool</p>
+<p>ab命令会创建很多的并发访问线程，模拟多个访问者同时对某一URL地址进行访问。它的测试目标是基于URL的，因此，既可以用来测试Apache的负载压力，也可以测试nginx、lighthttp、tomcat、IIS等其它Web服务器的压力。ab命令对发出负载的计算机要求很低，既不会占用很高CPU，也不会占用很多内存，但却会给目标服务器造成巨大的负载，其原理类似CC攻击。自己测试使用也须注意，否则一次上太多的负载，可能造成目标服务器因资源耗完，严重时甚至导致死机。</p>
+<p>ab使用方法参考：</p>
+<p><a href="http://httpd.apache.org/docs/2.4/programs/ab.html">ab - Apache HTTP server benchmarking tool</a></p>
+<p><a href="http://www.ha97.com/4617.html">（总结）Web性能压力测试工具之ApacheBench（ab）详解</a></p>
+<h3 id="siege">Siege</h3>
+<p>Siege（英文意思是围攻）是一个压力测试和评测工具，设计用于WEB开发这评估应用在压力下的承受能力：可以根据配置对一个WEB站点进行多用户的并发访问，记录每个用户所有请求过程的相应时间，并在一定数量的并发访问下重复进行。 Siege 支持基本的认证，cookies， HTTP 和 HTTPS 协议。</p>
+<p>Siege的安装和用法可以参考：</p>
+<p><a href="https://www.joedog.org/siege-manual/">Siege Manual</a></p>
+<p><a href="https://www.joedog.org/articles-tuning/">Using Siege to Tune Apache on GNU/Linux</a></p>
+<p><a href="http://www.ha97.com/4663.html">（总结）Web性能压力测试工具之Siege详解</a></p>
+<p><a href="https://buzheng.org/usage-of-siege.html">压力测试工具siege的用法</a></p>
+<h3 id="web-polygraph">Web Polygraph</h3>
+<p>Web Polygraph这个软件也是一个用于测试WEB性能的工具，这个工具是很多公司的标准测试工具，包括微软在分析其软件性能的时候，也是使用这个工具做为基准工具的。很多招聘测试员的广告中都注明需要熟练掌握这个测试工具。</p>
+<h3 id="tcpcopy">TCPCopy</h3>
+<h3 id="tsung">Tsung</h3>
+<h3 id="curl-loader">curl-loader</h3>
+<h3 id="grinder">Grinder</h3>
+<p>Grinder是一个开源的JVM负载测试框架，它通过很多负载注射器来为分布式测试提供了便利。 支持用于执行测试脚本的Jython脚本引擎HTTP测试可通过HTTP代理进行管理。根据项目网站的说法，Grinder的 主要目标用户是“理解他们所测代码的人——Grinder不仅仅是带有一组相关响应时间的‘黑盒’测试。由于测试过程可以进行编码——而不是简单地脚本 化，所以程序员能测试应用中内部的各个层次，而不仅仅是通过用户界面测试响应时间。</p>
+<h3 id="kylinpet国产商业工具">kylinpet（国产商业工具）</h3>
+<p>kylinPET（performance emulation tool，麒麟宠物）是一款功能强大的性能测试工具；界面友好、操作方便，资源占用率低；自带TCP/IP协议栈，支持虚拟大量IP；支持IPv4、IPv6的多种业务测试；支持WEB/WebService业务与Flex（HTTP）、IMS业务（SIP）、IPTV业务（RTSP/IGMP/MLD）、XMPP、Socket业务、数据库、JMS、FTP/SFTP、WEB视频（包括FLV/MP4/HTTP Live Streaming/HTTP Smooth Streaming/HTTP Dynamic Streaming）、WebSocket、JAVA；支持多种协议组合。
+<img src="http://i.imgur.com/MKwANhH.png" alt=""></p>
+<h2 id="总结一些性能测试的做法">总结一些性能测试的做法</h2>
+<p>1、为了减少网络延迟和带宽限制对性能测试的影响，最好在内网进行测试。</p>
+<p>2、性能测试一般在优化前和优化后，测试两轮，这样能够比较出优化前后的效果。</p>
+<p>3、性能测试最好跑的时间长一些，观察程序是否存在内存泄漏、资源未释放等问题。</p>
+<p>4、有的公司为了避免影响线上环境，只在测试环境做性能测试。性能测试一般在线下线上都要做，线上做性能测试可以了解生产环境的性能情况。</p>
+<p>参考：
+<a href="http://www.cnblogs.com/EthanCai/archive/2014/05/11/3721656.html">http://www.cnblogs.com/EthanCai/archive/2014/05/11/3721656.html</a></p>
 
         </div>
 
@@ -380,7 +393,7 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2018-07-12
+      2017-08-11
       
     </span>
   </p>
@@ -416,7 +429,8 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p
 
         <footer class="post-footer">
           <div class="post-tags">
-              <a href="https://hardelmm.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+              <a href="https://hardelmm.github.io/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a>
+                <a href="https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">测试工具</a>
                 
             </div>
 
@@ -424,7 +438,7 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
+              <a class="prev" href="/post/iperf%E7%9A%84%E4%BD%BF%E7%94%A8/">
                 
                 <i class="iconfont">
                   <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -434,12 +448,12 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p
 </svg>
 
                 </i>
-                <span class="prev-text nav-default">ansible学习总结</span>
+                <span class="prev-text nav-default">Iperf的简单使用</span>
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
-              <a class="next" href="/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/">
-                <span class="next-text nav-default">领域模型中的几种实体类类型</span>
+              <a class="next" href="/post/%E5%87%A0%E6%AC%BE%E5%B8%B8%E7%94%A8%E7%9A%84web%E5%BA%94%E7%94%A8%E6%A1%86%E6%9E%B6/">
+                <span class="next-text nav-default">11款常用的web应用框架</span>
                 <span class="prev-text nav-mobile">下一篇</span>
                 
                 <i class="iconfont">
@@ -502,16 +516,24 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。</p
     <div class="toc-content custom-scrollbar">
       <nav id="TableOfContents">
   <ul>
-    <li><a href="#数据模型概念">数据模型概念</a></li>
-    <li><a href="#常用数据库模型">常用数据库模型</a>
+    <li><a href="#常用性能测试工具">常用性能测试工具</a>
       <ul>
-        <li><a href="#关系模型">关系模型</a></li>
-        <li><a href="#键值存储">键值存储</a></li>
-        <li><a href="#文档存储">文档存储</a></li>
-        <li><a href="#列式存储">列式存储</a></li>
-        <li><a href="#图形数据库">图形数据库</a></li>
+        <li><a href="#apache-jmeter">Apache JMeter</a></li>
+        <li><a href="#什么是jmeter">什么是Jmeter</a></li>
+        <li><a href="#jmeter的工作原理">JMeter的工作原理</a></li>
+        <li><a href="#loadrunner商业软件">LoadRunner（商业软件）</a></li>
+        <li><a href="#web-bench">Web Bench</a></li>
+        <li><a href="#ab">ab</a></li>
+        <li><a href="#siege">Siege</a></li>
+        <li><a href="#web-polygraph">Web Polygraph</a></li>
+        <li><a href="#tcpcopy">TCPCopy</a></li>
+        <li><a href="#tsung">Tsung</a></li>
+        <li><a href="#curl-loader">curl-loader</a></li>
+        <li><a href="#grinder">Grinder</a></li>
+        <li><a href="#kylinpet国产商业工具">kylinpet（国产商业工具）</a></li>
       </ul>
     </li>
+    <li><a href="#总结一些性能测试的做法">总结一些性能测试的做法</a></li>
   </ul>
 </nav>
     </div>

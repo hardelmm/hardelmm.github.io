@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on HardElm</title>
+    <link>https://hardelmm.github.io/tags/git/</link>
+    <description>Recent content in Git on HardElm</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language><atom:link href="https://hardelmm.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git常用命令</title>
+      <link>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      <description>git init git add . #添加变动 git add -A #添加全量 git commit -m &amp;rsquo;&amp;rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系</description>
+    </item>
+    
+  </channel>
+</rss>

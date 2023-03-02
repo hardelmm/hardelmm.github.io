@@ -212,6 +212,20 @@
   </url>
   
   <url>
+    <loc>https://hardelmm.github.io/tags/xtrabackup/</loc>
+    <lastmod>2019-05-09T15:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hardelmm.github.io/post/xtrabackup%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</loc>
+    <lastmod>2019-05-09T15:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://hardelmm.github.io/tags/ansible/</loc>
     <lastmod>2018-07-26T12:30:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -221,6 +235,13 @@
   <url>
     <loc>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2018-07-26T12:30:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</loc>
+    <lastmod>2018-07-12T09:08:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -249,20 +270,6 @@
   <url>
     <loc>https://hardelmm.github.io/post/swagger/</loc>
     <lastmod>2018-05-15T14:30:50+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hardelmm.github.io/tags/xtrabackup/</loc>
-    <lastmod>2018-05-09T15:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2018-05-09T15:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -485,7 +492,7 @@
   </url>
   
   <url>
-    <loc>https://hardelmm.github.io/post/%E5%87%A0%E4%B8%AA%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://hardelmm.github.io/post/%E5%B8%B8%E7%94%A8%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2017-08-11T09:45:38+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -597,13 +604,6 @@
   </url>
   
   <url>
-    <loc>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</loc>
-    <lastmod>2017-07-12T09:08:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0/</loc>
     <lastmod>2017-07-12T09:08:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -654,6 +654,18 @@
   
   <url>
     <loc>https://hardelmm.github.io/categories/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hardelmm.github.io/tags/git/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

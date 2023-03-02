@@ -1362,6 +1362,72 @@ scope=&amp;ldquo;session&amp;rdquo; 以实现多个.py跨文件使用一个sessi
     </item>
     
     <item>
+      <title>Xtrabackup使用文档</title>
+      <link>https://hardelmm.github.io/post/xtrabackup%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Thu, 09 May 2019 15:00:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/xtrabackup%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3/</guid>
+      
+        <description>&lt;h3 id=&#34;xtrabackup介绍&#34;&gt;Xtrabackup介绍&lt;/h3&gt;
+&lt;p&gt;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。&lt;/p&gt;
+&lt;p&gt;Xtrabackup由2个部分组成:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;xtrabackup工具：用于备份innodb和xtraDB引擎的表&lt;/li&gt;
+&lt;li&gt;innobackupex工具：用于备份myisam和innodb引擎的表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Xtrabackup安装流程&lt;/strong&gt;如下：&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;tar -zxvf percona-xtrabackup-2.1.5.tar.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;cd percona-xtrabackup-2.1.5
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56） 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;生成二进制文件，拷贝到指定目录并配置系统环境变量
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;innobackupex全量备份和恢复&#34;&gt;innobackupex全量备份和恢复&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全量备份&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定&amp;ndash;defaults-file，默认值为/etc/my.cnf。&lt;/p&gt;
+&lt;p&gt;备份成功后将会在备份目录下创建一个时间戳目录，在该目录下存放备份文件。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全量恢复&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --defaults-file=/opt/mysql/my.cnf 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--user=root --password=*** --use-memory=4G 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--apply-log /backup/mysql/data/2018-10-29_09-05-25
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第1步是apply-log，为了加快速度，一般建议设置&amp;ndash;use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --defaults-file=/opt/mysql/my.cnf 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--user=root --password=***  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--copy-back /backup/mysql/data/2018-10-29_09-05-25
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;第2步是copy-back，即把备份文件拷贝至原数据目录下&lt;/p&gt;
+&lt;p&gt;第3步检查数据目录的所有者和权限是否正确&lt;/p&gt;
+&lt;h3 id=&#34;innobackupex增量备份和恢复&#34;&gt;innobackupex增量备份和恢复&lt;/h3&gt;
+&lt;p&gt;注意：innobackupex 增量备份仅针对InnoDB这类支持事务的引擎，对于MyISAM等引擎，则仍然是全备&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;增量备份&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;增量备份需要基于全备，先假设已经有了一个全备（/backup/mysql/data/2018-10-29_09-05-25），需要在该全备的基础上做增量备份&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --defaults-file=/opt/mysql/my.cnf  
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--user=root --password=*** 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--incremental-basedir=/backup/mysql/data/2018-10-29_09-05-25 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;--incremental /backup/mysql/data
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;其中&amp;ndash;incremental-basedir指向全备目录，&amp;ndash;incremental指向增量备份的目录&lt;/p&gt;
+&lt;p&gt;上面语句执行成功之后，会在&amp;ndash;incremental执行的目录下创建一个时间戳子目录（本例中为：/backup/mysql/data/2018-10-29_09-52-37），在该目录下存放着增量备份的所有文件
+在备份目录下，有一个文件xtrabackup_checkpoints记录着备份信息，其中增量备份的from_lsn是从上一次增量备份的to_lsn开始的&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;增量恢复&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --apply-log --redo-only BASE-DIR
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。&lt;/p&gt;
+&lt;p&gt;注意：最后一步的增量备份并没有&amp;ndash;redo-only选项！还有，可以使用&amp;ndash;use_memory提高性能&lt;/p&gt;
+&lt;p&gt;以上完成之后，最终数据在BASE-DIR（全备目录）下&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>ansible学习总结</title>
       <link>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
       <pubDate>Thu, 26 Jul 2018 12:30:00 +0000</pubDate>
@@ -1510,6 +1576,63 @@ ruby_module_host  ansible_ruby_interpreter=/usr/bin/ruby.1.9.3
     </item>
     
     <item>
+      <title>数据库模型的简单理解</title>
+      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Thu, 12 Jul 2018 09:08:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</guid>
+      
+        <description>&lt;p&gt;公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西&lt;/p&gt;
+&lt;h2 id=&#34;数据模型概念&#34;&gt;数据模型概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;访问数据库中的数据取决于数据库实现的数据模型。&lt;/li&gt;
+&lt;li&gt;数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。&lt;/li&gt;
+&lt;li&gt;数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常用数据库模型&#34;&gt;常用数据库模型&lt;/h2&gt;
+&lt;h3 id=&#34;关系模型&#34;&gt;关系模型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。&lt;/li&gt;
+&lt;li&gt;对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。&lt;/li&gt;
+&lt;li&gt;表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。&lt;/li&gt;
+&lt;li&gt;SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。&lt;/li&gt;
+&lt;li&gt;表中的记录可以被创建和删除，记录中的字段也可以单独更新。&lt;/li&gt;
+&lt;li&gt;关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;键值存储&#34;&gt;键值存储&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;键值存储提供了基于键对值的访问方式。&lt;/li&gt;
+&lt;li&gt;键值对可以被创建或删除，与键相关联的值可以被更新。&lt;/li&gt;
+&lt;li&gt;键值存储一般不提供事务处理机制。&lt;/li&gt;
+&lt;li&gt;对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&amp;lt;&amp;hellip;&amp;gt;”。&lt;/li&gt;
+&lt;li&gt;键值存储支持键上自有的隐式索引。&lt;/li&gt;
+&lt;li&gt;键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。&lt;/li&gt;
+&lt;li&gt;重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文档存储&#34;&gt;文档存储&lt;/h3&gt;
+&lt;p&gt;文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。
+事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。&lt;/p&gt;
+&lt;p&gt;与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。&lt;/p&gt;
+&lt;p&gt;与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。
+MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。&lt;/p&gt;
+&lt;h3 id=&#34;列式存储&#34;&gt;列式存储&lt;/h3&gt;
+&lt;p&gt;如果翻转数据，列式存储与关系存储将会非常相似。
+与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。&lt;/p&gt;
+&lt;p&gt;Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。&lt;/p&gt;
+&lt;p&gt;关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。
+列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。&lt;/p&gt;
+&lt;h3 id=&#34;图形数据库&#34;&gt;图形数据库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;图形数据库存储顶点和边的信息，有的支持添加注释。&lt;/li&gt;
+&lt;li&gt;图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。&lt;/li&gt;
+&lt;li&gt;图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。&lt;/li&gt;
+&lt;li&gt;Neo4j是一个典型的图形数据库。&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+      
+    </item>
+    
+    <item>
       <title>领域模型中的几种实体类类型</title>
       <link>https://hardelmm.github.io/post/%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E4%B8%AD%E7%9A%84%E5%87%A0%E7%A7%8D%E5%AE%9E%E4%BD%93%E7%B1%BB%E7%B1%BB%E5%9E%8B/</link>
       <pubDate>Thu, 05 Jul 2018 18:30:00 +0000</pubDate>
@@ -1652,64 +1775,6 @@ ruby_module_host  ansible_ruby_interpreter=/usr/bin/ruby.1.9.3
     </item>
     
     <item>
-      <title>Xtrabackup使用</title>
-      <link>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Wed, 09 May 2018 15:00:00 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/%E5%85%B3%E4%BA%8E%E6%95%B0%E6%8D%AE%E5%BA%93%E5%A4%87%E4%BB%BD%E5%B7%A5%E5%85%B7%E7%9A%84%E7%AE%80%E5%8D%95%E5%AD%A6%E4%B9%A0%E4%BD%BF%E7%94%A8/</guid>
-      
-        <description>&lt;h1 id=&#34;xtrabackup介绍&#34;&gt;Xtrabackup介绍&lt;/h1&gt;
-&lt;p&gt;Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）的一个开源替代品。&lt;/p&gt;
-&lt;p&gt;Xtrabackup由个部分组成:xtrabackup和innobackupex，其中xtrabackup工具用于备份innodb和xtraDB引擎的表；而innobackupex工具用于备份myisam和innodb引擎的表。&lt;/p&gt;
-&lt;h1 id=&#34;xtrabackup安装&#34;&gt;Xtrabackup安装&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
-yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
-tar -zxvf percona-xtrabackup-2.1.5.tar.gz
-cd percona-xtrabackup-2.1.5
-./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56）
-
-生成二进制文件，拷贝到指定目录并配置系统环境变量
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;数据库全备及其恢复&#34;&gt;数据库全备及其恢复&lt;/h1&gt;
-&lt;h2 id=&#34;备份&#34;&gt;备份&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
-该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定--defaults-file，默认值为/etc/my.cnf。备份成功后将会在备份目录下创建一个时间戳目录，在该目录下存放备份文件。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;恢复&#34;&gt;恢复&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=*** --use-memory=4G --apply-log /backup/mysql/data/2013-10-29_09-05-25
-第1步是apply-log，为了加快速度，一般建议设置--use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪
-
-innobackupex --defaults-file=/opt/mysql/my.cnf --user=root --password=***  --copy-back /backup/mysql/data/2013-10-29_09-05-25
-第2步是copy-back，即把备份文件拷贝至原数据目录下
-
-第3步检查数据目录的所有者和权限是否正确
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;数据库增量备份及其恢复&#34;&gt;数据库增量备份及其恢复&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;注意：innobackupex 增量备份仅针对InnoDB这类支持事务的引擎，对于MyISAM等引擎，则仍然是全备
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;备份-1&#34;&gt;备份&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;增量备份需要基于全备，先假设我们已经有了一个全备（/backup/mysql/data/2013-10-29_09-05-25），我们需要在该全备的基础上做增量备份
-
-innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** --incremental-basedir=/backup/mysql/data/2013-10-29_09-05-25 --incremental /backup/mysql/data
-其中--incremental-basedir指向全备目录，--incremental指向增量备份的目录
-上面语句执行成功之后，会在--incremental执行的目录下创建一个时间戳子目录（本例中为：/backup/mysql/data/2013-10-29_09-52-37），在该目录下存放着增量备份的所有文件
-在备份目录下，有一个文件xtrabackup_checkpoints记录着备份信息，其中增量备份的from_lsn是从上一次增量备份的to_lsn开始的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;恢复-1&#34;&gt;恢复&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;innobackupex --apply-log --redo-only BASE-DIR
-innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
-innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
-BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。
-
-注意：最后一步的增量备份并没有--redo-only选项！还有，可以使用--use_memory提高性能
-
-以上完成之后，最终数据在BASE-DIR（全备目录）下
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-      
-    </item>
-    
-    <item>
       <title>Java JDBC编程步骤</title>
       <link>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</link>
       <pubDate>Thu, 08 Mar 2018 15:35:50 +0000</pubDate>
@@ -1749,77 +1814,6 @@ BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，I
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
 &lt;p&gt;各种数据库连接方式以及步骤大同小异。&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java中Map遍历的几种方式</title>
-      <link>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</link>
-      <pubDate>Mon, 29 Jan 2018 15:35:50 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/java%E4%B8%ADmap%E9%81%8D%E5%8E%86%E7%9A%84%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F/</guid>
-      
-        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
-&lt;p&gt;最近在搞接口自动化，尚在摸索，特有此文记录一些琐碎所得。&lt;/p&gt;
-&lt;h1 id=&#34;map遍历的几种方式&#34;&gt;Map遍历的几种方式&lt;/h1&gt;
-&lt;h2 id=&#34;方法一在for-each循环中使用entries来遍历&#34;&gt;方法一、在for-each循环中使用entries来遍历&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-for (Map.Entry&amp;lt;Integer, Integer&amp;gt; entry : map.entrySet()) {
-	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
-}
-
-1、最常见的并且在大多数情况下也是最可取的遍历方式。在键值都需要时使用
-2、如果遍历的是一个空的map对象，for-each循环将抛出NullPointerException，因此在遍历前应该检查空引用。
-3、for-each循环在java 5中被引入，所以该方法只能应用于java 5或更高的版本中。
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法二在for-each循环中遍历keys或values&#34;&gt;方法二、在for-each循环中遍历keys或values&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-//遍历map中的键
-for (Integer key : map.keySet()) {
-	System.out.println(&amp;quot;Key = &amp;quot; + key);
-}
-//遍历map中的值
-for (Integer value : map.values()) {
-	System.out.println(&amp;quot;Value = &amp;quot; + value);
-}
-
-1、如果只需要map中的键或者值，可以通过keySet或values来实现遍历，而不是用方法一的entrySet。
-2、该方法比entrySet遍历在性能上稍好（快了10%），而且代码更加干净
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法三使用iterator遍历&#34;&gt;方法三、使用Iterator遍历&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;使用泛型：
-Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-Iterator&amp;lt;Map.Entry&amp;lt;Integer, Integer&amp;gt;&amp;gt; entries = map.entrySet().iterator();
-while (entries.hasNext()) {
-	Map.Entry&amp;lt;Integer, Integer&amp;gt; entry = entries.next();
-	System.out.println(&amp;quot;Key = &amp;quot; + entry.getKey() + &amp;quot;, Value = &amp;quot; + entry.getValue());
-}
-
-不使用泛型：
-Map map = new HashMap();
-Iterator entries = map.entrySet().iterator();
-while (entries.hasNext()) {
-	Map.Entry entry = (Map.Entry) entries.next();
-	Integer key = (Integer)entry.getKey();
-	Integer value = (Integer)entry.getValue();
-	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
-}
-
-1、方法三是在老版本java中惟一遍历map的方式
-2、有别于方法一和方法二，在遍历时可以调用iterator.remove()来删除entries
-3、根据javadoc的说明，如果在for-each遍历中尝试使用此方法，结果是不可预测的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;方法四通过键找值遍历效率低&#34;&gt;方法四、通过键找值遍历（效率低）&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;Map&amp;lt;Integer, Integer&amp;gt; map = new HashMap&amp;lt;Integer, Integer&amp;gt;();
-for (Integer key : map.keySet()) {
-	Integer value = map.get(key);
-	System.out.println(&amp;quot;Key = &amp;quot; + key + &amp;quot;, Value = &amp;quot; + value);
-}
-1、此方法效率最低
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-&lt;p&gt;如果仅需要键(keys)或值(values)使用方法二。如果你使用的语言版本低于java 5，或是打算在遍历时删除entries，必须使用方法三。否则使用方法一(键值都要)。&lt;/p&gt;
 </description>
       
     </item>

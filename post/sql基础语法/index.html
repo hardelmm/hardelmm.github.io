@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Sql基础语法">
 <meta itemprop="description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询"><meta itemprop="datePublished" content="2017-03-18T20:27:41+08:00" />
 <meta itemprop="dateModified" content="2017-03-18T20:27:41+08:00" />
-<meta itemprop="wordCount" content="1850">
+<meta itemprop="wordCount" content="1853">
 <meta itemprop="keywords" content="数据库,sql语句," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Sql基础语法"/>
 <meta name="twitter:description" content="一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1850 字 -
+        约 1853 字 -
         预计阅读 4 分钟
       </span>
 
@@ -341,80 +341,68 @@
 <h3 id="2多表联查">2.多表联查</h3>
 <p>1)通过select语句进行查询</p>
 <p>以表中相同的字段信息作为条件，进行两个表联查，但在实际开发中不建议这样使用，最好用主外键约束来实现。</p>
-<pre><code>select * from table1,table2; #非等值查询
-
-select table1.column1,table1.column2..,table2.column1,table2.column2.. 
-from table1,table2
-where table1.column1 = table2.column1 #等值查询
-</code></pre>
-<p>2)通过内连接inner join进行查询</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">*</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1,table2;<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#非等值查询
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span><span style="color:#998;font-style:italic"></span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.column1,table1.column2..,table2.column1,table2.column2..<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4">4</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1,table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5">5</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#等值查询
+</span></span></span></code></pre></div><p>2)通过内连接inner join进行查询</p>
 <p>得到满足某一条件的table1和table2内部的数据；正因为得到的是数据交集，所以连接方式称为内连接</p>
-<pre><code>select table1.column1,table1.column2..,table2.column1,table2.column2.. 
-from table1 inner join table2
-on table1.column1 = table2.column1
-</code></pre>
-<p>3)通过外连接left join,left outer join,right join,right outer join,full join</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.column1,table1.column2..,table2.column1,table2.column2..<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">inner</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb">
+</span></span></span></code></pre></div><p>3)通过外连接left join,left outer join,right join,right outer join,full join</p>
 <p>left join:</p>
-<pre><code>select table1.*,table2.*
-from table1 left join table2
-on table1.column1 = table2.column1 #返回左表所有符合条件数据，即便右表没有匹配
-</code></pre>
-<p>left outer join:</p>
-<pre><code>select table1.column1,table1.column2..,table2.column1,table2.column2.. 
-from table1 left join table2
-on table1.column1 = table2.column1
-where table2.column1 = Null #返回左表中符合条件的数据，允许右表中对应的数据行可能为空
-</code></pre>
-<p>right join:</p>
-<pre><code>select table1.*,table2.*
-from table1 right join table2
-on table1.column1 = table2.column1 #返回又表所有符合条件数据，即便左表没有匹配
-</code></pre>
-<p>right outer join:</p>
-<pre><code>select table1.column1,table1.column2..,table2.column1,table2.column2.. 
-from table1 right join table2
-on table1.column1 = table2.column1
-where table1.column1 = Null #返回右表中符合条件的数据，允左表中对应的数据行可能为空
-</code></pre>
-<p>full join:</p>
-<pre><code>select table1.column1,table1.column2..,table2.column1,table2.column2.. 
-from table1 full outer join table2
-on table1.column1 = table2.column1
-#返回数据表查询结果的并集
-</code></pre>
-<h2 id="二更新数据库">二.更新数据库</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.<span style="color:#000;font-weight:bold">*</span>,table2.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">left</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#返回左表所有符合条件数据，即便右表没有匹配
+</span></span></span></code></pre></div><p>left outer join:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.column1,table1.column2..,table2.column1,table2.column2..<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">left</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#008080">Null</span><span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#返回左表中符合条件的数据，允许右表中对应的数据行可能为空
+</span></span></span></code></pre></div><p>right join:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.<span style="color:#000;font-weight:bold">*</span>,table2.<span style="color:#000;font-weight:bold">*</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">right</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#返回又表所有符合条件数据，即便左表没有匹配
+</span></span></span></code></pre></div><p>right outer join:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.column1,table1.column2..,table2.column1,table2.column2..<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">right</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4">4</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span><span style="color:#008080">Null</span><span style="color:#bbb"> </span><span style="color:#998;font-style:italic">#返回右表中符合条件的数据，允左表中对应的数据行可能为空
+</span></span></span></code></pre></div><p>full join:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1">1</a></span><span><span style="color:#000;font-weight:bold">select</span><span style="color:#bbb"> </span>table1.column1,table1.column2..,table2.column1,table2.column2..<span style="color:#bbb"> 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span>table1<span style="color:#bbb"> </span>full<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">outer</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">join</span><span style="color:#bbb"> </span>table2<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table1.column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>table2.column1<span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-4">4</a></span><span><span style="color:#bbb"></span><span style="color:#998;font-style:italic">#返回数据表查询结果的并集
+</span></span></span></code></pre></div><h2 id="二更新数据库">二.更新数据库</h2>
 <p>update 语句用于更新表中已存在的记录。</p>
-<pre><code>update table_name set column1 = value1, column2 = value2, ... where condition;
-</code></pre>
-<p>执行没有 WHERE 子句的 UPDATE 要慎重。</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-mysql" data-lang="mysql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1">1</a></span><span><span style="color:#000;font-weight:bold">update</span><span style="color:#bbb"> </span>table_name<span style="color:#bbb"> </span><span style="color:#458;font-weight:bold">set</span><span style="color:#bbb"> </span>column1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>value1,<span style="color:#bbb"> </span>column2<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">=</span><span style="color:#bbb"> </span>value2,<span style="color:#bbb"> </span>...<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">condition</span>;<span style="color:#bbb">
+</span></span></span></code></pre></div><p>执行没有 WHERE 子句的 UPDATE 要慎重。</p>
 <p>在 MySQL 中可以通过设置 sql_safe_updates 这个自带的参数来解决，当该参数开启的情况下，你必须在update 语句后携带 where 条件，否则就会报错。</p>
-<p>set sql_safe_updates=1; 表示开启该参数</p>
+<p>set sql_safe_updates=1; #表示开启该参数</p>
 <h2 id="三-删除数据数据库">三. 删除数据/数据库</h2>
 <p>1.删除表结构/数据库结构</p>
-<pre><code>alter table table_name drop index index_name; #删除mysql表中索引
-
-drop index index_name on table_namea; #删除MS Access表中的索引
-
-drop index table_name.index_name; #删除MS SQL Server表中的索引
-
-drop index index_name; #删除DB2/oracle
-</code></pre>
-<p>2.删除表数据</p>
-<pre><code>delete from table_name where condition1 and/or condition2; #按条件删除表数据
-delete from table_name; #删除表中所有数据，但表结构、属性、索引保持不变
-</code></pre>
-<p>3.truncate</p>
-<p>执行truncate语句需要拥有表的drop权限</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-9-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-9-1">1</a></span><span><span style="color:#000;font-weight:bold">alter</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">index</span><span style="color:#bbb"> </span>index_name;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除</span>mysql<span style="color:#a61717;background-color:#e3d2d2">表中索引</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-9-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-9-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">index</span><span style="color:#bbb"> </span>index_name<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">on</span><span style="color:#bbb"> </span>table_namea;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除</span>MS<span style="color:#bbb"> </span>Access<span style="color:#a61717;background-color:#e3d2d2">表中的索引</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-9-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-9-3">3</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">index</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span>.index_name;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除</span>MS<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">SQL</span><span style="color:#bbb"> </span>Server<span style="color:#a61717;background-color:#e3d2d2">表中的索引</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-9-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-9-4">4</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">drop</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">index</span><span style="color:#bbb"> </span>index_name;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除</span>DB2<span style="color:#000;font-weight:bold">/</span>oracle<span style="color:#bbb">
+</span></span></span></code></pre></div><p>2.删除表数据</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-1">1</a></span><span><span style="color:#000;font-weight:bold">delete</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">where</span><span style="color:#bbb"> </span>condition1<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">and</span><span style="color:#000;font-weight:bold">/</span><span style="color:#000;font-weight:bold">or</span><span style="color:#bbb"> </span>condition2;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">按条件删除表数据</span><span style="color:#bbb">
+</span></span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-10-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-10-2">2</a></span><span><span style="color:#bbb"></span><span style="color:#000;font-weight:bold">delete</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">from</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span>;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除表中所有数据，但表结构、属性、索引保持不变</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>3.truncate</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-11-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-11-1">1</a></span><span><span style="color:#000;font-weight:bold">truncate</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table</span><span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">table_name</span>;<span style="color:#bbb"> </span><span style="color:#000;font-weight:bold">#</span><span style="color:#a61717;background-color:#e3d2d2">删除表内数据，但并不删除表本身</span><span style="color:#bbb">
+</span></span></span></code></pre></div><p>执行truncate语句需要拥有表的drop权限</p>
 <p>从逻辑上讲，truncate table类似于delete删除所有行的语句或drop table然后再create table语句的组合。</p>
 <p>为了实现高性能，它绕过了删除数据的DML方法，因此它不能回滚。</p>
 <p>尽管truncate table与delete相似，但它被分类为DDL语句而不是DML语句。</p>
-<p>truncate无法通过binlog回滚。
-truncate会清空所有数据且执行速度很快。
-truncate不能对有外键约束引用的表使用。
-执行truncate需要drop权限，不建议给账号drop权限。
-执行truncate前一定要再三检查确认，最好提前备份下表数据。</p>
-<pre><code>truncate table table_name; #删除表内数据，但并不删除表本身
-</code></pre>
+<ul>
+<li>truncate无法通过binlog回滚。</li>
+<li>truncate会清空所有数据且执行速度很快。</li>
+<li>truncate不能对有外键约束引用的表使用。</li>
+<li>执行truncate需要drop权限，不建议给账号drop权限。</li>
+<li>执行truncate前一定要再三检查确认，最好提前备份下表数据。</li>
+</ul>
 <p>附：</p>
 <p>truncate与drop,delete的区别：</p>
 <p>1.truncate与drop是DDL语句，执行后无法回滚；delete是DML语句，可回滚。</p>
@@ -501,6 +489,19 @@ truncate不能对有外键约束引用的表使用。
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
+              <a class="next" href="/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                <span class="next-text nav-default">Git常用命令</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
           </nav>
         </footer>
       </article>

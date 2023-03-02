@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="背景 公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试" />
+  <meta name="description" content="数据库性能的影响因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 一.硬件 变化的硬件： 通常指裸机配置等，如CPU、内存大" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -68,18 +68,18 @@
 
 
 <meta property="og:title" content="数据库性能的影响因素" />
-<meta property="og:description" content="背景 公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试" />
+<meta property="og:description" content="数据库性能的影响因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 一.硬件 变化的硬件： 通常指裸机配置等，如CPU、内存大" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E7%9A%84%E5%BD%B1%E5%93%8D%E5%9B%A0%E7%B4%A0/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2017-07-12T09:08:00+00:00" />
 <meta property="article:modified_time" content="2017-07-12T09:08:00+00:00" />
 <meta itemprop="name" content="数据库性能的影响因素">
-<meta itemprop="description" content="背景 公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试"><meta itemprop="datePublished" content="2017-07-12T09:08:00+00:00" />
+<meta itemprop="description" content="数据库性能的影响因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 一.硬件 变化的硬件： 通常指裸机配置等，如CPU、内存大"><meta itemprop="datePublished" content="2017-07-12T09:08:00+00:00" />
 <meta itemprop="dateModified" content="2017-07-12T09:08:00+00:00" />
-<meta itemprop="wordCount" content="696">
+<meta itemprop="wordCount" content="597">
 <meta itemprop="keywords" content="数据库,性能测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="数据库性能的影响因素"/>
-<meta name="twitter:description" content="背景 公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试"/>
+<meta name="twitter:description" content="数据库性能的影响因素简单概括，通常会有如下相关项： 硬件、操作系统、数据库配置、应用模型 一.硬件 变化的硬件： 通常指裸机配置等，如CPU、内存大"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 696 字 -
+        约 597 字 -
         预计阅读 2 分钟
       </span>
 
@@ -321,38 +321,38 @@
 
         
         <div class="post-content">
-          <h1 id="背景">背景</h1>
-<p>公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西</p>
-<h1 id="影响数据库性能表现的因素">影响数据库性能表现的因素</h1>
-<p>简单概括，通常会有如下相关项：
+          <p>数据库性能的影响因素简单概括，通常会有如下相关项：
 硬件、操作系统、数据库配置、应用模型</p>
-<pre><code>1、硬件
-	1）变化的硬件：
-		通常指裸机配置等，如CPU、内存大小都对性能有重要影响。
-		再如裸设备、固态硬盘等，对性能也影响很大。
-	2）变化的网络环境：
-		10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。
-
-2、操作系统
-	典型的如Linux系列、Win系列，通常会有不同的性能表现。
-	操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。
-
-3、数据库
-	数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。
-	1）接口如果实现的不好，某些时候，也容易成为瓶颈。
-	2）数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等
-
-4、应用模型
-	基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。
-	目前国内对于数据库的应用现状，基本的问题是：应用不当，SQL写法有误。
-	应用模型对于数据库的影响可能有：
-		1）读多写少、读写并重、读少写多；
-		2）并发情况
-		3）数据量
-		4）中间件
-
-总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。
-</code></pre>
+<h3 id="一硬件">一.硬件</h3>
+<ol>
+<li>变化的硬件：
+通常指裸机配置等，如CPU、内存大小都对性能有重要影响。
+再如裸设备、固态硬盘等，对性能也影响很大。</li>
+<li>变化的网络环境：
+10M、100M、千兆以太网甚至光纤等，会对应用系统的整体性能产生较大影响。</li>
+</ol>
+<h3 id="二操作系统">二.操作系统</h3>
+<ol>
+<li>典型的如Linux系列、Win系列，通常会有不同的性能表现。</li>
+<li>操作系统的一些设置，也可能对数据库性能造成影响。比如块读写的设置等。</li>
+</ol>
+<h3 id="三数据库自身">三.数据库自身</h3>
+<p>数据库，至少包含2部分内容，一是数据库引擎，一是接口（如JDBC、ODBC等）。</p>
+<ol>
+<li>接口如果实现的不好，某些时候，也容易成为瓶颈。</li>
+<li>数据库引擎，可调优之处很多，需要根据实际情况，综合判断。如分区、索引、日志、数据文件、数据库可调参数等</li>
+</ol>
+<h3 id="四应用模型">四.应用模型</h3>
+<p>基于数据库的应用，原型是什么样的，需要深入了解，掌握，才能因地制宜地结合数据库一起调优。</p>
+<p>当前行业对于数据应用常见的基本问题是：应用不当，SQL写法有误。</p>
+<p>应用模型对于数据库的影响可能有：</p>
+<ol>
+<li>读多写少、读写并重、读少写多；</li>
+<li>并发情况</li>
+<li>数据量</li>
+<li>中间件</li>
+</ol>
+<p>总之，应用逻辑和应用模型对数据库的使用方式，更多地影响着系统的瓶颈（通常情况，硬件一旦固定，更换的机会少。比如，数据库性能测试的TPCX系列，很多硬件厂家给出的测试最佳值，都是在固定硬件的环境下进行的）。</p>
 <p>附：
 什么是数据库应用模型？
 参考本博客：<a href="https://hardelm.github.io/2017/07/12/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">《数据库应用模型的简单理解》</a></p>
@@ -414,7 +414,7 @@
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/">
+              <a class="prev" href="/post/nmon%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/">
                 
                 <i class="iconfont">
                   <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -424,7 +424,7 @@
 </svg>
 
                 </i>
-                <span class="prev-text nav-default">数据库模型的简单理解</span>
+                <span class="prev-text nav-default">Nmon使用总结</span>
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
@@ -487,7 +487,23 @@
     </div>
 
     
-    
+    <nav class="toc" id="toc">
+    <div class="toc-title">文章目录</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#一硬件">一.硬件</a></li>
+        <li><a href="#二操作系统">二.操作系统</a></li>
+        <li><a href="#三数据库自身">三.数据库自身</a></li>
+        <li><a href="#四应用模型">四.应用模型</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+  </nav>
 
 
   </div>
