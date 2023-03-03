@@ -22,16 +22,16 @@
 &lt;li&gt;Git工作流程&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;工作区与仓库流程👇
-&lt;img src=&#34;../../static/img/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_1.png&#34; alt=&#34;git工作流程1.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_1.png&#34; alt=&#34;git工作流程1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;完整流程👇
-&lt;img src=&#34;../../static/img/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_2.png&#34; alt=&#34;git工作流程2.png&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/img_2.png&#34; alt=&#34;git工作流程2.png&#34;&gt;&lt;/p&gt;
 &lt;ol start=&#34;2&#34;&gt;
 &lt;li&gt;Git常用命令&lt;/li&gt;
 &lt;/ol&gt;
 &lt;ul&gt;
-&lt;li&gt;常规流程
-init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt;commit暂存区更新至版本库&amp;ndash;&amp;gt;push本地库更新至远程库&lt;/li&gt;
+&lt;li&gt;常规流程&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt;commit暂存区更新至版本库&amp;ndash;&amp;gt;push本地库更新至远程库&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git init
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git add . #添加变动
