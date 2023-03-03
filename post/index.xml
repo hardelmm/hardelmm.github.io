@@ -13,7 +13,16 @@
       <pubDate>Thu, 02 Mar 2023 23:56:03 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt</description>
+      <description>常规流程 init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt;commit暂存区更新至版本库&amp;ndash;&amp;gt;p</description>
+    </item>
+    
+    <item>
+      <title>Git流程详解</title>
+      <link>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Thu, 02 Mar 2023 23:45:28 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid>
+      <description>Git工作流程 工作区与仓库流程👇 完整流程👇</description>
     </item>
     
     <item>
@@ -176,15 +185,6 @@
       
       <guid>https://hardelmm.github.io/post/ssm%E6%A1%86%E6%9E%B6%E5%8E%9F%E7%90%86%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95/</guid>
       <description>背景 无 SSM简介 作用 SSM框架是spring MVC ，spring和mybatis框架的整合，是标准的MVC模式，将整个系统划分为表现层，cont</description>
-    </item>
-    
-    <item>
-      <title>Swagger</title>
-      <link>https://hardelmm.github.io/post/swagger/</link>
-      <pubDate>Tue, 15 May 2018 14:30:50 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/swagger/</guid>
-      <description>背景 无 适用范围 总结</description>
     </item>
     
   </channel>
