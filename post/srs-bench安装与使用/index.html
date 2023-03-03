@@ -325,10 +325,10 @@
 <h1 id="什么是st-load">什么是st-load</h1>
 <p>服务器负载测试工具(st-load)：</p>
 <p>st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。
-<a href="http://www.udpwork.com/item/13384.html" title="state-threads">state-threads</a>用来模拟超级并发，并简化异步socket的逻辑为同步socket，<a href="https://github.com/nodejs/http-parser" title="http-parser">http-parser</a>解析http协议部分。
-这两个库设计都很巧妙，参考大牛开的项目：https://github.com/ossrs/srs-bench
-state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。
-http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
+<a href="http://www.udpwork.com/item/13384.html" title="state-threads">state-threads</a>用来模拟超级并发，并简化异步socket的逻辑为同步socket，<a href="https://github.com/nodejs/http-parser" title="http-parser">http-parser</a>解析http协议部分。</p>
+<p>这两个库设计都很巧妙，参考大牛开的项目：<a href="%5Bhttps://github.com/ossrs/srs-bench%5D">https://github.com/ossrs/srs-bench</a></p>
+<p>state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。</p>
+<p>http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
 举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。</p>
 <ol>
 <li>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。</li>

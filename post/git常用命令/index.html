@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="git init git add . #添加变动 git add -A #添加全量 git commit -m &amp;rsquo;&amp;rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系" />
+  <meta name="description" content="Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -68,18 +68,18 @@
 
 
 <meta property="og:title" content="Git常用命令" />
-<meta property="og:description" content="git init git add . #添加变动 git add -A #添加全量 git commit -m &rsquo;&rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系" />
+<meta property="og:description" content="Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><meta property="article:section" content="post" />
 
 
 <meta itemprop="name" content="Git常用命令">
-<meta itemprop="description" content="git init git add . #添加变动 git add -A #添加全量 git commit -m &rsquo;&rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系">
+<meta itemprop="description" content="Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt">
 
-<meta itemprop="wordCount" content="70">
+<meta itemprop="wordCount" content="641">
 <meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Git常用命令"/>
-<meta name="twitter:description" content="git init git add . #添加变动 git add -A #添加全量 git commit -m &rsquo;&rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系"/>
+<meta name="twitter:description" content="Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -301,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 70 字 -
-        预计阅读 1 分钟
+        约 641 字 -
+        预计阅读 2 分钟
       </span>
 
     
@@ -321,12 +321,53 @@
 
         
         <div class="post-content">
-          <p>git init
-git add . #添加变动
-git add -A #添加全量
-git commit -m &rsquo;&rsquo; #本地推送至暂存区
-git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系</p>
-
+          <ol>
+<li>Git工作流程</li>
+</ol>
+<p>工作区与仓库流程👇</p>
+<p><img src="img.png" alt="工作区与仓库流程图"></p>
+<p>完整流程👇</p>
+<p><img src="img_1.png" alt="完整流程图"></p>
+<ol start="2">
+<li>Git常用命令</li>
+</ol>
+<ul>
+<li>常规流程
+init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt;commit暂存区更新至版本库&ndash;&gt;push本地库更新至远程库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>git init
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3">3</a></span><span>git add . #添加变动
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4">4</a></span><span>git add -A #添加全量
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5">5</a></span><span>git commit -m &#39;&#39; #本地推送至暂存区
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6">6</a></span><span>git push -u &lt;远程库&gt; &lt;分支&gt; #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系
+</span></span></code></pre></div><ul>
+<li>push</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span>git push &lt;远程库&gt; &lt;本地分支&gt;:&lt;远程分支&gt; #推送本地分支至远程库，与远程分支合并
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3">3</a></span><span>以上若远程分支名和本地分支相同，可合并简写
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4">4</a></span><span>git push --force &lt;远程库&gt; &lt;本地分支&gt; #忽略版本差异，强制推送
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5">5</a></span><span>git push &lt;远程库&gt; --delete &lt;远程分支&gt; #删除远程分支
+</span></span></code></pre></div><ul>
+<li>fetch和pull</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>git fetch &lt;远程库&gt; &lt;远程分支&gt;:&lt;本地分支&gt; #抓取远程分支至本地
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>git merge &lt;库&gt;/&lt;分支&gt; #提取数据并尝试合并到当前分支
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4">4</a></span><span>git pull &lt;远程库&gt; &lt;远程分支&gt;:&lt;本地分支&gt; #拉取远程库的分支至本地，与本地分支合并
+</span></span></code></pre></div><ul>
+<li>remote</li>
+</ul>
+<p>remote用来操作配置远程仓库</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>git remote -v 
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>git remote show &lt;仓库名&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span>git remote add &lt;新仓库&gt; &lt;url&gt; #向远程主机提交新仓库
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a></span><span>git push -u &lt;仓库&gt;&lt;分支&gt;
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-5">5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-6">6</a></span><span>git remote rm &lt;仓库名&gt; #删除远程仓库
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-7">7</a></span><span>git remote rename &lt;旧名称&gt; &lt;新名称&gt; #修改远程仓库名
+</span></span></code></pre></div>
         </div>
 
         

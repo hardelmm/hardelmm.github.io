@@ -12,7 +12,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
-      <description>git init git add . #添加变动 git add -A #添加全量 git commit -m &amp;rsquo;&amp;rsquo; #本地推送至暂存区 git push -u 远程库 分支 #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系</description>
+      <description>Git工作流程 工作区与仓库流程👇 完整流程👇 Git常用命令 常规流程 init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt</description>
     </item>
     
   </channel>
