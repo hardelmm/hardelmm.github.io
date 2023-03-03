@@ -6,7 +6,16 @@
     <description>Recent content in Tags on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Feb 2023 00:02:37 +0800</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 02 Mar 2023 23:56:03 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>https://hardelmm.github.io/tags/git/</link>
+      <pubDate>Thu, 02 Mar 2023 23:56:03 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/tags/git/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>数据库</title>
       <link>https://hardelmm.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/</link>
@@ -175,15 +184,6 @@
       <pubDate>Wed, 29 Nov 2017 00:30:00 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>进程</title>
-      <link>https://hardelmm.github.io/tags/%E8%BF%9B%E7%A8%8B/</link>
-      <pubDate>Tue, 28 Nov 2017 17:00:00 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/tags/%E8%BF%9B%E7%A8%8B/</guid>
       <description></description>
     </item>
     

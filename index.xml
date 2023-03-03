@@ -6,10 +6,67 @@
     <description>Recent content on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 28 Feb 2023 00:02:37 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 02 Mar 2023 23:56:03 +0000</lastBuildDate>
     
         <atom:link href="https://hardelmm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Git常用命令</title>
+      <link>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
+      <pubDate>Thu, 02 Mar 2023 23:56:03 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</guid>
+      
+        <description>&lt;ol&gt;
+&lt;li&gt;Git工作流程&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;工作区与仓库流程👇&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img.png&#34; alt=&#34;工作区与仓库流程图&#34;&gt;&lt;/p&gt;
+&lt;p&gt;完整流程👇&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img_1.png&#34; alt=&#34;完整流程图&#34;&gt;&lt;/p&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;Git常用命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;常规流程
+init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt;commit暂存区更新至版本库&amp;ndash;&amp;gt;push本地库更新至远程库&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git init
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git add . #添加变动
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git add -A #添加全量
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git commit -m &amp;#39;&amp;#39; #本地推送至暂存区
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git push -u &amp;lt;远程库&amp;gt; &amp;lt;分支&amp;gt; #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;push&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git push &amp;lt;远程库&amp;gt; &amp;lt;本地分支&amp;gt;:&amp;lt;远程分支&amp;gt; #推送本地分支至远程库，与远程分支合并
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;以上若远程分支名和本地分支相同，可合并简写
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git push --force &amp;lt;远程库&amp;gt; &amp;lt;本地分支&amp;gt; #忽略版本差异，强制推送
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git push &amp;lt;远程库&amp;gt; --delete &amp;lt;远程分支&amp;gt; #删除远程分支
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;fetch和pull&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git fetch &amp;lt;远程库&amp;gt; &amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt; #抓取远程分支至本地
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git merge &amp;lt;库&amp;gt;/&amp;lt;分支&amp;gt; #提取数据并尝试合并到当前分支
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git pull &amp;lt;远程库&amp;gt; &amp;lt;远程分支&amp;gt;:&amp;lt;本地分支&amp;gt; #拉取远程库的分支至本地，与本地分支合并
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;remote&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;remote用来操作配置远程仓库&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote -v 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote show &amp;lt;仓库名&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote add &amp;lt;新仓库&amp;gt; &amp;lt;url&amp;gt; #向远程主机提交新仓库
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git push -u &amp;lt;仓库&amp;gt;&amp;lt;分支&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rm &amp;lt;仓库名&amp;gt; #删除远程仓库
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-7&#34;&gt;7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rename &amp;lt;旧名称&amp;gt; &amp;lt;新名称&amp;gt; #修改远程仓库名
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+      
+    </item>
     
     <item>
       <title>数据库性能调优要点</title>
@@ -1770,50 +1827,6 @@ MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。&lt
 &lt;p&gt;无&lt;/p&gt;
 &lt;h1 id=&#34;适用范围&#34;&gt;适用范围&lt;/h1&gt;
 &lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>Java JDBC编程步骤</title>
-      <link>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</link>
-      <pubDate>Thu, 08 Mar 2018 15:35:50 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/java-jdbc%E7%BC%96%E7%A8%8B%E6%AD%A5%E9%AA%A4/</guid>
-      
-        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
-&lt;p&gt;无&lt;/p&gt;
-&lt;h1 id=&#34;jdbc编程步骤&#34;&gt;JDBC编程步骤&lt;/h1&gt;
-&lt;h2 id=&#34;load-the-driver&#34;&gt;Load the Driver&lt;/h2&gt;
-&lt;h3 id=&#34;new一个实例&#34;&gt;new一个实例&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;1、Class.forName()
-2、Class.forName().newInstance()
-3、new DriverName();
-注意：实例化时自动向DriverManager注册，不需要显式调用DriverManager.registerDriver方法
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;connect-to-the-database&#34;&gt;Connect to the Database&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;连接数据库：DriverManager.getConnection()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;execute-the-sql&#34;&gt;Execute the SQL&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;执行SQL语句：
-1、Connection.CreateStatement()
-2、Statement.executeQuery()
-3、Statament.executeUpdate()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;retrieve-the-result-data&#34;&gt;Retrieve the result data&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;遍历结果：
-	while(rs.next())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;show-the-result-data&#34;&gt;Show the result data&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;数据类型转换：将从数据库中获取的各种数据类型转换成Java中的类型(getXXX)方法
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;close&#34;&gt;Close&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;1、close the resultset
-2、close the statement
-3、close the connection
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;总结&#34;&gt;总结&lt;/h1&gt;
-&lt;p&gt;各种数据库连接方式以及步骤大同小异。&lt;/p&gt;
 </description>
       
     </item>
