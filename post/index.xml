@@ -22,7 +22,7 @@
       <pubDate>Thu, 02 Mar 2023 23:45:28 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid>
-      <description>本文简要介绍git存储 一.Git工作流程 常用操作流程模型👇 工作区与仓库流程模型👇 工作区与仓库内部流程模型👇 二.Git存储原理以及部分实现 git</description>
+      <description>本文简要介绍git对象生命周期变化、文件结构以及作用 一.Git工作流程 常用操作流程模型👇 工作区与仓库流程模型👇 工作区与仓库内部流程模型👇 二.</description>
     </item>
     
     <item>
