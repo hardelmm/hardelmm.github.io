@@ -80,6 +80,9 @@
 &lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE1.png&#34; alt=&#34;git流程图1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;工作区与仓库流程👇&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE2.png&#34; alt=&#34;git流程图2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;工作区与仓库内部流程👇&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE3.png&#34; alt=&#34;git流程图3.png&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;二git存储原理以及部分实现&#34;&gt;二.Git存储原理以及部分实现&lt;/h3&gt;
 </description>
       
     </item>
