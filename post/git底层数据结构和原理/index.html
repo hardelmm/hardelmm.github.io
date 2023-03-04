@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          Git常用命令 - HardElm
+          Git底层数据结构和原理 - HardElm
         </title>
     
 
@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="常规流程 init本地初始化&amp;ndash;&amp;gt;add更新暂存区&amp;ndash;&amp;gt;commit暂存区更新至版本库&amp;ndash;&amp;gt;p" />
+  <meta name="description" content="前言：本文简要介绍Git对象生命周期变化、文件结构以及作用 因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据 com" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" />
+<link rel="canonical" href="https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E5%8E%9F%E7%90%86/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="Git常用命令" />
-<meta property="og:description" content="常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt;commit暂存区更新至版本库&ndash;&gt;p" />
+<meta property="og:title" content="Git底层数据结构和原理" />
+<meta property="og:description" content="前言：本文简要介绍Git对象生命周期变化、文件结构以及作用 因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据 com" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2023-03-02T23:56:03+00:00" />
-<meta property="article:modified_time" content="2023-03-02T23:56:03+00:00" />
-<meta itemprop="name" content="Git常用命令">
-<meta itemprop="description" content="常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt;commit暂存区更新至版本库&ndash;&gt;p"><meta itemprop="datePublished" content="2023-03-02T23:56:03+00:00" />
-<meta itemprop="dateModified" content="2023-03-02T23:56:03+00:00" />
-<meta itemprop="wordCount" content="1084">
+<meta property="og:url" content="https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E5%8E%9F%E7%90%86/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-03-02T23:45:28+00:00" />
+<meta property="article:modified_time" content="2023-03-02T23:45:28+00:00" />
+<meta itemprop="name" content="Git底层数据结构和原理">
+<meta itemprop="description" content="前言：本文简要介绍Git对象生命周期变化、文件结构以及作用 因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据 com"><meta itemprop="datePublished" content="2023-03-02T23:45:28+00:00" />
+<meta itemprop="dateModified" content="2023-03-02T23:45:28+00:00" />
+<meta itemprop="wordCount" content="680">
 <meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Git常用命令"/>
-<meta name="twitter:description" content="常规流程 init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt;commit暂存区更新至版本库&ndash;&gt;p"/>
+<meta name="twitter:title" content="Git底层数据结构和原理"/>
+<meta name="twitter:description" content="前言：本文简要介绍Git对象生命周期变化、文件结构以及作用 因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据 com"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -284,7 +284,7 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">Git常用命令</h1>
+          <h1 class="post-title">Git底层数据结构和原理</h1>
           
 
           <div class="post-meta">
@@ -301,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1084 字 -
-        预计阅读 3 分钟
+        约 680 字 -
+        预计阅读 2 分钟
       </span>
 
     
@@ -321,56 +321,115 @@
 
         
         <div class="post-content">
-          <h3 id="常规流程">常规流程</h3>
-<p>init本地初始化&ndash;&gt;add更新暂存区&ndash;&gt;commit暂存区更新至版本库&ndash;&gt;push本地库更新至远程库</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>git init
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3">3</a></span><span>git add . #添加变动
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4">4</a></span><span>git add -A #添加全量
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5">5</a></span><span>git commit -m &#39;&#39; #本地推送至暂存区 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6">6</a></span><span>git push -u &lt;远程库&gt; &lt;分支&gt; #分支推送至远程库，并维护一条本地分支和远程分支之间的映射关系
-</span></span></code></pre></div><h3 id="add和commit">add和commit</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>git add file
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span>git add . #add新文件和修改文件（Git2.x版本包括删除的文件）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3">3</a></span><span>git add -u #add修改和删除的文件
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4">4</a></span><span>git add -A #add所有文件
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5">5</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6">6</a></span><span>git commit file -m &#39;&#39;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7">7</a></span><span>git commit -am &#39;&#39; #am跳过add步骤
-</span></span></code></pre></div><h3 id="push">push</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>git push &lt;远程库&gt; &lt;本地分支&gt;:&lt;远程分支&gt; #推送本地分支至远程库，与远程分支合并
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>以上若远程分支名和本地分支相同，可合并简写
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span>git push --force &lt;远程库&gt; &lt;本地分支&gt; #忽略版本差异，强制推送
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4">4</a></span><span>git push &lt;远程库&gt; --delete &lt;远程分支&gt; #删除远程分支
-</span></span></code></pre></div><h3 id="fetch和pull">fetch和pull</h3>
-<p>git pull 使用结果类似于git fetch + git merge ，区别在于commitID更新方式</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>git fetch &lt;远程库&gt; &lt;远程分支&gt;:&lt;本地分支&gt; #抓取远程分支至本地
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>git merge &lt;库&gt;/&lt;分支&gt; #提取数据并尝试合并到当前分支
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a></span><span>git pull &lt;远程库&gt; &lt;远程分支&gt;:&lt;本地分支&gt; #拉取远程库的分支至本地，与本地分支合并
-</span></span></code></pre></div><h3 id="diff">diff</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>git diff #比较工作台与暂存区区别
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span>git diff --cached &lt;版本&gt; #比较暂存区与本地库区别
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span>git diff head/&lt;版本&gt; #比较本地库与工作台区别
-</span></span></code></pre></div><h3 id="reset和revert">reset和revert</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>git reset head #取消当前版本在暂存区的缓存
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>git reset --mixed &lt;版本&gt; #回退至指定版本 （回退重置到工作区）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span>#mixed为默认参数可省略，用于重置暂存区的文件与回退版本提交(commit)保持一致，工作区文件内容保持不变
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-4">4</a></span><span>git reset --soft &lt;版本&gt; #回退到指定版本（回退操作止步暂存区）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-5">5</a></span><span>git reset --hard &lt;版本&gt; #回退且删除版本间信息提交（慎用）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-6">6</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-7">7</a></span><span>git revert &lt;版本&gt; #reflog取得commit哈希值，撤销后重新push
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-8">8</a></span><span>#revert相当于做出反向变动，push后起到对指定的commit的抵消作用
-</span></span></code></pre></div><h3 id="remote">remote</h3>
-<p>remote用来操作配置远程仓库</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a></span><span>git remote -v 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2">2</a></span><span>git remote show &lt;仓库名&gt;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3">3</a></span><span>git remote add &lt;新仓库&gt; &lt;url&gt; #向远程主机提交新仓库
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4">4</a></span><span>git push -u &lt;仓库&gt;&lt;分支&gt;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-5">5</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-6">6</a></span><span>git remote rm &lt;仓库名&gt; #删除远程仓库
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-7">7</a></span><span>git remote rename &lt;旧名称&gt; &lt;新名称&gt; #修改远程仓库名
-</span></span></code></pre></div><p>git工作流程参阅：<a href="https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/">《Git流程详解》</a></p>
+          <p>前言：本文简要介绍Git对象生命周期变化、文件结构以及作用</p>
+<ol>
+<li>因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据</li>
+<li>commit就像是对存储空间中的对象在某个时间的一次定格快照，而commitID链表就像是时间轴</li>
+<li>不同的branch像是在某个时间点（commit）分叉出的另一组不同的空间快照</li>
+</ol>
+<h2 id="一git工作流程">一.Git工作流程</h2>
+<p>常用操作流程模型👇</p>
+<p><img src="/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E5%8E%9F%E7%90%86/git%E6%B5%81%E7%A8%8B%E5%9B%BE1.png" alt="git流程图1.png"></p>
+<p>工作区与仓库流程模型👇</p>
+<p><img src="/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E5%8E%9F%E7%90%86/git%E6%B5%81%E7%A8%8B%E5%9B%BE2.png" alt="git流程图2.png"></p>
+<p>工作区与仓库内部流程模型👇</p>
+<p><img src="/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E5%8E%9F%E7%90%86/git%E6%B5%81%E7%A8%8B%E5%9B%BE3.png" alt="git流程图3.png"></p>
+<h2 id="二git存储原理以及部分实现">二.Git存储原理以及部分实现</h2>
+<h3 id="1git对象">1.Git对象</h3>
+<p>Git存储空间中主要存在四种对象：blob、tree、commit、tag</p>
+<ul>
+<li>blob用来存储单个文件内容</li>
+<li>tree用来存储目录结构</li>
+<li>commit用来存储空间文件集合</li>
+<li>tag用来表示存储的分支（branch），一般关联分支的最后一个commit对象
+Git对象都是通过哈希（SHA-1 散列）算法计算校验和来校验和引用，实际上，Git数据库中保存的信息都是以文件内容的哈希值来索引，而不是文件名。</li>
+</ul>
+<h3 id="2git目录结构">2.Git目录结构</h3>
+<p><img src="/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D.png" alt="git目录介绍.png"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">目录</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">hooks</td>
+<td style="text-align:left">存放可执行的shell脚本</td>
+</tr>
+<tr>
+<td style="text-align:center">info</td>
+<td style="text-align:left">包含仓库的信息</td>
+</tr>
+<tr>
+<td style="text-align:center">logs</td>
+<td style="text-align:left">保存所有更新的引用日志</td>
+</tr>
+<tr>
+<td style="text-align:center">objects</td>
+<td style="text-align:left">存放git存储对象</td>
+</tr>
+<tr>
+<td style="text-align:center">refs</td>
+<td style="text-align:left">存放分支最新快照的哈希值</td>
+</tr>
+<tr>
+<td style="text-align:center">COMMIT_EDITMSG</td>
+<td style="text-align:left">存放最新commit描述信息</td>
+</tr>
+<tr>
+<td style="text-align:center">config</td>
+<td style="text-align:left">存放git配置信息，远端仓库地址、分支指向、策略和模式等</td>
+</tr>
+<tr>
+<td style="text-align:center">description</td>
+<td style="text-align:left">仓库描述信息</td>
+</tr>
+<tr>
+<td style="text-align:center">FETCH_HEAD</td>
+<td style="text-align:left">存放最新和远端仓库通信的commit哈希值</td>
+</tr>
+<tr>
+<td style="text-align:center">HEAD</td>
+<td style="text-align:left">HEAD指针，指向当前工作区所在分支</td>
+</tr>
+<tr>
+<td style="text-align:center">index</td>
+<td style="text-align:left">暂存区(stage)索引文件，git ls-files</td>
+</tr>
+<tr>
+<td style="text-align:center">ORIG_HEAD</td>
+<td style="text-align:left">HEAD指针，指向reset前的分支</td>
+</tr>
+</tbody>
+</table>
+<p>补充：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">目录</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">object/f6</td>
+<td style="text-align:left">存放松散对象文件</td>
+</tr>
+<tr>
+<td style="text-align:center">object/info</td>
+<td style="text-align:left">存放目录信息，比如打包文件名</td>
+</tr>
+<tr>
+<td style="text-align:center">object/pack</td>
+<td style="text-align:left">存放打包压缩对象pack文件</td>
+</tr>
+</tbody>
+</table>
+<p>参考文献：</p>
+<p><a href="https://git-scm.com/book/">《Pro Git》</a></p>
+<p><a href="https://www.freesion.com/article/27061335727/">《Git原理层面模型》</a></p>
 
         </div>
 
@@ -428,9 +487,22 @@
           
           <nav class="post-nav">
             
+              <a class="prev" href="/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">Git常用命令</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
             
-              <a class="next" href="/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                <span class="next-text nav-default">Git底层数据结构和原理</span>
+              <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/">
+                <span class="next-text nav-default">数据库性能调优要点</span>
                 <span class="prev-text nav-mobile">下一篇</span>
                 
                 <i class="iconfont">
@@ -493,15 +565,11 @@
     <div class="toc-content custom-scrollbar">
       <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#一git工作流程">一.Git工作流程</a></li>
+    <li><a href="#二git存储原理以及部分实现">二.Git存储原理以及部分实现</a>
       <ul>
-        <li><a href="#常规流程">常规流程</a></li>
-        <li><a href="#add和commit">add和commit</a></li>
-        <li><a href="#push">push</a></li>
-        <li><a href="#fetch和pull">fetch和pull</a></li>
-        <li><a href="#diff">diff</a></li>
-        <li><a href="#reset和revert">reset和revert</a></li>
-        <li><a href="#remote">remote</a></li>
+        <li><a href="#1git对象">1.Git对象</a></li>
+        <li><a href="#2git目录结构">2.Git目录结构</a></li>
       </ul>
     </li>
   </ul>

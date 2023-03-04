@@ -17,12 +17,12 @@
     </item>
     
     <item>
-      <title>Git流程详解</title>
-      <link>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link>
+      <title>Git底层数据结构和原理</title>
+      <link>https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Thu, 02 Mar 2023 23:45:28 +0000</pubDate>
       
-      <guid>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid>
-      <description>本文简要介绍git对象生命周期变化、文件结构以及作用 一.Git工作流程 常用操作流程模型👇 工作区与仓库流程模型👇 工作区与仓库内部流程模型👇 二.</description>
+      <guid>https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
+      <description>前言：本文简要介绍Git对象生命周期变化、文件结构以及作用 因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据 com</description>
     </item>
     
   </channel>

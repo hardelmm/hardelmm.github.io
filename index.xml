@@ -73,22 +73,121 @@
     </item>
     
     <item>
-      <title>Git流程详解</title>
-      <link>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</link>
+      <title>Git底层数据结构和原理</title>
+      <link>https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</link>
       <pubDate>Thu, 02 Mar 2023 23:45:28 +0000</pubDate>
       
-      <guid>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid>
+      <guid>https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</guid>
       
-        <description>&lt;p&gt;本文简要介绍git对象生命周期变化、文件结构以及作用&lt;/p&gt;
-&lt;h3 id=&#34;一git工作流程&#34;&gt;一.Git工作流程&lt;/h3&gt;
+        <description>&lt;p&gt;前言：本文简要介绍Git对象生命周期变化、文件结构以及作用&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;因为commit对象的存在，Git分布式管理系统可以理解为以多维方式存储数据&lt;/li&gt;
+&lt;li&gt;commit就像是对存储空间中的对象在某个时间的一次定格快照，而commitID链表就像是时间轴&lt;/li&gt;
+&lt;li&gt;不同的branch像是在某个时间点（commit）分叉出的另一组不同的空间快照&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;一git工作流程&#34;&gt;一.Git工作流程&lt;/h2&gt;
 &lt;p&gt;常用操作流程模型👇&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE1.png&#34; alt=&#34;git流程图1.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/git%E6%B5%81%E7%A8%8B%E5%9B%BE1.png&#34; alt=&#34;git流程图1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;工作区与仓库流程模型👇&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE2.png&#34; alt=&#34;git流程图2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/git%E6%B5%81%E7%A8%8B%E5%9B%BE2.png&#34; alt=&#34;git流程图2.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;工作区与仓库内部流程模型👇&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE3.png&#34; alt=&#34;git流程图3.png&#34;&gt;&lt;/p&gt;
-&lt;h3 id=&#34;二git存储原理以及部分实现&#34;&gt;二.Git存储原理以及部分实现&lt;/h3&gt;
-&lt;p&gt;git分布式管理系统本质上是&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/git%E6%B5%81%E7%A8%8B%E5%9B%BE3.png&#34; alt=&#34;git流程图3.png&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;二git存储原理以及部分实现&#34;&gt;二.Git存储原理以及部分实现&lt;/h2&gt;
+&lt;h3 id=&#34;1git对象&#34;&gt;1.Git对象&lt;/h3&gt;
+&lt;p&gt;Git存储空间中主要存在四种对象：blob、tree、commit、tag&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;blob用来存储单个文件内容&lt;/li&gt;
+&lt;li&gt;tree用来存储目录结构&lt;/li&gt;
+&lt;li&gt;commit用来存储空间文件集合&lt;/li&gt;
+&lt;li&gt;tag用来表示存储的分支（branch），一般关联分支的最后一个commit对象
+Git对象都是通过哈希（SHA-1 散列）算法计算校验和来校验和引用，实际上，Git数据库中保存的信息都是以文件内容的哈希值来索引，而不是文件名。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;2git目录结构&#34;&gt;2.Git目录结构&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/git%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D.png&#34; alt=&#34;git目录介绍.png&#34;&gt;&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;目录&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;hooks&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放可执行的shell脚本&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;info&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;包含仓库的信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;logs&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;保存所有更新的引用日志&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;objects&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放git存储对象&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;refs&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放分支最新快照的哈希值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;COMMIT_EDITMSG&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放最新commit描述信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;config&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放git配置信息，远端仓库地址、分支指向、策略和模式等&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;description&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;仓库描述信息&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;FETCH_HEAD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放最新和远端仓库通信的commit哈希值&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;HEAD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HEAD指针，指向当前工作区所在分支&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;index&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;暂存区(stage)索引文件，git ls-files&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;ORIG_HEAD&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;HEAD指针，指向reset前的分支&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;补充：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;目录&lt;/th&gt;
+&lt;th style=&#34;text-align:left&#34;&gt;作用&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;object/f6&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放松散对象文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;object/info&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放目录信息，比如打包文件名&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;object/pack&lt;/td&gt;
+&lt;td style=&#34;text-align:left&#34;&gt;存放打包压缩对象pack文件&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;参考文献：&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://git-scm.com/book/&#34;&gt;《Pro Git》&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.freesion.com/article/27061335727/&#34;&gt;《Git原理层面模型》&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
