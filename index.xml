@@ -63,7 +63,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rm &amp;lt;仓库名&amp;gt; #删除远程仓库
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-7&#34;&gt;7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rename &amp;lt;旧名称&amp;gt; &amp;lt;新名称&amp;gt; #修改远程仓库名
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;git工作流程参阅：&lt;a href=&#34;https://hardelmm.github.io/post/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/&#34;&gt;《Git流程详解》&lt;/a&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;git工作流程参阅：&lt;a href=&#34;https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/&#34;&gt;《Git流程详解》&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -75,13 +75,11 @@
       
       <guid>https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/</guid>
       
-        <description>&lt;ol&gt;
-&lt;li&gt;Git工作流程&lt;/li&gt;
-&lt;/ol&gt;
+        <description>&lt;h3 id=&#34;一git工作流程&#34;&gt;一.Git工作流程&lt;/h3&gt;
+&lt;p&gt;常用操作流程👇&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE1.png&#34; alt=&#34;git流程图1.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;工作区与仓库流程👇&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B1.png&#34; alt=&#34;git工作流程1.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;完整流程👇&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B2.png&#34; alt=&#34;git工作流程2.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/git%E6%B5%81%E7%A8%8B%E5%9B%BE2.png&#34; alt=&#34;git流程图2.png&#34;&gt;&lt;/p&gt;
 </description>
       
     </item>
