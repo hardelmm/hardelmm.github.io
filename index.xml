@@ -67,7 +67,7 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-6-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-6-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-6-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-6-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rm &amp;lt;仓库名&amp;gt; #删除远程仓库
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-6-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-6-7&#34;&gt;7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;git remote rename &amp;lt;旧名称&amp;gt; &amp;lt;新名称&amp;gt; #修改远程仓库名
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;git工作流程参阅：&lt;a href=&#34;https://hardelmm.github.io/post/git%E6%B5%81%E7%A8%8B%E8%AF%A6%E8%A7%A3/&#34;&gt;《Git流程详解》&lt;/a&gt;&lt;/p&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;git工作流程参阅：&lt;a href=&#34;https://hardelmm.github.io/post/git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/&#34;&gt;《Git底层数据结构》&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -99,9 +99,9 @@
 &lt;li&gt;blob用来存储单个文件内容&lt;/li&gt;
 &lt;li&gt;tree用来存储目录结构&lt;/li&gt;
 &lt;li&gt;commit用来存储空间文件集合&lt;/li&gt;
-&lt;li&gt;tag用来表示存储的分支（branch），一般关联分支的最后一个commit对象
-Git对象都是通过哈希（SHA-1 散列）算法计算校验和来校验和引用，实际上，Git数据库中保存的信息都是以文件内容的哈希值来索引，而不是文件名。&lt;/li&gt;
+&lt;li&gt;tag用来表示存储的分支（branch），一般关联分支的最后一个commit对象&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Git对象都是通过哈希（SHA-1 散列）算法计算校验和来校验和引用，实际上，Git数据库中保存的信息都是以文件内容的哈希值来索引，而不是文件名。&lt;/p&gt;
 &lt;h3 id=&#34;2git目录结构&#34;&gt;2.Git目录结构&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/Git%E5%BA%95%E5%B1%82%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/git%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D.png&#34; alt=&#34;git目录介绍.png&#34;&gt;&lt;/p&gt;
 &lt;table&gt;
