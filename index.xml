@@ -210,71 +210,7 @@
       
       <guid>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%BA%8C/</guid>
       
-        <description>&lt;p&gt;前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>st-load安装与使用</title>
-      <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
-      
-        <description>&lt;p&gt;项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。&lt;/p&gt;
-&lt;h1 id=&#34;什么是st-load&#34;&gt;什么是st-load&lt;/h1&gt;
-&lt;p&gt;服务器负载测试工具(st-load)：&lt;/p&gt;
-&lt;p&gt;st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。
-&lt;a href=&#34;http://www.udpwork.com/item/13384.html&#34; title=&#34;state-threads&#34;&gt;state-threads&lt;/a&gt;用来模拟超级并发，并简化异步socket的逻辑为同步socket，&lt;a href=&#34;https://github.com/nodejs/http-parser&#34; title=&#34;http-parser&#34;&gt;http-parser&lt;/a&gt;解析http协议部分。&lt;/p&gt;
-&lt;p&gt;这两个库设计都很巧妙，参考大牛开的项目：&lt;a href=&#34;%5Bhttps://github.com/ossrs/srs-bench%5D&#34;&gt;https://github.com/ossrs/srs-bench&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。&lt;/p&gt;
-&lt;p&gt;http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
-举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。&lt;/li&gt;
-&lt;li&gt;支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。&lt;/li&gt;
-&lt;li&gt;支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。&lt;/li&gt;
-&lt;li&gt;支持RTMP流播放测试，一个进程支持5k并发。&lt;/li&gt;
-&lt;li&gt;支持RTMP流推流测试，一个进程支持500个并发&lt;/li&gt;
-&lt;li&gt;RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;注意：
-HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。
-所有程序都在Linux下运行，模拟客户端运行。
-其他工具参考srs-librtmp&lt;/p&gt;
-&lt;h1 id=&#34;安装配置&#34;&gt;安装配置&lt;/h1&gt;
-&lt;p&gt;安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud srs-bench-master]# ./configure
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud srs-bench-master]# make
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看生成的文件和目录&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud objs]# ls
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;使用方法&#34;&gt;使用方法&lt;/h1&gt;
-&lt;p&gt;模拟RTMP播放用户&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟HLS直播用户&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟HSL点播用户&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟RTMP推流用户&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-6-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-6-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟RTMP多路推流用户&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-7-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-7-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start a client
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 1000 clients
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 10000 clients
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-7&#34;&gt;7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 100000 clients
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-8&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-8&#34;&gt;8&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;参考：
-&lt;a href=&#34;https://github.com/ossrs/srs-bench&#34;&gt;https://github.com/ossrs/srs-bench&lt;/a&gt;&lt;/p&gt;
+        <description>&lt;p&gt;前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅&lt;a href=&#34;https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%B8%80/&#34;&gt;《接口自动化测试框架模型（一）》&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>
@@ -282,7 +218,7 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
     <item>
       <title>接口自动化测试框架模型（一）</title>
       <link>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%B8%80/</link>
-      <pubDate>Sun, 27 Mar 2022 15:37:00 +0000</pubDate>
+      <pubDate>Wed, 27 Apr 2022 15:37:00 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%B8%80/</guid>
       
@@ -360,6 +296,70 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;参考文档：&lt;/p&gt;
 &lt;p&gt;&lt;a href=&#34;https://juejin.im/entry/57bd37c2c4c9710061606b38&#34;&gt;《为什么需要一个mock server》&lt;/a&gt;
 &lt;a href=&#34;http://debugtalk.com/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/&#34;&gt;http://debugtalk.com/tags/%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6/&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>st-load安装与使用</title>
+      <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
+      <pubDate>Fri, 11 Mar 2022 16:18:38 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
+      
+        <description>&lt;p&gt;项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。&lt;/p&gt;
+&lt;h1 id=&#34;什么是st-load&#34;&gt;什么是st-load&lt;/h1&gt;
+&lt;p&gt;服务器负载测试工具(st-load)：&lt;/p&gt;
+&lt;p&gt;st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。
+&lt;a href=&#34;http://www.udpwork.com/item/13384.html&#34; title=&#34;state-threads&#34;&gt;state-threads&lt;/a&gt;用来模拟超级并发，并简化异步socket的逻辑为同步socket，&lt;a href=&#34;https://github.com/nodejs/http-parser&#34; title=&#34;http-parser&#34;&gt;http-parser&lt;/a&gt;解析http协议部分。&lt;/p&gt;
+&lt;p&gt;这两个库设计都很巧妙，参考大牛开的项目：&lt;a href=&#34;%5Bhttps://github.com/ossrs/srs-bench%5D&#34;&gt;https://github.com/ossrs/srs-bench&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。&lt;/p&gt;
+&lt;p&gt;http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
+举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。&lt;/li&gt;
+&lt;li&gt;支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。&lt;/li&gt;
+&lt;li&gt;支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。&lt;/li&gt;
+&lt;li&gt;支持RTMP流播放测试，一个进程支持5k并发。&lt;/li&gt;
+&lt;li&gt;支持RTMP流推流测试，一个进程支持500个并发&lt;/li&gt;
+&lt;li&gt;RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;注意：
+HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。
+所有程序都在Linux下运行，模拟客户端运行。
+其他工具参考srs-librtmp&lt;/p&gt;
+&lt;h1 id=&#34;安装配置&#34;&gt;安装配置&lt;/h1&gt;
+&lt;p&gt;安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;编译&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud srs-bench-master]# ./configure
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-1-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-1-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud srs-bench-master]# make
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;查看生成的文件和目录&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;[root@cdvcloud objs]# ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-2-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-2-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;使用方法&#34;&gt;使用方法&lt;/h1&gt;
+&lt;p&gt;模拟RTMP播放用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-3-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-3-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟HLS直播用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-4-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-4-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟HSL点播用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-5-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-5-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟RTMP推流用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-6-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-6-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模拟RTMP多路推流用户&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-7-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-7-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-1&#34;&gt;1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start a client
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-2&#34;&gt;2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-3&#34;&gt;3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 1000 clients
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-4&#34;&gt;4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-5&#34;&gt;5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 10000 clients
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-6&#34;&gt;6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-7&#34;&gt;7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;start 100000 clients
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-8-8&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-8-8&#34;&gt;8&lt;/a&gt;&lt;/span&gt;&lt;span&gt;	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;参考：
+&lt;a href=&#34;https://github.com/ossrs/srs-bench&#34;&gt;https://github.com/ossrs/srs-bench&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>

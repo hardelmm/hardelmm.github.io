@@ -6,11 +6,11 @@
     <description>Recent content in st-load on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 11 Jul 2022 16:18:38 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/st-load/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 11 Mar 2022 16:18:38 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/st-load/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>st-load安装与使用</title>
       <link>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</link>
-      <pubDate>Mon, 11 Jul 2022 16:18:38 +0000</pubDate>
+      <pubDate>Fri, 11 Mar 2022 16:18:38 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/</guid>
       <description>项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具(</description>
