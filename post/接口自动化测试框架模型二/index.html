@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          HardElm
+          接口自动化测试框架模型（二） - HardElm
         </title>
     
 
@@ -29,7 +29,8 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="Hugo theme jane example site." />
+  <meta name="description" content="前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》" />
+
   <meta name="keywords" content="Hugo, theme, jane" />
 
 
@@ -40,8 +41,8 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/" />
-<link href="/index.xml" rel="alternate" type="application/rss+xml" title="HardElm" />
+<link rel="canonical" href="https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%BA%8C/" />
+
 
 
 
@@ -66,14 +67,19 @@
 
 
 
-<meta property="og:title" content="HardElm" />
-<meta property="og:description" content="Hugo theme jane example site." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://hardelmm.github.io/" />
-<meta itemprop="name" content="HardElm">
-<meta itemprop="description" content="Hugo theme jane example site."><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="HardElm"/>
-<meta name="twitter:description" content="Hugo theme jane example site."/>
+<meta property="og:title" content="接口自动化测试框架模型（二）" />
+<meta property="og:description" content="前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%BA%8C/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-08-20T22:16:46+00:00" />
+<meta property="article:modified_time" content="2022-08-20T22:16:46+00:00" />
+<meta itemprop="name" content="接口自动化测试框架模型（二）">
+<meta itemprop="description" content="前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》"><meta itemprop="datePublished" content="2022-08-20T22:16:46+00:00" />
+<meta itemprop="dateModified" content="2022-08-20T22:16:46+00:00" />
+<meta itemprop="wordCount" content="42">
+<meta itemprop="keywords" content="python,接口测试,自动化测试,jenkins,持续集成," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="接口自动化测试框架模型（二）"/>
+<meta name="twitter:description" content="前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -217,7 +223,7 @@
   <ul id="menu" class="menu">
     
     
-        <li class="menu-item active">
+        <li class="menu-item">
         
           
           
@@ -273,28 +279,20 @@
 
     <div id="mobile-panel">
       <main id="main" class="main bg-llight wallpaper">
+        <div class="content-wrapper">
+    <div id="content" class="content">
+      <article class="post">
         
-<section id="posts" class="posts">
-  
-  
-    
-  
-  
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/">服务端测试思路</a>
-    </h1>
-    
+        <header class="post-header">
+          <h1 class="post-title">接口自动化测试框架模型（二）</h1>
+          
 
-    <div class="post-meta">
+          <div class="post-meta">
 
 
   <div class="post-meta-time">
-    <time datetime="2017-11-24">
-      2017-11-24
+    <time datetime="2022-08-20">
+      2022-08-20
     </time>
   </div>
 
@@ -303,117 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 3126 字 -
-        预计阅读 7 分钟
-      </span>
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        背景 针对近半年的测试经验进行简要的总结，部分内容参考了网络上的一些文章 有哪些服务端测试 我们公司有哪些服务端的应用： 1、web端的服务，ons
-      </div>
-      <div class="read-more">
-        <a href="/post/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B5%8B%E8%AF%95%E6%80%9D%E8%B7%AF/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">python基础语法</a>
-    </h1>
-    
-
-    <div class="post-meta">
-
-
-  <div class="post-meta-time">
-    <time datetime="2017-11-23">
-      2017-11-23
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    <span class="post-meta-more">
-        约 3965 字 -
-        预计阅读 8 分钟
-      </span>
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        中文编码 1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默
-      </div>
-      <div class="read-more">
-        <a href="/post/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/">JNA方式调用dll动态库</a>
-    </h1>
-    
-
-    <div class="post-meta">
-
-
-  <div class="post-meta-time">
-    <time datetime="2017-11-19">
-      2017-11-19
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    <span class="post-meta-more">
-        约 483 字 -
+        约 42 字 -
         预计阅读 1 分钟
       </span>
 
@@ -429,212 +317,149 @@
   </div>
 </div>
 
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        背景 之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 J
-      </div>
-      <div class="read-more">
-        <a href="/post/jna%E8%B0%83%E7%94%A8dll%E5%8A%A8%E6%80%81%E5%BA%93/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
-    
-  </div>
-</article>
+        </header>
 
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
+        
+        <div class="post-content">
+          <p>前言：本文简要介绍针对实际业务场景下业务逻辑/流程的接口自动化实现方案，前文参阅《》</p>
+
+        </div>
+
+        
+        
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">HardElm</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">
+      2022-08-20
       
-      <a class="post-link" href="/post/docker-kubernetes/">docker kubernetes</a>
-    </h1>
-    
-
-    <div class="post-meta">
-
-
-  <div class="post-meta-time">
-    <time datetime="2017-11-13">
-      2017-11-13
-    </time>
-  </div>
-
+    </span>
+  </p>
   
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
 
 
-  <div class="post-meta__right">
-    <span class="post-meta-more">
-        约 2829 字 -
-        预计阅读 6 分钟
-      </span>
 
+        
+        
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">赞赏支持</label>
+  <div class="qr-code">
     
-
-
     
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/pay/wechatpay.png">
+        <span>微信打赏</span>
+      </label>
     
-
-
-    
-    
+      <label class="qr-code-image" for="reward">
+        <img class="image" src="/pay/alipay.png">
+        <span>支付宝打赏</span>
+      </label>
   </div>
 </div>
 
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        docker简介 啥是docker 1.Docker是一个开源项目，基于Go语言实现，已加入Linux基金会，遵从Apache2.0协议，项目代
-      </div>
-      <div class="read-more">
-        <a href="/post/docker-kubernetes/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
-    
-  </div>
-</article>
 
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
+        <footer class="post-footer">
+          <div class="post-tags">
+              <a href="https://hardelmm.github.io/tags/python/">python</a>
+                <a href="https://hardelmm.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">接口测试</a>
+                <a href="https://hardelmm.github.io/tags/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a>
+                <a href="https://hardelmm.github.io/tags/jenkins/">jenkins</a>
+                <a href="https://hardelmm.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a>
+                
+            </div>
+
+
+          
+          <nav class="post-nav">
+            
+              <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/">
+                
+                <i class="iconfont">
+                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
+</svg>
+
+                </i>
+                <span class="prev-text nav-default">数据库性能调优要点</span>
+                <span class="prev-text nav-mobile">上一篇</span>
+              </a>
+            
+              <a class="next" href="/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
+                <span class="next-text nav-default">st-load安装与使用</span>
+                <span class="prev-text nav-mobile">下一篇</span>
+                
+                <i class="iconfont">
+                  <svg class="icon" viewBox="0 0 1024 1024" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+  width="18" height="18">
+  <path d="M332.091514 74.487481l-75.369571 89.491197c-10.963703 12.998035-10.285251 32.864502 1.499144 44.378743l286.278095 300.375162L266.565125 819.058374c-11.338233 12.190647-11.035334 32.285311 0.638543 44.850487l80.46666 86.564541c11.680017 12.583596 30.356378 12.893658 41.662889 0.716314l377.434212-421.426145c11.332093-12.183484 11.041474-32.266891-0.657986-44.844348l-80.46666-86.564541c-1.772366-1.910513-3.706415-3.533476-5.750981-4.877077L373.270379 71.774697C361.493148 60.273758 343.054193 61.470003 332.091514 74.487481z"></path>
+</svg>
+
+                </i>
+              </a>
+          </nav>
+        </footer>
+      </article>
+
       
-      <a class="post-link" href="/post/linux%E4%B8%8Bphp%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/">linux下php项目安装与部署</a>
-    </h1>
-    
-
-    <div class="post-meta">
+      
+        
+      
 
 
-  <div class="post-meta-time">
-    <time datetime="2017-11-08">
-      2017-11-08
-    </time>
-  </div>
+      
+      
 
   
 
+  
+  
 
-  <div class="post-meta__right">
-    <span class="post-meta-more">
-        约 1564 字 -
-        预计阅读 4 分钟
-      </span>
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
+  
+  
+    <div class="post">
+  <script src="https://utteranc.es/client.js"
+        repo= "hardelmm/hardelmm.github.io"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+  </script>
 </div>
 
-  </header>
   
-  <div class="post-content">
+
+  
+
+  
+
     
-      <div class="post-summary">
-        背景 云收录测试需要，内网原环境由开发和测试共同使用，为避免使用冲突以及确保测试的准确性，需重新部署。在此记录部署过程以及遇到的一些代表性问题
-      </div>
-      <div class="read-more">
-        <a href="/post/linux%E4%B8%8Bphp%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
+
+  
+
+  
+
+
+    </div>
+
     
+    
+
+
   </div>
-</article>
-
-  
-</section>
-
-
-
-
-
-
-  
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-
-  
-  
-  <nav class="pagination">
-    <ul>
-      
-      <li >
-        <a href="/">1</a>
-      </li>
-      
-      <li >
-        <a href="/page/2/">2</a>
-      </li>
-      
-      <li >
-        <a href="/page/3/">3</a>
-      </li>
-      
-      <li >
-        <a href="/page/4/">4</a>
-      </li>
-      
-      <li >
-        <a href="/page/5/">5</a>
-      </li>
-      
-      <li >
-        <a href="/page/6/">6</a>
-      </li>
-      
-      <li  class="active" >
-        <a href="/page/7/">7</a>
-      </li>
-      
-      <li >
-        <a href="/page/8/">8</a>
-      </li>
-      
-      <li >
-        <a href="/page/9/">9</a>
-      </li>
-      
-      <li >
-        <a href="/page/10/">10</a>
-      </li>
-      
-      <li >
-        <a href="/page/11/">11</a>
-      </li>
-      
-    </ul>
-  </nav>
-
-  
-  
-
-
-
-
-
 
       </main>
 
