@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          st-load安装与使用 - HardElm
+          自动化测试持续集成 - HardElm
         </title>
     
 
@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具(" />
+  <meta name="description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" />
+<link rel="canonical" href="https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="st-load安装与使用" />
-<meta property="og:description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具(" />
+<meta property="og:title" content="自动化测试持续集成" />
+<meta property="og:description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hardelmm.github.io/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-07-11T16:18:38+00:00" />
-<meta property="article:modified_time" content="2022-07-11T16:18:38+00:00" />
-<meta itemprop="name" content="st-load安装与使用">
-<meta itemprop="description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具("><meta itemprop="datePublished" content="2022-07-11T16:18:38+00:00" />
-<meta itemprop="dateModified" content="2022-07-11T16:18:38+00:00" />
-<meta itemprop="wordCount" content="1025">
-<meta itemprop="keywords" content="st-load,测试工具,性能测试," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="st-load安装与使用"/>
-<meta name="twitter:description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具("/>
+<meta property="og:url" content="https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2022-01-27T20:32:36+08:00" />
+<meta property="article:modified_time" content="2022-01-27T20:32:36+08:00" />
+<meta itemprop="name" content="自动化测试持续集成">
+<meta itemprop="description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #"><meta itemprop="datePublished" content="2022-01-27T20:32:36+08:00" />
+<meta itemprop="dateModified" content="2022-01-27T20:32:36+08:00" />
+<meta itemprop="wordCount" content="285">
+<meta itemprop="keywords" content="jenkins,持续集成,shell," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="自动化测试持续集成"/>
+<meta name="twitter:description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -284,15 +284,15 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">st-load安装与使用</h1>
+          <h1 class="post-title">自动化测试持续集成</h1>
           
 
           <div class="post-meta">
 
 
   <div class="post-meta-time">
-    <time datetime="2022-07-11">
-      2022-07-11
+    <time datetime="2022-01-27">
+      2022-01-27
     </time>
   </div>
 
@@ -301,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1025 字 -
-        预计阅读 3 分钟
+        约 285 字 -
+        预计阅读 1 分钟
       </span>
 
     
@@ -321,60 +321,36 @@
 
         
         <div class="post-content">
-          <p>项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。</p>
-<h1 id="什么是st-load">什么是st-load</h1>
-<p>服务器负载测试工具(st-load)：</p>
-<p>st-load使用nginx-rtmp的协议直接将chunk流解析为messgae。
-<a href="http://www.udpwork.com/item/13384.html" title="state-threads">state-threads</a>用来模拟超级并发，并简化异步socket的逻辑为同步socket，<a href="https://github.com/nodejs/http-parser" title="http-parser">http-parser</a>解析http协议部分。</p>
-<p>这两个库设计都很巧妙，参考大牛开的项目：<a href="%5Bhttps://github.com/ossrs/srs-bench%5D">https://github.com/ossrs/srs-bench</a></p>
-<p>state-threads之前就有写过文章说明，那时候主要是支持高并发的rtmp服务器，也是并发和异步变为同步的协程很方便。</p>
-<p>http-parser用yum就可以search到，它其实设计得也相当巧妙，相当于只是解析buffer的http内容，并不负责网络部分。而libcurl/poco等都带了网络处理，所以不合适。
-举例说明，http_parser_parse_url这个函数，解析url，设计得非常有意思，不是返回字符串，而是返回位置索引，譬如主机头在什么位置长度多长等等。</p>
-<ol>
-<li>模拟huge并发：2G内存就可以开300k连接。基于states-threads的协程。</li>
-<li>支持HLS解析和测试，下载ts片后等待一个切片长度，模拟客户端。支持HLS点播和直播。</li>
-<li>支持HTTP负载测试，所有并发重复下载一个http文件。可将80Gbps带宽测试的72Gbps。</li>
-<li>支持RTMP流播放测试，一个进程支持5k并发。</li>
-<li>支持RTMP流推流测试，一个进程支持500个并发</li>
-<li>RTMP协议使用高性能服务器SRS(SimpleRtmpServer)的协议栈。</li>
-</ol>
-<p>注意：
-HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会把所有内容当做body一直读)。
-所有程序都在Linux下运行，模拟客户端运行。
-其他工具参考srs-librtmp</p>
-<h1 id="安装配置">安装配置</h1>
-<p>安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
-</span></span></code></pre></div><p>编译</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>[root@cdvcloud srs-bench-master]# ./configure
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span>[root@cdvcloud srs-bench-master]# make
-</span></span></code></pre></div><p>查看生成的文件和目录</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>[root@cdvcloud objs]# ls
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
-</span></span></code></pre></div><h1 id="使用方法">使用方法</h1>
-<p>模拟RTMP播放用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
-</span></span></code></pre></div><p>模拟HLS直播用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
-</span></span></code></pre></div><p>模拟HSL点播用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
-</span></span></code></pre></div><p>模拟RTMP推流用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a></span><span>./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
-</span></span></code></pre></div><p>模拟RTMP多路推流用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1">1</a></span><span>./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
-</span></span></code></pre></div><p>example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1">1</a></span><span>start a client
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-2">2</a></span><span>	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-3">3</a></span><span>start 1000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-4">4</a></span><span>	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-5">5</a></span><span>start 10000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-6">6</a></span><span>	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-7">7</a></span><span>start 100000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-8">8</a></span><span>	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span></code></pre></div><p>参考：
-<a href="https://github.com/ossrs/srs-bench">https://github.com/ossrs/srs-bench</a></p>
-
+          <p>前言：本文简要记录自动化测试CI方案，详细内容待补充</p>
+<p>1.获取目录下所有文件名</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#998;font-style:italic"># ! / bin/ bash</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#998;font-style:italic">#采集—个函数</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>readDir<span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>    <span style="color:#0086b3">local</span> <span style="color:#008080">dir</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$1</span>    <span style="color:#998;font-style:italic">#获取传入的目录路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span>    <span style="color:#0086b3">local</span> files     <span style="color:#998;font-style:italic">#循环指定目录下的所有文件</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>    <span style="color:#008080">files</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>ls <span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> &#34;</span><span style="color:#000;font-weight:bold">)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">for</span> file in <span style="color:#008080">$files</span> ; <span style="color:#000;font-weight:bold">do</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>        <span style="color:#0086b3">local</span> <span style="color:#008080">path</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> /</span><span style="color:#008080">$file</span><span style="color:#d14">&#34;</span>    <span style="color:#998;font-style:italic">#指的是当前遍历文件的完整路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -d <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">]</span> ; <span style="color:#000;font-weight:bold">then</span>    <span style="color:#998;font-style:italic">#判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>            readDir <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>        <span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>            <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>        <span style="color:#000;font-weight:bold">fi</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>    <span style="color:#000;font-weight:bold">done</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><p>2.修改配置参数</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>    sed -i &#34;s?^url=*?url=$url?g&#34; config.ini
+</span></span></code></pre></div><p>3.选项参数联动</p>
+<p>借助Active Choices Plug-in插件，以下举例Active Choices Parameter和Active Choices Reactive Parameter模块</p>
+<p>示例：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>    if(branch.equals(&#34;master&#34;)){	#branch为与之关联的选项名称
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>        return[&#34;a&#34;,&#34;b&#34;,&#34;c&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span>    }else if(branch.equals(&#34;master1&#34;)){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4">4</a></span><span>        return[&#34;test1&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5">5</a></span><span>    }else if(branch.equals(&#34;master2&#34;)){
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6">6</a></span><span>        return[&#34;test2&#34;]
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7">7</a></span><span>    }
+</span></span></code></pre></div>
         </div>
 
         
@@ -387,7 +363,7 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2022-07-11
+      2022-01-27
       
     </span>
   </p>
@@ -423,9 +399,9 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
 
         <footer class="post-footer">
           <div class="post-tags">
-              <a href="https://hardelmm.github.io/tags/st-load/">st-load</a>
-                <a href="https://hardelmm.github.io/tags/%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7/">测试工具</a>
-                <a href="https://hardelmm.github.io/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a>
+              <a href="https://hardelmm.github.io/tags/jenkins/">jenkins</a>
+                <a href="https://hardelmm.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a>
+                <a href="https://hardelmm.github.io/tags/shell/">shell</a>
                 
             </div>
 
@@ -433,7 +409,7 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%80%A7%E8%83%BD%E8%B0%83%E4%BC%98%E8%A6%81%E7%82%B9/">
+              <a class="prev" href="/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B-2/">
                 
                 <i class="iconfont">
                   <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -443,12 +419,12 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
 </svg>
 
                 </i>
-                <span class="prev-text nav-default">数据库性能调优要点</span>
+                <span class="prev-text nav-default">接口自动化测试实例（二）</span>
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
-              <a class="next" href="/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B-2/">
-                <span class="next-text nav-default">接口自动化测试实例（二）</span>
+              <a class="next" href="/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B-1/">
+                <span class="next-text nav-default">接口自动化测试实例（一）</span>
                 <span class="prev-text nav-mobile">下一篇</span>
                 
                 <i class="iconfont">

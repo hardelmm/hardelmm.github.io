@@ -285,7 +285,7 @@
   <header class="post-header">
     <h1 class="post-title">
       
-      <a class="post-link" href="/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/">Python接口自动化(数据驱动)</a>
+      <a class="post-link" href="/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">自动化测试持续集成</a>
     </h1>
     
 
@@ -303,8 +303,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1836 字 -
-        预计阅读 4 分钟
+        约 285 字 -
+        预计阅读 1 分钟
       </span>
 
     
@@ -324,10 +324,65 @@
   <div class="post-content">
     
       <div class="post-summary">
-        一.读取配置文件 1import codecs 2import configparser 3configPath = &#39;&#39; 4 5class ReadConfig: 6 def __int__(self): 7 fd = open(configPath,&#34;rb&#34;) 8 data = fd.read() 9 10 #remove BOM 11 12 if data[:3] == codecs.BOM_UTF8: 13 data = data[3:] 14 file = codecs.open(configPath,&#34;w&#34;) 15 file.write(data) 16 file.close() 17 fd.close() 18 19 self.cf = configparser.ConfigParser() 20 self.cf.read(configPath,encoding=&#39;UTF-8-sig&#39;) 21 22 def get_configOne(self,name): 23 value = self.cf.get(&#34;configOne&#34;,name) 24 return
+        前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #
       </div>
       <div class="read-more">
-        <a href="/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/" class="read-more-link"
+        <a href="/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" class="read-more-link"
+          >阅读全文</a
+        >
+      </div>
+    
+  </div>
+</article>
+
+  
+    <article class="post">
+  <header class="post-header">
+    <h1 class="post-title">
+      
+      <a class="post-link" href="/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B-1/">接口自动化测试实例（一）</a>
+    </h1>
+    
+
+    <div class="post-meta">
+
+
+  <div class="post-meta-time">
+    <time datetime="2022-01-27">
+      2022-01-27
+    </time>
+  </div>
+
+  
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+        约 1311 字 -
+        预计阅读 3 分钟
+      </span>
+
+    
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+  </header>
+  
+  <div class="post-content">
+    
+      <div class="post-summary">
+        前言：本文简要介绍单接口（业务流）自动化测试框架实现方案，思路如下： 测试数据（用例）读取与处理 测试用例执行引擎 结果校验以及断言 测试结果处理与
+      </div>
+      <div class="read-more">
+        <a href="/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E4%BE%8B-1/" class="read-more-link"
           >阅读全文</a
         >
       </div>
@@ -493,61 +548,6 @@
       </div>
       <div class="read-more">
         <a href="/post/%E5%9F%BA%E4%BA%8Effmpeg%E8%BF%9B%E8%A1%8C%E8%BD%AC%E7%A0%81%E5%B7%A5%E5%85%B7%E7%9A%84%E7%BC%96%E5%86%99%E6%9C%AA%E5%AE%8C%E6%88%90/" class="read-more-link"
-          >阅读全文</a
-        >
-      </div>
-    
-  </div>
-</article>
-
-  
-    <article class="post">
-  <header class="post-header">
-    <h1 class="post-title">
-      
-      <a class="post-link" href="/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/">Python数据库基础操作</a>
-    </h1>
-    
-
-    <div class="post-meta">
-
-
-  <div class="post-meta-time">
-    <time datetime="2021-04-29">
-      2021-04-29
-    </time>
-  </div>
-
-  
-
-
-  <div class="post-meta__right">
-    <span class="post-meta-more">
-        约 1051 字 -
-        预计阅读 3 分钟
-      </span>
-
-    
-
-
-    
-    
-
-
-    
-    
-  </div>
-</div>
-
-  </header>
-  
-  <div class="post-content">
-    
-      <div class="post-summary">
-        一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。
-      </div>
-      <div class="read-more">
-        <a href="/post/python%E6%95%B0%E6%8D%AE%E5%BA%93%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/" class="read-more-link"
           >阅读全文</a
         >
       </div>

@@ -76,7 +76,7 @@
 <meta itemprop="name" content="JNA方式调用dll动态库">
 <meta itemprop="description" content="背景 之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 J"><meta itemprop="datePublished" content="2017-11-19T13:00:00+00:00" />
 <meta itemprop="dateModified" content="2017-11-19T13:00:00+00:00" />
-<meta itemprop="wordCount" content="462">
+<meta itemprop="wordCount" content="483">
 <meta itemprop="keywords" content="java,动态链接库," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="JNA方式调用dll动态库"/>
 <meta name="twitter:description" content="背景 之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容 J"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 462 字 -
+        约 483 字 -
         预计阅读 1 分钟
       </span>
 
@@ -324,72 +324,70 @@
           <h1 id="背景">背景</h1>
 <p>之前有段时间写了个GUI，调用公司CA服务器相关接口，进行两码获取、证书下载等操作，证书下载需要借助动态链接库等控件进行，故有如下内容</p>
 <h1 id="jna是什么">JNA是什么</h1>
-<pre><code>java调用dll较为常用的方式有JNA和JNI。
-
-JNA是建立在JNI技术基础之上的一个Java类库，我们可以方便地使用java直接访问动态链接库中的函数。
-
-原来使用JNI，必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。
-而JNA提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射，我们不再需要编写C动态链接库。
-</code></pre>
+<p>java调用dll较为常用的方式有JNA和JNI。</p>
+<p>JNA是建立在JNI技术基础之上的一个Java类库，我们可以方便地使用java直接访问动态链接库中的函数。</p>
+<p>原来使用JNI，必须手工用C写一个动态链接库，在C语言中映射Java的数据类型。
+而JNA提供了一个动态的C语言编写的转发器，可以自动实现Java和C的数据类型映射，我们不再需要编写C动态链接库。</p>
 <h1 id="怎么用">怎么用</h1>
-<pre><code>过程：
-1、引入JNA.jar
-2、声明接口（注意和动态库方法数据类型的映射关系）
-3、调用声明的接口中的方法
-调用时需要注意dll的位置：
-	方式一：把动态库拷贝到system32目录
-	方式二：
-	String path = ESAMServer.class.getResource(&quot;/&quot;).getPath()+&quot;/dll&quot;;
-	System.load(path+&quot;/MyNative.dll&quot;);
-	NativeLibrary.addSearchPath(&quot;MyNative.dll&quot;, path); 
-</code></pre>
-<h1 id="测试代码">测试代码</h1>
+<p>过程：</p>
+<ol>
+<li>引入JNA.jar</li>
+<li>声明接口（注意和动态库方法数据类型的映射关系）</li>
+<li>调用声明的接口中的方法
+调用时需要注意dll的位置：</li>
+</ol>
+<ul>
+<li>方式一：把动态库拷贝到system32目录</li>
+<li>方式二：</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>String path <span style="color:#000;font-weight:bold">=</span> ESAMServer<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">class</span><span style="color:#000;font-weight:bold">.</span><span style="color:#008080">getResource</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;/&#34;</span><span style="color:#000;font-weight:bold">).</span><span style="color:#008080">getPath</span><span style="color:#000;font-weight:bold">()+</span><span style="color:#d14">&#34;/dll&#34;</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>System<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">load</span><span style="color:#000;font-weight:bold">(</span>path<span style="color:#000;font-weight:bold">+</span><span style="color:#d14">&#34;/MyNative.dll&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3">3</a></span><span>NativeLibrary<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">addSearchPath</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;MyNative.dll&#34;</span><span style="color:#000;font-weight:bold">,</span> path<span style="color:#000;font-weight:bold">);</span> 
+</span></span></code></pre></div><h1 id="测试代码">测试代码</h1>
 <h2 id="jcomboboxtestjava">JComboBoxTest.java</h2>
-<pre><code>package TestNativeLibrary;
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-
-public class JComboBoxTest {
-	private JFrame frame = new JFrame(&quot;JComboBoxTest&quot;);
-	private JPanel panel1 = new JPanel(new BorderLayout());
-	private JComboBox JComboBoxT = new JComboBox();
-	private JTextArea JTextAreaT = new JTextArea();
-	
-	public JComboBoxTest(){
-		JNATest jc = JNATest.instanceDll;
-		frame.setLayout(null);
-		frame.setLayout(new GridLayout(1,1));
-		frame.setVisible(true);
-		frame.setBounds(400, 250, 200, 150);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		JComboBoxT.setModel(new DefaultComboBoxModel(jc.rsa_csp_listProvider()));
-		frame.add(panel1);
-		panel1.add(&quot;North&quot;,JComboBoxT);
-		panel1.add(&quot;Center&quot;,JTextAreaT);	
-	}
-	
-	public static void main(String args[]){
-		new JComboBoxTest();
-	}
-}
-</code></pre>
-<h2 id="jnatestjava">JNATest.java</h2>
-<pre><code>package TestNativeLibrary;  
-import com.sun.jna.Library;
-import com.sun.jna.Native;
-  
-public interface JNATest extends Library {  
-    public JNATest instanceDll = (JNATest)Native.loadLibrary(&quot;SKFCSPEnroll&quot;, JNATest.class);  
-    public String[] rsa_csp_listProvider();  
-}
-</code></pre>
-<h1 id="附">附：#</h1>
-<p>参考：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1"> 1</a></span><span><span style="color:#000;font-weight:bold">package</span> <span style="color:#555">TestNativeLibrary</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">java.awt.BorderLayout</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3"> 3</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">java.awt.GridLayout</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4"> 4</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">javax.swing.DefaultComboBoxModel</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5"> 5</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">javax.swing.JComboBox</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6"> 6</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">javax.swing.JFrame</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7"> 7</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">javax.swing.JPanel</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-8"> 8</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">javax.swing.JTextArea</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-10">10</a></span><span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">class</span> <span style="color:#458;font-weight:bold">JComboBoxTest</span> <span style="color:#000;font-weight:bold">{</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-11">11</a></span><span>    <span style="color:#000;font-weight:bold">private</span> JFrame frame <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> JFrame<span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;JComboBoxTest&#34;</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-12">12</a></span><span>    <span style="color:#000;font-weight:bold">private</span> JPanel panel1 <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> JPanel<span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> BorderLayout<span style="color:#000;font-weight:bold">());</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-13">13</a></span><span>    <span style="color:#000;font-weight:bold">private</span> JComboBox JComboBoxT <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> JComboBox<span style="color:#000;font-weight:bold">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-14">14</a></span><span>    <span style="color:#000;font-weight:bold">private</span> JTextArea JTextAreaT <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">new</span> JTextArea<span style="color:#000;font-weight:bold">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-15">15</a></span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-16">16</a></span><span>    <span style="color:#000;font-weight:bold">public</span> <span style="color:#900;font-weight:bold">JComboBoxTest</span><span style="color:#000;font-weight:bold">(){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-17">17</a></span><span>        JNATest jc <span style="color:#000;font-weight:bold">=</span> JNATest<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">instanceDll</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-18">18</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setLayout</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">null</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-19">19</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setLayout</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> GridLayout<span style="color:#000;font-weight:bold">(</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">,</span><span style="color:#099">1</span><span style="color:#000;font-weight:bold">));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-20">20</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setVisible</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">true</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-21">21</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setBounds</span><span style="color:#000;font-weight:bold">(</span><span style="color:#099">400</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">250</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">200</span><span style="color:#000;font-weight:bold">,</span> <span style="color:#099">150</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-22">22</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setDefaultCloseOperation</span><span style="color:#000;font-weight:bold">(</span>JFrame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">EXIT_ON_CLOSE</span><span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-23">23</a></span><span>        JComboBoxT<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">setModel</span><span style="color:#000;font-weight:bold">(</span><span style="color:#000;font-weight:bold">new</span> DefaultComboBoxModel<span style="color:#000;font-weight:bold">(</span>jc<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">rsa_csp_listProvider</span><span style="color:#000;font-weight:bold">()));</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-24">24</a></span><span>        frame<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">add</span><span style="color:#000;font-weight:bold">(</span>panel1<span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-25">25</a></span><span>        panel1<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;North&#34;</span><span style="color:#000;font-weight:bold">,</span>JComboBoxT<span style="color:#000;font-weight:bold">);</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-26">26</a></span><span>        panel1<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">add</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;Center&#34;</span><span style="color:#000;font-weight:bold">,</span>JTextAreaT<span style="color:#000;font-weight:bold">);</span>	
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-27">27</a></span><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-28">28</a></span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-29">29</a></span><span>    <span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">static</span> <span style="color:#458;font-weight:bold">void</span> <span style="color:#900;font-weight:bold">main</span><span style="color:#000;font-weight:bold">(</span>String args<span style="color:#000;font-weight:bold">[]){</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-30">30</a></span><span>        <span style="color:#000;font-weight:bold">new</span> JComboBoxTest<span style="color:#000;font-weight:bold">();</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-31">31</a></span><span>    <span style="color:#000;font-weight:bold">}</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-32"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-32">32</a></span><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h2 id="jnatestjava">JNATest.java</h2>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span><span style="color:#000;font-weight:bold">package</span> <span style="color:#555">TestNativeLibrary</span><span style="color:#000;font-weight:bold">;</span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">com.sun.jna.Library</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">com.sun.jna.Native</span><span style="color:#000;font-weight:bold">;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4">4</a></span><span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5">5</a></span><span><span style="color:#000;font-weight:bold">public</span> <span style="color:#000;font-weight:bold">interface</span> <span style="color:#458;font-weight:bold">JNATest</span> <span style="color:#000;font-weight:bold">extends</span> Library <span style="color:#000;font-weight:bold">{</span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6">6</a></span><span>    <span style="color:#000;font-weight:bold">public</span> JNATest instanceDll <span style="color:#000;font-weight:bold">=</span> <span style="color:#000;font-weight:bold">(</span>JNATest<span style="color:#000;font-weight:bold">)</span>Native<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">loadLibrary</span><span style="color:#000;font-weight:bold">(</span><span style="color:#d14">&#34;SKFCSPEnroll&#34;</span><span style="color:#000;font-weight:bold">,</span> JNATest<span style="color:#000;font-weight:bold">.</span><span style="color:#008080">class</span><span style="color:#000;font-weight:bold">);</span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7">7</a></span><span>    <span style="color:#000;font-weight:bold">public</span> String<span style="color:#000;font-weight:bold">[]</span> <span style="color:#900;font-weight:bold">rsa_csp_listProvider</span><span style="color:#000;font-weight:bold">();</span>  
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8">8</a></span><span><span style="color:#000;font-weight:bold">}</span>
+</span></span></code></pre></div><h1 id="附">附：#</h1>
+<p>参考资料：</p>
 <p><a href="http://blog.csdn.net/hengwei_vc/article/details/6982076">http://blog.csdn.net/hengwei_vc/article/details/6982076</a></p>
 <p><a href="http://blog.chinaunix.net/uid-29308108-id-4048576.html">http://blog.chinaunix.net/uid-29308108-id-4048576.html</a></p>
 
@@ -450,7 +448,7 @@ public interface JNATest extends Library {
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/python%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/">
+              <a class="prev" href="/post/python%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
                 
                 <i class="iconfont">
                   <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
@@ -460,7 +458,7 @@ public interface JNATest extends Library {
 </svg>
 
                 </i>
-                <span class="prev-text nav-default">python学习总结</span>
+                <span class="prev-text nav-default">python基础语法</span>
                 <span class="prev-text nav-mobile">上一篇</span>
               </a>
             
