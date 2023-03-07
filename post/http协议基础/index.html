@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符" />
+  <meta name="description" content="" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -68,18 +68,18 @@
 
 
 <meta property="og:title" content="HTTP协议基础" />
-<meta property="og:description" content="一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符" />
+<meta property="og:description" content="" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/" /><meta property="article:section" content="post" />
 <meta property="article:published_time" content="2019-06-28T00:03:21+08:00" />
 <meta property="article:modified_time" content="2019-06-28T00:03:21+08:00" />
 <meta itemprop="name" content="HTTP协议基础">
-<meta itemprop="description" content="一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符"><meta itemprop="datePublished" content="2019-06-28T00:03:21+08:00" />
+<meta itemprop="description" content=""><meta itemprop="datePublished" content="2019-06-28T00:03:21+08:00" />
 <meta itemprop="dateModified" content="2019-06-28T00:03:21+08:00" />
-<meta itemprop="wordCount" content="1352">
+<meta itemprop="wordCount" content="0">
 <meta itemprop="keywords" content="接口测试,网络协议," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="HTTP协议基础"/>
-<meta name="twitter:description" content="一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符"/>
+<meta name="twitter:description" content=""/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -301,8 +301,8 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1352 字 -
-        预计阅读 3 分钟
+        约 0 字 -
+        预计阅读 0 分钟
       </span>
 
     
@@ -321,220 +321,7 @@
 
         
         <div class="post-content">
-          <h3 id="一http协议概念">一.HTTP协议概念</h3>
-<ul>
-<li>HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议</li>
-<li>HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。</li>
-<li>一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件扩展（MIME）[RFC2045]来传送。</li>
-</ul>
-<h3 id="二常用请求方法">二.常用请求方法</h3>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>方法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>GET</td>
-<td>请求指定的页面信息，并返回实体主体。</td>
-</tr>
-<tr>
-<td>2</td>
-<td>HEAD</td>
-<td>类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头</td>
-</tr>
-<tr>
-<td>3</td>
-<td>POST</td>
-<td>向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。</td>
-</tr>
-<tr>
-<td>4</td>
-<td>PUT</td>
-<td>从客户端向服务器传送的数据取代指定的文档的内容。</td>
-</tr>
-<tr>
-<td>5</td>
-<td>DELETE</td>
-<td>请求服务器删除指定的页面。</td>
-</tr>
-<tr>
-<td>6</td>
-<td>CONNECT</td>
-<td>HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。</td>
-</tr>
-<tr>
-<td>7</td>
-<td>OPTIONS</td>
-<td>允许客户端查看服务器的性能。</td>
-</tr>
-<tr>
-<td>8</td>
-<td>TRACE</td>
-<td>回显服务器收到的请求，主要用于测试或诊断。</td>
-</tr>
-<tr>
-<td>9</td>
-<td>PATCH</td>
-<td>是对 PUT 方法的补充，用来对已知资源进行局部更新 。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="三http请求消息格式">三.HTTP请求消息格式：</h3>
-<p>客户端请求消息包括以下格式：请求行（request line），请求头（header），空行，请求数据</p>
-<ol>
-<li>请求方法+URL(统一资源标识符)+版本协议</li>
-<li>头部字段名：头部字段值
-头部字段名：头部字段值
-头部字段名：头部字段值
-&hellip;&hellip;</li>
-<li>空行</li>
-<li>请求数据</li>
-</ol>
-<h3 id="四http响应消息格式">四.HTTP响应消息格式：</h3>
-<p>服务端响应消息包括以下格式：状态行，消息报头，空行，响应正文</p>
-<ol>
-<li>版本协议+状态码+状态文本描述</li>
-<li>头部字段名：头部字段值
-头部字段名：头部字段值
-头部字段名：头部字段值
-&hellip;&hellip;</li>
-<li>空行</li>
-<li>响应数据</li>
-</ol>
-<h3 id="五http状态码">五.HTTP状态码：</h3>
-<p>HTTP状态码由三个十进制数字组成，第一个数字定义了状态码的类型，分别为：</p>
-<ul>
-<li>信息响应（100-199）</li>
-<li>成功响应（200-299）</li>
-<li>重定向（300-399）</li>
-<li>客户端错误（400-499）：请求包含语法错误或无法万完成请求</li>
-<li>服务端错误（500-599）：服务器在处理请求的过程中发生了错误</li>
-</ul>
-<p>常见的HTTP状态码有：</p>
-<table>
-<thead>
-<tr>
-<th>状态码</th>
-<th>名称</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>200</td>
-<td>OK</td>
-<td>请求成功</td>
-</tr>
-<tr>
-<td>301</td>
-<td>Moved Permanently</td>
-<td>资源永久移动重定向</td>
-</tr>
-<tr>
-<td>302</td>
-<td>Found&ndash;临时重定向</td>
-<td></td>
-</tr>
-<tr>
-<td>400</td>
-<td>Bad Request</td>
-<td>请求语法错误，服务端无法理解</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized</td>
-<td>要求客户端身份认证</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden</td>
-<td>服务端理解客户端请求，但拒绝执行</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found</td>
-<td>请求的资源不存在</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed</td>
-<td>客户端请求的方法被禁止</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error</td>
-<td>服务器内部错误</td>
-</tr>
-<tr>
-<td>502</td>
-<td></td>
-<td>网关或代理服务器执行请求时从远程服务器接收到无效的响应</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable</td>
-<td>超载或系统维护，服务器暂时的无法处理客户端的请求</td>
-</tr>
-<tr>
-<td>504</td>
-<td>Gateway Time-out</td>
-<td>网关未及时从远端服务器获取请求</td>
-</tr>
-</tbody>
-</table>
-<h3 id="六mime类型">六.MIME类型</h3>
-<ul>
-<li>MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式。</li>
-<li>MIME 消息能包含文本、图像、音频、视频以及其他应用程序专用的数据。</li>
-<li>浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理URL，因此 We b服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会无法解析文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。</li>
-<li>MIME类型对大小写不敏感，但是传统写法都是小写。</li>
-</ul>
-<p>两种主要的 MIME 类型在默认类型中扮演了重要的角色：</p>
-<ul>
-<li>text/plain 表示文本文件的默认值。</li>
-<li>application/octet-stream 表示所有其他情况的默认值。</li>
-</ul>
-<p>常见的MIME类型</p>
-<table>
-<thead>
-<tr>
-<th>类型</th>
-<th>典型示例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>超文本标记语言文本.html、.html</td>
-<td>text/html</td>
-</tr>
-<tr>
-<td>普通文本 .txt</td>
-<td>text/plain</td>
-</tr>
-<tr>
-<td>RTF 文本 .rtf</td>
-<td>application/rtf</td>
-</tr>
-<tr>
-<td>GIF 图形 .gif</td>
-<td>image/gif</td>
-</tr>
-<tr>
-<td>JPEG 图形 .jpeg、.jpg</td>
-<td>image/jpeg</td>
-</tr>
-<tr>
-<td>au 声音文件 .au</td>
-<td>audio/basic</td>
-</tr>
-</tbody>
-</table>
-
+          
         </div>
 
         
@@ -665,25 +452,7 @@
     </div>
 
     
-    <nav class="toc" id="toc">
-    <div class="toc-title">文章目录</div>
-    <div class="toc-content custom-scrollbar">
-      <nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#一http协议概念">一.HTTP协议概念</a></li>
-        <li><a href="#二常用请求方法">二.常用请求方法</a></li>
-        <li><a href="#三http请求消息格式">三.HTTP请求消息格式：</a></li>
-        <li><a href="#四http响应消息格式">四.HTTP响应消息格式：</a></li>
-        <li><a href="#五http状态码">五.HTTP状态码：</a></li>
-        <li><a href="#六mime类型">六.MIME类型</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
-    </div>
-  </nav>
+    
 
 
   </div>

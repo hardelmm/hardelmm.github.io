@@ -6,107 +6,10 @@
     <description>Recent content on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 06 Mar 2023 18:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 02 Mar 2023 23:56:03 +0000</lastBuildDate>
     
         <atom:link href="https://hardelmm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>数据结构汇总</title>
-      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B1%87%E6%80%BB/</link>
-      <pubDate>Mon, 06 Mar 2023 18:10:00 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B1%87%E6%80%BB/</guid>
-      
-        <description>&lt;p&gt;前言：&lt;/p&gt;
-&lt;p&gt;数据结构是数据按照特点关系进行存储或组织的的集合，特殊的结构在不同的应用场景下会有不一样的处理效率。&lt;/p&gt;
-&lt;p&gt;常用的数据结构根据访问特点可以分为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;线性结构：链表、队列、栈等&lt;/li&gt;
-&lt;li&gt;非线性结构：树、图等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;1数组array&#34;&gt;1.数组（Array）&lt;/h2&gt;
-&lt;p&gt;数组内元素索引是连续自增，一旦发生改变，就要调整后方所有元素索引&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;通过数组名和下标进行访问和更新&lt;/li&gt;
-&lt;li&gt;内部存储按先后顺序进行，在内存中也是按该顺序连续存放&lt;/li&gt;
-&lt;li&gt;内部元素通过索引可随机访问&lt;/li&gt;
-&lt;li&gt;增删效率低，查询效率高（O（1））&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;2链表linked-list&#34;&gt;2.链表（Linked List）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;数据域和指向下个节点内存地址的指针域共同构成链表节点Node&lt;/li&gt;
-&lt;li&gt;除了单向链表，还有对对指针域进行反向链接的双向链表以及循环链表&lt;/li&gt;
-&lt;li&gt;内部元素顺序访问&lt;/li&gt;
-&lt;li&gt;由于指针的存在，增删效率高，查询效率偏低（O（n））&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;3栈stack&#34;&gt;3.栈（Stack）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;栈是一种特殊的线性表&lt;/li&gt;
-&lt;li&gt;只能在一端操作，遵循后进先出的原则&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;4队列queue&#34;&gt;4.队列（Queue）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;只允许在一段插入，在另一端删除&lt;/li&gt;
-&lt;li&gt;遵循先进先出原则&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;5树tree&#34;&gt;5.树（tree）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;树也是一种特殊的链表&lt;/li&gt;
-&lt;li&gt;根节点没有父节点&lt;/li&gt;
-&lt;li&gt;每个节点有0个或多个指针域指向子节点&lt;/li&gt;
-&lt;li&gt;树包括完全二叉树（CBT）、满二叉树（FBT）、平衡二叉树（AVL）、红黑树RBL（R-B Tree）、B树（B-Tree）、B+树（B+Tree）等&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;1完全二叉树&#34;&gt;1）完全二叉树&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;除最后一层节点，其它层节点数都达到最大个数&lt;/li&gt;
-&lt;li&gt;最后一层叶节点从左到右依次排布&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;2满二叉树&#34;&gt;2）满二叉树&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;除了最后一层叶节点，其它层节点的节点都有两个子节点&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;3平衡二叉树&#34;&gt;3）平衡二叉树&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;空树或左右两个子树的高度差绝对值（平衡因子）小于等于1&lt;/li&gt;
-&lt;li&gt;树的高度即节点层次最大值&lt;/li&gt;
-&lt;li&gt;平衡二叉树∈二叉排序树。左子树不空，则左子树所有节点值小于根节点值；若右子树不空，则右子树所有节点值大于根节点值&lt;/li&gt;
-&lt;li&gt;平衡二叉树在增删操作后，可通过调整（LL、LR、RL、RR）达到重新平衡&lt;/li&gt;
-&lt;li&gt;查询效率高，单由于需要调整平衡，增删效率低&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;4红黑树&#34;&gt;4）红黑树&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;根节点是黑的，其他节点要么是红的要么是黑的&lt;/li&gt;
-&lt;li&gt;红色节点的子节点一定是黑的&lt;/li&gt;
-&lt;li&gt;叶节点（NIL指针）都是黑的&lt;/li&gt;
-&lt;li&gt;任意一结点到其每个叶结点的路径都包含数量相同的黑结点&lt;/li&gt;
-&lt;li&gt;增删查效率均衡&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;6堆heap&#34;&gt;6.堆（Heap）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;堆是可以看作是一颗用数组实现的完全二叉树&lt;/li&gt;
-&lt;li&gt;堆没有指针域，通过构建一维数组与二叉树的父子节点进行对应&lt;/li&gt;
-&lt;li&gt;任意父节点n的两个子节点位置序号一定是2n+1和2n+2&lt;/li&gt;
-&lt;li&gt;堆中某个节点的值总是不大于（大根堆）或不小（小根堆）于其父节点的值&lt;/li&gt;
-&lt;li&gt;堆常用来实现优先队列&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;7散列表hash&#34;&gt;7.散列表（Hash）&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;散列表可以看作是数组的扩展&lt;/li&gt;
-&lt;li&gt;通过键值对的映射关系直接访问数据数据&lt;/li&gt;
-&lt;li&gt;散列表核心在于散列函数的定义和选择&lt;/li&gt;
-&lt;li&gt;散列表中每个数组成员都包含一个指针，指向一个链表头，该链表也可能为空&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;8图graph&#34;&gt;8.图（Graph）&lt;/h2&gt;
-&lt;p&gt;图的结构包括顶点和边，根据连接的方向性，图分为无向图和有向图&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;常见的图存储方式为邻接矩阵（二维数组），另外还有邻接表和逆邻接表&lt;/li&gt;
-&lt;li&gt;无向图的邻接矩阵是一个对称矩阵&lt;/li&gt;
-&lt;li&gt;邻接表中每个顶点都对应着一条链表，链表中存储着该顶点所能到达的相邻顶点，逆邻接表则相反，存储能到达该顶点的相邻顶点&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-      
-    </item>
     
     <item>
       <title>Git常用命令</title>
@@ -1650,220 +1553,7 @@ scope=&amp;ldquo;session&amp;rdquo; 以实现多个.py跨文件使用一个sessi
       
       <guid>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</guid>
       
-        <description>&lt;h3 id=&#34;一http协议概念&#34;&gt;一.HTTP协议概念&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议&lt;/li&gt;
-&lt;li&gt;HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。&lt;/li&gt;
-&lt;li&gt;一旦建立连接后，数据消息就通过类似Internet邮件所使用的格式[RFC5322]和多用途Internet邮件扩展（MIME）[RFC2045]来传送。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;二常用请求方法&#34;&gt;二.常用请求方法&lt;/h3&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;序号&lt;/th&gt;
-&lt;th&gt;方法&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;1&lt;/td&gt;
-&lt;td&gt;GET&lt;/td&gt;
-&lt;td&gt;请求指定的页面信息，并返回实体主体。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;2&lt;/td&gt;
-&lt;td&gt;HEAD&lt;/td&gt;
-&lt;td&gt;类似于 GET 请求，只不过返回的响应中没有具体的内容，用于获取报头&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;3&lt;/td&gt;
-&lt;td&gt;POST&lt;/td&gt;
-&lt;td&gt;向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST 请求可能会导致新的资源的建立和/或已有资源的修改。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;4&lt;/td&gt;
-&lt;td&gt;PUT&lt;/td&gt;
-&lt;td&gt;从客户端向服务器传送的数据取代指定的文档的内容。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;5&lt;/td&gt;
-&lt;td&gt;DELETE&lt;/td&gt;
-&lt;td&gt;请求服务器删除指定的页面。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;6&lt;/td&gt;
-&lt;td&gt;CONNECT&lt;/td&gt;
-&lt;td&gt;HTTP/1.1 协议中预留给能够将连接改为管道方式的代理服务器。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;7&lt;/td&gt;
-&lt;td&gt;OPTIONS&lt;/td&gt;
-&lt;td&gt;允许客户端查看服务器的性能。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;8&lt;/td&gt;
-&lt;td&gt;TRACE&lt;/td&gt;
-&lt;td&gt;回显服务器收到的请求，主要用于测试或诊断。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;9&lt;/td&gt;
-&lt;td&gt;PATCH&lt;/td&gt;
-&lt;td&gt;是对 PUT 方法的补充，用来对已知资源进行局部更新 。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;三http请求消息格式&#34;&gt;三.HTTP请求消息格式：&lt;/h3&gt;
-&lt;p&gt;客户端请求消息包括以下格式：请求行（request line），请求头（header），空行，请求数据&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;请求方法+URL(统一资源标识符)+版本协议&lt;/li&gt;
-&lt;li&gt;头部字段名：头部字段值
-头部字段名：头部字段值
-头部字段名：头部字段值
-&amp;hellip;&amp;hellip;&lt;/li&gt;
-&lt;li&gt;空行&lt;/li&gt;
-&lt;li&gt;请求数据&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;四http响应消息格式&#34;&gt;四.HTTP响应消息格式：&lt;/h3&gt;
-&lt;p&gt;服务端响应消息包括以下格式：状态行，消息报头，空行，响应正文&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;版本协议+状态码+状态文本描述&lt;/li&gt;
-&lt;li&gt;头部字段名：头部字段值
-头部字段名：头部字段值
-头部字段名：头部字段值
-&amp;hellip;&amp;hellip;&lt;/li&gt;
-&lt;li&gt;空行&lt;/li&gt;
-&lt;li&gt;响应数据&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id=&#34;五http状态码&#34;&gt;五.HTTP状态码：&lt;/h3&gt;
-&lt;p&gt;HTTP状态码由三个十进制数字组成，第一个数字定义了状态码的类型，分别为：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;信息响应（100-199）&lt;/li&gt;
-&lt;li&gt;成功响应（200-299）&lt;/li&gt;
-&lt;li&gt;重定向（300-399）&lt;/li&gt;
-&lt;li&gt;客户端错误（400-499）：请求包含语法错误或无法万完成请求&lt;/li&gt;
-&lt;li&gt;服务端错误（500-599）：服务器在处理请求的过程中发生了错误&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;常见的HTTP状态码有：&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;状态码&lt;/th&gt;
-&lt;th&gt;名称&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;200&lt;/td&gt;
-&lt;td&gt;OK&lt;/td&gt;
-&lt;td&gt;请求成功&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;301&lt;/td&gt;
-&lt;td&gt;Moved Permanently&lt;/td&gt;
-&lt;td&gt;资源永久移动重定向&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;302&lt;/td&gt;
-&lt;td&gt;Found&amp;ndash;临时重定向&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;400&lt;/td&gt;
-&lt;td&gt;Bad Request&lt;/td&gt;
-&lt;td&gt;请求语法错误，服务端无法理解&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;401&lt;/td&gt;
-&lt;td&gt;Unauthorized&lt;/td&gt;
-&lt;td&gt;要求客户端身份认证&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;403&lt;/td&gt;
-&lt;td&gt;Forbidden&lt;/td&gt;
-&lt;td&gt;服务端理解客户端请求，但拒绝执行&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;404&lt;/td&gt;
-&lt;td&gt;Not Found&lt;/td&gt;
-&lt;td&gt;请求的资源不存在&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;405&lt;/td&gt;
-&lt;td&gt;Method Not Allowed&lt;/td&gt;
-&lt;td&gt;客户端请求的方法被禁止&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;500&lt;/td&gt;
-&lt;td&gt;Internal Server Error&lt;/td&gt;
-&lt;td&gt;服务器内部错误&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;502&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;网关或代理服务器执行请求时从远程服务器接收到无效的响应&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;503&lt;/td&gt;
-&lt;td&gt;Service Unavailable&lt;/td&gt;
-&lt;td&gt;超载或系统维护，服务器暂时的无法处理客户端的请求&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;504&lt;/td&gt;
-&lt;td&gt;Gateway Time-out&lt;/td&gt;
-&lt;td&gt;网关未及时从远端服务器获取请求&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;h3 id=&#34;六mime类型&#34;&gt;六.MIME类型&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;MIME (Multipurpose Internet Mail Extensions) 是描述消息内容类型的标准，用来表示文档、文件或字节流的性质和格式。&lt;/li&gt;
-&lt;li&gt;MIME 消息能包含文本、图像、音频、视频以及其他应用程序专用的数据。&lt;/li&gt;
-&lt;li&gt;浏览器通常使用 MIME 类型（而不是文件扩展名）来确定如何处理URL，因此 We b服务器在响应头中添加正确的 MIME 类型非常重要。如果配置不正确，浏览器可能会无法解析文件内容，网站将无法正常工作，并且下载的文件也会被错误处理。&lt;/li&gt;
-&lt;li&gt;MIME类型对大小写不敏感，但是传统写法都是小写。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;两种主要的 MIME 类型在默认类型中扮演了重要的角色：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;text/plain 表示文本文件的默认值。&lt;/li&gt;
-&lt;li&gt;application/octet-stream 表示所有其他情况的默认值。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;常见的MIME类型&lt;/p&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;类型&lt;/th&gt;
-&lt;th&gt;典型示例&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;超文本标记语言文本.html、.html&lt;/td&gt;
-&lt;td&gt;text/html&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;普通文本 .txt&lt;/td&gt;
-&lt;td&gt;text/plain&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;RTF 文本 .rtf&lt;/td&gt;
-&lt;td&gt;application/rtf&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;GIF 图形 .gif&lt;/td&gt;
-&lt;td&gt;image/gif&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;JPEG 图形 .jpeg、.jpg&lt;/td&gt;
-&lt;td&gt;image/jpeg&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;au 声音文件 .au&lt;/td&gt;
-&lt;td&gt;audio/basic&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-</description>
+        <description></description>
       
     </item>
     
@@ -2077,6 +1767,63 @@ ruby_module_host  ansible_ruby_interpreter=/usr/bin/ruby.1.9.3
 &lt;p&gt;&lt;a href=&#34;https://getansible.com/begin/an_zhuang_ansile&#34;&gt;https://getansible.com/begin/an_zhuang_ansile&lt;/a&gt;
 &lt;a href=&#34;https://showme.codes/2017-06-12/ansible-introduce/&#34;&gt;https://showme.codes/2017-06-12/ansible-introduce/&lt;/a&gt;
 &lt;a href=&#34;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&#34;&gt;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&lt;/a&gt;&lt;/p&gt;
+</description>
+      
+    </item>
+    
+    <item>
+      <title>数据库模型的简单理解</title>
+      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Thu, 12 Jul 2018 09:08:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</guid>
+      
+        <description>&lt;p&gt;公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程中学到的一些东西&lt;/p&gt;
+&lt;h2 id=&#34;数据模型概念&#34;&gt;数据模型概念&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;访问数据库中的数据取决于数据库实现的数据模型。&lt;/li&gt;
+&lt;li&gt;数据模型会影响客户端通过API对数据的操作。不同的数据模型可能会提供或多或少的功能。一般而言，数据模型不会直接提供过多的功能，许多功能必须由客户端自行实现。&lt;/li&gt;
+&lt;li&gt;数据模型决定了客户端如何对数据进行编码存储。应用程序需要某种域模型与存储技术支持的特性进行映射。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;常用数据库模型&#34;&gt;常用数据库模型&lt;/h2&gt;
+&lt;h3 id=&#34;关系模型&#34;&gt;关系模型&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;关系模型使用记录（由元组组成）进行存储，记录存储在表中，表由架构界定。&lt;/li&gt;
+&lt;li&gt;对不同的编程语言而言，表可以被看成数组、记录列表或者结构。表可以使用B树和哈希表进行索引，以应对高性能访问。&lt;/li&gt;
+&lt;li&gt;表中的每个列都有名称和类型，表中的所有记录都要符合表的定义。&lt;/li&gt;
+&lt;li&gt;SQL是专门的查询语言，提供相应的语法查找符合条件的记录，如表联接（Join）。表联接可以基于表之间的关系在多表之间查询记录。&lt;/li&gt;
+&lt;li&gt;表中的记录可以被创建和删除，记录中的字段也可以单独更新。&lt;/li&gt;
+&lt;li&gt;关系模型数据库通常提供事务处理机制，这为涉及多条记录的自动化处理提供了解决方案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;键值存储&#34;&gt;键值存储&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;键值存储提供了基于键对值的访问方式。&lt;/li&gt;
+&lt;li&gt;键值对可以被创建或删除，与键相关联的值可以被更新。&lt;/li&gt;
+&lt;li&gt;键值存储一般不提供事务处理机制。&lt;/li&gt;
+&lt;li&gt;对不同的编程语言而言，键值存储类似于哈希表。对此，不同的编程语言有不同的名字（如，Java称之为“HashMap”，Perl称之为“hash”，Python称之为“dict”，PHP称之为“associative array”），C++则称之为“boost::unordered_map&amp;lt;&amp;hellip;&amp;gt;”。&lt;/li&gt;
+&lt;li&gt;键值存储支持键上自有的隐式索引。&lt;/li&gt;
+&lt;li&gt;键值存储看起来好像不太有用，但却可以在“值”上存储大量信息。“值”可以是一个XML文档，一个JSON对象，或者其它任何序列化形式。&lt;/li&gt;
+&lt;li&gt;重要的是，键值存储引擎并不在意“值”的内部结构，它依赖客户端对“值”进行解释和管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;文档存储&#34;&gt;文档存储&lt;/h3&gt;
+&lt;p&gt;文档存储支持对结构化数据的访问，不同于关系模型的是，文档存储没有强制的架构。
+事实上，文档存储以封包键值对的方式进行存储。在这种情况下，应用对要检索的封包采取一些约定，或者利用存储引擎的能力将不同的文档划分成不同的集合，以管理数据。&lt;/p&gt;
+&lt;p&gt;与关系模型不同的是，文档存储模型支持嵌套结构。例如，文档存储模型支持XML和JSON文档，字段的“值”又可以嵌套存储其它文档。文档存储模型也支持数组和列值键。&lt;/p&gt;
+&lt;p&gt;与键值存储不同的是，文档存储关心文档的内部结构。这使得存储引擎可以直接支持二级索引，从而允许对任意字段进行高效查询。支持文档嵌套存储的能力，使得查询语言具有搜索嵌套对象的能力，XQuery就是一个例子。
+MongoDB通过支持在查询中指定JSON字段路径实现类似的功能。&lt;/p&gt;
+&lt;h3 id=&#34;列式存储&#34;&gt;列式存储&lt;/h3&gt;
+&lt;p&gt;如果翻转数据，列式存储与关系存储将会非常相似。
+与关系模型存储记录不同，列式存储以流的方式在列中存储所有的数据。对于任何记录，索引都可以快速地获取列上的数据。&lt;/p&gt;
+&lt;p&gt;Map-reduce的实现Hadoop的流数据处理效率非常高，列式存储的优点体现的淋漓极致。因此，HBase和Hypertable通常作为非关系型数据仓库，为Map-reduce进行数据分析提供支持。&lt;/p&gt;
+&lt;p&gt;关系类型的列标对数据分析效果不好，因此，用户经常将更复杂的数据存储在列式数据库中。这直接体现在Cassandra中，它引入的“column family”可以被认为是一个“super-column”。
+列式存储支持行检索，但这需要从每个列获取匹配的列值，并重新组成行。&lt;/p&gt;
+&lt;h3 id=&#34;图形数据库&#34;&gt;图形数据库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;图形数据库存储顶点和边的信息，有的支持添加注释。&lt;/li&gt;
+&lt;li&gt;图形数据库可用于对事物建模，如社交图谱、真实世界的各种对象。IMDB（Internet Movie Database）站点的内容就组成了一幅复杂的图像，演员与电影彼此交织在一起。&lt;/li&gt;
+&lt;li&gt;图形数据库的查询语言一般用于查找图形中断点的路径，或端点之间路径的属性。&lt;/li&gt;
+&lt;li&gt;Neo4j是一个典型的图形数据库。&lt;/li&gt;
+&lt;/ul&gt;
 </description>
       
     </item>

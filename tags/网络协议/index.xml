@@ -13,7 +13,16 @@
       <pubDate>Fri, 28 Jun 2019 00:03:21 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</guid>
-      <description>一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符</description>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>对HTTP协议认识的简要总结</title>
+      <link>https://hardelmm.github.io/post/%E5%AF%B9http%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%86%E7%9A%84%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</link>
+      <pubDate>Mon, 27 Nov 2017 12:30:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E5%AF%B9http%E5%8D%8F%E8%AE%AE%E8%AE%A4%E8%AF%86%E7%9A%84%E7%AE%80%E8%A6%81%E6%80%BB%E7%BB%93/</guid>
+      <description>背景 做性能测试，压接口的时候，经常用到http协议的相关知识，特在此做个简单总结 http协议基础 http通过一个可靠的链接来交换信息，是一个</description>
     </item>
     
   </channel>
