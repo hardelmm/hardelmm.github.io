@@ -76,7 +76,7 @@
 <meta itemprop="name" content="python基础语法">
 <meta itemprop="description" content="中文编码 1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默"><meta itemprop="datePublished" content="2017-11-23T20:30:50+00:00" />
 <meta itemprop="dateModified" content="2017-11-23T20:30:50+00:00" />
-<meta itemprop="wordCount" content="3965">
+<meta itemprop="wordCount" content="3985">
 <meta itemprop="keywords" content="python," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="python基础语法"/>
 <meta name="twitter:description" content="中文编码 1、python中默认的编码格式是ASCII格式 2、若程序中有中文，需在文件开头加入# -- coding: UTF-8 -- 或者 #coding=utf-8 3、python3.X源码文件默"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 3965 字 -
+        约 3985 字 -
         预计阅读 8 分钟
       </span>
 
@@ -381,8 +381,15 @@
 下方语句执行后就会等待用户输入，按回车键后就会退出程序</p>
 </li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>raw_input(<span style="color:#d14">&#34;</span><span style="color:#d14">\n\n</span><span style="color:#d14">Press the enter key to exit.&#34;</span>)
-</span></span></code></pre></div><ul>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>raw_input(<span style="color:#d14">&#34;</span><span style="color:#d14">\n\n</span><span style="color:#d14">Press the enter key to exit.&#34;</span>)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
 <li>
 <p>Print输出
 使用Print进行输出，默认都是换行的，如果想要不换行输出，需要在变量末尾加上逗号</p>
@@ -424,13 +431,25 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 <li>从右到左索引默认-1开始的，最大范围是字符串开头
 例：</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>    s <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;letusmaketest&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span>    s1 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>]的结果是m
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3">3</a></span><span>    s2 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">9</span>]的结果是t
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4">4</a></span><span>    s3 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>:<span style="color:#099">9</span>]的结果是make
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5">5</a></span><span>    s4 <span style="color:#000;font-weight:bold">=</span> s[:<span style="color:#099">9</span>]的结果是letusmake
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6">6</a></span><span>    s5 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>:]的结果是maketest
-</span></span></code></pre></div><p>上面的s3结果包含s[5]的值m，但是不包括s[9]的值t。</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4">4</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5">5</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6">6</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    s <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#34;letusmaketest&#34;</span>
+</span></span><span style="display:flex;"><span>    s1 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>]的结果是m
+</span></span><span style="display:flex;"><span>    s2 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">9</span>]的结果是t
+</span></span><span style="display:flex;"><span>    s3 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>:<span style="color:#099">9</span>]的结果是make
+</span></span><span style="display:flex;"><span>    s4 <span style="color:#000;font-weight:bold">=</span> s[:<span style="color:#099">9</span>]的结果是letusmake
+</span></span><span style="display:flex;"><span>    s5 <span style="color:#000;font-weight:bold">=</span> s[<span style="color:#099">5</span>:]的结果是maketest
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>上面的s3结果包含s[5]的值m，但是不包括s[9]的值t。</p>
 <ul>
 <li>加号（+）是字符串连接运算符，比如s + &rsquo;test&rsquo;</li>
 <li>星号（*）是重复操作，比如s * 2表示s连续输出两次</li>
@@ -457,17 +476,33 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 <li>字典用&quot;{}&ldquo;标识，字典由索引(key)和它对应的值value组成</li>
 </ul>
 <p>例：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1"> 1</a></span><span>testDic <span style="color:#000;font-weight:bold">=</span> {}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2"> 2</a></span><span>testDic[<span style="color:#d14">&#39;test1&#39;</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;This is test1&#39;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3"> 3</a></span><span>testDic[<span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;This is test2&#39;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4"> 4</a></span><span>testDic2 <span style="color:#000;font-weight:bold">=</span> {<span style="color:#d14">&#39;name&#39;</span>: <span style="color:#d14">&#39;huangyl&#39;</span>,<span style="color:#d14">&#39;age&#39;</span>:<span style="color:#099">25</span>, <span style="color:#d14">&#39;sex&#39;</span>: <span style="color:#d14">&#39;man&#39;</span>}
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5"> 5</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6"> 6</a></span><span><span style="color:#0086b3">print</span> testDic[<span style="color:#d14">&#39;test1&#39;</span>]	<span style="color:#998;font-style:italic">#输出键为&#39;test1&#39;的值</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7"> 7</a></span><span><span style="color:#0086b3">print</span> testDic[<span style="color:#099">2</span>]	<span style="color:#998;font-style:italic">#输出键为2的值</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8"> 8</a></span><span><span style="color:#0086b3">print</span> testDic2		<span style="color:#998;font-style:italic">#输出字典testDic2</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-9"> 9</a></span><span><span style="color:#0086b3">print</span> testDic2<span style="color:#000;font-weight:bold">.</span>keys()		<span style="color:#998;font-style:italic">#输出字典testDic2的所有键</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-10">10</a></span><span><span style="color:#0086b3">print</span> testDic2<span style="color:#000;font-weight:bold">.</span>value()		<span style="color:#998;font-style:italic">#输出字典testDic2的所有值</span>
-</span></span></code></pre></div><h2 id="基本语句">基本语句</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1"> 1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2"> 2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3"> 3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4"> 4</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5"> 5</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6"> 6</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7"> 7</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8"> 8</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-9"> 9</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-10">10</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>testDic <span style="color:#000;font-weight:bold">=</span> {}
+</span></span><span style="display:flex;"><span>testDic[<span style="color:#d14">&#39;test1&#39;</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;This is test1&#39;</span>
+</span></span><span style="display:flex;"><span>testDic[<span style="color:#099">2</span>] <span style="color:#000;font-weight:bold">=</span> <span style="color:#d14">&#39;This is test2&#39;</span>
+</span></span><span style="display:flex;"><span>testDic2 <span style="color:#000;font-weight:bold">=</span> {<span style="color:#d14">&#39;name&#39;</span>: <span style="color:#d14">&#39;huangyl&#39;</span>,<span style="color:#d14">&#39;age&#39;</span>:<span style="color:#099">25</span>, <span style="color:#d14">&#39;sex&#39;</span>: <span style="color:#d14">&#39;man&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span> testDic[<span style="color:#d14">&#39;test1&#39;</span>]	<span style="color:#998;font-style:italic">#输出键为&#39;test1&#39;的值</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span> testDic[<span style="color:#099">2</span>]	<span style="color:#998;font-style:italic">#输出键为2的值</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span> testDic2		<span style="color:#998;font-style:italic">#输出字典testDic2</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span> testDic2<span style="color:#000;font-weight:bold">.</span>keys()		<span style="color:#998;font-style:italic">#输出字典testDic2的所有键</span>
+</span></span><span style="display:flex;"><span><span style="color:#0086b3">print</span> testDic2<span style="color:#000;font-weight:bold">.</span>value()		<span style="color:#998;font-style:italic">#输出字典testDic2的所有值</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="基本语句">基本语句</h2>
 <p>面向对象变成语言大同小异，基本语句包括：</p>
 <ol>
 <li>条件语句</li>
@@ -488,11 +523,21 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 </ul>
 <h3 id="条件语句">条件语句</h3>
 <p>基本形式：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span><span style="color:#000;font-weight:bold">if</span> 判断条件<span style="color:#a61717;background-color:#e3d2d2">：</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span><span style="color:#000;font-weight:bold">else</span><span style="color:#a61717;background-color:#e3d2d2">：</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a></span><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
-</span></span></code></pre></div><p>显而易见，如果满足条件，就do A，如果不满足，就do B</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">if</span> 判断条件<span style="color:#a61717;background-color:#e3d2d2">：</span>
+</span></span><span style="display:flex;"><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span><span style="color:#a61717;background-color:#e3d2d2">：</span>
+</span></span><span style="display:flex;"><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>显而易见，如果满足条件，就do A，如果不满足，就do B</p>
 <p>以上需要注意的几点：</p>
 <ul>
 <li>else是可选语句，当需要在条件不成立时执行内容则可以执行相关语句</li>
@@ -509,11 +554,21 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 </ol>
 <h4 id="while">while</h4>
 <p>基本形式：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span><span style="color:#000;font-weight:bold">while</span> 判断条件<span style="color:#a61717;background-color:#e3d2d2">：</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span><span style="color:#000;font-weight:bold">else</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a></span><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
-</span></span></code></pre></div><p>其中：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span> 判断条件<span style="color:#a61717;background-color:#e3d2d2">：</span>
+</span></span><span style="display:flex;"><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>
+</span></span><span style="display:flex;"><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
 <ul>
 <li>执行语句可以是单个语句也可以是语句块</li>
 <li>判断条件可以是任何表达式，任何非零、或非空的值均为ture</li>
@@ -522,12 +577,23 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 </ul>
 <h4 id="for">for</h4>
 <p>基本形式：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span><span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>    statements(s)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span>    <span style="color:#000;font-weight:bold">break</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-4">4</a></span><span><span style="color:#000;font-weight:bold">else</span>:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-5">5</a></span><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
-</span></span></code></pre></div><p>其中：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-4">4</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-5">5</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
+</span></span><span style="display:flex;"><span>    statements(s)
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">break</span>
+</span></span><span style="display:flex;"><span><span style="color:#000;font-weight:bold">else</span>:
+</span></span><span style="display:flex;"><span>    执行语句<span style="color:#a61717;background-color:#e3d2d2">……</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
 <ul>
 <li>Python中for循环可以遍历任何序列的项目，如一个列表或者一个字符串</li>
 <li>另外还有一种执行循环的遍历方式是通过索引进行遍历</li>
@@ -537,18 +603,38 @@ python中使用L来表示长整型，避免使用l与数字1产生混淆</li>
 <ol>
 <li>while循环嵌套基本形式：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a></span><span><span style="color:#000;font-weight:bold">while</span> expression:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2">2</a></span><span>    <span style="color:#000;font-weight:bold">while</span> expression:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3">3</a></span><span>        statement(s)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4">4</a></span><span>statement(s)
-</span></span></code></pre></div><ol start="2">
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">while</span> expression:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">while</span> expression:
+</span></span><span style="display:flex;"><span>        statement(s)
+</span></span><span style="display:flex;"><span>statement(s)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ol start="2">
 <li>for循环嵌套基本形式：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1">1</a></span><span><span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-2">2</a></span><span>    <span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-3">3</a></span><span>        statements(s)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-4">4</a></span><span>statements(s)
-</span></span></code></pre></div><p>其中：
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">for</span> iterating_var <span style="color:#000;font-weight:bold">in</span> sequence:
+</span></span><span style="display:flex;"><span>        statements(s)
+</span></span><span style="display:flex;"><span>statements(s)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：
 while与for循环体可以互相嵌套</p>
 <h3 id="控制语句">控制语句</h3>
 <h4 id="break">break</h4>
@@ -581,11 +667,21 @@ while与for循环体可以互相嵌套</p>
 <li>语法格式
 基本形式：</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1">1</a></span><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">functionname</span>( parameters ):
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-2">2</a></span><span>    <span style="color:#d14">&#34;函数_文档字符串&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-3">3</a></span><span>    function_suite
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-4">4</a></span><span>    <span style="color:#000;font-weight:bold">return</span> [expression]
-</span></span></code></pre></div><p>其中：</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1">1</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-2">2</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-3">3</a>
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-4">4</a>
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">functionname</span>( parameters ):
+</span></span><span style="display:flex;"><span>    <span style="color:#d14">&#34;函数_文档字符串&#34;</span>
+</span></span><span style="display:flex;"><span>    function_suite
+</span></span><span style="display:flex;"><span>    <span style="color:#000;font-weight:bold">return</span> [expression]
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>其中：</p>
 <ul>
 <li>函数代码块以 def 关键词开头，后接函数标识符名称和圆括号()。</li>
 <li>任何传入参数和自变量必须放在圆括号中间。圆括号之间可以用于定义参数。</li>
@@ -965,9 +1061,6 @@ while与for循环体可以互相嵌套</p>
 
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
 
 
 

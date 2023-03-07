@@ -67,7 +67,7 @@
       <pubDate>Tue, 27 Apr 2021 22:15:39 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/python%E5%8F%91%E9%80%81%E9%82%AE%E4%BB%B6/</guid>
-      <description>1# -*- coding: utf-8 -*- 2# @Time : 2020/5/20 13:53 3# @Author : huangyl 4# @FileName: sendEmail.py 5# @Software: PyCharm 6# @Blog ：https://hardelm.com 7 8import smtplib 9from email.mime.text import MIMEText 10from email.mime.multipart import MIMEMultipart 11from email.header import Header 12from email.utils import formataddr 13from readConfig import ReadConfig 14 15class SendEmail(): 16 def</description>
+      <description>1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 # -*- coding: utf-8 -*- # @Time : 2020/5/20 13:53 # @Author : huangyl # @FileName:</description>
     </item>
     
     <item>
@@ -76,7 +76,7 @@
       <pubDate>Tue, 27 Apr 2021 22:07:21 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/python-excel%E5%9F%BA%E7%A1%80%E6%93%8D%E4%BD%9C/</guid>
-      <description>1.新建excel 1open_excel = xlwt.Workbook(encoding=&amp;#39;utf-8&amp;#39;, style_compression=0) #style_compression参数设置是否压缩 2open_sheet = open_excel.add_sheet(SheetName) 3open_excel.save(result_filename) 2.写入/修改数据 1open_sheet.write(x,y,content) 2open_excel.save(result_filename) 3.单元格样式修改</description>
+      <description>1.新建excel 1 2 3 open_excel = xlwt.Workbook(encoding=&amp;#39;utf-8&amp;#39;, style_compression=0) #style_compression参数设置是否压缩 open_sheet = open_excel.add_sheet(SheetName) open_excel.save(result_filename) 2.写入/修改数据 1 2 open_sheet.write(x,y,content) open_excel.save(result_filename) 3.单元格样式修改</description>
     </item>
     
     <item>

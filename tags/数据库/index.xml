@@ -58,7 +58,7 @@
       <pubDate>Wed, 12 Jul 2017 17:30:00 +0000</pubDate>
       
       <guid>https://hardelmm.github.io/post/mysql%E5%B8%B8%E7%94%A8%E6%9F%A5%E8%AF%A2%E6%8C%87%E4%BB%A4/</guid>
-      <description>1、查看数据库连接池最大连接数 1show variables like &amp;#39;%max_connections%&amp;#39;; 2#实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 1set global max_connections=1000; 3、查看pro</description>
+      <description>1、查看数据库连接池最大连接数 1 2 show variables like &amp;#39;%max_connections%&amp;#39;; #实际MySQL服务器允许的最大连接数16384； 2、设置数据库连接池最大连接数 1 set global max_connections=1000; 3、查看p</description>
     </item>
     
     <item>
@@ -85,7 +85,7 @@
       <pubDate>Sat, 18 Mar 2017 20:27:41 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/sql%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/</guid>
-      <description>一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1select column1, column2 ... from table_name; #按列名查询数据 2select * from table_name; #查询</description>
+      <description>一.查询数据库 1.单表查询 select语句从数据库中选取数据，结果存放在一个结果表中，称为结果集。 1 2 3 4 5 6 7 8 9 10 11 12 13 select column1, column2 ... from table_name; #按</description>
     </item>
     
   </channel>

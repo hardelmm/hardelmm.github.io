@@ -13,7 +13,7 @@
       <pubDate>Thu, 27 Jan 2022 20:32:36 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/</guid>
-      <description>前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #</description>
+      <description>前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 # ! / bin/ bash #采集—个函数 readDir() { local dir=$1 #</description>
     </item>
     
     <item>
