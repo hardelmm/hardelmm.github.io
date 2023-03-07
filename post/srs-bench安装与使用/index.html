@@ -76,7 +76,7 @@
 <meta itemprop="name" content="st-load安装与使用">
 <meta itemprop="description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具("><meta itemprop="datePublished" content="2022-03-11T16:18:38+00:00" />
 <meta itemprop="dateModified" content="2022-03-11T16:18:38+00:00" />
-<meta itemprop="wordCount" content="1025">
+<meta itemprop="wordCount" content="1021">
 <meta itemprop="keywords" content="st-load,测试工具,性能测试," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="st-load安装与使用"/>
 <meta name="twitter:description" content="项目需要，需对直播服务器做性能测试，尝试了Jmeter，LoadRunner后选择了st-load。 什么是st-load 服务器负载测试工具("/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1025 字 -
+        约 1021 字 -
         预计阅读 3 分钟
       </span>
 
@@ -348,35 +348,35 @@ HTTP/HLS：依赖服务器Content-Length，不支持chunked方式(chunked时会�
 其他工具参考srs-librtmp</p>
 <h1 id="安装配置">安装配置</h1>
 <p>安装前需下载安装依赖软件包，使用git下载最新版本的srs-bench源码包</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
-</span></span></code></pre></div><p>编译</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>[root@cdvcloud srs-bench-master]# ./configure
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2">2</a></span><span>[root@cdvcloud srs-bench-master]# make
-</span></span></code></pre></div><p>查看生成的文件和目录</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>[root@cdvcloud objs]# ls
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
-</span></span></code></pre></div><h1 id="使用方法">使用方法</h1>
+<pre tabindex="0"><code>[root@cdvcloud huangyl]# yum install git unzip patch gcc gcc-c++ make
+[root@cdvcloud huangyl]# git clone https://github.com/simple-rtmp-server/srs-bench.git
+</code></pre><p>编译</p>
+<pre tabindex="0"><code>[root@cdvcloud srs-bench-master]# ./configure
+[root@cdvcloud srs-bench-master]# make
+</code></pre><p>查看生成的文件和目录</p>
+<pre tabindex="0"><code>[root@cdvcloud objs]# ls
+http-parser-2.1  sb_hls_load   sb_rtmp_load   sb_rtmp_publish  st-1.9	Makefile   sb_http_load  sb_rtmp_load_fast  src
+</code></pre><h1 id="使用方法">使用方法</h1>
 <p>模拟RTMP播放用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
-</span></span></code></pre></div><p>模拟HLS直播用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
-</span></span></code></pre></div><p>模拟HSL点播用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
-</span></span></code></pre></div><p>模拟RTMP推流用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1">1</a></span><span>./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
-</span></span></code></pre></div><p>模拟RTMP多路推流用户</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-7-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-7-1">1</a></span><span>./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
-</span></span></code></pre></div><p>example:</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-1">1</a></span><span>start a client
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-2">2</a></span><span>	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-3">3</a></span><span>start 1000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-4">4</a></span><span>	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-5">5</a></span><span>start 10000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-6">6</a></span><span>	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-7">7</a></span><span>start 100000 clients
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-8-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-8-8">8</a></span><span>	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
-</span></span></code></pre></div><p>参考：
+<pre tabindex="0"><code>./objs/sb_rtmp_load_fast -c 1000 -r rtmp://192.168.0.104/na84qi/dgarfm
+</code></pre><p>模拟HLS直播用户</p>
+<pre tabindex="0"><code>./objs/sb_hls_load -c 1 -r http://192.168.0.104/na84qi/dgarfm.m3u8
+</code></pre><p>模拟HSL点播用户</p>
+<pre tabindex="0"><code>./objs/st_hls_load -c 1 -o -r http://192.168.0.104/na84qi/dgarfm.m3u8
+</code></pre><p>模拟RTMP推流用户</p>
+<pre tabindex="0"><code>./objs/sb_rtmp_publish -i out_time.mp4 -c 1 -r rtmp://192.168.0.103/x1m4eu/16vpuy
+</code></pre><p>模拟RTMP多路推流用户</p>
+<pre tabindex="0"><code>./sb_rtmp_publish -i out_time.mp4 -c 1000 -r rtmp://192.168.0.103/live/livestream_{i}
+</code></pre><p>example:</p>
+<pre tabindex="0"><code>start a client
+	./objs/sb_rtmp_load_fast -c 1 -r rtmp://127.0.0.1:1935/live/livestream
+start 1000 clients
+	./objs/sb_rtmp_load_fast -c 1000 -r rtmp://127.0.0.1:1935/live/livestream
+start 10000 clients
+	./objs/sb_rtmp_load_fast -c 10000 -r rtmp://127.0.0.1:1935/live/livestream
+start 100000 clients
+	./objs/sb_rtmp_load_fast -c 100000 -r rtmp://127.0.0.1:1935/live/livestream
+</code></pre><p>参考：
 <a href="https://github.com/ossrs/srs-bench">https://github.com/ossrs/srs-bench</a></p>
 
         </div>

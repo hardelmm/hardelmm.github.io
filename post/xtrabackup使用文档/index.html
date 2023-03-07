@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Xtrabackup使用文档">
 <meta itemprop="description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）"><meta itemprop="datePublished" content="2019-05-09T15:00:00+00:00" />
 <meta itemprop="dateModified" content="2019-05-09T15:00:00+00:00" />
-<meta itemprop="wordCount" content="1218">
+<meta itemprop="wordCount" content="1216">
 <meta itemprop="keywords" content="xtrabackup,数据库," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Xtrabackup使用文档"/>
 <meta name="twitter:description" content="Xtrabackup介绍 Xtrabackup是由percona开发的一个开源软件，它是innodb热备工具ibbackup（收费的商业软件）"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1218 字 -
+        约 1216 字 -
         预计阅读 3 分钟
       </span>
 
@@ -333,30 +333,30 @@
 <li>innobackupex工具：用于备份myisam和innodb引擎的表</li>
 </ul>
 <p><strong>Xtrabackup安装流程</strong>如下：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3">3</a></span><span>tar -zxvf percona-xtrabackup-2.1.5.tar.gz
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4">4</a></span><span>cd percona-xtrabackup-2.1.5
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5">5</a></span><span>./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56） 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6">6</a></span><span>生成二进制文件，拷贝到指定目录并配置系统环境变量
-</span></span></code></pre></div><h3 id="innobackupex全量备份和恢复">innobackupex全量备份和恢复</h3>
+<pre tabindex="0"><code>wget http://www.percona.com/redir/downloads/XtraBackup/LATEST/source/percona-xtrabackup-2.1.5.tar.gz
+yum install cmake gcc gcc-c++ libaio libaio-devel automake autoconf bzr bison libtool ncurses-devel zlib-devel
+tar -zxvf percona-xtrabackup-2.1.5.tar.gz
+cd percona-xtrabackup-2.1.5
+./utils/build.sh或者./utils/build.sh+存储引擎及版本（如：innodb56） 
+生成二进制文件，拷贝到指定目录并配置系统环境变量
+</code></pre><h3 id="innobackupex全量备份和恢复">innobackupex全量备份和恢复</h3>
 <ul>
 <li><strong>全量备份</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
-</span></span></code></pre></div><p>该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定&ndash;defaults-file，默认值为/etc/my.cnf。</p>
+<pre tabindex="0"><code>innobackupex --defaults-file=/opt/mysql/my.cnf  --user=root --password=*** /backup/mysql/data
+</code></pre><p>该语句将拷贝数据文件（由my.cnf里的变量datadir指定）至备份目录下（/backup/mysql/data），注意：如果不指定&ndash;defaults-file，默认值为/etc/my.cnf。</p>
 <p>备份成功后将会在备份目录下创建一个时间戳目录，在该目录下存放备份文件。</p>
 <ul>
 <li><strong>全量恢复</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>innobackupex --defaults-file=/opt/mysql/my.cnf 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>--user=root --password=*** --use-memory=4G 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span>--apply-log /backup/mysql/data/2018-10-29_09-05-25
-</span></span></code></pre></div><p>第1步是apply-log，为了加快速度，一般建议设置&ndash;use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>innobackupex --defaults-file=/opt/mysql/my.cnf 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>--user=root --password=***  
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span>--copy-back /backup/mysql/data/2018-10-29_09-05-25
-</span></span></code></pre></div><p>第2步是copy-back，即把备份文件拷贝至原数据目录下</p>
+<pre tabindex="0"><code>innobackupex --defaults-file=/opt/mysql/my.cnf 
+--user=root --password=*** --use-memory=4G 
+--apply-log /backup/mysql/data/2018-10-29_09-05-25
+</code></pre><p>第1步是apply-log，为了加快速度，一般建议设置&ndash;use-memory，这个步骤完成之后，目录/backup/mysql/data/2013-10-29_09-05-25下的备份文件已经准备就绪</p>
+<pre tabindex="0"><code>innobackupex --defaults-file=/opt/mysql/my.cnf 
+--user=root --password=***  
+--copy-back /backup/mysql/data/2018-10-29_09-05-25
+</code></pre><p>第2步是copy-back，即把备份文件拷贝至原数据目录下</p>
 <p>第3步检查数据目录的所有者和权限是否正确</p>
 <h3 id="innobackupex增量备份和恢复">innobackupex增量备份和恢复</h3>
 <p>注意：innobackupex 增量备份仅针对InnoDB这类支持事务的引擎，对于MyISAM等引擎，则仍然是全备</p>
@@ -364,20 +364,20 @@
 <li><strong>增量备份</strong></li>
 </ul>
 <p>增量备份需要基于全备，先假设已经有了一个全备（/backup/mysql/data/2018-10-29_09-05-25），需要在该全备的基础上做增量备份</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>innobackupex --defaults-file=/opt/mysql/my.cnf  
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span>--user=root --password=*** 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span>--incremental-basedir=/backup/mysql/data/2018-10-29_09-05-25 
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a></span><span>--incremental /backup/mysql/data
-</span></span></code></pre></div><p>其中&ndash;incremental-basedir指向全备目录，&ndash;incremental指向增量备份的目录</p>
+<pre tabindex="0"><code>innobackupex --defaults-file=/opt/mysql/my.cnf  
+--user=root --password=*** 
+--incremental-basedir=/backup/mysql/data/2018-10-29_09-05-25 
+--incremental /backup/mysql/data
+</code></pre><p>其中&ndash;incremental-basedir指向全备目录，&ndash;incremental指向增量备份的目录</p>
 <p>上面语句执行成功之后，会在&ndash;incremental执行的目录下创建一个时间戳子目录（本例中为：/backup/mysql/data/2018-10-29_09-52-37），在该目录下存放着增量备份的所有文件
 在备份目录下，有一个文件xtrabackup_checkpoints记录着备份信息，其中增量备份的from_lsn是从上一次增量备份的to_lsn开始的</p>
 <ul>
 <li><strong>增量恢复</strong></li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>innobackupex --apply-log --redo-only BASE-DIR
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span>innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
-</span></span></code></pre></div><p>BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。</p>
+<pre tabindex="0"><code>innobackupex --apply-log --redo-only BASE-DIR
+innobackupex --apply-log --redo-only BASE-DIR --incremental-dir=INCREMENTAL-DIR-1
+innobackupex --apply-log BASE-DIR --incremental-dir=INCREMENTAL-DIR-2
+</code></pre><p>BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。</p>
 <p>注意：最后一步的增量备份并没有&ndash;redo-only选项！还有，可以使用&ndash;use_memory提高性能</p>
 <p>以上完成之后，最终数据在BASE-DIR（全备目录）下</p>
 

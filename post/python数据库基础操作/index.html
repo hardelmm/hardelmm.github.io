@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Python数据库基础操作">
 <meta itemprop="description" content="一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。"><meta itemprop="datePublished" content="2021-04-29T21:52:23+08:00" />
 <meta itemprop="dateModified" content="2021-04-29T21:52:23+08:00" />
-<meta itemprop="wordCount" content="1051">
+<meta itemprop="wordCount" content="1049">
 <meta itemprop="keywords" content="python,数据库,mysql," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Python数据库基础操作"/>
 <meta name="twitter:description" content="一.python连接mysql数据库 1.使用mysqlclient连接 mysqlclient包是用于MySQL的最流行的Python包之一。"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1051 字 -
+        约 1049 字 -
         预计阅读 3 分钟
       </span>
 
@@ -440,20 +440,20 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-30"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-30">30</a></span><span>   connection<span style="color:#000;font-weight:bold">.</span>close()
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-31"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-31">31</a></span><span>loop<span style="color:#000;font-weight:bold">.</span>run_until_complete(connect_db())
 </span></span></code></pre></div><h2 id="二执行批量执行sql">二.执行/批量执行sql</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1">1</a></span><span>mycursor = connection.cursor()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2">2</a></span><span>mycursor.excute(&#34;sql语句&#34;) #执行sql
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3">3</a></span><span>sql = &#34;&#34;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-4">4</a></span><span>val = []
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-5">5</a></span><span>mycursor.excutemany(sql,val) #批量执行sql
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-6">6</a></span><span>connection.commit() #对数据库由修改操作要commit
-</span></span></code></pre></div><h2 id="三查询数据">三.查询数据</h2>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>mycursor = connection.cursor()
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>mycursor.excute(&#34;select 语句&#34;)
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-3">3</a></span><span>result = mycursor.fetchone() #获取当前维度第一条数据
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-4">4</a></span><span>result = mycursor.fetchall()#获取当前维度所有数据
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-5">5</a></span><span>result = mycursor.fetchmany(n)#获取当前维度的n条数据
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-6">6</a></span><span>#cursor属性 rownumber  标识游标当前位置 所以要定义属性：cursor.rownumber=0
-</span></span></code></pre></div><h2 id="四自定义工具包封装">四.自定义工具包封装</h2>
+<pre tabindex="0"><code>mycursor = connection.cursor()
+mycursor.excute(&#34;sql语句&#34;) #执行sql
+sql = &#34;&#34;
+val = []
+mycursor.excutemany(sql,val) #批量执行sql
+connection.commit() #对数据库由修改操作要commit
+</code></pre><h2 id="三查询数据">三.查询数据</h2>
+<pre tabindex="0"><code>mycursor = connection.cursor()
+mycursor.excute(&#34;select 语句&#34;)
+result = mycursor.fetchone() #获取当前维度第一条数据
+result = mycursor.fetchall()#获取当前维度所有数据
+result = mycursor.fetchmany(n)#获取当前维度的n条数据
+#cursor属性 rownumber  标识游标当前位置 所以要定义属性：cursor.rownumber=0
+</code></pre><h2 id="四自定义工具包封装">四.自定义工具包封装</h2>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-1"> 1</a></span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-2"> 2</a></span><span><span style="color:#000;font-weight:bold">import</span> <span style="color:#555">mysql.connector</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-6-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-6-3"> 3</a></span><span>

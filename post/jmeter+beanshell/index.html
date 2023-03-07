@@ -76,7 +76,7 @@
 <meta itemprop="name" content="Jmeter&#43;beanshell">
 <meta itemprop="description" content="一.jmeter接口测试适用场景 jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。 通过扩"><meta itemprop="datePublished" content="2022-01-16T21:46:59+08:00" />
 <meta itemprop="dateModified" content="2022-01-16T21:46:59+08:00" />
-<meta itemprop="wordCount" content="1211">
+<meta itemprop="wordCount" content="1193">
 <meta itemprop="keywords" content="接口测试,自动化测试,性能测试,测试工具," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Jmeter&#43;beanshell"/>
 <meta name="twitter:description" content="一.jmeter接口测试适用场景 jmeter横向对比其他接口测试工具，拥有UI界面，配置测试组件更易上手，适用语言基础薄弱的测试人员。 通过扩"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1211 字 -
+        约 1193 字 -
         预计阅读 3 分钟
       </span>
 
@@ -377,12 +377,12 @@
 <li>汇总报告：</li>
 </ul>
 <h6 id="补充plugins-manager常用插件">补充plugins manager常用插件：</h6>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1">1</a></span><span>    PerfMon Metrics Collector #性能监视指标收集器，以折线图形式展示
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2">2</a></span><span>    Response Times Over Time #随时间变化的响应时间，以折线图形式展示
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3">3</a></span><span>    Transactions per Second #每秒综合事务数，以折线图形式展示
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4">4</a></span><span>    Active Threads Over Time #随着时间变化的活跃线程数
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5">5</a></span><span>    Response Codes per Second 响应代码与测试时间关系图
-</span></span></code></pre></div><h2 id="三beanshell">三.beanshell</h2>
+<pre tabindex="0"><code>    PerfMon Metrics Collector #性能监视指标收集器，以折线图形式展示
+    Response Times Over Time #随时间变化的响应时间，以折线图形式展示
+    Transactions per Second #每秒综合事务数，以折线图形式展示
+    Active Threads Over Time #随着时间变化的活跃线程数
+    Response Codes per Second 响应代码与测试时间关系图
+</code></pre><h2 id="三beanshell">三.beanshell</h2>
 <p>beanshell是轻量级的纯java脚本，能够动态执行标准java语法和一些扩展脚本语法，类似于js和perl</p>
 <ul>
 <li>beanshell预处理器：构建请求参数，常用类库org.json,java.util，java.io等</li>
@@ -391,47 +391,47 @@
 <li>beanshell定时器</li>
 </ul>
 <p>补充beanshell内置变量：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1"> 1</a></span><span>    SampleResult
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-2"> 2</a></span><span>    ResponseCode
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-3"> 3</a></span><span>    ResponseMessage
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-4"> 4</a></span><span>    IsSuccess
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-5"> 5</a></span><span>    Label
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-6"> 6</a></span><span>    FileName
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-7"> 7</a></span><span>    ctx #
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-8"> 8</a></span><span>    vars    #用于存取局部变量
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-9"> 9</a></span><span>    props   #用于存取全局静态变量
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-10">10</a></span><span>    log
-</span></span></code></pre></div><p>前置处理器示例</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1"> 1</a></span><span>import org.json.*;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2"> 2</a></span><span>import java.util.HashMap;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3"> 3</a></span><span>import java.util.Map;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4"> 4</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5"> 5</a></span><span>String hotelId = vars.get(&#34;hotelId&#34;);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6"> 6</a></span><span>String language = vars.get(&#34;language&#34;);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7"> 7</a></span><span>String [] types = {&#34;FACILITY_ANSWER&#34;,&#34;SERVICE_ANSWER&#34;};
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8"> 8</a></span><span>int i = (int)(Math.random()*types.length);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-9"> 9</a></span><span>log.info(String.valueOf(i));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-10">10</a></span><span>String type = types[i].toString();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-11">11</a></span><span>Map data = new HashMap();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-12">12</a></span><span>data.put(&#34;hotelId&#34;,hotelId);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-13">13</a></span><span>data.put(&#34;language&#34;,language);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-14">14</a></span><span>data.put(&#34;type&#34;,type);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-15">15</a></span><span>JSONObject getAnswerVO = new JSONObject(data);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-16">16</a></span><span>log.info(JSONObject.valueToString(getAnswerVO));
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-17">17</a></span><span>vars.put(&#34;getAnswerVO&#34;, JSONObject.valueToString(getAnswerVO));
-</span></span></code></pre></div><p>后置处理器示例</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1"> 1</a></span><span>import org.json.*;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2"> 2</a></span><span>import java.util.HashMap;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3"> 3</a></span><span>import java.util.Map;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4"> 4</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-5"> 5</a></span><span>String response_data = prev.getResponseDataAsString();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-6"> 6</a></span><span>JSONObject response_obj = new JSONObject(response_data);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-7"> 7</a></span><span>JSONArray AnswerVOsArray = response_obj.getJSONArray(&#34;data&#34;);
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-8"> 8</a></span><span>int i = (int)(Math.random()*AnswerVOsArray.length());
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-9"> 9</a></span><span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-10">10</a></span><span>String AnswerVO = AnswerVOsArray.get(i).toString();
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-11">11</a></span><span>vars.put(&#34;AnswerVO&#34;, AnswerVO);
-</span></span></code></pre></div>
+<pre tabindex="0"><code>    SampleResult
+    ResponseCode
+    ResponseMessage
+    IsSuccess
+    Label
+    FileName
+    ctx #
+    vars    #用于存取局部变量
+    props   #用于存取全局静态变量
+    log
+</code></pre><p>前置处理器示例</p>
+<pre tabindex="0"><code>import org.json.*;
+import java.util.HashMap;
+import java.util.Map;
+
+String hotelId = vars.get(&#34;hotelId&#34;);
+String language = vars.get(&#34;language&#34;);
+String [] types = {&#34;FACILITY_ANSWER&#34;,&#34;SERVICE_ANSWER&#34;};
+int i = (int)(Math.random()*types.length);
+log.info(String.valueOf(i));
+String type = types[i].toString();
+Map data = new HashMap();
+data.put(&#34;hotelId&#34;,hotelId);
+data.put(&#34;language&#34;,language);
+data.put(&#34;type&#34;,type);
+JSONObject getAnswerVO = new JSONObject(data);
+log.info(JSONObject.valueToString(getAnswerVO));
+vars.put(&#34;getAnswerVO&#34;, JSONObject.valueToString(getAnswerVO));
+</code></pre><p>后置处理器示例</p>
+<pre tabindex="0"><code>import org.json.*;
+import java.util.HashMap;
+import java.util.Map;
+
+String response_data = prev.getResponseDataAsString();
+JSONObject response_obj = new JSONObject(response_data);
+JSONArray AnswerVOsArray = response_obj.getJSONArray(&#34;data&#34;);
+int i = (int)(Math.random()*AnswerVOsArray.length());
+
+String AnswerVO = AnswerVOsArray.get(i).toString();
+vars.put(&#34;AnswerVO&#34;, AnswerVO);
+</code></pre>
         </div>
 
         

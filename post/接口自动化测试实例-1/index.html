@@ -76,7 +76,7 @@
 <meta itemprop="name" content="接口自动化测试实例（一）">
 <meta itemprop="description" content="前言：本文简要介绍单接口（业务流）自动化测试框架实现方案，思路如下： 测试数据（用例）读取与处理 测试用例执行引擎 结果校验以及断言 测试结果处理与"><meta itemprop="datePublished" content="2022-01-27T20:22:36+08:00" />
 <meta itemprop="dateModified" content="2022-01-27T20:22:36+08:00" />
-<meta itemprop="wordCount" content="1311">
+<meta itemprop="wordCount" content="1304">
 <meta itemprop="keywords" content="python,接口测试,自动化测试,jenkins,持续集成," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="接口自动化测试实例（一）"/>
 <meta name="twitter:description" content="前言：本文简要介绍单接口（业务流）自动化测试框架实现方案，思路如下： 测试数据（用例）读取与处理 测试用例执行引擎 结果校验以及断言 测试结果处理与"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 1311 字 -
+        约 1304 字 -
         预计阅读 3 分钟
       </span>
 
@@ -368,12 +368,12 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-8">8</a></span><span>    <span style="color:#000;font-weight:bold">return</span> list_tmp
 </span></span></code></pre></div><h2 id="三测试数据预处理">三.测试数据预处理</h2>
 <h3 id="1常用处理方法">1.常用处理方法</h3>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-1">1</a></span><span>    linecache.getlines(case) #按行读取测试用例，输出list
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-2">2</a></span><span>    str.strip() #去除头尾字符（默认空格或换行符）
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-3">3</a></span><span>    jsonpath.jsonpath() #json数据解析,类似xpath
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-4">4</a></span><span>    json.load() #json字符串转为json对象
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-3-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-3-5">5</a></span><span>    json.dump() #json对象反序列化为json字符串
-</span></span></code></pre></div><h3 id="2多进程方式下处理测试用例">2.多进程方式下处理测试用例</h3>
+<pre tabindex="0"><code>    linecache.getlines(case) #按行读取测试用例，输出list
+    str.strip() #去除头尾字符（默认空格或换行符）
+    jsonpath.jsonpath() #json数据解析,类似xpath
+    json.load() #json字符串转为json对象
+    json.dump() #json对象反序列化为json字符串
+</code></pre><h3 id="2多进程方式下处理测试用例">2.多进程方式下处理测试用例</h3>
 <div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-1"> 1</a></span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-2"> 2</a></span><span><span style="color:#000;font-weight:bold">def</span> <span style="color:#900;font-weight:bold">case_avg</span>(<span style="color:#999">self</span>):<span style="color:#998;font-style:italic">#多进行并发执行平均分配用例数目</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-4-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-4-3"> 3</a></span><span>    list_tmp <span style="color:#000;font-weight:bold">=</span> []
@@ -443,9 +443,9 @@
 <h3 id="1常用处理方法-1">1.常用处理方法</h3>
 <p>1).手动编写脚本，解析返回数据，进行检查点校验，校验结果整理汇总(大数据汇总量)
 2).借助assert进行断言(小数据量下展示用)</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-1">1</a></span><span>    assert str(res.get(&#39;status&#39;)) == str(args[&#39;expectdata&#39;][&#39;status&#39;]),&#34;接口返回status值不等于预期&#34;
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-5-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-5-2">2</a></span><span>    assert str(res.get(&#39;data&#39;).get(&#39;service&#39;)) == str(args[&#39;expectdata&#39;][&#39;service&#39;]), &#34;接口返回service值不等于预期&#34;
-</span></span></code></pre></div><h3 id="2数据库校验">2.数据库校验</h3>
+<pre tabindex="0"><code>    assert str(res.get(&#39;status&#39;)) == str(args[&#39;expectdata&#39;][&#39;status&#39;]),&#34;接口返回status值不等于预期&#34;
+    assert str(res.get(&#39;data&#39;).get(&#39;service&#39;)) == str(args[&#39;expectdata&#39;][&#39;service&#39;]), &#34;接口返回service值不等于预期&#34;
+</code></pre><h3 id="2数据库校验">2.数据库校验</h3>
 <p>1)解析返回数据
 2)调用数据库，查询对应数据
 3)数据校验</p>

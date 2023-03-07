@@ -76,7 +76,7 @@
 <meta itemprop="name" content="自动化测试持续集成">
 <meta itemprop="description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #"><meta itemprop="datePublished" content="2022-01-27T20:32:36+08:00" />
 <meta itemprop="dateModified" content="2022-01-27T20:32:36+08:00" />
-<meta itemprop="wordCount" content="285">
+<meta itemprop="wordCount" content="277">
 <meta itemprop="keywords" content="jenkins,持续集成,shell," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="自动化测试持续集成"/>
 <meta name="twitter:description" content="前言：本文简要记录自动化测试CI方案，详细内容待补充 1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #"/>
@@ -301,7 +301,7 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 285 字 -
+        约 277 字 -
         预计阅读 1 分钟
       </span>
 
@@ -343,18 +343,18 @@
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>    <span style="color:#000;font-weight:bold">done</span>
 </span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span><span style="color:#000;font-weight:bold">}</span>
 </span></span></code></pre></div><p>2.修改配置参数</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>    sed -i &#34;s?^url=*?url=$url?g&#34; config.ini
-</span></span></code></pre></div><p>3.选项参数联动</p>
+<pre tabindex="0"><code>    sed -i &#34;s?^url=*?url=$url?g&#34; config.ini
+</code></pre><p>3.选项参数联动</p>
 <p>借助Active Choices Plug-in插件，以下举例Active Choices Parameter和Active Choices Reactive Parameter模块</p>
 <p>示例：</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-1">1</a></span><span>    if(branch.equals(&#34;master&#34;)){	#branch为与之关联的选项名称
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-2">2</a></span><span>        return[&#34;a&#34;,&#34;b&#34;,&#34;c&#34;]
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-3">3</a></span><span>    }else if(branch.equals(&#34;master1&#34;)){
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-4">4</a></span><span>        return[&#34;test1&#34;]
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-5">5</a></span><span>    }else if(branch.equals(&#34;master2&#34;)){
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-6">6</a></span><span>        return[&#34;test2&#34;]
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-2-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-2-7">7</a></span><span>    }
-</span></span></code></pre></div>
+<pre tabindex="0"><code>    if(branch.equals(&#34;master&#34;)){	#branch为与之关联的选项名称
+        return[&#34;a&#34;,&#34;b&#34;,&#34;c&#34;]
+    }else if(branch.equals(&#34;master1&#34;)){
+        return[&#34;test1&#34;]
+    }else if(branch.equals(&#34;master2&#34;)){
+        return[&#34;test2&#34;]
+    }
+</code></pre>
         </div>
 
         
