@@ -6,7 +6,16 @@
     <description>Recent content in Posts on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Thu, 02 Mar 2023 23:56:03 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 18:10:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>数据结构汇总</title>
+      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B1%87%E6%80%BB/</link>
+      <pubDate>Mon, 06 Mar 2023 18:10:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B1%87%E6%80%BB/</guid>
+      <description>前言： 数据结构是数据按照特点关系进行存储或组织的的集合，特殊的结构在不同的应用场景下会有不一样的处理效率。 常用的数据结构根据访问特点可以分为</description>
+    </item>
+    
     <item>
       <title>Git常用命令</title>
       <link>https://hardelmm.github.io/post/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</link>
@@ -157,7 +166,7 @@
       <pubDate>Fri, 28 Jun 2019 00:03:21 +0800</pubDate>
       
       <guid>https://hardelmm.github.io/post/http%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</guid>
-      <description></description>
+      <description>一.HTTP协议概念 HTTP协议又叫做超文本传输协议（Hyper Text Transfer Protocol ），在做网络请求时，基本上时使用HTTP协议 HTTP使用统一资源标识符</description>
     </item>
     
     <item>
@@ -176,15 +185,6 @@
       
       <guid>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
       <description>背景 之前一直想去学习下，因为各种原因暂时搁置了。最近公司在开发Saas产品，刚好用到ansible等内容，特此针对性了解学习下 ansible</description>
-    </item>
-    
-    <item>
-      <title>数据库模型的简单理解</title>
-      <link>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</link>
-      <pubDate>Thu, 12 Jul 2018 09:08:00 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E7%9A%84%E7%AE%80%E5%8D%95%E7%90%86%E8%A7%A3/</guid>
-      <description>公司针对mysql和mongo开发了相应的数据库管理平台（其实就是包了个壳），需对底层数据库做性能测试，获取相应的性能参数，在此记录测试过程</description>
     </item>
     
   </channel>
