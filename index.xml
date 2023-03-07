@@ -20,7 +20,6 @@
       
         <description>&lt;p&gt;本文简要概述接口测试范围以及部分注意事项&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://hardelmm.github.io/img/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B41.png&#34; alt=&#34;接口测试范围.png&#34;&gt;&lt;/p&gt;
-&lt;p&gt;总结：&lt;/p&gt;
 &lt;p&gt;实际项目开发过程中，由于前后端结构分离，常通过前端进行输入限制，但若涉及未加密的接口，易留下安全性隐患。&lt;/p&gt;
 </description>
       
