@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>
-          Jenkins&#43;shell - HardElm
+          接口测试范围 - HardElm
         </title>
     
 
@@ -29,7 +29,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 
 <meta name="author" content="HardElm" />
-  <meta name="description" content="1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &amp;#34;$dir &amp;#34;) 7 for file in $files ; do 8 local path=&amp;#34;$dir" />
+  <meta name="description" content="本文简要概述接口测试范围以及部分注意事项 1graph LR 2接口测试--&amp;gt;功能测试 3接口测试--&amp;gt;性能测试 4接口测试--&amp;gt;安全性测试 5 6" />
 
   <meta name="keywords" content="Hugo, theme, jane" />
 
@@ -41,7 +41,7 @@
 <meta name="generator" content="Hugo 0.110.0" />
 
 
-<link rel="canonical" href="https://hardelmm.github.io/post/jenkins&#43;shell/" />
+<link rel="canonical" href="https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/" />
 
 
 
@@ -67,19 +67,19 @@
 
 
 
-<meta property="og:title" content="Jenkins&#43;shell" />
-<meta property="og:description" content="1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &#34;$dir &#34;) 7 for file in $files ; do 8 local path=&#34;$dir" />
+<meta property="og:title" content="接口测试范围" />
+<meta property="og:description" content="本文简要概述接口测试范围以及部分注意事项 1graph LR 2接口测试--&gt;功能测试 3接口测试--&gt;性能测试 4接口测试--&gt;安全性测试 5 6" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hardelmm.github.io/post/jenkins&#43;shell/" /><meta property="article:section" content="post" />
-<meta property="article:published_time" content="2022-01-27T20:32:36+08:00" />
-<meta property="article:modified_time" content="2022-01-27T20:32:36+08:00" />
-<meta itemprop="name" content="Jenkins&#43;shell">
-<meta itemprop="description" content="1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &#34;$dir &#34;) 7 for file in $files ; do 8 local path=&#34;$dir"><meta itemprop="datePublished" content="2022-01-27T20:32:36+08:00" />
-<meta itemprop="dateModified" content="2022-01-27T20:32:36+08:00" />
-<meta itemprop="wordCount" content="156">
-<meta itemprop="keywords" content="jenkins,持续集成,shell," /><meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Jenkins&#43;shell"/>
-<meta name="twitter:description" content="1.获取目录下所有文件名 1# ! / bin/ bash 2#采集—个函数 3readDir() { 4 local dir=$1 #获取传入的目录路径 5 local files #循环指定目录下的所有文件 6 files=$(ls &#34;$dir &#34;) 7 for file in $files ; do 8 local path=&#34;$dir"/>
+<meta property="og:url" content="https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-03-07T15:10:00+00:00" />
+<meta property="article:modified_time" content="2023-03-07T15:10:00+00:00" />
+<meta itemprop="name" content="接口测试范围">
+<meta itemprop="description" content="本文简要概述接口测试范围以及部分注意事项 1graph LR 2接口测试--&gt;功能测试 3接口测试--&gt;性能测试 4接口测试--&gt;安全性测试 5 6"><meta itemprop="datePublished" content="2023-03-07T15:10:00+00:00" />
+<meta itemprop="dateModified" content="2023-03-07T15:10:00+00:00" />
+<meta itemprop="wordCount" content="552">
+<meta itemprop="keywords" content="接口测试," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="接口测试范围"/>
+<meta name="twitter:description" content="本文简要概述接口测试范围以及部分注意事项 1graph LR 2接口测试--&gt;功能测试 3接口测试--&gt;性能测试 4接口测试--&gt;安全性测试 5 6"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -284,15 +284,15 @@
       <article class="post">
         
         <header class="post-header">
-          <h1 class="post-title">Jenkins&#43;shell</h1>
+          <h1 class="post-title">接口测试范围</h1>
           
 
           <div class="post-meta">
 
 
   <div class="post-meta-time">
-    <time datetime="2022-01-27">
-      2022-01-27
+    <time datetime="2023-03-07">
+      2023-03-07
     </time>
   </div>
 
@@ -301,14 +301,18 @@
 
   <div class="post-meta__right">
     <span class="post-meta-more">
-        约 156 字 -
-        预计阅读 1 分钟
+        约 552 字 -
+        预计阅读 2 分钟
       </span>
 
     
 
 
     
+    
+      <span id="busuanzi_container_page_pv">
+        | 阅读 <span id="busuanzi_value_page_pv"></span>
+      </span>
     
 
 
@@ -321,25 +325,39 @@
 
         
         <div class="post-content">
-          <p>1.获取目录下所有文件名</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span><span style="color:#998;font-style:italic"># ! / bin/ bash</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span><span style="color:#998;font-style:italic">#采集—个函数</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>readDir<span style="color:#000;font-weight:bold">()</span> <span style="color:#000;font-weight:bold">{</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>    <span style="color:#0086b3">local</span> <span style="color:#008080">dir</span><span style="color:#000;font-weight:bold">=</span><span style="color:#008080">$1</span>    <span style="color:#998;font-style:italic">#获取传入的目录路径</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span>    <span style="color:#0086b3">local</span> files     <span style="color:#998;font-style:italic">#循环指定目录下的所有文件</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>    <span style="color:#008080">files</span><span style="color:#000;font-weight:bold">=</span><span style="color:#000;font-weight:bold">$(</span>ls <span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> &#34;</span><span style="color:#000;font-weight:bold">)</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>    <span style="color:#000;font-weight:bold">for</span> file in <span style="color:#008080">$files</span> ; <span style="color:#000;font-weight:bold">do</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>        <span style="color:#0086b3">local</span> <span style="color:#008080">path</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;</span><span style="color:#008080">$dir</span><span style="color:#d14"> /</span><span style="color:#008080">$file</span><span style="color:#d14">&#34;</span>    <span style="color:#998;font-style:italic">#指的是当前遍历文件的完整路径</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>        <span style="color:#000;font-weight:bold">if</span> <span style="color:#000;font-weight:bold">[</span> -d <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span> <span style="color:#000;font-weight:bold">]</span> ; <span style="color:#000;font-weight:bold">then</span>    <span style="color:#998;font-style:italic">#判断是否是目录，如果是目录则递归遍历，如果是文件则打印该文件的完整路径</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>            readDir <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>        <span style="color:#000;font-weight:bold">else</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>            <span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;</span><span style="color:#008080">$path</span><span style="color:#d14">&#34;</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>        <span style="color:#000;font-weight:bold">fi</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>    <span style="color:#000;font-weight:bold">done</span>
-</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span><span style="color:#000;font-weight:bold">}</span>
-</span></span></code></pre></div><p>2.修改配置参数</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-1-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-1-1">1</a></span><span>    sed -i &#34;s?^url=*?url=$url?g&#34; config.ini
-</span></span></code></pre></div>
+          <p>本文简要概述接口测试范围以及部分注意事项</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-1"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-1"> 1</a></span><span>graph LR
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-2"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-2"> 2</a></span><span>接口测试--&gt;功能测试
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-3"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-3"> 3</a></span><span>接口测试--&gt;性能测试
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-4"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-4"> 4</a></span><span>接口测试--&gt;安全性测试
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-5"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-5"> 5</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-6"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-6"> 6</a></span><span>功能测试--&gt;正向功能
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-7"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-7"> 7</a></span><span>功能测试--&gt;逆向功能
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-8"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-8"> 8</a></span><span>功能测试--&gt;多接口业务逻辑
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-9"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-9"> 9</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-10"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-10">10</a></span><span>正向功能--&gt;入参符合业务需求/设计文档
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-11"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-11">11</a></span><span>正向功能--&gt;数据库校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-12"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-12">12</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-13"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-13">13</a></span><span>逆向功能--&gt;数据异常和状态码校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-14"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-14">14</a></span><span>逆向功能--&gt;参数异常和状态码校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-15"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-15">15</a></span><span>逆向功能--&gt;组合参数错误:常在前端限制提示顺序
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-16"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-16">16</a></span><span>逆向功能--&gt;数据库校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-17"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-17">17</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-18"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-18">18</a></span><span>数据异常和状态码校验--&gt;边界值校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-19"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-19">19</a></span><span>数据异常和状态码校验--&gt;数据类型错误
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-20"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-20">20</a></span><span>数据异常和状态码校验--&gt;数据Null
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-21"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-21">21</a></span><span>参数异常和状态码校验--&gt;少参多参和参名错误
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-22"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-22">22</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-23"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-23">23</a></span><span>性能测试--&gt;高并发数据处理正确性:数据库死锁等
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-24"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-24">24</a></span><span>性能测试--&gt;并发数/吞吐量以及此状态下响应时间
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-25"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-25">25</a></span><span>性能测试--&gt;服务资源使用率
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-26"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-26">26</a></span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-27"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-27">27</a></span><span>安全性测试--&gt;开放式接口入参加密token校验
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-28"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-28">28</a></span><span>安全性测试--&gt;敏感数据加密传输
+</span></span><span style="display:flex;"><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f" id="hl-0-29"><a style="outline:none;text-decoration:none;color:inherit" href="#hl-0-29">29</a></span><span>安全性测试--&gt;SQL注入
+</span></span></code></pre></div><p>总结：</p>
+<p>实际项目开发过程中，由于前后端结构分离，常通过前端进行输入限制，但若涉及未加密的接口，易留下安全性隐患。</p>
+
         </div>
 
         
@@ -352,7 +370,7 @@
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
     <span class="item-content">
-      2022-01-27
+      2023-03-07
       
     </span>
   </p>
@@ -388,9 +406,7 @@
 
         <footer class="post-footer">
           <div class="post-tags">
-              <a href="https://hardelmm.github.io/tags/jenkins/">jenkins</a>
-                <a href="https://hardelmm.github.io/tags/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a>
-                <a href="https://hardelmm.github.io/tags/shell/">shell</a>
+              <a href="https://hardelmm.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/">接口测试</a>
                 
             </div>
 
@@ -398,22 +414,9 @@
           
           <nav class="post-nav">
             
-              <a class="prev" href="/post/srs-bench%E5%AE%89%E8%A3%85%E4%B8%8E%E4%BD%BF%E7%94%A8/">
-                
-                <i class="iconfont">
-                  <svg  class="icon" viewBox="0 0 1024 1024" version="1.1"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-  width="18" height="18">
-  <path d="M691.908486 949.511495l75.369571-89.491197c10.963703-12.998035 10.285251-32.864502-1.499144-44.378743L479.499795 515.267417 757.434875 204.940602c11.338233-12.190647 11.035334-32.285311-0.638543-44.850487l-80.46666-86.564541c-11.680017-12.583596-30.356378-12.893658-41.662889-0.716314L257.233596 494.235404c-11.332093 12.183484-11.041474 32.266891 0.657986 44.844348l80.46666 86.564541c1.772366 1.910513 3.706415 3.533476 5.750981 4.877077l306.620399 321.703933C662.505829 963.726242 680.945807 962.528973 691.908486 949.511495z"></path>
-</svg>
-
-                </i>
-                <span class="prev-text nav-default">st-load安装与使用</span>
-                <span class="prev-text nav-mobile">上一篇</span>
-              </a>
             
-              <a class="next" href="/post/python%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%95%B0%E6%8D%AE%E9%A9%B1%E5%8A%A8/">
-                <span class="next-text nav-default">Python接口自动化(数据驱动)</span>
+              <a class="next" href="/post/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%B1%87%E6%80%BB/">
+                <span class="next-text nav-default">数据结构汇总</span>
                 <span class="prev-text nav-mobile">下一篇</span>
                 
                 <i class="iconfont">
@@ -559,6 +562,10 @@
 
   
   
+    <span id="busuanzi_container">
+      访客数/访问量：<span id="busuanzi_value_site_uv"></span>/<span id="busuanzi_value_site_pv"></span>
+    </span>
+  
 
   
 </div>
@@ -607,6 +614,7 @@
 
 
 
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
@@ -614,6 +622,32 @@
 
 
 
+
+
+
+
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/mermaid@8.8.2/dist/mermaid.min.js"
+  integrity="sha256-KqisLh8jVMBRjpNkOhH5W9VWs+F6x6vQksLqxs7+x9A="
+  crossorigin="anonymous"
+></script>
+<script>
+  
+  Array.from(document.getElementsByClassName("language-mermaid")).forEach(
+    (el) => {
+      el.parentElement.outerHTML = `<div class="mermaid">${el.innerText}</div>`;
+    }
+  );
+</script>
+<style>
+   
+  .mermaid svg {
+    display: block;
+    margin: auto;
+  }
+</style>
 
 
 

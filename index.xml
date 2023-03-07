@@ -6,10 +6,53 @@
     <description>Recent content on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Mon, 06 Mar 2023 18:10:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 07 Mar 2023 15:10:00 +0000</lastBuildDate>
     
         <atom:link href="https://hardelmm.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>接口测试范围</title>
+      <link>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/</link>
+      <pubDate>Tue, 07 Mar 2023 15:10:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/</guid>
+      
+        <description>&lt;p&gt;本文简要概述接口测试范围以及部分注意事项&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-1&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-1&#34;&gt; 1&lt;/a&gt;&lt;/span&gt;&lt;span&gt;graph LR
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-2&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-2&#34;&gt; 2&lt;/a&gt;&lt;/span&gt;&lt;span&gt;接口测试--&amp;gt;功能测试
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-3&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-3&#34;&gt; 3&lt;/a&gt;&lt;/span&gt;&lt;span&gt;接口测试--&amp;gt;性能测试
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-4&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-4&#34;&gt; 4&lt;/a&gt;&lt;/span&gt;&lt;span&gt;接口测试--&amp;gt;安全性测试
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-5&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-5&#34;&gt; 5&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-6&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-6&#34;&gt; 6&lt;/a&gt;&lt;/span&gt;&lt;span&gt;功能测试--&amp;gt;正向功能
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-7&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-7&#34;&gt; 7&lt;/a&gt;&lt;/span&gt;&lt;span&gt;功能测试--&amp;gt;逆向功能
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-8&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-8&#34;&gt; 8&lt;/a&gt;&lt;/span&gt;&lt;span&gt;功能测试--&amp;gt;多接口业务逻辑
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-9&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-9&#34;&gt; 9&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-10&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-10&#34;&gt;10&lt;/a&gt;&lt;/span&gt;&lt;span&gt;正向功能--&amp;gt;入参符合业务需求/设计文档
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-11&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-11&#34;&gt;11&lt;/a&gt;&lt;/span&gt;&lt;span&gt;正向功能--&amp;gt;数据库校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-12&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-12&#34;&gt;12&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-13&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-13&#34;&gt;13&lt;/a&gt;&lt;/span&gt;&lt;span&gt;逆向功能--&amp;gt;数据异常和状态码校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-14&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-14&#34;&gt;14&lt;/a&gt;&lt;/span&gt;&lt;span&gt;逆向功能--&amp;gt;参数异常和状态码校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-15&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-15&#34;&gt;15&lt;/a&gt;&lt;/span&gt;&lt;span&gt;逆向功能--&amp;gt;组合参数错误:常在前端限制提示顺序
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-16&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-16&#34;&gt;16&lt;/a&gt;&lt;/span&gt;&lt;span&gt;逆向功能--&amp;gt;数据库校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-17&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-17&#34;&gt;17&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-18&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-18&#34;&gt;18&lt;/a&gt;&lt;/span&gt;&lt;span&gt;数据异常和状态码校验--&amp;gt;边界值校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-19&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-19&#34;&gt;19&lt;/a&gt;&lt;/span&gt;&lt;span&gt;数据异常和状态码校验--&amp;gt;数据类型错误
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-20&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-20&#34;&gt;20&lt;/a&gt;&lt;/span&gt;&lt;span&gt;数据异常和状态码校验--&amp;gt;数据Null
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-21&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-21&#34;&gt;21&lt;/a&gt;&lt;/span&gt;&lt;span&gt;参数异常和状态码校验--&amp;gt;少参多参和参名错误
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-22&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-22&#34;&gt;22&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-23&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-23&#34;&gt;23&lt;/a&gt;&lt;/span&gt;&lt;span&gt;性能测试--&amp;gt;高并发数据处理正确性:数据库死锁等
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-24&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-24&#34;&gt;24&lt;/a&gt;&lt;/span&gt;&lt;span&gt;性能测试--&amp;gt;并发数/吞吐量以及此状态下响应时间
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-25&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-25&#34;&gt;25&lt;/a&gt;&lt;/span&gt;&lt;span&gt;性能测试--&amp;gt;服务资源使用率
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-26&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-26&#34;&gt;26&lt;/a&gt;&lt;/span&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-27&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-27&#34;&gt;27&lt;/a&gt;&lt;/span&gt;&lt;span&gt;安全性测试--&amp;gt;开放式接口入参加密token校验
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-28&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-28&#34;&gt;28&lt;/a&gt;&lt;/span&gt;&lt;span&gt;安全性测试--&amp;gt;敏感数据加密传输
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34; id=&#34;hl-0-29&#34;&gt;&lt;a style=&#34;outline:none;text-decoration:none;color:inherit&#34; href=&#34;#hl-0-29&#34;&gt;29&lt;/a&gt;&lt;/span&gt;&lt;span&gt;安全性测试--&amp;gt;SQL注入
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;总结：&lt;/p&gt;
+&lt;p&gt;实际项目开发过程中，由于前后端结构分离，常通过前端进行输入限制，但若涉及未加密的接口，易留下安全性隐患。&lt;/p&gt;
+</description>
+      
+    </item>
     
     <item>
       <title>数据结构汇总</title>
@@ -1929,154 +1972,6 @@ scope=&amp;ldquo;session&amp;rdquo; 以实现多个.py跨文件使用一个sessi
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;BASE-DIR是指全备目录，INCREMENTAL-DIR-1是指第一次的增量备份，INCREMENTAL-DIR-2是指第二次的增量备份，以此类推。&lt;/p&gt;
 &lt;p&gt;注意：最后一步的增量备份并没有&amp;ndash;redo-only选项！还有，可以使用&amp;ndash;use_memory提高性能&lt;/p&gt;
 &lt;p&gt;以上完成之后，最终数据在BASE-DIR（全备目录）下&lt;/p&gt;
-</description>
-      
-    </item>
-    
-    <item>
-      <title>ansible学习总结</title>
-      <link>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</link>
-      <pubDate>Thu, 26 Jul 2018 12:30:00 +0000</pubDate>
-      
-      <guid>https://hardelmm.github.io/post/ansible%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</guid>
-      
-        <description>&lt;h1 id=&#34;背景&#34;&gt;背景&lt;/h1&gt;
-&lt;p&gt;之前一直想去学习下，因为各种原因暂时搁置了。最近公司在开发Saas产品，刚好用到ansible等内容，特此针对性了解学习下&lt;/p&gt;
-&lt;h1 id=&#34;ansible是啥&#34;&gt;ansible是啥&lt;/h1&gt;
-&lt;p&gt;一、ansible是一个部署工具，最直接的作用是批量部署应用服务，减少重复性的工作；同时避免人的问题，造成的指令理解不准确、执行不严格的问题&lt;/p&gt;
-&lt;p&gt;二、通过脚本实现模块化和标准化&lt;/p&gt;
-&lt;h1 id=&#34;ansible怎么装&#34;&gt;ansible怎么装&lt;/h1&gt;
-&lt;h2 id=&#34;准备&#34;&gt;准备&lt;/h2&gt;
-&lt;p&gt;1、确保管理节点（windows系统不能做控制主机）上安装了Python2.6或Python2.7&lt;/p&gt;
-&lt;p&gt;2、确保目标节点上安装了Python2.4或以上版本，如果版本低于Python2.5，需要额外安装一个模块（python-simplejson），可以通过yum、wget、pip进行安装，也可以通过ansible进行安装，因为即便未安装该模块，也可以使用ansible的“raw”模块和script模块，通过ansible的“raw”模块安装&lt;/p&gt;
-&lt;p&gt;3、管理节点使用ssh和目标节点通信，确保管理节点和目标节点都已安装且启动ssh服务&lt;/p&gt;
-&lt;p&gt;4、管理节点和目标节点默认使用ssh的客户端套件sftp进行文件传输，如果sftp不可用，可在ansible.cfg配置文件中配置成scp的方式&lt;/p&gt;
-&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
-&lt;p&gt;我们只需要在管理节点安装ansible（获取ansible：&lt;a href=&#34;https://github.com/ansible/ansible&#34; title=&#34;ansible的GitHub地址&#34;&gt;https://github.com/ansible/ansible&lt;/a&gt;）&lt;/p&gt;
-&lt;p&gt;我们可以通过多种方式安装ansible，我在这只总结了两种：&lt;/p&gt;
-&lt;h3 id=&#34;从源码安装&#34;&gt;从源码安装&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;$ git clone git://github.com/ansible/ansible.git --recursive
-$ cd ./ansible
-$ source ./hacking/env-setup
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;如果没有安装pip, 先安装对应于Python版本的pip:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo easy_install pip
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;以下的Python模块也需要安装：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo pip install paramiko PyYAML Jinja2 httplib2 six
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;一旦运行env-setup脚本,就意味着Ansible从源码中运行起来了.默认的inventory文件是 /etc/ansible/hosts.inventory&lt;/p&gt;
-&lt;h3 id=&#34;通过yum方式安装&#34;&gt;通过yum方式安装&lt;/h3&gt;
-&lt;p&gt;1、通过Yum安装RPMs适用于 EPEL 6, 7, 以及仍在支持中的Fedora发行版.&lt;/p&gt;
-&lt;p&gt;2、托管节点的操作系统版本可以是更早的版本(如 EL5), 但必须安装 Python 2.4 或更高版本的Python.&lt;/p&gt;
-&lt;p&gt;3、Fedora 用户可直接安装Ansible, 但RHEL或CentOS用户,需要 配置 &lt;a href=&#34;https://fedoraproject.org/wiki/EPEL&#34; title=&#34;配置EPEL源&#34;&gt;EPEL源&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo yum install ansible
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ansible怎么用&#34;&gt;ansible怎么用&lt;/h1&gt;
-&lt;p&gt;类似于数据和脚本分离的方式，主要的配置文件有ansible.cfg和hosts&lt;/p&gt;
-&lt;h2 id=&#34;inventory配置&#34;&gt;Inventory配置&lt;/h2&gt;
-&lt;p&gt;以下只对默认创建新的inventory文件配置进行总结举例，本文不对动态Inventory总结举例，我们可以根据实际需求自定义组变量或者主机变量，创建新的inventory文件&lt;/p&gt;
-&lt;h3 id=&#34;inventory配置举例&#34;&gt;Inventory配置举例&lt;/h3&gt;
-&lt;p&gt;1、ansible可以同时操作属于一个组的多台主机&lt;/p&gt;
-&lt;p&gt;2、组和主机的关系可以通过Inventory文件来配置，默认的文件路径为/etc/ansible/hosts&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;例1：
-
-# Ex 1: A collection of hosts belonging to the &#39;webservers&#39; group
-[webservers]
-alpha.example.org
-beta.example.org
-192.168.1.100
-192.168.1.110
-
-# Ex 2: A collection of database servers in the &#39;dbservers&#39; group
-
-[dbservers]
- 
-db01.intranet.mydomain.net
-db02.intranet.mydomain.net
-10.25.1.56
-10.25.1.57
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3、一个系统可以属于不同的组,比如一台服务器可以同时属于 webserver组 和 dbserver组&lt;/p&gt;
-&lt;p&gt;4、主机的SSH端口不是标准的22端口,可在主机名之后加上端口号,用冒号分隔.SSH 配置文件中列出的端口号不会在 paramiko 连接中使用,但会在 openssh 连接中使用&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;例2：
-
-badwolf.example.com:5309
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;5、静态IP地址，或者是通过隧道连接的地址,如果希望设置一些别名,但不是在系统的 host 文件中设置,那么可以设置如下:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;例3：
-
-jumper ansible_ssh_port=5555 ansible_ssh_host=192.168.1.50
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;6、选择主机的连接类型和连接用户名&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;例4：
-
-[targets]
-
-localhost              ansible_connection=local
-other1.example.com     ansible_connection=ssh        ansible_ssh_user=mpdehaan
-other2.example.com     ansible_connection=ssh        ansible_ssh_user=mdehaan
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;inventory常用参数说明&#34;&gt;Inventory常用参数说明&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;ansible_ssh_host
-  将要连接的远程主机名.如果与想要设定的主机的别名不同的话,可通过此变量设置.
-
-ansible_ssh_port
-  ssh端口号.如果不是默认的端口号,可通过此变量设置.
-
-ansible_ssh_user
-  默认的 ssh 用户名
-
-ansible_ssh_pass
-  ssh 密码(这种方式并不安全,建议使用 --ask-pass 或 SSH 密钥)
-
-ansible_sudo_pass
-  sudo 密码(这种方式并不安全,建议使用 --ask-sudo-pass)
-
-ansible_sudo_exe (new in version 1.8)
-  sudo 命令路径(适用于1.8及以上版本)
-
-ansible_connection
-  与主机的连接类型.比如:local, ssh 或者 paramiko. Ansible 1.2 以前默认使用 paramiko.1.2 以后默认使用 &#39;smart&#39;,&#39;smart&#39; 方式会根据是否支持 ControlPersist, 来判断&#39;ssh&#39; 方式是否可行.
-
-ansible_ssh_private_key_file
-  ssh 使用的私钥文件.适用于有多个密钥,而使用者不想使用 SSH 代理的情况.
-
-ansible_shell_type
-  目标系统的shell类型.默认情况下,命令的执行使用 &#39;sh&#39; 语法,可设置为 &#39;csh&#39; 或 &#39;fish&#39;.
-
-ansible_python_interpreter
-  目标主机的 python 路径.适用于的情况: 
-
-  系统中有多个 Python, 或者命令路径不是&amp;quot;/usr/bin/python&amp;quot;,比如  \*BSD, 或者 /usr/bin/python
-
-  不是 2.X 版本的 Python.我们不使用 &amp;quot;/usr/bin/env&amp;quot; 机制,因为这要求远程用户的路径设置正确,且要求 &amp;quot;python&amp;quot; 可执行程序名不可为 python以外的名字(实际有可能名为python26).
-
-  与 ansible_python_interpreter 的工作方式相同,可设定如 ruby 或 perl 的路径....
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;列举一个主机文件的例子：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;some_host         ansible_ssh_port=2222     ansible_ssh_user=manager
-aws_host          ansible_ssh_private_key_file=/home/example/.ssh/aws.pem
-freebsd_host      ansible_python_interpreter=/usr/local/bin/python
-ruby_module_host  ansible_ruby_interpreter=/usr/bin/ruby.1.9.3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;ansiblecfg&#34;&gt;ansible.cfg &lt;/h2&gt;
-&lt;h3 id=&#34;通用默认段&#34;&gt;通用默认段&lt;/h3&gt;
-&lt;p&gt;1、action_plugins：“行为”是 ansible中的一段代码,用来激活一些事件,例如执行一个模块,一个模版,等等&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;action_plugins = ~/.ansible/plugins/action_plugins/:/usr/share/ansible_plugins/action_plugins
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;2、ansible_managed：Ansible-managed 是一个字符串.可以插入到Ansible配置模版系统生成的文件中.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;{{ ansible_managed }}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;3、ask_pass：这个可以控制Ansible 剧本playbook 是否会自动默认弹出弹出密码，默认为no，与之类似的有ask_sudo_pass&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ask_pass=True
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;未完待续&lt;/p&gt;
-&lt;p&gt;附：&lt;/p&gt;
-&lt;p&gt;参考资料：&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://getansible.com/begin/an_zhuang_ansile&#34;&gt;https://getansible.com/begin/an_zhuang_ansile&lt;/a&gt;
-&lt;a href=&#34;https://showme.codes/2017-06-12/ansible-introduce/&#34;&gt;https://showme.codes/2017-06-12/ansible-introduce/&lt;/a&gt;
-&lt;a href=&#34;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&#34;&gt;http://ansible-tran.readthedocs.io/en/latest/docs/intro_dynamic_inventory.html&lt;/a&gt;&lt;/p&gt;
 </description>
       
     </item>

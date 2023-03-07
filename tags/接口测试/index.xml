@@ -6,7 +6,16 @@
     <description>Recent content in 接口测试 on HardElm</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sat, 20 Aug 2022 22:16:46 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Mar 2023 15:10:00 +0000</lastBuildDate><atom:link href="https://hardelmm.github.io/tags/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>接口测试范围</title>
+      <link>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/</link>
+      <pubDate>Tue, 07 Mar 2023 15:10:00 +0000</pubDate>
+      
+      <guid>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E6%B5%8B%E8%AF%95%E8%8C%83%E5%9B%B4/</guid>
+      <description>本文简要概述接口测试范围以及部分注意事项 1graph LR 2接口测试--&amp;gt;功能测试 3接口测试--&amp;gt;性能测试 4接口测试--&amp;gt;安全性测试 5 6</description>
+    </item>
+    
     <item>
       <title>接口自动化测试框架模型（二）</title>
       <link>https://hardelmm.github.io/post/%E6%8E%A5%E5%8F%A3%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6%E6%A8%A1%E5%9E%8B%E4%BA%8C/</link>
